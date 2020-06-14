@@ -19,7 +19,9 @@ public class OrientedFlyingPhysics : MonoBehaviour
 
     public StacsEntity entity;
     public Vector3 eulerRotation = Vector3.zero;
+    public Vector3 tmp;
 
+    public float lerpTime = 0.01f;
     // Update is called once per frame
     void Update()
     {
@@ -60,10 +62,19 @@ public class OrientedFlyingPhysics : MonoBehaviour
 
         entity.position = entity.position + entity.velocity * Time.deltaTime;
         entity.position.y = entity.altitude;
-        transform.localPosition = entity.position;
+        transform.localPosition = Vector3.Lerp(transform.position, entity.position, lerpTime);
 
+        eulerRotation.x = eulerRotation.z = 0;
         eulerRotation.y = entity.heading;
-        transform.localEulerAngles = eulerRotation;
+
+        //transform.localEulerAngles = eulerRotation;
+
+        tmp = transform.localEulerAngles;
+        tmp.x = tmp.z = 0;
+        transform.localEulerAngles = tmp;
+        Quaternion rot = Quaternion.Euler(eulerRotation);
+        //transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, eulerRotation, lerpTime);
+        transform.localRotation = Quaternion.Lerp(transform.localRotation, rot, lerpTime);
     }
 
 
