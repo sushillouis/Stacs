@@ -1,0 +1,11 @@
+Urban Construction Pack
+-------------------------
+
+Documentation is located at http://www.qt-ent.com/UCP/Documentation
+
+Upgrading from previous versions? Be sure to delete any shaders that reside in the UCP/Shaders folder as they are no longer used. Do not delete anything in the Shaders/Optimized or Shaders/Optimized/Mobile folders.
+
+EULA
+----
+
+Users of this package are bound to licensing terms described at http://unity3d.com/company/legal/as_terms
