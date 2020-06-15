@@ -27,13 +27,13 @@ public class CameraController : MonoBehaviour
             pos += cameraObject.transform.right * Input.GetAxis("DPadHorizontal") * speed * Time.deltaTime;
             pos -= cameraObject.transform.forward * Input.GetAxis("DPadVertical") * speed * Time.deltaTime;
             //Keyboard arrow keys
-            if (Input.GetKey(KeyCode.A))
-                pos += cameraObject.transform.forward * keyboardSpeed * Time.deltaTime;
             if (Input.GetKey(KeyCode.W))
+                pos += cameraObject.transform.forward * keyboardSpeed * Time.deltaTime;
+            if (Input.GetKey(KeyCode.S))
                 pos -= cameraObject.transform.forward * keyboardSpeed * Time.deltaTime;
             if (Input.GetKey(KeyCode.D))
                 pos += cameraObject.transform.right * keyboardSpeed * Time.deltaTime;
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKey(KeyCode.A))
                 pos -= cameraObject.transform.right * keyboardSpeed * Time.deltaTime;
 
             //GameController, hold rightTrigger and use second joystick
