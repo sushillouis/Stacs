@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public enum EGameState
 {
     None = 0,
-    Menu,
+    GameMenu,
     ShowHelp,
     Briefing,
     Monitoring,
+    UINavigating,
     AfterActionReview,
 }
 
@@ -43,7 +45,12 @@ public class UIMgr : MonoBehaviour
     public Text EntityHeadingText; public Text EntityDesiredHeadingText;
     public Text EntityAltitudeText; public Text EntityDesiredAltitudeText;
 
-    public GameObject EventSystem;
+    //public GameObject myCanvas;
+
+    public Button gameMenuButton;
+    public Button briefingPanelOkButton;
+    public Button menuHelpButton;
+    public Button helpDoneButton;
 
     // Start is called before the first frame update
     void Start()
@@ -56,9 +63,18 @@ public class UIMgr : MonoBehaviour
     {
         //ProtoPanel.isValid = show;
         UpdateSelectedEntity();
+        CheckForUINavigation();
     }
 
-    [ContextMenu("UpdateProto")]
+    void CheckForUINavigation()
+    {
+        if (Input.GetKeyUp(KeyCode.Joystick1Button7)) {
+            State = EGameState.GameMenu;
+        }
+
+    }
+
+    [ContextMenu("UpdateProto")] //For testing Stacs Panels
     public void UpdateProto()
     {
         BriefingPanel.isValid = show;
@@ -81,7 +97,7 @@ public class UIMgr : MonoBehaviour
     }
 
     public EGameState priorState;
-    private EGameState _state;
+    public EGameState _state = EGameState.None;
     //[System.Serializable]
     public EGameState State
     {
@@ -93,11 +109,30 @@ public class UIMgr : MonoBehaviour
 
             BriefingPanel.isValid = (_state == EGameState.Briefing);
             HelpPanel.isValid = (_state == EGameState.ShowHelp);
-            MenuPanel.isValid = (_state == EGameState.Menu);
+            MenuPanel.isValid = (_state == EGameState.GameMenu);
 
-            if (BriefingPanel.isValid) {
-
+            //Game Controller UI/Playing switch and Navigation
+            switch (_state) {
+                case EGameState.Briefing:
+                    EventSystem.current.firstSelectedGameObject = briefingPanelOkButton.gameObject;
+                    break;
+                case EGameState.Monitoring:
+                    EventSystem.current.firstSelectedGameObject = null;
+                    briefingPanelOkButton.Select();
+                    break;
+                case EGameState.GameMenu:
+                    EventSystem.current.firstSelectedGameObject = menuHelpButton.gameObject;
+                    menuHelpButton.Select();
+                    break;
+                case EGameState.ShowHelp:
+                    EventSystem.current.firstSelectedGameObject = helpDoneButton.gameObject;
+                    helpDoneButton.Select();
+                    break;
+                default:
+                    EventSystem.current.firstSelectedGameObject = null;
+                    break;
             }
+
 
         }
     }
@@ -116,7 +151,7 @@ public class UIMgr : MonoBehaviour
 
     public void HandleMenu()
     {
-        State = EGameState.Menu;
+        State = EGameState.GameMenu;
     }
 
     public void HandleMenuBack()

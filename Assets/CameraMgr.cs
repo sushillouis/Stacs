@@ -21,7 +21,7 @@ public class CameraMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyUp(KeyCode.Joystick1Button2) || Input.GetKeyUp(KeyCode.Backslash) ) {
+        if (Input.GetKeyUp(KeyCode.Joystick1Button1) || Input.GetKeyUp(KeyCode.Backslash) ) {
             SelectNextCameraEntity();
         }
         //FollowEntity();

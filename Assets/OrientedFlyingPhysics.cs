@@ -77,6 +77,16 @@ public class OrientedFlyingPhysics : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, rot, lerpTime);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        Rigidbody rb = entity.GetComponent<Rigidbody>();
+        rb.useGravity = true;
+        entity.speed = entity.desiredSpeed = 0;
+        entity.altitude = entity.desiredAltitude = collision.GetContact(0).point.y;
+        rb.constraints = RigidbodyConstraints.FreezeRotation;
+        rb.constraints = RigidbodyConstraints.FreezePositionX;
+        rb.constraints = RigidbodyConstraints.FreezePositionZ;
 
+    }
 
 }

@@ -24,7 +24,7 @@ public class ControlMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SelectionMgr.inst.selectedEntity != null) {
+        if (UIMgr.inst.State == EGameState.Monitoring && SelectionMgr.inst.selectedEntity != null ) {
             if (Input.GetKey(KeyCode.UpArrow) || Input.GetAxis("EntitySpeed") > 0 )//|| Input.GetKeyUp(KeyCode.Joystick1Button3))
                     SelectionMgr.inst.selectedEntity.desiredSpeed += deltaSpeed * Time.deltaTime;
             if (Input.GetKey(KeyCode.DownArrow) || Input.GetAxis("EntitySpeed") < 0)// || Input.GetKeyUp(KeyCode.Joystick1Button1))
