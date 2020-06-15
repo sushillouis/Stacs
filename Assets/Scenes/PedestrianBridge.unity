@@ -7556,6 +7556,7 @@ MonoBehaviour:
   EntityDesiredHeadingText: {fileID: 209288950}
   EntityAltitudeText: {fileID: 490074067}
   EntityDesiredAltitudeText: {fileID: 1526949581}
+  EventSystem: {fileID: 1495414493}
   show: 0
   priorState: 0
 --- !u!1001 &1417160280

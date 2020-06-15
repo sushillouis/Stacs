@@ -43,6 +43,7 @@ public class UIMgr : MonoBehaviour
     public Text EntityHeadingText; public Text EntityDesiredHeadingText;
     public Text EntityAltitudeText; public Text EntityDesiredAltitudeText;
 
+    public GameObject EventSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +55,19 @@ public class UIMgr : MonoBehaviour
     void Update()
     {
         //ProtoPanel.isValid = show;
-        if(SelectionMgr.inst.selectedEntity != null) {
+        UpdateSelectedEntity();
+    }
+
+    [ContextMenu("UpdateProto")]
+    public void UpdateProto()
+    {
+        BriefingPanel.isValid = show;
+    }
+
+
+    public void UpdateSelectedEntity()
+    {
+        if (SelectionMgr.inst.selectedEntity != null) {
             EntityTypeText.text = SelectionMgr.inst.selectedEntity.entityType.ToString();
             EntityNameText.text = SelectionMgr.inst.selectedEntity.name;
             EntityBatteryText.text = SelectionMgr.inst.selectedEntity.batteryState + "%";
@@ -65,12 +78,6 @@ public class UIMgr : MonoBehaviour
             EntityAltitudeText.text = SelectionMgr.inst.selectedEntity.altitude.ToString("F1") + "m";
             EntityDesiredAltitudeText.text = SelectionMgr.inst.selectedEntity.desiredAltitude.ToString("F1") + "m";
         }
-    }
-
-    [ContextMenu("UpdateProto")]
-    public void UpdateProto()
-    {
-        BriefingPanel.isValid = show;
     }
 
     public EGameState priorState;
@@ -87,6 +94,10 @@ public class UIMgr : MonoBehaviour
             BriefingPanel.isValid = (_state == EGameState.Briefing);
             HelpPanel.isValid = (_state == EGameState.ShowHelp);
             MenuPanel.isValid = (_state == EGameState.Menu);
+
+            if (BriefingPanel.isValid) {
+
+            }
 
         }
     }
