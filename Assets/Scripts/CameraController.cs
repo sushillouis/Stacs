@@ -8,7 +8,7 @@ public class CameraController : MonoBehaviour
     public GameObject pitchNode;
     public GameObject rollNode;
     public GameObject cameraObject;
-    bool isSelected = true;
+    bool isSelected = true; //always
     float speed = 10;
     float keyboardSpeed = 5;
     float turnRate = 10;
