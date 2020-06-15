@@ -7510,6 +7510,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1411429358}
   - component: {fileID: 1411429359}
+  - component: {fileID: 1411429360}
   m_Layer: 0
   m_Name: UIMgr
   m_TagString: Untagged
@@ -7559,6 +7560,20 @@ MonoBehaviour:
   EventSystem: {fileID: 1495414493}
   show: 0
   priorState: 0
+--- !u!114 &1411429360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411429357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1862395651, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates: []
+  delegates: []
 --- !u!1001 &1417160280
 PrefabInstance:
   m_ObjectHideFlags: 0
