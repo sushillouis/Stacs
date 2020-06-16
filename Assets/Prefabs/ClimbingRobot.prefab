@@ -58,6 +58,8 @@ GameObject:
   - component: {fileID: 1309955748}
   - component: {fileID: 6872629382038586148}
   - component: {fileID: 765367443856226319}
+  - component: {fileID: 1725887138362561601}
+  - component: {fileID: 2987652890781124151}
   m_Layer: 0
   m_Name: ClimbingRobot
   m_TagString: Untagged
@@ -101,13 +103,21 @@ MonoBehaviour:
   desiredSpeed: 0
   heading: 0
   desiredHeading: 0
-  acceleration: 0
-  turnRate: 0
+  altitude: 0
+  desiredAltitude: 0
+  batteryState: 100
+  acceleration: 1
+  turnRate: 60
   climbRate: 0
-  maxSpeed: 0
+  maxSpeed: 5
   minSpeed: 0
-  mass: 0
-  length: 0
+  minAltitude: 0
+  maxAltitude: 0
+  batteryM: 0
+  batteryB: 0
+  waypointReachedThreshold: 0
+  mass: 10
+  length: 1
   entityType: 0
   cameraRig: {fileID: 0}
   selectionCircle: {fileID: 0}
@@ -131,12 +141,45 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2342501925828184307}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c2815a7ab32e42c4bb42f59caacb8ec1, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.77, y: 0.4, z: 0.5}
   m_Center: {x: 0, y: 0.19, z: 0}
+--- !u!54 &1725887138362561601
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342501925828184307}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!114 &2987652890781124151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342501925828184307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f2b069f9654bf45ab95556af0e0b1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 1309955748}
+  magneticForce: -20
+  gravityForce: -9.81
+  groundCheckDistance: 0.45
+  eulerRotation: {x: 0, y: 0, z: 0}
 --- !u!1 &2769199413114243039
 GameObject:
   m_ObjectHideFlags: 0
