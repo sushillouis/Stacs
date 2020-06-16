@@ -41,6 +41,8 @@ public class StacsEntity : MonoBehaviour
     public float batteryM;
     public float batteryB;
 
+    public float waypointReachedThreshold;
+
     /// <summary>
     /// For potential fields scaling
     /// </summary>
