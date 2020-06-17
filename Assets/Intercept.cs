@@ -24,6 +24,7 @@ public class Intercept : Follow
         float dh = ComputePredictiveDH(Vector3.zero);
         entity.desiredHeading = dh;
         entity.desiredSpeed = entity.maxSpeed;
+        entity.desiredAltitude = movePosition.y;
     }
 
     public override bool IsDone()

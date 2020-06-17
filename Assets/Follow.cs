@@ -11,7 +11,7 @@ public class Follow : Move
     public Follow(StacsEntity ent, StacsEntity target, Vector3 delta) : base(ent, target.transform.position)
     {
         targetEntity = target;
-        relativeOffset = delta;
+        relativeOffset = target.transform.InverseTransformVector(delta);
     }
 
     // Start is called before the first frame update
@@ -23,13 +23,14 @@ public class Follow : Move
         line.gameObject.SetActive(false);
     }
 
-    public float followThreshold = 2000;
+    public float followThreshold = 20;
     public Vector3 offset;
     // Update is called once per frame
     public override void Tick()
     {
         offset = targetEntity.transform.TransformVector(relativeOffset);
         movePosition = targetEntity.transform.position + offset;
+        entity.desiredAltitude = movePosition.y;
         //entity.desiredHeading = ComputePredictiveDH(relativeOffset);
         entity.desiredHeading = ComputeDHDS().dh;
         if (diff.sqrMagnitude < followThreshold) {

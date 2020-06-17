@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [System.Serializable]
 public class Move : Command
 {
@@ -13,9 +12,8 @@ public class Move : Command
     {
         movePosition = pos;
         doneDistanceSq = (ent.length * ent.length);
+        entity.desiredAltitude = movePosition.y;
     }
-
-    public float timeToZeroSpeed;
 
     public override void Init()
     {

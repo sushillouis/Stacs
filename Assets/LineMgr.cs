@@ -27,6 +27,7 @@ public class LineMgr : MonoBehaviour
     public LineRenderer FollowPrefab;
     public LineRenderer InterceptPrefab;
     public LineRenderer PotentialPrefab;
+    public LineRenderer CommandOffsetLinePrefab;
 
     public List<LineRenderer> lines = new List<LineRenderer>();
     public LineRenderer CreateMoveLine(Vector3 p1, Vector3 p2)
@@ -57,6 +58,19 @@ public class LineMgr : MonoBehaviour
         return lr;
     }
 
+    public LineRenderer CreateCommandOffsetLine(Vector3 p1, Vector3 p2, Vector3 p3)
+    {
+        LineRenderer lr = Instantiate<LineRenderer>(CommandOffsetLinePrefab, transform);
+        lr.SetPosition(0, p1);
+        lr.SetPosition(1, p2);
+        lr.SetPosition(2, p3);
+        lines.Add(lr);
+        return lr;
+    }
+
+
+
+
     public LineRenderer CreateInterceptLine(Vector3 p1, Vector3 p2, Vector2 p3)
     {
         LineRenderer lr = Instantiate<LineRenderer>(InterceptPrefab, transform);
@@ -75,7 +89,7 @@ public class LineMgr : MonoBehaviour
             tmp = lr;
             lines.Remove(lr);
         }
-        Destroy(lr);
+        Destroy(lr.gameObject);
 
     }
 }

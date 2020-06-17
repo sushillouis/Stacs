@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
 
     }
     void UpdateCamera() { 
+
         if(isSelected)
         {
             Vector3 pos = transform.position;

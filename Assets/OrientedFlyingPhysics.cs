@@ -62,7 +62,8 @@ public class OrientedFlyingPhysics : MonoBehaviour
 
         entity.position = entity.position + entity.velocity * Time.deltaTime;
         entity.position.y = entity.altitude;
-        transform.localPosition = Vector3.Lerp(transform.position, entity.position, lerpTime);
+        //transform.localPosition = Vector3.Lerp(transform.position, entity.position, lerpTime);
+        transform.position = entity.position;
 
         eulerRotation.x = eulerRotation.z = 0;
         eulerRotation.y = entity.heading;
@@ -75,12 +76,13 @@ public class OrientedFlyingPhysics : MonoBehaviour
         Quaternion rot = Quaternion.Euler(eulerRotation);
         //transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, eulerRotation, lerpTime);
         transform.localRotation = Quaternion.Lerp(transform.localRotation, rot, lerpTime);
+        //transform.localEulerAngles = eulerRotation;
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         Rigidbody rb = entity.GetComponent<Rigidbody>();
-        rb.useGravity = true;
+        //rb.useGravity = true;
         entity.speed = entity.desiredSpeed = 0;
         entity.altitude = entity.desiredAltitude = collision.GetContact(0).point.y;
         rb.constraints = RigidbodyConstraints.FreezeRotation;
