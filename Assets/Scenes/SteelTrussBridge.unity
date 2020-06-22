@@ -3566,6 +3566,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 631509355}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &651772752 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3580111021696207880, guid: ec76c9ac91413ad41acdd12216df3087,
+    type: 3}
+  m_PrefabInstance: {fileID: 1868123910455463640}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &666173853
 GameObject:
   m_ObjectHideFlags: 0
@@ -8205,6 +8211,11 @@ PrefabInstance:
       propertyPath: groundCheckDistance
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2987652890781124151, guid: ec76c9ac91413ad41acdd12216df3087,
+        type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 1700510714}
     - target: {fileID: 3488172292732993877, guid: ec76c9ac91413ad41acdd12216df3087,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9366,6 +9377,12 @@ Transform:
   m_Father: {fileID: 538977037}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1700510714 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3580111021696207880, guid: ec76c9ac91413ad41acdd12216df3087,
+    type: 3}
+  m_PrefabInstance: {fileID: 1482259266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1715996796
 GameObject:
   m_ObjectHideFlags: 0
@@ -11717,6 +11734,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClimbingRobot
       objectReference: {fileID: 0}
+    - target: {fileID: 2987652890781124151, guid: ec76c9ac91413ad41acdd12216df3087,
+        type: 3}
+      propertyPath: body
+      value: 
+      objectReference: {fileID: 651772752}
     - target: {fileID: 3488172292732993877, guid: ec76c9ac91413ad41acdd12216df3087,
         type: 3}
       propertyPath: m_LocalPosition.x
