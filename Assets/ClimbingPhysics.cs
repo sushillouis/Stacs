@@ -10,20 +10,15 @@ public class ClimbingPhysics : MonoBehaviour
     public float gravityForce;
     public float groundCheckDistance;
 
+    //Normal of current plane
     Vector3 groundNormal;
+    //Either gravitational or magnetic, currently only gravitational when falling off bridge
     float force;
     bool grounded;
 
     private void Awake()
     {
         entity = GetComponentInParent<StacsEntity>();
-        entity.position = transform.localPosition;
-
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-
     }
 
     public Vector3 eulerRotation = Vector3.zero;
@@ -72,11 +67,17 @@ public class ClimbingPhysics : MonoBehaviour
         ApplyPhysics();
     }
 
+    //Updates rigidbody velocity
+    //There is a problem with the gameobject not maintaining it's local y rotation when assigning transform.up. When trying to find a solution I tried applying the yaw rotation to the robot body but applying velocity to the parent gameObject. (More explanation at line 113)
+    //This helped the problem I was facing at the time but now it may not be the best solution.
     private void ApplyPhysics()
     {
         CheckGroundStatus();
+        //Forward velocity is forward direction of robot body in local space
         entity.velocity = transform.InverseTransformDirection(body.forward * entity.speed);
+        //Downward velocity is current rigidbody.velocity.y + acceleration due to force
         entity.velocity.y = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity).y + ((force / entity.mass) * Time.deltaTime);
+        //Converts to global space to set rigidbody velocity
         GetComponent<Rigidbody>().velocity = transform.TransformDirection(entity.velocity);
     }
 
@@ -119,9 +120,10 @@ public class ClimbingPhysics : MonoBehaviour
         }
         else
         {
+            //If the raycast downward from the center hits nothing it means that the robot has gone over an edge.
+            //So cast raypoint back at 45 degrees from center to find new ground plane.
             if (Physics.Raycast(transform.position, -body.up - body.forward, out hitInfo, groundCheckDistance))
             {
-                Debug.Log(Time.time);
                 Vector3 old_groundNormal = groundNormal;
                 groundNormal = hitInfo.normal;
                 SetRotation();
