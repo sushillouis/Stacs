@@ -5,12 +5,14 @@ using UnityEngine;
 public class ClimbingPhysics : MonoBehaviour
 {
     public StacsEntity entity;
+    public Transform body;
     public float magneticForce;
     public float gravityForce;
     public float groundCheckDistance;
 
     Vector3 groundNormal;
     float force;
+    bool grounded;
 
     private void Awake()
     {
@@ -29,6 +31,10 @@ public class ClimbingPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Indicates forward and up direction for debugging
+        Debug.DrawRay(transform.position + (0.5f * transform.up), body.transform.forward, Color.red);
+        Debug.DrawRay(transform.position + (0.5f * transform.up), transform.up, Color.green);
+
         //speed
         if (Utils.ApproximatelyEqual(entity.speed, entity.desiredSpeed))
         {
@@ -62,23 +68,24 @@ public class ClimbingPhysics : MonoBehaviour
         entity.heading = Utils.Degrees360(entity.heading);
         //
 
-        transform.rotation = Quaternion.LookRotation(groundNormal, -transform.forward);
-        transform.Rotate(Vector3.right, 90f);
-        eulerRotation = transform.localEulerAngles;
-        eulerRotation.y = entity.heading;
-        transform.localEulerAngles = eulerRotation;
-
-
+        SetRotation();
         ApplyPhysics();
     }
 
-    public void ApplyPhysics()
+    private void ApplyPhysics()
     {
         CheckGroundStatus();
-        entity.velocity.z = entity.speed;
+        entity.velocity = transform.InverseTransformDirection(body.forward * entity.speed);
         entity.velocity.y = transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity).y + ((force / entity.mass) * Time.deltaTime);
-        Debug.Log("local velocity: " + transform.InverseTransformDirection(GetComponent<Rigidbody>().velocity));
         GetComponent<Rigidbody>().velocity = transform.TransformDirection(entity.velocity);
+    }
+
+    private void SetRotation()
+    {
+        //transform.up = groundNormal;
+        eulerRotation = body.localEulerAngles;
+        eulerRotation.y = entity.heading;
+        body.localEulerAngles = eulerRotation;
     }
 
     void CheckGroundStatus()
@@ -93,6 +100,14 @@ public class ClimbingPhysics : MonoBehaviour
         if (Physics.Raycast(transform.position + (transform.up * 0.1f), -transform.up, out hitInfo, groundCheckDistance))
         {
             groundNormal = hitInfo.normal;
+            //If the robot falls and strikes an angled surface, this block ensures it sticks at the correct orientation
+            if (!grounded)
+            {
+                transform.up = groundNormal;
+                grounded = true;
+            }
+            SetRotation();
+            transform.position = hitInfo.point;
             if (hitInfo.collider.gameObject.tag == "Truss")
             {
                 force = magneticForce;
@@ -104,8 +119,21 @@ public class ClimbingPhysics : MonoBehaviour
         }
         else
         {
-            groundNormal = Vector3.up;
-            force = gravityForce;
+            if (Physics.Raycast(transform.position, -body.up - body.forward, out hitInfo, groundCheckDistance))
+            {
+                Debug.Log(Time.time);
+                Vector3 old_groundNormal = groundNormal;
+                groundNormal = hitInfo.normal;
+                SetRotation();
+                transform.position = hitInfo.point;
+                transform.RotateAround(transform.position, Vector3.Cross(old_groundNormal, groundNormal), 90f);
+            }
+            else
+            {
+                groundNormal = Vector3.up;
+                force = gravityForce;
+                grounded = false;
+            }
         }
     }
 }
