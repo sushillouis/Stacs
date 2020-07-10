@@ -22,6 +22,7 @@ public class AIMgr : MonoBehaviour
     void Start()
     {
         layerMask = 1 << 9;// LayerMask.GetMask("Water");
+        MakeWaypoints(EntityMgr.inst.entities, waypoints);
     }
 
     public bool isPotentialFieldsMovement = false;
@@ -45,6 +46,8 @@ public class AIMgr : MonoBehaviour
     public ECommandType commandType = ECommandType.None;
     public StacsEntity targetEntity;
     public LineRenderer offsetLine = null;
+
+    public List<Transform> waypoints;
 
     // Update is called once per frame
     void Update()
@@ -87,6 +90,7 @@ public class AIMgr : MonoBehaviour
             targetEntity = FindClosestEntInRadius(pos, rClickRadiusSq);
             if (targetEntity == null) {
                 HandleMove(SelectionMgr.inst.selectedEntities, pos);
+                Debug.Log("Move Added");
                 commandType = ECommandType.Move;
             } else {
                 if (Input.GetKey(KeyCode.LeftControl))
@@ -143,9 +147,9 @@ public class AIMgr : MonoBehaviour
         if (start == Vector3.down || end == Vector3.down)
             Debug.Log("Error in start position: " + startPos + " or end position: " + endPos);
         if(targetEntity == null) {
-            //Debug.Log("Endposition = " + (start + offset).ToString());
             HandleMove(SelectionMgr.inst.selectedEntities, start + offset);
         } else {
+            Debug.Log("targetEntity: " + targetEntity.name);
             if (Input.GetKey(KeyCode.LeftControl))
                 HandleIntercept(SelectionMgr.inst.selectedEntities, targetEntity);
             else
@@ -156,19 +160,23 @@ public class AIMgr : MonoBehaviour
 
     public void DrawOffset()
     {
-        switch (commandType) {
-            case ECommandType.Move:
-                offsetLine.SetPosition(0, SelectionMgr.inst.selectedEntity.transform.position);
-                offsetLine.SetPosition(1, startPos);
-                offsetLine.SetPosition(2, startPos + offset);
-                break;
-            case ECommandType.Follow:
-                offsetLine.SetPosition(0, SelectionMgr.inst.selectedEntity.transform.position);
-                offsetLine.SetPosition(1, targetEntity.transform.position);
-                offsetLine.SetPosition(2, targetEntity.transform.position + offsetXZ);
-                break;
-            default:
-                break;
+        if (SelectionMgr.inst.selectedEntity != null)
+        {
+            switch (commandType)
+            {
+                case ECommandType.Move:
+                    offsetLine.SetPosition(0, SelectionMgr.inst.selectedEntity.transform.position);
+                    offsetLine.SetPosition(1, startPos);
+                    offsetLine.SetPosition(2, startPos + offset);
+                    break;
+                case ECommandType.Follow:
+                    offsetLine.SetPosition(0, SelectionMgr.inst.selectedEntity.transform.position);
+                    offsetLine.SetPosition(1, targetEntity.transform.position);
+                    offsetLine.SetPosition(2, targetEntity.transform.position + offsetXZ);
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -194,6 +202,7 @@ public class AIMgr : MonoBehaviour
 
     public void HandleFollow(List<StacsEntity> entities, StacsEntity ent, Vector3 offset)
     {
+        Debug.Log("Handle Follow");
         foreach (StacsEntity entity in SelectionMgr.inst.selectedEntities) {
             Follow f = new Follow(entity, ent, offset);
             UnitAI uai = entity.GetComponent<UnitAI>();
@@ -203,6 +212,7 @@ public class AIMgr : MonoBehaviour
 
     void HandleIntercept(List<StacsEntity> entities, StacsEntity ent)
     {
+        Debug.Log("Handle Intercept");
         foreach (StacsEntity entity in SelectionMgr.inst.selectedEntities) {
             Intercept intercept = new Intercept(entity, ent);
             UnitAI uai = entity.GetComponent<UnitAI>();
@@ -227,5 +237,21 @@ public class AIMgr : MonoBehaviour
             }
         }
         return minEnt;
+    }
+
+    public void MakeWaypoints(List<StacsEntity> entities, List<Transform> waypoints)
+    {
+        foreach (StacsEntity entity in entities)
+        {
+            if(entity.GetComponent<UnitAI>() != null)
+            {
+                foreach (Transform mPoint in waypoints)
+                {
+                    Move mm = new Move(entity, mPoint.position);
+                    UnitAI uai2 = entity.GetComponent<UnitAI>();
+                    uai2.AddCommand(mm);
+                }
+            }
+        }
     }
 }
