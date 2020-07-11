@@ -101,13 +101,21 @@ MonoBehaviour:
   desiredSpeed: 0
   heading: 0
   desiredHeading: 0
+  altitude: 0
+  desiredAltitude: 0
+  batteryState: 0
   acceleration: 0
   turnRate: 0
   climbRate: 0
   maxSpeed: 0
   minSpeed: 0
-  mass: 0
-  length: 0
+  minAltitude: 0
+  maxAltitude: 0
+  batteryM: 0
+  batteryB: 0
+  waypointReachedThreshold: 0
+  mass: 10
+  length: 1
   entityType: 0
   cameraRig: {fileID: 0}
   selectionCircle: {fileID: 0}
