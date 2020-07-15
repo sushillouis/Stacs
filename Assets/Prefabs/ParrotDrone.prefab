@@ -207,7 +207,7 @@ MonoBehaviour:
   batteryState: 100
   acceleration: 1
   turnRate: 45
-  climbRate: 5
+  climbRate: 1
   maxSpeed: 10
   minSpeed: 0
   minAltitude: 0
