@@ -12,9 +12,11 @@ public class UnitAI : MonoBehaviour
         commands = new List<Command>();
         intercepts = new List<Intercept>();
         moves = new List<Move>();
+        trussMoves = new List<TrussMove>();
     }
 
     public List<Move> moves;
+    public List<TrussMove> trussMoves;
     public List<Command> commands;
     public List<Intercept> intercepts;
 
@@ -54,8 +56,10 @@ public class UnitAI : MonoBehaviour
             intercepts.Add(c as Intercept);
         else if (c is Follow)
             ;
-        else
+        else if (c is Move)
             moves.Add(c as Move);
+        else
+            trussMoves.Add(c as TrussMove);
     }
 
     public void SetCommand(Command c)

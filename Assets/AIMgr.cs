@@ -5,6 +5,7 @@ using UnityEngine;
 public enum ECommandType
 {
     Move = 0,
+    TrussMove,
     Follow,
     Intercept,
     WaypointMove,
@@ -176,9 +177,18 @@ public class AIMgr : MonoBehaviour
     public void HandleMove(List<StacsEntity> entities, Vector3 point)
     {
         foreach (StacsEntity entity in entities) {
-            Move m = new Move(entity, point);
-            UnitAI uai = entity.GetComponent<UnitAI>();
-            AddOrSet(m, uai);
+            if(entity.GetComponent<ClimbingPhysics>() != null)
+            {
+                TrussMove tm = new TrussMove(entity, point);
+                UnitAI uai = entity.GetComponent<UnitAI>();
+                AddOrSet(tm, uai);
+            }
+            else
+            {
+                Move m = new Move(entity, point);
+                UnitAI uai = entity.GetComponent<UnitAI>();
+                AddOrSet(m, uai);
+            }
         }
     }
 

@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 765367443856226319}
   - component: {fileID: 54520747673545154}
   - component: {fileID: 114175013259976222}
+  - component: {fileID: 114373803957088096}
   m_Layer: 0
   m_Name: ClimbingRobot
   m_TagString: Untagged
@@ -181,6 +182,23 @@ MonoBehaviour:
   gravityForce: -20
   groundCheckDistance: 1
   eulerRotation: {x: 0, y: 0, z: 0}
+--- !u!114 &114373803957088096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2342501925828184307}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a4ff9fda540d6e4698dcfa6ec662bc3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entity: {fileID: 0}
+  moves: []
+  trussMoves: []
+  commands: []
+  intercepts: []
 --- !u!1 &2769199413114243039
 GameObject:
   m_ObjectHideFlags: 0
