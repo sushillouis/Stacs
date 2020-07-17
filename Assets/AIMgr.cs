@@ -23,7 +23,6 @@ public class AIMgr : MonoBehaviour
     void Start()
     {
         layerMask = 1 << 9;// LayerMask.GetMask("Water");
-        SetupWaypoints();
     }
 
     public bool isPotentialFieldsMovement = false;
@@ -77,6 +76,11 @@ public class AIMgr : MonoBehaviour
         if (isOffsetting) {
             SetOffset(startPos, Input.mousePosition);
             DrawOffset();
+        }
+
+        if(Input.GetKeyDown(KeyCode.P))
+        {
+            SetupWaypoints();
         }
     }
     public void OldCommand()
@@ -261,6 +265,7 @@ public class AIMgr : MonoBehaviour
                         uai.AddCommand(m);
                     }
                 }
+                ent.GetComponent<UnitAI>().waypoints.Clear();
             }
         }
     }

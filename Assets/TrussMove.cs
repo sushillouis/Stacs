@@ -13,7 +13,7 @@ public class TrussMove : Command
     {
         movePosition = pos;
         doneDistanceSq = (ent.length * ent.length);
-        entity.desiredAltitude = movePosition.y;
+        //entity.desiredAltitude = movePosition.y;
     }
 
     public override void Init()
@@ -32,10 +32,10 @@ public class TrussMove : Command
             dhds = ComputePotentialDHDS();
         else
             dhds = ComputeDHDS();
-
         entity.desiredHeading = dhds.dh;
         if(Utils.ApproximatelyEqualAngle(entity.desiredHeading, entity.heading))
         {
+            entity.heading = entity.desiredHeading;
             entity.desiredSpeed = dhds.ds;
         }
         else
