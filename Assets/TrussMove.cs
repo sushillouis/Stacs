@@ -7,6 +7,7 @@ public class TrussMove : Command
 {
     public Vector3 movePosition;
     public LineRenderer potentialLine;
+    private bool stopping = false;
 
     public TrussMove(StacsEntity ent, Vector3 pos) : base(ent)
     {
@@ -43,6 +44,11 @@ public class TrussMove : Command
         }
         line.SetPosition(1, movePosition);
         doneDistanceSq = ComputeDoneDistanceSq();
+        if((entity.transform.position - movePosition).sqrMagnitude < doneDistanceSq)
+        {
+            stopping = true;
+            entity.desiredSpeed = 0;
+        }
     }
 
     public float ComputeDoneDistanceSq()
@@ -58,6 +64,7 @@ public class TrussMove : Command
     public DHDS ComputeDHDS()
     {
         diff = movePosition - entity.transform.position;
+        diff = entity.transform.InverseTransformDirection(diff);
         dhRadians = Mathf.Atan2(diff.x, diff.z);
         dhDegrees = Utils.Degrees360(Mathf.Rad2Deg * dhRadians);
         return new DHDS(dhDegrees, entity.maxSpeed);
@@ -105,12 +112,12 @@ public class TrussMove : Command
 
     public override bool IsDone()
     {
-        return ((entity.transform.position - movePosition).sqrMagnitude < doneDistanceSq);
+        return (stopping && entity.speed == 0);
     }
 
     public override void Stop()
     {
-        entity.desiredSpeed = 0;
+        entity.desiredHeading = entity.heading;
         LineMgr.inst.DestroyLR(line);
         LineMgr.inst.DestroyLR(potentialLine);
     }
