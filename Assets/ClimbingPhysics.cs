@@ -111,7 +111,6 @@ public class ClimbingPhysics : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, -body.up - body.forward, out hitInfo, groundCheckDistance))
             {
-                Debug.Log(Time.time);
                 Vector3 old_groundNormal = groundNormal;
                 groundNormal = hitInfo.normal;
                 SetRotation();

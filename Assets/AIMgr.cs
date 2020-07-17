@@ -23,6 +23,7 @@ public class AIMgr : MonoBehaviour
     void Start()
     {
         layerMask = 1 << 9;// LayerMask.GetMask("Water");
+        SetupWaypoints();
     }
 
     public bool isPotentialFieldsMovement = false;
@@ -237,5 +238,30 @@ public class AIMgr : MonoBehaviour
             }
         }
         return minEnt;
+    }
+
+    void SetupWaypoints()
+    {
+        foreach(StacsEntity ent in EntityMgr.inst.entities)
+        {
+            if(ent.GetComponent<UnitAI>() != null)
+            {
+                foreach(Transform t in ent.GetComponent<UnitAI>().waypoints)
+                {
+                    if(ent.GetComponent<ClimbingPhysics>() != null)
+                    {
+                        TrussMove tm = new TrussMove(ent, t.position);
+                        UnitAI uai = ent.GetComponent<UnitAI>();
+                        uai.AddCommand(tm);
+                    }
+                    else
+                    {
+                        Move m = new Move(ent, t.position);
+                        UnitAI uai = ent.GetComponent<UnitAI>();
+                        uai.AddCommand(m);
+                    }
+                }
+            }
+        }
     }
 }

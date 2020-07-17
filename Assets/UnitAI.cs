@@ -19,6 +19,7 @@ public class UnitAI : MonoBehaviour
     public List<TrussMove> trussMoves;
     public List<Command> commands;
     public List<Intercept> intercepts;
+    public List<Transform> waypoints;
 
     // Update is called once per frame
     void Update()
