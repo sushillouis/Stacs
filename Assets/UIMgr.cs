@@ -52,10 +52,18 @@ public class UIMgr : MonoBehaviour
     public Button menuHelpButton;
     public Button helpDoneButton;
 
+    public Transform viewPanelParent;
+    public GameObject viewPanel;
+
     // Start is called before the first frame update
     void Start()
     {
         State = EGameState.Briefing;
+        foreach(StacsEntity ent in EntityMgr.inst.entities)
+        {
+            GameObject panel = Instantiate(viewPanel, viewPanelParent);
+            panel.transform.GetChild(0).GetComponent<RawImage>().texture = ent.renderTexture;
+        }
     }
     public bool show = false;
     // Update is called once per frame

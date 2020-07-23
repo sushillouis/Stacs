@@ -220,6 +220,8 @@ MonoBehaviour:
   entityType: 1
   cameraRig: {fileID: 0}
   selectionCircle: {fileID: 0}
+  renderTexture: {fileID: 0}
+  camera: {fileID: 947598782}
 --- !u!65 &2518970338469395658
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -292,8 +294,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
   moves: []
+  trussMoves: []
   commands: []
   intercepts: []
+  waypoints: []
 --- !u!114 &5333631068778005273
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -57,12 +57,15 @@ public class StacsEntity : MonoBehaviour
     public GameObject cameraRig;
     public GameObject selectionCircle;
 
-    // Start is called before the first frame update
-    void Start()
+    public RenderTexture renderTexture;
+    public Camera camera;
+
+    void Awake()
     {
         cameraRig = transform.Find("CameraRig").gameObject;
         selectionCircle = transform.Find("Decorations").Find("SelectionCylinder").gameObject;
-
+        renderTexture = new RenderTexture(256, 256, 24, RenderTextureFormat.ARGB32);
+        camera.targetTexture = renderTexture;
     }
 
     // Update is called once per frame
