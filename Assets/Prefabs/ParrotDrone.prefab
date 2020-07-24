@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &887406858
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 887406859}
+  - component: {fileID: 887406860}
+  m_Layer: 0
+  m_Name: LookAtBridgeObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &887406859
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887406858}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4170965272391043421}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &887406860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887406858}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 384f0ebcf5084b04d9080f633a7a3132, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TransformToTrack: {fileID: 4170965272391043421}
 --- !u!1 &947598779
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,7 +108,7 @@ Camera:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingPath: -1
-  m_TargetTexture: {fileID: 8400000, guid: 85e1adef797b82443b528ebada74c0a5, type: 2}
+  m_TargetTexture: {fileID: 8400000, guid: abc7daabe903dd74d9ceeca8e5a6f053, type: 2}
   m_TargetDisplay: 0
   m_TargetEye: 3
   m_HDR: 1
@@ -180,6 +224,7 @@ Transform:
   - {fileID: 5333631068806680316}
   - {fileID: 4763434679748733329}
   - {fileID: 3433487086357707156}
+  - {fileID: 887406859}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,10 +250,10 @@ MonoBehaviour:
   altitude: 0
   desiredAltitude: 0
   batteryState: 100
-  acceleration: 1
+  acceleration: 0.5
   turnRate: 45
   climbRate: 5
-  maxSpeed: 10
+  maxSpeed: 3
   minSpeed: 0
   minAltitude: 0
   maxAltitude: 500
@@ -220,6 +265,7 @@ MonoBehaviour:
   entityType: 1
   cameraRig: {fileID: 0}
   selectionCircle: {fileID: 0}
+  LookAtBridgeObject: {fileID: 0}
 --- !u!65 &2518970338469395658
 BoxCollider:
   m_ObjectHideFlags: 0

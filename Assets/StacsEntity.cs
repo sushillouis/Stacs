@@ -57,12 +57,16 @@ public class StacsEntity : MonoBehaviour
     public GameObject cameraRig;
     public GameObject selectionCircle;
 
+    public GameObject LookAtBridgeObject;
+
+
     // Start is called before the first frame update
     void Start()
     {
         cameraRig = transform.Find("CameraRig").gameObject;
         selectionCircle = transform.Find("Decorations").Find("SelectionCylinder").gameObject;
-
+        if (entityType == EntityType.ParrotDrone)
+            LookAtBridgeObject = transform.Find("LookAtBridgeObject").gameObject;
     }
 
     // Update is called once per frame

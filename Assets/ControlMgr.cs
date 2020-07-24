@@ -47,6 +47,16 @@ public class ControlMgr : MonoBehaviour
                 Utils.Clamp(SelectionMgr.inst.selectedEntity.desiredAltitude, 
                 SelectionMgr.inst.selectedEntity.minAltitude, 
                 SelectionMgr.inst.selectedEntity.maxAltitude);
+
+            //---------------Automated inspection by UAV
+
+            if (Input.GetKey(KeyCode.P))
+            {
+                SceneMgr.inst.RunRoute(SelectionMgr.inst.selectedEntity);
+            }
+
+
+
         }
     }
 

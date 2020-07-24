@@ -12,10 +12,10 @@ public class Move : Command
     {
         movePosition = pos;
         doneDistanceSq = (ent.length * ent.length);
-        entity.desiredAltitude = movePosition.y;
+        //entity.desiredAltitude = movePosition.y;
     }
 
-    public override void Init()
+    public override void Init()//Should be moved into Move constructor
     {
         //Debug.Log("MoveInit:\tMoving to: " + movePosition);
         line = LineMgr.inst.CreateMoveLine(entity.position, movePosition);
@@ -34,8 +34,9 @@ public class Move : Command
 
         entity.desiredHeading = dhds.dh;
         entity.desiredSpeed = dhds.ds;
-        line.SetPosition(1, movePosition);
-        doneDistanceSq = ComputeDoneDistanceSq();
+        entity.desiredAltitude = movePosition.y;
+        line.SetPosition(0, entity.position);
+        //doneDistanceSq = ComputeDoneDistanceSq();
 
     }
 
