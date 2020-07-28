@@ -73,6 +73,7 @@ public class ClimbingPhysics : MonoBehaviour
     private void SetRotation()
     {
         //transform.up = groundNormal;
+
         eulerRotation = body.localEulerAngles;
         eulerRotation.y = entity.heading;
         body.localEulerAngles = eulerRotation;
@@ -119,7 +120,9 @@ public class ClimbingPhysics : MonoBehaviour
             }
             else
             {
+                Vector3 old_groundNormal = groundNormal;
                 groundNormal = Vector3.up;
+                transform.RotateAround(transform.position, Vector3.Cross(old_groundNormal, groundNormal), Vector3.Angle(old_groundNormal, groundNormal));
                 force = gravityForce;
                 grounded = false;
             }

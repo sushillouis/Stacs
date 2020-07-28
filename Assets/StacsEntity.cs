@@ -62,7 +62,7 @@ public class StacsEntity : MonoBehaviour
 
     void Awake()
     {
-        cameraRig = transform.Find("CameraRig").gameObject;
+        //cameraRig = transform.Find("CameraRig").gameObject;
         selectionCircle = transform.Find("Decorations").Find("SelectionCylinder").gameObject;
         renderTexture = new RenderTexture(256, 256, 24, RenderTextureFormat.ARGB32);
         camera.targetTexture = renderTexture;

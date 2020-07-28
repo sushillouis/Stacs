@@ -6,7 +6,7 @@ public static class Utils
 {
 
 
-    public static float EPSILON = 0.01f;
+    public static float EPSILON = 0.25f;
     public static float ANGLE_EPSILON = 2.5f;
     public static bool ApproximatelyEqual(float a, float b)
     {

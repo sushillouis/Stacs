@@ -218,7 +218,7 @@ MonoBehaviour:
   mass: 5
   length: 2
   entityType: 1
-  cameraRig: {fileID: 0}
+  cameraRig: {fileID: 4213188979183149752}
   selectionCircle: {fileID: 0}
   renderTexture: {fileID: 0}
   camera: {fileID: 947598782}
