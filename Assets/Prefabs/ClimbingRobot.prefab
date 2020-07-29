@@ -107,10 +107,10 @@ MonoBehaviour:
   altitude: 0
   desiredAltitude: 0
   batteryState: 0
-  acceleration: 2
+  acceleration: 5
   turnRate: 60
   climbRate: 0
-  maxSpeed: 10
+  maxSpeed: 20
   minSpeed: 0
   minAltitude: 0
   maxAltitude: 0

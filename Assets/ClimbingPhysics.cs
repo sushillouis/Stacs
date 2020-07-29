@@ -77,6 +77,7 @@ public class ClimbingPhysics : MonoBehaviour
         eulerRotation = body.localEulerAngles;
         eulerRotation.y = entity.heading;
         body.localEulerAngles = eulerRotation;
+
     }
 
     void CheckGroundStatus()

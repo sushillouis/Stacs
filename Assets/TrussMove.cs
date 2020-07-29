@@ -8,6 +8,7 @@ public class TrussMove : Command
     public Vector3 movePosition;
     public LineRenderer potentialLine;
     private bool stopping = false;
+    private bool going = false;
 
     public TrussMove(StacsEntity ent, Vector3 pos) : base(ent)
     {
@@ -32,23 +33,27 @@ public class TrussMove : Command
             dhds = ComputePotentialDHDS();
         else
             dhds = ComputeDHDS();
-        entity.desiredHeading = dhds.dh;
-        if(Utils.ApproximatelyEqualAngle(entity.desiredHeading, entity.heading))
+
+        doneDistanceSq = ComputeDoneDistanceSq();
+        if((entity.transform.position - movePosition).sqrMagnitude <= doneDistanceSq)
+            stopping = true;
+        else if(Utils.ApproximatelyEqualAngle(dhds.dh, entity.heading))
+            going = true;
+
+        if(stopping)
         {
-            entity.heading = entity.desiredHeading;
+            entity.desiredSpeed = 0.0f;
+        }
+        else if(going)
+        {
             entity.desiredSpeed = dhds.ds;
+            entity.desiredHeading = dhds.dh;
         }
         else
         {
-            entity.desiredSpeed = 0;
+            entity.desiredHeading = dhds.dh;
         }
         line.SetPosition(1, movePosition);
-        doneDistanceSq = ComputeDoneDistanceSq();
-        if((entity.transform.position - movePosition).sqrMagnitude < doneDistanceSq)
-        {
-            stopping = true;
-            entity.desiredSpeed = 0;
-        }
     }
 
     public float ComputeDoneDistanceSq()
