@@ -28,6 +28,7 @@ public class CameraMgr : MonoBehaviour
     }
     public int entityIndex = 0; //This is RTS camera
     public StacsEntity cameraEntity;
+    public RenderTexture RenderTextureToCopyForEntityCams;
 
     public void SelectNextCameraEntity()
     {

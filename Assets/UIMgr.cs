@@ -56,6 +56,7 @@ public class UIMgr : MonoBehaviour
     void Start()
     {
         State = EGameState.Briefing;
+        CameraViewPanels.Clear();
     }
     public bool show = false;
     // Update is called once per frame
@@ -64,6 +65,15 @@ public class UIMgr : MonoBehaviour
         //ProtoPanel.isValid = show;
         UpdateSelectedEntity();
         CheckForUINavigation();
+
+
+
+    }
+
+    public LineGraph Graph;
+    public void UpdateDataFeed(StacsEntity ent)
+    {
+        Graph.ConnectToEntity(ent);
     }
 
     void CheckForUINavigation()
@@ -86,7 +96,7 @@ public class UIMgr : MonoBehaviour
         if (SelectionMgr.inst.selectedEntity != null) {
             EntityTypeText.text = SelectionMgr.inst.selectedEntity.entityType.ToString();
             EntityNameText.text = SelectionMgr.inst.selectedEntity.name;
-            EntityBatteryText.text = SelectionMgr.inst.selectedEntity.batteryState + "%";
+            EntityBatteryText.text = SelectionMgr.inst.selectedEntity.batteryState.ToString("F1") + "%";
             EntitySpeedText.text = SelectionMgr.inst.selectedEntity.speed.ToString("F1") + "m/s";
             EntityDesiredSpeedText.text = SelectionMgr.inst.selectedEntity.desiredSpeed.ToString("F1") + "m/s";
             EntityHeadingText.text = SelectionMgr.inst.selectedEntity.heading.ToString("F1") + "deg";
@@ -173,4 +183,24 @@ public class UIMgr : MonoBehaviour
     {
         State = EGameState.Monitoring;
     }
+    //--------------------------------------------------------------------------------------------
+
+    public RectTransform CameraViewPanelPrefab;
+    public RectTransform CameraViewPanelsParent;
+    public List<RectTransform> CameraViewPanels;
+
+    public void MakeCameraView(RenderTexture tex)
+    {
+        RectTransform cameraViewPanel = Instantiate(CameraViewPanelPrefab, CameraViewPanelsParent);
+        RawImage ri = cameraViewPanel.GetComponentInChildren<RawImage>();
+        if (ri != null)
+        {
+            ri.texture = tex;
+            CameraViewPanels.Add(cameraViewPanel);
+        }
+
+    }
+
+
+
 }

@@ -38,9 +38,7 @@ public class StacsEntity : MonoBehaviour
     public float minSpeed;
     public float minAltitude;
     public float maxAltitude;
-    public float batteryM;
-    public float batteryB;
-
+ 
     public float waypointReachedThreshold;
 
     /// <summary>
@@ -57,16 +55,40 @@ public class StacsEntity : MonoBehaviour
     public GameObject cameraRig;
     public GameObject selectionCircle;
 
+    public Camera StacsCamera;
+    public RenderTexture CameraRenderTexture;
+
     public GameObject LookAtBridgeObject;
 
+    public SensorReadings SensorData;
+
+
+    void Awake() 
+    { 
+    }
 
     // Start is called before the first frame update
-    void Start()
+    void Start()//Initialize StacsEntity
     {
-        cameraRig = transform.Find("CameraRig").gameObject;
+        Transform cameraRigTransform = transform.Find("CameraRig");
+        if(cameraRigTransform)
+            cameraRig = cameraRigTransform.gameObject;
+        else
+            cameraRig = transform.Find("LocalYawNode/CameraRig").gameObject;
+
+        StacsCamera = transform.GetComponentInChildren<Camera>();
+        if(StacsCamera != null && entityType != EntityType.Camera)
+        {
+            CameraRenderTexture = new RenderTexture(CameraMgr.inst.RenderTextureToCopyForEntityCams);
+            UIMgr.inst.MakeCameraView(CameraRenderTexture);
+            StacsCamera.targetTexture = CameraRenderTexture;
+        }
+
         selectionCircle = transform.Find("Decorations").Find("SelectionCylinder").gameObject;
-        if (entityType == EntityType.ParrotDrone)
-            LookAtBridgeObject = transform.Find("LookAtBridgeObject").gameObject;
+        LookAtBridgeObject = transform.Find("LookAtBridgeObject").gameObject;
+        SensorData = GetComponent<SensorReadings>();
+
+
     }
 
     // Update is called once per frame
@@ -74,19 +96,19 @@ public class StacsEntity : MonoBehaviour
     {
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //Debug.Log(name + " collided with" + collision.gameObject.name);
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    Debug.Log(name + " collided with" + collision.gameObject.name);
+    //}
 
-    private void OnCollisionStay(Collision collision)
-    {
-        ContactPoint[] contacts = new ContactPoint[10];
-        int n = collision.GetContacts(contacts);
-        string tmp = " :";
-        foreach(ContactPoint c in contacts) {
-            tmp += c.normal.ToString() + ", ";
-        }
-        //Debug.Log(n + " points: " + tmp);
-    }
+    //private void OnCollisionStay(Collision collision)
+    //{
+    //    ContactPoint[] contacts = new ContactPoint[10];
+    //    int n = collision.GetContacts(contacts);
+    //    string tmp = " :";
+    //    foreach(ContactPoint c in contacts) {
+    //        tmp += c.normal.ToString() + ", ";
+    //    }
+    //    Debug.Log(n + " points: " + tmp);
+    //}
 }

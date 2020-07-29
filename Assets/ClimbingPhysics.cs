@@ -5,16 +5,31 @@ using UnityEngine;
 public class ClimbingPhysics : MonoBehaviour
 {
     public StacsEntity entity;
+    public float magneticForce;
+    public float gravityForce;
+    public float groundCheckDistance;
+
+    public Vector3 groundNormal;
+    public Vector3 oldGroundNormal;
+    public float force;
+    public bool grounded = true;
+
+    public Rigidbody entityRigidBody;
+    public GameObject localYawNode;
 
     private void Awake()
     {
         entity = GetComponentInParent<StacsEntity>();
         entity.position = transform.localPosition;
+        entity.desiredHeading = entity.heading = transform.localRotation.eulerAngles.y;
+        entityRigidBody = GetComponent<Rigidbody>();
+
+        localYawNode = transform.Find("LocalYawNode").gameObject;
     }
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     public Vector3 eulerRotation = Vector3.zero;
@@ -22,37 +37,111 @@ public class ClimbingPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //speed
+        //Indicates forward and up direction for debugging
+        if(entity.batteryState <= 0)
+        {
+            entity.speed = 0; entityRigidBody.velocity = Vector3.zero;
+        } else {
+            //heading
+            if(Utils.ApproximatelyEqual(entity.heading, entity.desiredHeading)) {
+                UpdateSpeed();
+            } else if(Utils.AngleDiffPosNeg(entity.desiredHeading, entity.heading) > 0) {
+                entity.heading += entity.turnRate * Time.deltaTime;
+            } else if(Utils.AngleDiffPosNeg(entity.desiredHeading, entity.heading) < 0) {
+                entity.heading -= entity.turnRate * Time.deltaTime;
+            }
+            entity.heading = Utils.Degrees360(entity.heading);
+
+            //altitude
+            entity.altitude = entity.desiredAltitude = 0;
+
+            SetRotation();
+            ApplyPhysics();
+        }
+    }
+
+    public void UpdateSpeed() {
         if (Utils.ApproximatelyEqual(entity.speed, entity.desiredSpeed)) {
             ;
-        } else if (entity.speed < entity.desiredSpeed) {
+        }
+        else if (entity.speed < entity.desiredSpeed)
+        {
             entity.speed = entity.speed + entity.acceleration * Time.deltaTime;
-        } else if (entity.speed > entity.desiredSpeed) {
+        }
+        else if (entity.speed > entity.desiredSpeed)
+        {
             entity.speed = entity.speed - entity.acceleration * Time.deltaTime;
         }
         entity.speed = Utils.Clamp(entity.speed, entity.minSpeed, entity.maxSpeed);
-
-        //altitude
-        entity.altitude = entity.desiredAltitude = 0;
-        //heading
-        if (Utils.ApproximatelyEqual(entity.heading, entity.desiredHeading)) {
-            ;
-        } else if (Utils.AngleDiffPosNeg(entity.desiredHeading, entity.heading) > 0) {
-            entity.heading += entity.turnRate * Time.deltaTime;
-        } else if (Utils.AngleDiffPosNeg(entity.desiredHeading, entity.heading) < 0) {
-            entity.heading -= entity.turnRate * Time.deltaTime;
-        }
-        entity.heading = Utils.Degrees360(entity.heading);
-        //
-        entity.velocity.x = Mathf.Sin(entity.heading * Mathf.Deg2Rad) * entity.speed;
-        entity.velocity.y = 0;
-        entity.velocity.z = Mathf.Cos(entity.heading * Mathf.Deg2Rad) * entity.speed;
-
-        entity.position = entity.position + entity.velocity * Time.deltaTime;
-        //entity.position.y = entity.altitude;
-        transform.localPosition = entity.position;
-
-        eulerRotation.y = entity.heading;
-        transform.localEulerAngles = eulerRotation;
     }
+
+    public void SetRotation()
+    {
+        eulerRotation = localYawNode.transform.localEulerAngles;
+        eulerRotation.y = entity.heading;
+        localYawNode.transform.localEulerAngles = eulerRotation;
+    }
+
+    public void ApplyPhysics()
+    {
+        CheckGroundStatus();
+
+        entity.velocity = transform.InverseTransformDirection(localYawNode.transform.forward * entity.speed);
+        entity.velocity.y = transform.InverseTransformDirection(entityRigidBody.velocity).y 
+            + ((force/entity.mass) * Time.deltaTime);
+        entityRigidBody.velocity = transform.TransformDirection(entity.velocity);
+    }
+
+    public RaycastHit hitInfo;
+    public float threshold;
+
+    public Transform cubeT;
+    public void CheckGroundStatus()
+    {
+        Vector3 rayPos = transform.position + (transform.up * 0.1f);
+        Vector3 rayPos2 = transform.position + (transform.forward * 0.1f);
+        Debug.DrawRay(rayPos, entityRigidBody.velocity, Color.red);
+
+        if(Physics.Raycast(rayPos, -transform.up, out hitInfo, groundCheckDistance)) {
+            oldGroundNormal = groundNormal;
+            groundNormal = hitInfo.normal;
+            Debug.DrawRay(rayPos2, groundNormal, Color.yellow);
+            if(!grounded) {
+                transform.up = groundNormal;
+                grounded = true;
+            }
+            SetRotation();
+            transform.position = hitInfo.point;
+            force = (hitInfo.collider.gameObject.tag == "Truss" ? magneticForce : gravityForce);
+
+            if(oldGroundNormal != groundNormal)
+                RotateToNewSurface();
+            //if raycast forward shows ramp, rotate to go up ramp
+        } else { //cliff edge
+            if(Physics.Raycast(transform.position, -localYawNode.transform.up - localYawNode.transform.forward, out hitInfo, groundCheckDistance)) {
+                oldGroundNormal = groundNormal;
+                groundNormal = hitInfo.normal;
+                Debug.Log("Went over a cliff");
+                SetRotation();
+                transform.position = hitInfo.point;
+                transform.RotateAround(transform.position, Vector3.Cross(oldGroundNormal, groundNormal),
+                    Vector3.Angle(oldGroundNormal, groundNormal));
+                Debug.Log("Rotation: " + transform.localEulerAngles);
+            } else  {
+                groundNormal = Vector3.up;
+                force = gravityForce;
+                grounded = false;
+            }
+        }
+    }
+
+    void RotateToNewSurface()
+    {
+        SetRotation();
+        transform.position = hitInfo.point;
+        transform.RotateAround(transform.position, Vector3.Cross(oldGroundNormal, groundNormal),
+            Vector3.Angle(oldGroundNormal, groundNormal));
+    }
+
+
 }

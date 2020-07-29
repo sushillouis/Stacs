@@ -265,6 +265,8 @@ MonoBehaviour:
   entityType: 1
   cameraRig: {fileID: 0}
   selectionCircle: {fileID: 0}
+  StacsCamera: {fileID: 0}
+  CameraRenderTexture: {fileID: 0}
   LookAtBridgeObject: {fileID: 0}
 --- !u!65 &2518970338469395658
 BoxCollider:
