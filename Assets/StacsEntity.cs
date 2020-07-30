@@ -59,6 +59,7 @@ public class StacsEntity : MonoBehaviour
 
     public RenderTexture renderTexture;
     public Camera camera;
+    public Transform lookObject;
 
     void Awake()
     {

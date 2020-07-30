@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +9,12 @@ public class TrussMove : Command
     public LineRenderer potentialLine;
     private bool stopping = false;
     private bool going = false;
+    private float remainingDistance;
 
     public TrussMove(StacsEntity ent, Vector3 pos) : base(ent)
     {
-        movePosition = pos;
+        Plane plane = new Plane(entity.transform.up, entity.transform.position);
+        movePosition = plane.ClosestPointOnPlane(pos);
         doneDistanceSq = (ent.length * ent.length);
         //entity.desiredAltitude = movePosition.y;
     }
@@ -24,6 +26,7 @@ public class TrussMove : Command
         line.gameObject.SetActive(false);
         potentialLine = LineMgr.inst.CreatePotentialLine(entity.position);
         potentialLine.gameObject.SetActive(false);
+        remainingDistance = (entity.transform.position - movePosition).magnitude;
     }
 
     public override void Tick()
@@ -42,12 +45,18 @@ public class TrussMove : Command
 
         if(stopping)
         {
-            entity.desiredSpeed = 0.0f;
+            if((entity.transform.position - movePosition).sqrMagnitude <= doneDistanceSq || (entity.transform.position - movePosition).magnitude > remainingDistance)
+                entity.desiredSpeed = 0.0f;
+            else
+            {
+                entity.desiredSpeed = dhds.ds;
+                remainingDistance = (entity.transform.position - movePosition).magnitude;
+            }
         }
         else if(going)
         {
             entity.desiredSpeed = dhds.ds;
-            entity.desiredHeading = dhds.dh;
+            entity.heading = dhds.dh;
         }
         else
         {
@@ -125,5 +134,6 @@ public class TrussMove : Command
         entity.desiredHeading = entity.heading;
         LineMgr.inst.DestroyLR(line);
         LineMgr.inst.DestroyLR(potentialLine);
+        Debug.Log("distance: " + (entity.transform.position - movePosition).magnitude);
     }
 }

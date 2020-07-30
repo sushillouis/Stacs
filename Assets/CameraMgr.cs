@@ -25,6 +25,7 @@ public class CameraMgr : MonoBehaviour
             SelectNextCameraEntity();
         }
         //FollowEntity();
+        CameraRoot.transform.LookAt(cameraEntity.lookObject);
     }
     public int entityIndex = 0; //This is RTS camera
     public StacsEntity cameraEntity;
