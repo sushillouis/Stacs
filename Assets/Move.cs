@@ -36,7 +36,6 @@ public class Move : Command
         entity.desiredSpeed = dhds.ds;
         entity.desiredAltitude = movePosition.y;
         line.SetPosition(0, entity.position);
-        //doneDistanceSq = ComputeDoneDistanceSq();
 
     }
 

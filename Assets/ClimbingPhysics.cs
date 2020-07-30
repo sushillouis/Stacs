@@ -114,9 +114,9 @@ public class ClimbingPhysics : MonoBehaviour
             transform.position = hitInfo.point;
             force = (hitInfo.collider.gameObject.tag == "Truss" ? magneticForce : gravityForce);
 
-            if(oldGroundNormal != groundNormal)
+            if(oldGroundNormal != groundNormal) // for down ramps
                 RotateToNewSurface();
-            //if raycast forward shows ramp, rotate to go up ramp
+            //Next if raycast forward shows ramp, rotate to go up ramp
         } else { //cliff edge
             if(Physics.Raycast(transform.position, -localYawNode.transform.up - localYawNode.transform.forward, out hitInfo, groundCheckDistance)) {
                 oldGroundNormal = groundNormal;

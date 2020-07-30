@@ -138,7 +138,8 @@ public class SelectionMgr : MonoBehaviour
             selectedEntity = ent;
             selectedEntity.isSelected = true;
             selectedEntities.Add(ent);
-            UIMgr.inst.UpdateDataFeed(selectedEntity);
+            if(selectedEntity.entityType == EntityType.ClimbingRobot)
+                UIMgr.inst.UpdateDataFeed(selectedEntity);
         }
     }
 

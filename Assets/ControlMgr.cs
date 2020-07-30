@@ -53,6 +53,7 @@ public class ControlMgr : MonoBehaviour
             if (Input.GetKey(KeyCode.P))
             {
                 SceneMgr.inst.RunRoute(SelectionMgr.inst.selectedEntity);
+                SceneMgr.inst.RunClimbingRobotRoutes();
             }
 
 
