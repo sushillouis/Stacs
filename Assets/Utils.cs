@@ -8,11 +8,11 @@ public static class Utils
 
     public static float EPSILON = 0.05f;
     public static float ANGLE_EPSILON = 0.05f;
-    public static bool ApproximatelyEqual(float a, float b)
+    public static bool ApproximatelyEqual(float a, float b, float precision = 0.05f)
     {
         return (Mathf.Abs(a - b) < EPSILON);
     }
-    public static bool ApproximatelyEqualAngle(float a, float b)
+    public static bool ApproximatelyEqualAngle(float a, float b, float precision=0.05f)
     {
         return (Mathf.Abs(a - b) < ANGLE_EPSILON);
     }

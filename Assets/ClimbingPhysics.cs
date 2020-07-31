@@ -25,52 +25,71 @@ public class ClimbingPhysics : MonoBehaviour
         entityRigidBody = GetComponent<Rigidbody>();
 
         localYawNode = transform.Find("LocalYawNode").gameObject;
+        usableAcceleration = entity.acceleration;
+        usableTurnRate = entity.turnRate;
     }
     // Start is called before the first frame update
     void Start()
     {
-        
+        entityRigidBody.velocity = Vector3.zero;
+        oldGroundNormal = groundNormal = transform.up;
     }
 
     public Vector3 eulerRotation = Vector3.zero;
-
+    public float usableTurnRate;
+    public float usableAcceleration;
+    public float fineTuneFactor = 4.0f;
     // Update is called once per frame
     void Update()
     {
+        //if(Utils.ApproximatelyEqualAngle(entity.heading, entity.desiredHeading, 2 * Utils.ANGLE_EPSILON))
+        //{
+        //    usableTurnRate = entity.turnRate / fineTuneFactor;
+        //} else
+        //{
+        //    usableTurnRate = entity.turnRate;
+        //}
         //Indicates forward and up direction for debugging
-        if(entity.batteryState <= 0)
-        {
+        if(entity.batteryState <= 0) {
             entity.speed = 0; entityRigidBody.velocity = Vector3.zero;
         } else {
             //heading
-            if(Utils.ApproximatelyEqual(entity.heading, entity.desiredHeading)) {
+            if(Utils.ApproximatelyEqualAngle(entity.heading, entity.desiredHeading))   {
+                entity.heading = entity.desiredHeading;
                 UpdateSpeed();
             } else if(Utils.AngleDiffPosNeg(entity.desiredHeading, entity.heading) > 0) {
-                entity.heading += entity.turnRate * Time.deltaTime;
+                entity.heading += usableTurnRate * Time.deltaTime;
             } else if(Utils.AngleDiffPosNeg(entity.desiredHeading, entity.heading) < 0) {
-                entity.heading -= entity.turnRate * Time.deltaTime;
+                entity.heading -= usableTurnRate * Time.deltaTime;
             }
             entity.heading = Utils.Degrees360(entity.heading);
-
             //altitude
             entity.altitude = entity.desiredAltitude = 0;
-
             SetRotation();
             ApplyPhysics();
         }
     }
 
     public void UpdateSpeed() {
+
+        //if(Utils.ApproximatelyEqual(entity.speed, entity.desiredSpeed, 2 * Utils.EPSILON))
+        //{
+        //    usableAcceleration = entity.acceleration / fineTuneFactor;
+        //} else
+        //{
+        //    usableAcceleration = entity.acceleration;
+        //}
+
         if (Utils.ApproximatelyEqual(entity.speed, entity.desiredSpeed)) {
-            ;
+            entity.speed = entity.desiredSpeed;
         }
         else if (entity.speed < entity.desiredSpeed)
         {
-            entity.speed = entity.speed + entity.acceleration * Time.deltaTime;
+            entity.speed = entity.speed + usableAcceleration * Time.deltaTime;
         }
         else if (entity.speed > entity.desiredSpeed)
         {
-            entity.speed = entity.speed - entity.acceleration * Time.deltaTime;
+            entity.speed = entity.speed - usableAcceleration * Time.deltaTime;
         }
         entity.speed = Utils.Clamp(entity.speed, entity.minSpeed, entity.maxSpeed);
     }
@@ -114,8 +133,8 @@ public class ClimbingPhysics : MonoBehaviour
             transform.position = hitInfo.point;
             force = (hitInfo.collider.gameObject.tag == "Truss" ? magneticForce : gravityForce);
 
-            if(oldGroundNormal != groundNormal) // for down ramps
-                RotateToNewSurface();
+            //if(oldGroundNormal != groundNormal) // for down ramps
+            //    RotateToNewSurface();
             //Next if raycast forward shows ramp, rotate to go up ramp
         } else { //cliff edge
             if(Physics.Raycast(transform.position, -localYawNode.transform.up - localYawNode.transform.forward, out hitInfo, groundCheckDistance)) {

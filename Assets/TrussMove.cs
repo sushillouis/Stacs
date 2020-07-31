@@ -71,12 +71,14 @@ public class TrussMove : Command
 
     public override bool IsDone()
     {
-        return (stopping && entity.speed == 0);
+        return (stopping && entity.speed < Utils.EPSILON);
     }
 
     public override void Stop()
     {
         entity.desiredHeading = entity.heading;
+        entity.speed = entity.desiredSpeed = 0;
+        
         LineMgr.inst.DestroyLR(line);
         LineMgr.inst.DestroyLR(potentialLine);
     }

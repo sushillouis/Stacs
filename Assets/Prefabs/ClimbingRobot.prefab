@@ -253,9 +253,9 @@ MonoBehaviour:
   desiredAltitude: 0
   batteryState: 100
   acceleration: 0.5
-  turnRate: 120
+  turnRate: 10
   climbRate: 0
-  maxSpeed: 2
+  maxSpeed: 4
   minSpeed: 0
   minAltitude: 0
   maxAltitude: 0
@@ -334,6 +334,9 @@ MonoBehaviour:
   entityRigidBody: {fileID: 0}
   localYawNode: {fileID: 0}
   eulerRotation: {x: 0, y: 0, z: 0}
+  usableTurnRate: 0
+  usableAcceleration: 0
+  fineTuneFactor: 10
   threshold: 0.2
   cubeT: {fileID: 0}
 --- !u!114 &1030676263
@@ -373,6 +376,7 @@ MonoBehaviour:
   - {fileID: 0}
   threshold: 3
   nextDataStep: 0.5
+  DefectRoot: {fileID: 0}
 --- !u!114 &3774435937335532428
 MonoBehaviour:
   m_ObjectHideFlags: 0

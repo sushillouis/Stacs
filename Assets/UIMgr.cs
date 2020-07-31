@@ -45,6 +45,8 @@ public class UIMgr : MonoBehaviour
     public Text EntityHeadingText; public Text EntityDesiredHeadingText;
     public Text EntityAltitudeText; public Text EntityDesiredAltitudeText;
 
+    public Text DataFeedText;
+
     //public GameObject myCanvas;
 
     public Button gameMenuButton;
@@ -94,6 +96,7 @@ public class UIMgr : MonoBehaviour
     public void UpdateSelectedEntity()
     {
         if (SelectionMgr.inst.selectedEntity != null) {
+
             EntityTypeText.text = SelectionMgr.inst.selectedEntity.entityType.ToString();
             EntityNameText.text = SelectionMgr.inst.selectedEntity.name;
             EntityBatteryText.text = SelectionMgr.inst.selectedEntity.batteryState.ToString("F1") + "%";
@@ -103,6 +106,8 @@ public class UIMgr : MonoBehaviour
             EntityDesiredHeadingText.text = SelectionMgr.inst.selectedEntity.desiredHeading.ToString("F1") + "deg";
             EntityAltitudeText.text = SelectionMgr.inst.selectedEntity.altitude.ToString("F1") + "m";
             EntityDesiredAltitudeText.text = SelectionMgr.inst.selectedEntity.desiredAltitude.ToString("F1") + "m";
+            if(SelectionMgr.inst.selectedEntity.entityType == EntityType.ClimbingRobot)
+                DataFeedText.text = "Data: " + SelectionMgr.inst.selectedEntity.name;
         }
     }
 

@@ -7,7 +7,7 @@ public class SensorReadings : MonoBehaviour
     public StacsEntity entity;
 
     public List<Vector3> readings;
-    public List<GameObject> defects;
+    public List<DefectViz> defects;
 
     void Awake()
     {
@@ -31,19 +31,19 @@ public class SensorReadings : MonoBehaviour
         if(Time.realtimeSinceStartup > nextDataStep && entity.speed > Utils.EPSILON)
         {
             nextDataStep = Time.realtimeSinceStartup + 1f;
-            foreach(GameObject defect in defects)
+            foreach(DefectViz defect in defects)
             {
                 diff = defect.transform.position - transform.position;
                 if(diff.magnitude < threshold)
-                    MakeReading(diff.magnitude);
+                    MakeReading(diff.magnitude, entity, defect);
                 else
-                    MakeReading(-1);
+                    MakeReading(-1, entity, defect);
             }
         }
 
     }
 
-    public void MakeReading(float distance)
+    public void MakeReading(float distance, StacsEntity entity, DefectViz defect)
     {
         Vector3 reading = new Vector3(Time.frameCount, 0, 0);
 
@@ -53,10 +53,27 @@ public class SensorReadings : MonoBehaviour
         } else
         {
             reading.y = 1 - distance / threshold;
-            Debug.Log("Reading " + readings.Count + " : " + reading.y);
+            //Debug.Log("Reading " + readings.Count + " : " + reading.y);
+            defect.Detect();
 
         }
         readings.Add(reading);
 
     }
+
+    public GameObject DefectRoot;
+
+    [ContextMenu("LoadDefects")]
+    public void LoadDefects()
+    {
+        defects.Clear();
+        foreach(Transform t in DefectRoot.GetComponentsInChildren<Transform>())
+        {
+            if(t.name.StartsWith("Cube"))
+            {
+                defects.Add(t.GetComponent<DefectViz>());
+            }
+        }
+    }
+
 }

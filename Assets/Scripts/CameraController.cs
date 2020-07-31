@@ -13,10 +13,12 @@ public class CameraController : MonoBehaviour
     float keyboardSpeed = 5;
     float turnRate = 10;
 
+
+
     void Update()
     {
         UpdateCamera();
-        if (SceneMgr.inst.isInspecting)
+        if (SceneMgr.inst.isInspecting && CameraMgr.inst.cameraEntity.entityType == EntityType.ParrotDrone)
             cameraObject.transform.LookAt(SelectionMgr.inst.selectedEntity.LookAtBridgeObject.transform, Vector3.up);
     }
 

@@ -16,11 +16,13 @@ public class SceneMgr : MonoBehaviour
         inst = this;
     }
 
+    public bool isInspecting;
+    public StacsEntity DefaultParrotDrone;
+
+
     public GameObject DroneWaypoints;
     public GameObject ClimbingRobotWaypointsRoot;
-
     public List<Route> DroneRoutes = new List<Route>();
-
     public List<Route> ClimbingRobotRoutes = new List<Route>();
 
     [ContextMenu("MakeDroneRoutes")]
@@ -64,7 +66,8 @@ public class SceneMgr : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        MakeClimbingRobotRoutes();
+        ClimbingRobotWaypointsRoot.SetActive(false);
     }
     
     // Update is called once per frame
@@ -73,9 +76,14 @@ public class SceneMgr : MonoBehaviour
         
     }
 
-    public bool isInspecting;
-    public void RunRoute(StacsEntity entity)
+
+    public void RunRoute(StacsEntity entity = null)
     {
+        if(entity == null)
+        {
+            entity = DefaultParrotDrone;
+        } 
+
         Vector3 returnPos = entity.position;
         UnitAI uai = entity.GetComponent<UnitAI>();
         uai.StopAndRemoveAllCommands();
