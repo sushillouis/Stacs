@@ -943,70 +943,129 @@ MonoBehaviour:
   DroneRoutes:
     Routes:
     - Waypoints:
-      - {fileID: 2067688763}
-      - {fileID: 1926666591}
-      - {fileID: 1971580854}
-      - {fileID: 875425272}
-      - {fileID: 1442323468}
-      - {fileID: 112355993}
-      - {fileID: 189982906}
-      - {fileID: 1090403931}
-      - {fileID: 1347273671}
-      - {fileID: 1434774329}
-      - {fileID: 1978654619}
-      - {fileID: 220240712}
-      - {fileID: 1316723065}
-      - {fileID: 361666290}
-      - {fileID: 1822848944}
-      - {fileID: 686951615}
-      - {fileID: 1945261706}
-      - {fileID: 1735664818}
-      - {fileID: 1051811168}
+      - position: {x: -59.172, y: 20.513, z: -30}
+        name: Cube0
+      - position: {x: -40.883, y: 54.161, z: -30}
+        name: Cube0 (1)
+      - position: {x: 40.25, y: 54.161, z: -30}
+        name: Cube0 (2)
+      - position: {x: 58.95, y: 23.83, z: -30}
+        name: Cube0 (3)
+      - position: {x: 41.18, y: 21.89, z: -30}
+        name: Cube0 (4)
+      - position: {x: 39.99, y: 53.35, z: -30}
+        name: Cube0 (5)
+      - position: {x: 20.8, y: 19.55, z: -30}
+        name: Cube0 (6)
+      - position: {x: 37.8, y: 19.55, z: -30}
+        name: Cube0 (7)
+      - position: {x: 19.57, y: 52.59, z: -30}
+        name: Cube0 (8)
+      - position: {x: 0.22, y: 19.53, z: -30}
+        name: Cube0 (9)
+      - position: {x: 20.63, y: 19.53, z: -30}
+        name: Cube0 (10)
+      - position: {x: 1, y: 52.43, z: -30}
+        name: Cube0 (11)
+      - position: {x: -19.22, y: 19.06, z: -30}
+        name: Cube0 (12)
+      - position: {x: 0.5, y: 19.06, z: -30}
+        name: Cube0 (13)
+      - position: {x: -19.62, y: 52.52, z: -30}
+        name: Cube0 (14)
+      - position: {x: -40.06, y: 19.05, z: -30}
+        name: Cube0 (15)
+      - position: {x: -40.06, y: 51.26, z: -30}
+        name: Cube0 (16)
+      - position: {x: -58.9, y: 22.27, z: -30}
+        name: Cube0 (17)
+      - position: {x: -42.08, y: 21.9, z: -30}
+        name: Cube0 (18)
   ClimbingRobotRoutes:
     Routes:
     - Waypoints:
-      - {fileID: 1079996584}
-      - {fileID: 827095206}
-      - {fileID: 1625495643}
-      - {fileID: 564090564}
-      - {fileID: 1721600094}
-      - {fileID: 797190731}
-      - {fileID: 814564768}
-      - {fileID: 1245795536}
-      - {fileID: 70271700}
-      - {fileID: 888579811}
-      - {fileID: 1254070580}
-      - {fileID: 1703971401}
+      - position: {x: -38.73, y: 18.54, z: -14.97}
+        name: Cube (12)
+      - position: {x: -19.11, y: 48.47, z: -14.97}
+        name: Cube
+      - position: {x: -11.15, y: 35.38, z: -14.97}
+        name: Cube (8)
+      - position: {x: -0.3, y: 17.4, z: -14.97}
+        name: Cube (1)
+      - position: {x: 10.86, y: 34.26, z: -14.97}
+        name: Cube (9)
+      - position: {x: 19.4, y: 48.14, z: -14.97}
+        name: Cube (2)
+      - position: {x: 26.94, y: 36.77, z: -14.97}
+        name: Cube (11)
+      - position: {x: 38.3, y: 18.81, z: -14.97}
+        name: Cube (3)
+      - position: {x: 44.7, y: 18.29, z: -14.97}
+        name: Cube (4)
+      - position: {x: 5.45, y: 18.41, z: -14.97}
+        name: Cube (5)
+      - position: {x: 0.06, y: 20.17, z: -14.97}
+        name: Cube (6)
+      - position: {x: -0.095, y: 48.31, z: -14.97}
+        name: Cube (10)
     - Waypoints:
-      - {fileID: 602149931}
-      - {fileID: 1208673487}
-      - {fileID: 2105502192}
-      - {fileID: 39748661}
-      - {fileID: 110049220}
-      - {fileID: 471079410}
-      - {fileID: 381752292}
-      - {fileID: 1858217478}
-      - {fileID: 1925026645}
-      - {fileID: 729922180}
-      - {fileID: 786606889}
-      - {fileID: 1157720649}
-      - {fileID: 2129866777}
-      - {fileID: 1468638861}
-      - {fileID: 615003762}
+      - position: {x: 41.45, y: 48.69, z: -14.97}
+        name: Cube
+      - position: {x: 40.42, y: 51.58, z: -14.97}
+        name: Cube (13)
+      - position: {x: 37.92, y: 51.98, z: -14.97}
+        name: Cube (6)
+      - position: {x: 29.22, y: 36.57, z: -14.97}
+        name: Cube (8)
+      - position: {x: 20.3, y: 22.21, z: -14.97}
+        name: Cube (1)
+      - position: {x: 12.45, y: 33.89, z: -14.97}
+        name: Cube (9)
+      - position: {x: 2.214, y: 50.085, z: -14.97}
+        name: Cube (2)
+      - position: {x: -1.8, y: 50.49, z: -14.97}
+        name: Cube (14)
+      - position: {x: -11.11, y: 35.06, z: -14.97}
+        name: Cube (10)
+      - position: {x: -18.75, y: 22.15, z: -14.97}
+        name: Cube (3)
+      - position: {x: -27.58, y: 35.09, z: -14.97}
+        name: Cube (11)
+      - position: {x: -36.94, y: 50.04, z: -14.97}
+        name: Cube (4)
+      - position: {x: -39.29, y: 52.42, z: -14.97}
+        name: Cube (7)
+      - position: {x: -41.87, y: 48.88, z: -14.97}
+        name: Cube (12)
+      - position: {x: -56.32, y: 24.614, z: -15.030001}
+        name: Cube (5)
     - Waypoints:
-      - {fileID: 135438135}
-      - {fileID: 5963294}
-      - {fileID: 1762663100}
-      - {fileID: 1113540122}
-      - {fileID: 178543578}
-      - {fileID: 1096209695}
-      - {fileID: 888759993}
-      - {fileID: 1767045307}
-      - {fileID: 2045932685}
-      - {fileID: 851653851}
-      - {fileID: 1253016110}
-      - {fileID: 1823570623}
-      - {fileID: 2079953851}
+      - position: {x: -38.96, y: 7.43, z: -15.05}
+        name: Cube
+      - position: {x: 38.09, y: 7.93, z: -15.05}
+        name: Cube (1)
+      - position: {x: 40.51, y: 9.52, z: -15.05}
+        name: Cube (8)
+      - position: {x: 40.3, y: 50.5, z: -15.05}
+        name: Cube (2)
+      - position: {x: 39, y: 52.2, z: -15.05}
+        name: Cube (9)
+      - position: {x: -35.39, y: 52.3, z: -15.05}
+        name: Cube (3)
+      - position: {x: -39.81, y: 52.3, z: -15.05}
+        name: Cube (7)
+      - position: {x: -40.406, y: 46.02, z: -15.05}
+        name: Cube (10)
+      - position: {x: -40.406, y: 19.1, z: -15.05}
+        name: Cube (4)
+      - position: {x: -40.42, y: 11.16, z: -15.05}
+        name: Cube (12)
+      - position: {x: -40.49, y: 18.31, z: -15.05}
+        name: Cube (6)
+      - position: {x: -0.5, y: 18.31, z: -15.05}
+        name: Cube (13)
+      - position: {x: 0.01, y: 9.88, z: -15.05}
+        name: Cube (14)
   ClimbingRobots:
   - {fileID: 1309955748}
   - {fileID: 1878551502}
@@ -15788,8 +15847,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789635611}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 102.14, z: -85.1}
+  m_LocalRotation: {x: 0.083153896, y: 0.2984007, z: 0.026106693, w: -0.950453}
+  m_LocalPosition: {x: -2.06, y: -31.060001, z: -52.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1690656754}

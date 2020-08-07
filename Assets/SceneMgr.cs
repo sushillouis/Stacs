@@ -3,10 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
+
+[System.Serializable]
+public class Waypoint
+{
+    public Vector3 position;
+    public string name;
+
+    public Waypoint(Vector3 position, string name = null)
+    {
+        this.position = position;
+        this.name = name;
+    }
+}
+
+
 [System.Serializable]
 public class Route
 {
-    public List<GameObject> Waypoints;
+    public List<Waypoint> Waypoints;
 }
 
 [System.Serializable]
@@ -41,12 +56,12 @@ public class SceneMgr : MonoBehaviour
             if(t.name.StartsWith("Drone"))
             {
                 Route r = new Route();
-                r.Waypoints = new List<GameObject>();
+                r.Waypoints = new List<Waypoint>();
                 foreach(Transform tc in t.GetComponentsInChildren<Transform>())
                 {
                     if(tc.name.StartsWith("Cube"))
                     {
-                        r.Waypoints.Add(tc.gameObject);
+                        r.Waypoints.Add(new Waypoint(tc.position, tc.gameObject.name));
                     }
                 }
                 DroneRoutes.Routes.Add(r);
@@ -64,12 +79,12 @@ public class SceneMgr : MonoBehaviour
             if(t.name.StartsWith("Robot"))
             {
                 Route r = new Route();
-                r.Waypoints = new List<GameObject>();
+                r.Waypoints = new List<Waypoint>();
                 foreach(Transform tc in t.GetComponentsInChildren<Transform>())
                 {
                     if(tc.name.StartsWith("Cube"))
                     {
-                        r.Waypoints.Add(tc.gameObject);
+                        r.Waypoints.Add(new Waypoint(tc.position, tc.gameObject.name));
                     }
                 }
                 ClimbingRobotRoutes.Routes.Add(r);
@@ -119,9 +134,9 @@ public class SceneMgr : MonoBehaviour
         UnitAI uai = entity.GetComponent<UnitAI>();
         uai.StopAndRemoveAllCommands();
         Move m = null;
-        foreach (GameObject go in DroneRoutes.Routes[0].Waypoints)
+        foreach (Waypoint w in DroneRoutes.Routes[0].Waypoints)
         {
-            m = new Move(entity, go.transform.position);
+            m = new Move(entity, w.position);
             uai.AddCommand(m);
         }
         m = new Move(entity, returnPos);
@@ -143,9 +158,9 @@ public class SceneMgr : MonoBehaviour
         UnitAI uai = ent.GetComponent<UnitAI>();
         uai.StopAndRemoveAllCommands();
         TrussMove tm = null;
-        foreach(GameObject go in route.Waypoints)
+        foreach(Waypoint w in route.Waypoints)
         {
-            tm = new TrussMove(ent, go.transform.position);
+            tm = new TrussMove(ent, w.position);
             uai.AddCommand(tm);
         }
         isInspecting = true;
