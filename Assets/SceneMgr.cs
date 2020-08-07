@@ -1,11 +1,18 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 [System.Serializable]
 public class Route
 {
     public List<GameObject> Waypoints;
+}
+
+[System.Serializable]
+public class RouteCategory
+{
+    public List<Route> Routes;
 }
 
 public class SceneMgr : MonoBehaviour
@@ -20,30 +27,38 @@ public class SceneMgr : MonoBehaviour
     public StacsEntity DefaultParrotDrone;
 
 
-    public GameObject DroneWaypoints;
+    public GameObject DroneWaypointsRoot;
     public GameObject ClimbingRobotWaypointsRoot;
-    public List<Route> DroneRoutes = new List<Route>();
-    public List<Route> ClimbingRobotRoutes = new List<Route>();
+    public RouteCategory DroneRoutes;
+    public RouteCategory ClimbingRobotRoutes;
 
     [ContextMenu("MakeDroneRoutes")]
     public void MakeDroneRoutes()
     {
-        DroneRoutes.Clear();
-        Route r = new Route();
-        r.Waypoints = new List<GameObject>();
-
-        foreach (Transform t in DroneWaypoints.GetComponentsInChildren<Transform>())
+        DroneRoutes.Routes.Clear();
+        foreach(Transform t in DroneWaypointsRoot.GetComponentsInChildren<Transform>())
         {
-            if (t.name.StartsWith("Cube"))
-                r.Waypoints.Add(t.gameObject);
+            if(t.name.StartsWith("Drone"))
+            {
+                Route r = new Route();
+                r.Waypoints = new List<GameObject>();
+                foreach(Transform tc in t.GetComponentsInChildren<Transform>())
+                {
+                    if(tc.name.StartsWith("Cube"))
+                    {
+                        r.Waypoints.Add(tc.gameObject);
+                    }
+                }
+                DroneRoutes.Routes.Add(r);
+            }
         }
-        DroneRoutes.Add(r);
+        SaveRoutes(DroneRoutes, "droneRoutes.json");
     }
 
     [ContextMenu("MakeClimbinRobotRoutes")]
     public void MakeClimbingRobotRoutes()
     {
-        ClimbingRobotRoutes.Clear();
+        ClimbingRobotRoutes.Routes.Clear();
         foreach(Transform t in ClimbingRobotWaypointsRoot.GetComponentsInChildren<Transform>())
         {
             if(t.name.StartsWith("Robot"))
@@ -57,17 +72,33 @@ public class SceneMgr : MonoBehaviour
                         r.Waypoints.Add(tc.gameObject);
                     }
                 }
-                ClimbingRobotRoutes.Add(r);
+                ClimbingRobotRoutes.Routes.Add(r);
             }
         }
+        SaveRoutes(ClimbingRobotRoutes, "climbingRobotRoutes.json");
     }
 
+    [ContextMenu("ReadDroneRoutes")]
+    public void ReadDroneRoutes()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/Routes/droneRoutes.json");
+        DroneRoutes = JsonUtility.FromJson<RouteCategory>(json);
+    }
+
+    [ContextMenu("ReadClimbingRobotRoutes")]
+    public void ReadClimbingRobotRoutes()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/Routes/climbingRobotRoutes.json");
+        ClimbingRobotRoutes = JsonUtility.FromJson<RouteCategory>(json);
+    }
 
     // Start is called before the first frame update
     void Start()
     {
         MakeClimbingRobotRoutes();
         ClimbingRobotWaypointsRoot.SetActive(false);
+        DroneRoutes.Routes = new List<Route>();
+        ClimbingRobotRoutes.Routes = new List<Route>();
     }
     
     // Update is called once per frame
@@ -88,7 +119,7 @@ public class SceneMgr : MonoBehaviour
         UnitAI uai = entity.GetComponent<UnitAI>();
         uai.StopAndRemoveAllCommands();
         Move m = null;
-        foreach (GameObject go in DroneRoutes[0].Waypoints)
+        foreach (GameObject go in DroneRoutes.Routes[0].Waypoints)
         {
             m = new Move(entity, go.transform.position);
             uai.AddCommand(m);
@@ -103,7 +134,7 @@ public class SceneMgr : MonoBehaviour
     {
         for(int i = 0; i < ClimbingRobots.Count; i++)
         {
-            RunClimbingRobotRoute(ClimbingRobots[i], ClimbingRobotRoutes[i]);
+            RunClimbingRobotRoute(ClimbingRobots[i], ClimbingRobotRoutes.Routes[i]);
         }
     }
 
@@ -118,6 +149,13 @@ public class SceneMgr : MonoBehaviour
             uai.AddCommand(tm);
         }
         isInspecting = true;
+    }
+
+    public void SaveRoutes(RouteCategory routes, string file)
+    {
+        string json = JsonUtility.ToJson(routes, true);
+        Debug.Log(json);
+        File.WriteAllText(Application.dataPath + "/Routes/" + file, json);
     }
 
 }

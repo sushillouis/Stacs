@@ -1,0 +1,65 @@
+{
+    "Routes": [
+        {
+            "Waypoints": [
+                {
+                    "instanceID": 35326
+                },
+                {
+                    "instanceID": 35204
+                },
+                {
+                    "instanceID": 35246
+                },
+                {
+                    "instanceID": 34284
+                },
+                {
+                    "instanceID": 34816
+                },
+                {
+                    "instanceID": 33712
+                },
+                {
+                    "instanceID": 33782
+                },
+                {
+                    "instanceID": 34468
+                },
+                {
+                    "instanceID": 34706
+                },
+                {
+                    "instanceID": 34798
+                },
+                {
+                    "instanceID": 35256
+                },
+                {
+                    "instanceID": 33818
+                },
+                {
+                    "instanceID": 34674
+                },
+                {
+                    "instanceID": 33930
+                },
+                {
+                    "instanceID": 35086
+                },
+                {
+                    "instanceID": 34160
+                },
+                {
+                    "instanceID": 35222
+                },
+                {
+                    "instanceID": 35004
+                },
+                {
+                    "instanceID": 34422
+                }
+            ]
+        }
+    ]
+}
