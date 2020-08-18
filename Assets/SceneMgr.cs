@@ -44,8 +44,10 @@ public class SceneMgr : MonoBehaviour
 
     public GameObject DroneWaypointsRoot;
     public GameObject ClimbingRobotWaypointsRoot;
+    public GameObject AllClimbingWaypointsRoot;
     public RouteCategory DroneRoutes;
     public RouteCategory ClimbingRobotRoutes;
+    public List<Waypoint> AllClimbingWaypoints;
 
     [ContextMenu("MakeDroneRoutes")]
     public void MakeDroneRoutes()
@@ -91,6 +93,20 @@ public class SceneMgr : MonoBehaviour
             }
         }
         SaveRoutes(ClimbingRobotRoutes, "climbingRobotRoutes.json");
+    }
+
+    [ContextMenu("GetAllClimbingWaypoints")]
+    public void GetAllClimbingWaypoints()
+    {
+        AllClimbingWaypoints.Clear();
+        foreach(Transform t in AllClimbingWaypointsRoot.GetComponentsInChildren<Transform>())
+        {
+            if(t != AllClimbingWaypointsRoot.transform)
+            {
+                AllClimbingWaypoints.Add(new Waypoint(t.position, t.gameObject.name));
+            }
+        }
+
     }
 
     [ContextMenu("ReadDroneRoutes")]
@@ -169,7 +185,6 @@ public class SceneMgr : MonoBehaviour
     public void SaveRoutes(RouteCategory routes, string file)
     {
         string json = JsonUtility.ToJson(routes, true);
-        Debug.Log(json);
         File.WriteAllText(Application.dataPath + "/Routes/" + file, json);
     }
 
