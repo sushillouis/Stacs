@@ -1,113 +1,528 @@
 {
     "graph": [
         {
-            "list": []
-        },
-        {
-            "list": []
-        },
-        {
             "list": [
-                2.219999313354492
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                35.41941833496094
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
+                Infinity,
+                2.219999313354492,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
+            ]
+        },
+        {
+            "list": [
+                35.41941833496094,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
+            ]
+        },
+        {
+            "list": [
+                Infinity,
                 16.112791061401368,
-                33.58025360107422
+                Infinity,
+                33.58025360107422,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
+                Infinity,
+                Infinity,
                 18.113265991210939,
-                10.800000190734864
+                Infinity,
+                10.800000190734864,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                2.170001983642578
+                Infinity,
+                Infinity,
+                Infinity,
+                2.170001983642578,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                2.170001983642578
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                2.170001983642578,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                35.33210754394531
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                35.33210754394531,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                35.871726989746097
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                35.871726989746097,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
                 38.099998474121097,
-                35.62660217285156
+                Infinity,
+                Infinity,
+                35.62660217285156,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
                 38.22999954223633,
                 35.62841796875,
-                33.58000183105469
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
                 40.400001525878909,
-                10.800000190734864
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                10.800000190734864,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                35.76714324951172
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                35.76714324951172,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                36.53269958496094
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                36.53269958496094,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
                 38.220001220703128,
-                35.21154022216797
+                Infinity,
+                Infinity,
+                Infinity,
+                35.21154022216797,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                35.04388427734375
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                38.220001220703128,
+                Infinity,
+                35.04388427734375,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                2.079998016357422
-            ]
-        },
-        {
-            "list": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
                 2.079998016357422,
-                33.58000183105469
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                2.079998016357422,
+                33.58000183105469,
+                Infinity,
+                Infinity,
+                Infinity
+            ]
+        },
+        {
+            "list": [
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
                 40.11097717285156,
-                10.521716117858887
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                10.521716117858887,
+                Infinity,
+                Infinity
             ]
         },
         {
             "list": [
-                34.182621002197269
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                Infinity,
+                34.182621002197269,
+                Infinity,
+                Infinity,
+                Infinity
             ]
         }
     ]

@@ -17,11 +17,16 @@ public class GraphContainer
             List<float> list = new List<float>();
             for(int j = 0; j < length; j++)
             {
+                float value;
                 if(other[i, j])
                 {
-                    float value = (SceneMgr.inst.AllClimbingWaypoints[j].position - SceneMgr.inst.AllClimbingWaypoints[i].position).magnitude;
-                    list.Add(value);
+                    value = (SceneMgr.inst.AllClimbingWaypoints[j].position - SceneMgr.inst.AllClimbingWaypoints[i].position).magnitude;
                 }
+                else
+                {
+                    value = Mathf.Infinity;
+                }
+                list.Add(value);
             }
             Dimension dimension = new Dimension(list);
             graph.Add(dimension);
@@ -76,8 +81,26 @@ public class GraphManager : MonoBehaviour
         GraphContainer container = new GraphContainer(unweightedGraph);
 
         string json = JsonUtility.ToJson(container, true);
-        Debug.Log(json);
         File.WriteAllText(Application.dataPath + "/Routes/" + "graph.json", json);
+    }
+
+    public void ReadGraph()
+    {
+        string json = File.ReadAllText(Application.dataPath + "/Routes/graph.json");
+        GraphContainer container = JsonUtility.FromJson<GraphContainer>(json);
+        int i = 0;
+
+        foreach(Dimension dim in container.graph)
+        {
+            int j = 0;
+            foreach(float f in dim.list)
+            {
+                unweightedGraph[i, j] = (f < Mathf.Infinity) ? true : false;
+                j++;
+            }
+            i++;
+        }
+
     }
 
     void OnDrawGizmos()

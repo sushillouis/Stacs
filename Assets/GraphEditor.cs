@@ -15,21 +15,14 @@ public class GraphEditor : Editor
             EdgeEditor window = (EdgeEditor)EditorWindow.GetWindow(typeof(EdgeEditor), false, "Set Edges");
             window.Show();
         }
-
-        if(GUILayout.Button("Generate Graph"))
-        {
-            gm.SaveGraph();
-        }
     }
 }
 
 public class EdgeEditor : EditorWindow
 {
-    bool[,] fieldsArray = new bool[0,0];
     int length;
-    int levelNumber = 1;
     
-    [MenuItem("Window/LevelEditor")]
+    [MenuItem("Window/EdgeEditor")]
     public static void ShowWindow()
     {
         EditorWindow.GetWindow(typeof(EdgeEditor));
@@ -37,30 +30,22 @@ public class EdgeEditor : EditorWindow
      
     void OnGUI()
     {
-        //length = SceneMgr.inst.AllClimbingWaypoints.Count;
-        /*
-        if (length != fieldsArray.GetLength(0) || length != fieldsArray.GetLength(1)) {
-            fieldsArray = new bool[length, length];
-        }
-        */
         DrawMatrix();
-        //GraphManager.inst.UpdateGraph(fieldsArray);
     }
 
     void Awake()
     {
         SceneMgr.inst.AllClimbingWaypointsRoot.SetActive(true);
         length = SceneMgr.inst.AllClimbingWaypoints.Count;
-        //DrawMatrix();
-    }
- 
-    void DrawMatrix()
-    {
-        if(GraphManager.inst.unweightedGraph == null)
+        if(GraphManager.inst.unweightedGraph == null || GraphManager.inst.unweightedGraph.GetLength(0) != length)
         {
             GraphManager.inst.unweightedGraph = new bool[length, length];
         }
-
+        GraphManager.inst.ReadGraph();
+    }
+ 
+    public void DrawMatrix()
+    {
         int width = 24;
         int height = 24;
         EditorGUILayout.BeginHorizontal();
@@ -84,5 +69,10 @@ public class EdgeEditor : EditorWindow
             EditorGUILayout.EndHorizontal();
         }
         EditorGUILayout.EndVertical();
+
+        if(GUILayout.Button("Save Graph"))
+        {
+            GraphManager.inst.SaveGraph();
+        }
     }
 }
