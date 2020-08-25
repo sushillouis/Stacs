@@ -24,6 +24,11 @@ public class DefectManager : MonoBehaviour
             occupiedSpaces[i] = false;
         }
 
+        if(numDefects > defectLocations.Count)
+        {
+            numDefects = defectLocations.Count;
+        }
+
         for(int i = 0; i < numDefects; i++)
         {
             int loc;
@@ -32,7 +37,9 @@ public class DefectManager : MonoBehaviour
                 loc = Random.Range(0, defectLocations.Count);
             } while(occupiedSpaces[loc] == true);
 
-            Instantiate(defect, defectLocations[loc]);
+            GameObject d = Instantiate(defect, defectLocations[loc]);
+            float rot = Random.Range(-180.0f, 180.0f);
+            d.transform.Rotate(0.0f, 0.0f, rot, Space.World);
             occupiedSpaces[loc] = true;
         }
     }
