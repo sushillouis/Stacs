@@ -9276,6 +9276,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defectLocationsRoot: {fileID: 371174009}
   defectLocations: []
+  defectMaterials:
+  - {fileID: 2100000, guid: 9957321542491bf4ba3f8db3509f32db, type: 2}
+  - {fileID: 2100000, guid: 5ca4a44ff5e7b6741ab00aa0bf2f5302, type: 2}
+  - {fileID: 2100000, guid: bbc45cbba29ea3b4e8dcca2643158737, type: 2}
+  - {fileID: 2100000, guid: b6cd93d0ee3bbea4bab80ede8a7093e2, type: 2}
+  - {fileID: 2100000, guid: 58cd740b0ead61c4a828e19eb3fea58c, type: 2}
+  - {fileID: 2100000, guid: d923e832ce3d39349bd3254dd323a1f3, type: 2}
+  - {fileID: 2100000, guid: 016339e4a2b9a5f40ae36c9c27adab4b, type: 2}
+  - {fileID: 2100000, guid: a746ae8641a7a3346ba17a0c9426a886, type: 2}
   defect: {fileID: 5513697027176529102, guid: 62982d829ebdd9e4daa8bd19f9ce7e7d, type: 3}
   numDefects: 6
 --- !u!4 &911008214

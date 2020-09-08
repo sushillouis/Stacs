@@ -6,6 +6,7 @@ public class DefectManager : MonoBehaviour
 {
     public Transform defectLocationsRoot;
     public List<Transform> defectLocations;
+    public List<Material> defectMaterials;
     public GameObject defect;
     public int numDefects;
 
@@ -38,6 +39,7 @@ public class DefectManager : MonoBehaviour
             } while(occupiedSpaces[loc] == true);
 
             GameObject d = Instantiate(defect, defectLocations[loc]);
+            d.GetComponent<MeshRenderer>().material = defectMaterials[Random.Range(0, defectMaterials.Count)];
             float rot = Random.Range(-180.0f, 180.0f);
             d.transform.Rotate(0.0f, 0.0f, rot, Space.World);
             occupiedSpaces[loc] = true;
