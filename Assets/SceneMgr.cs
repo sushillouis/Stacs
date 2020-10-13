@@ -99,6 +99,14 @@ public class SceneMgr : MonoBehaviour
     public void GetAllClimbingWaypoints()
     {
         AllClimbingWaypoints.Clear();
+
+        for(int i = 0; i < AllClimbingWaypointsRoot.transform.childCount; i++)
+        {
+            Transform t = AllClimbingWaypointsRoot.transform.GetChild(i).transform;
+            AllClimbingWaypoints.Add(new Waypoint(t.position, t.gameObject.name));
+        }
+
+        /*
         foreach(Transform t in AllClimbingWaypointsRoot.GetComponentsInChildren<Transform>())
         {
             if(t != AllClimbingWaypointsRoot.transform)
@@ -106,7 +114,7 @@ public class SceneMgr : MonoBehaviour
                 AllClimbingWaypoints.Add(new Waypoint(t.position, t.gameObject.name));
             }
         }
-
+        */
     }
 
     [ContextMenu("ReadDroneRoutes")]
