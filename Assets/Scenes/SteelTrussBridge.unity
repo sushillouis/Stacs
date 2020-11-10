@@ -4557,8 +4557,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 373896160}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.14, z: -20.219158}
+  m_LocalRotation: {x: 0.04333494, y: 0.42867747, z: 0.020590853, w: -0.90218276}
+  m_LocalPosition: {x: 50.5, y: -36.66, z: -52.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -9690,7 +9690,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &949314229
 Transform:
   m_ObjectHideFlags: 0
@@ -14869,6 +14869,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: ParrotDrone
       objectReference: {fileID: 0}
+    - target: {fileID: 5333631068806451932, guid: 0ff560cd21e0a34458ad56ac7f17c866,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ff560cd21e0a34458ad56ac7f17c866, type: 3}
 --- !u!4 &1427482860 stripped
@@ -18176,7 +18181,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1830669466}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 637.6155, y: -228.07512, z: -681.6898}
+  m_LocalPosition: {x: 0, y: 104.14, z: -85.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

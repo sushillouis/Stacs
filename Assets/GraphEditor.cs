@@ -20,7 +20,7 @@ public class GraphEditor : Editor
 
 public class EdgeEditor : EditorWindow
 {
-    int length;
+    int length = 0;
     
     [MenuItem("Window/EdgeEditor")]
     public static void ShowWindow()

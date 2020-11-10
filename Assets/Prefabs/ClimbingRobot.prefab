@@ -324,21 +324,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
+  body: {fileID: 3580111021696207880}
   magneticForce: -10
   gravityForce: -20
   groundCheckDistance: 1
-  groundNormal: {x: 0, y: 1, z: 0}
-  oldGroundNormal: {x: 0, y: 1, z: 0}
-  force: -10
-  grounded: 0
-  entityRigidBody: {fileID: 0}
-  localYawNode: {fileID: 0}
   eulerRotation: {x: 0, y: 0, z: 0}
-  usableTurnRate: 0
-  usableAcceleration: 0
-  fineTuneFactor: 10
-  threshold: 0.2
-  cubeT: {fileID: 0}
 --- !u!114 &1030676263
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,6 +381,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
   moves: []
+  trussMoves: []
   commands: []
   intercepts: []
 --- !u!1 &2769199413114243039

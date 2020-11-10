@@ -24,7 +24,7 @@ public class GraphContainer
                 }
                 else
                 {
-                    value = Mathf.Infinity;
+                    value = -1.0f;
                 }
                 list.Add(value);
             }
@@ -95,7 +95,7 @@ public class GraphManager : MonoBehaviour
             int j = 0;
             foreach(float f in dim.list)
             {
-                unweightedGraph[i, j] = (f < Mathf.Infinity) ? true : false;
+                unweightedGraph[i, j] = (f >= 0.0f) ? true : false;
                 j++;
             }
             i++;
