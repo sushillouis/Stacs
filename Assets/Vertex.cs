@@ -7,8 +7,9 @@ public class Vertex : MonoBehaviour
 {
     public Text text;
 
-    void Awake()
+    public void UpdateInfo(string name)
     {
-        text.text = gameObject.name;
+        gameObject.name = name;
+        text.text = gameObject.name.Replace("v", "");
     }
 }
