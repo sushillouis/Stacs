@@ -59,6 +59,8 @@ public class SceneMgr : MonoBehaviour
     public List<Route> ClimbingRobotRoutes = new List<Route>();
     public List<Waypoint> AllClimbingWaypoints = new List<Waypoint>();
 
+    public string routeOutput;
+
     [ContextMenu("GetAllClimbingWaypoints")]
     public void GetAllClimbingWaypoints()
     {
@@ -87,10 +89,14 @@ public class SceneMgr : MonoBehaviour
     public void ReadClimbingRobotRoutes()
     {
         ClimbingRobotRoutes.Clear();
-        string[] lines = File.ReadAllLines(Application.dataPath + "/Routing/climbingRobotRoutes.tsv");
+        string[] lines = routeOutput.Split('\n');//File.ReadAllLines(Application.dataPath + "/MMkCPP/" + climbingRouteFile);
         for(int i = 0; i < lines.Length; i++)
         {
-            ClimbingRobotRoutes.Add(new Route(lines[i], AllClimbingWaypoints));
+            if(lines[i].Length > 0)
+            {
+                Debug.Log("line i: " + lines[i]);
+                ClimbingRobotRoutes.Add(new Route(lines[i], AllClimbingWaypoints));
+            }
         }
     }
 

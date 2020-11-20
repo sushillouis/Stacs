@@ -6,7 +6,7 @@ public class GraphEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        base.OnInspectorGUI();
+        //base.OnInspectorGUI();
 
         GraphManager gm = (GraphManager)target;
 
