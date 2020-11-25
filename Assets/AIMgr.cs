@@ -176,9 +176,18 @@ public class AIMgr : MonoBehaviour
     public void HandleMove(List<StacsEntity> entities, Vector3 point)
     {
         foreach (StacsEntity entity in entities) {
-            Move m = new Move(entity, point);
-            UnitAI uai = entity.GetComponent<UnitAI>();
-            AddOrSet(m, uai);
+            if(entity.GetComponent<ClimbingPhysics>() != null)
+            {
+                TrussMove tm = new TrussMove(entity, point);
+                UnitAI uai = entity.GetComponent<UnitAI>();
+                AddOrSet(tm, uai);
+            }
+            else
+            {
+                Move m = new Move(entity, point);
+                UnitAI uai = entity.GetComponent<UnitAI>();
+                AddOrSet(m, uai);
+            }
         }
     }
 
@@ -227,5 +236,32 @@ public class AIMgr : MonoBehaviour
             }
         }
         return minEnt;
+    }
+
+    
+    void SetupWaypoints()
+    {
+        foreach(StacsEntity ent in EntityMgr.inst.entities)
+        {
+            if(ent.GetComponent<UnitAI>() != null)
+            {
+                foreach(Transform t in ent.GetComponent<UnitAI>().waypoints)
+                {
+                    if(ent.GetComponent<ClimbingPhysics>() != null)
+                    {
+                        TrussMove tm = new TrussMove(ent, t.position);
+                        UnitAI uai = ent.GetComponent<UnitAI>();
+                        uai.AddCommand(tm);
+                    }
+                    else
+                    {
+                        Move m = new Move(ent, t.position);
+                        UnitAI uai = ent.GetComponent<UnitAI>();
+                        uai.AddCommand(m);
+                    }
+                }
+                ent.GetComponent<UnitAI>().waypoints.Clear();
+            }
+        }
     }
 }

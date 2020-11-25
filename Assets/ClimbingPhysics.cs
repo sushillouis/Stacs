@@ -82,16 +82,20 @@ public class ClimbingPhysics : MonoBehaviour
 
         if (Utils.ApproximatelyEqual(entity.speed, entity.desiredSpeed)) {
             entity.speed = entity.desiredSpeed;
+            //Debug.Log("speed = ds");
         }
         else if (entity.speed < entity.desiredSpeed)
         {
             entity.speed = entity.speed + usableAcceleration * Time.deltaTime;
+            //Debug.Log("speed < ds");
         }
         else if (entity.speed > entity.desiredSpeed)
         {
             entity.speed = entity.speed - usableAcceleration * Time.deltaTime;
+            //Debug.Log("speed > ds");
         }
         entity.speed = Utils.Clamp(entity.speed, entity.minSpeed, entity.maxSpeed);
+        //Debug.Log("Updating Speed to " + entity.speed);
     }
 
     public void SetRotation()
@@ -119,7 +123,8 @@ public class ClimbingPhysics : MonoBehaviour
     {
         Vector3 rayPos = transform.position + (transform.up * 0.1f);
         Vector3 rayPos2 = transform.position + (transform.forward * 0.1f);
-        Debug.DrawRay(rayPos, entityRigidBody.velocity, Color.red);
+        //Debug.DrawRay(rayPos, entityRigidBody.velocity, Color.red);
+        //Debug.DrawRay(rayPos, -transform.up * groundCheckDistance, Color.green);
 
         if(Physics.Raycast(rayPos, -transform.up, out hitInfo, groundCheckDistance)) {
             oldGroundNormal = groundNormal;

@@ -28,6 +28,7 @@ public class Route
         string[] waypoints = route.Split(' ');
         for(int i = 1; i < waypoints.Length; i++)
         {
+            Debug.Log(allWaypoints[int.Parse(waypoints[i])].name);
             Waypoints.Add(allWaypoints[int.Parse(waypoints[i])]);
         }
     }
@@ -50,6 +51,7 @@ public class SceneMgr : MonoBehaviour
 
     public bool isInspecting;
     public StacsEntity DefaultParrotDrone;
+    public List<StacsEntity> ClimbingRobots; // Set in scene manager, routes and waypoints are in order...
 
 
     public GameObject DroneWaypoints;
@@ -71,6 +73,18 @@ public class SceneMgr : MonoBehaviour
             Transform t = AllClimbingWaypointsRoot.transform.GetChild(i).transform;
             t.gameObject.GetComponent<Vertex>().UpdateInfo('v' + i.ToString());
             AllClimbingWaypoints.Add(new Waypoint(t.position, t.gameObject.name));
+        }
+    }
+
+    public void GetClimbingRobots()
+    {
+        ClimbingRobots.Clear();
+        foreach(StacsEntity e in EntityMgr.inst.entities)
+        {
+            if(e.GetComponent<ClimbingPhysics>() != null)
+            {
+                ClimbingRobots.Add(e);
+            }
         }
     }
 
@@ -108,6 +122,7 @@ public class SceneMgr : MonoBehaviour
         //DroneRoutes = new List<Route>();
         //ClimbingRobotRoutes = new List<Route>();
         GetAllClimbingWaypoints();
+        GetClimbingRobots();
     }
 
     public void RunRoute(StacsEntity entity = null)
@@ -131,10 +146,9 @@ public class SceneMgr : MonoBehaviour
         isInspecting = true;
     }
 
-    public List<StacsEntity> ClimbingRobots; // Set in scene manager, routes and waypoints are in order...
     public void RunClimbingRobotRoutes()
     {
-        for(int i = 0; i < ClimbingRobots.Count; i++)
+        for(int i = 0; i < ClimbingRobotRoutes.Count; i++)
         {
             RunClimbingRobotRoute(ClimbingRobots[i], ClimbingRobotRoutes[i]);
         }
@@ -145,15 +159,24 @@ public class SceneMgr : MonoBehaviour
         UnitAI uai = ent.GetComponent<UnitAI>();
         uai.StopAndRemoveAllCommands();
         TrussMove tm = null;
+        int i = 0;
         foreach(Waypoint w in route.Waypoints)
         {
-            tm = new TrussMove(ent, w.position);
-            uai.AddCommand(tm);
+            if(w == route.Waypoints[0])
+            {
+                uai.Teleport(w);
+            }
+            else
+            {
+                tm = new TrussMove(ent, w.position);
+                uai.AddCommand(tm);
+            }
+            i++;
         }
         isInspecting = true;
     }
 
-    /****   NOTE: These functions are currently not being used. If they are needed in the future they need to be asjusted to work with improved implementation  ****/
+    /****   NOTE: These JSON functions are currently not being used. If they are needed in the future they need to be asjusted to work with improved implementation  ****/
     /*
     [ContextMenu("MakeDroneRoutes")]
     public void MakeDroneRoutes()
