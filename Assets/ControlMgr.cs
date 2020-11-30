@@ -57,6 +57,7 @@ public class ControlMgr : MonoBehaviour
                 Debug.Log("P Input Detected");
                 //SceneMgr.inst.RunRoute();
                 SceneMgr.inst.RunClimbingRobotRoutes();
+                SceneMgr.inst.RunDroneRoutes();
             }
 
 

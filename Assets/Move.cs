@@ -12,6 +12,7 @@ public class Move : Command
     {
         movePosition = pos;
         doneDistanceSq = (ent.length * ent.length);
+        Init();
         //entity.desiredAltitude = movePosition.y;
     }
 

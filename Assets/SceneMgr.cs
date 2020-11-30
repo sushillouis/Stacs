@@ -22,6 +22,11 @@ public class Route
 {
     public List<Waypoint> Waypoints;
     
+    public Route()
+    {
+        Waypoints = new List<Waypoint>();
+    }
+
     public Route(string route, List<Waypoint> allWaypoints)
     {
         Waypoints = new List<Waypoint>();
@@ -52,9 +57,10 @@ public class SceneMgr : MonoBehaviour
     public bool isInspecting;
     public StacsEntity DefaultParrotDrone;
     public List<StacsEntity> ClimbingRobots; // Set in scene manager, routes and waypoints are in order...
+    public List<StacsEntity> Drones;
 
 
-    public GameObject DroneWaypoints;
+    public GameObject DroneRoutesRoot;
     public GameObject ClimbingRobotWaypointsRoot;
     public GameObject AllClimbingWaypointsRoot;
     public List<Route> DroneRoutes = new List<Route>();
@@ -84,6 +90,18 @@ public class SceneMgr : MonoBehaviour
             if(e.GetComponent<ClimbingPhysics>() != null)
             {
                 ClimbingRobots.Add(e);
+            }
+        }
+    }
+
+    public void GetDrones()
+    {
+        Drones.Clear();
+        foreach(StacsEntity e in EntityMgr.inst.entities)
+        {
+            if(e.GetComponent<OrientedFlyingPhysics>() != null)
+            {
+                Drones.Add(e);
             }
         }
     }
@@ -121,6 +139,8 @@ public class SceneMgr : MonoBehaviour
         ClimbingRobotWaypointsRoot.SetActive(false);
         GetAllClimbingWaypoints();
         GetClimbingRobots();
+        GetDrones();
+        MakeDroneRoutes();
         //This line may be annoying later, but it makes the video better
         AllClimbingWaypointsRoot.SetActive(false);
     }
@@ -154,6 +174,14 @@ public class SceneMgr : MonoBehaviour
         }
     }
 
+    public void RunDroneRoutes()
+    {
+        for(int i = 0; i < DroneRoutes.Count; i++)
+        {
+            RunDroneRoute(Drones[i], DroneRoutes[i]);
+        }
+    }
+
     public void RunClimbingRobotRoute(StacsEntity ent, Route route)
     {
         UnitAI uai = ent.GetComponent<UnitAI>();
@@ -176,43 +204,48 @@ public class SceneMgr : MonoBehaviour
         isInspecting = true;
     }
 
-    /****   NOTE: These JSON functions are currently not being used. If they are needed in the future they need to be asjusted to work with improved implementation  ****/
-    /*
+    public void RunDroneRoute(StacsEntity ent, Route route)
+    {
+        UnitAI uai = ent.GetComponent<UnitAI>();
+        uai.StopAndRemoveAllCommands();
+        Move m = null;
+        int i = 0;
+        foreach(Waypoint w in route.Waypoints)
+        {
+            if(w == route.Waypoints[0])
+            {
+                if(ent.gameObject.name.StartsWith("Parrot"))
+                {
+                    Debug.Log("Teleporting Drone");
+                }
+                uai.Teleport(w);
+            }
+            else
+            {
+                m = new Move(ent, w.position);
+                uai.AddCommand(m);
+            }
+            i++;
+        }
+        isInspecting = true;
+    }
+
     [ContextMenu("MakeDroneRoutes")]
     public void MakeDroneRoutes()
     {
         DroneRoutes.Clear();
-        Route r = new Route();
-        r.Waypoints = new List<GameObject>();
-
-        foreach (Transform t in DroneWaypoints.GetComponentsInChildren<Transform>())
+        foreach (Transform r in DroneRoutesRoot.GetComponentsInChildren<Transform>())
         {
-            if (t.name.StartsWith("Cube"))
-                r.Waypoints.Add(t.gameObject);
-        }
-        DroneRoutes.Add(r);
-    }
-
-    [ContextMenu("MakeClimbinRobotRoutes")]
-    public void MakeClimbingRobotRoutes()
-    {
-        ClimbingRobotRoutes.Clear();
-        foreach(Transform t in ClimbingRobotWaypointsRoot.GetComponentsInChildren<Transform>())
-        {
-            if(t.name.StartsWith("Robot"))
+            if(r.name.StartsWith("Route"))
             {
-                Route r = new Route();
-                r.Waypoints = new List<GameObject>();
-                foreach(Transform tc in t.GetComponentsInChildren<Transform>())
+                Route route = new Route();
+                foreach (Transform w in r.GetComponentsInChildren<Transform>())
                 {
-                    if(tc.name.StartsWith("Cube"))
-                    {
-                        r.Waypoints.Add(tc.gameObject);
-                    }
+                    if (w.name.StartsWith("Cube"))
+                        route.Waypoints.Add(new Waypoint(w.position, w.gameObject.name));
                 }
-                ClimbingRobotRoutes.Add(r);
+                DroneRoutes.Add(route);
             }
         }
     }
-    */
 }

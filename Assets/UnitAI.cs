@@ -50,7 +50,7 @@ public class UnitAI : MonoBehaviour
     //Someday the robot will have to find the starting position on its own.
     public void Teleport(Waypoint waypoint)
     {
-        transform.position = waypoint.position;
+        GetComponent<StacsEntity>().position = transform.position = waypoint.position;
     }
 
     //Calls functions to kill current command

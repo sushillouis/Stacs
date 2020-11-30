@@ -55,6 +55,7 @@ public class CameraMgr : MonoBehaviour
 
     // reparent camera code currently being used
     public void SwitchViewTo(StacsEntity ent) {
+        SelectionMgr.inst.SelectEntity(ent);
         CameraRoot.transform.SetParent(ent.cameraRig.transform, false);
         foreach (Transform t in ent.cameraRig.GetComponentsInChildren<Transform>()) {
             //Debug.Log(t.gameObject.name);
