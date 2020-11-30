@@ -119,10 +119,10 @@ public class SceneMgr : MonoBehaviour
     {
         //MakeClimbingRobotRoutes();
         ClimbingRobotWaypointsRoot.SetActive(false);
-        //DroneRoutes = new List<Route>();
-        //ClimbingRobotRoutes = new List<Route>();
         GetAllClimbingWaypoints();
         GetClimbingRobots();
+        //This line may be annoying later, but it makes the video better
+        AllClimbingWaypointsRoot.SetActive(false);
     }
 
     public void RunRoute(StacsEntity entity = null)

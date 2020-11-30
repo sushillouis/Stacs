@@ -10,8 +10,11 @@ using System.IO;
 
 public class GAMgr : MonoBehaviour
 {
-    public int numRuns = 1;
     public int numRobots = 1;
+    public int popSize = 30;
+    public int numGens = 100;
+    public int numRuns = 1;
+    public int startingVertex = 0;
 
     // Start is called before the first frame update
     [ContextMenu("Run GA")]
@@ -20,8 +23,8 @@ public class GAMgr : MonoBehaviour
         string dir = Application.dataPath + "/MMkCPP/ga.exe";
         string graph = Application.dataPath + "/Routing/graph.csv";
         print(dir);
-        print("runs: " + numRuns + " robots: " + numRobots);
-        ExecuteProcess(dir, graph + ' ' + numRuns + ' ' + numRobots);
+        print(graph + ' ' + numRobots + ' ' + popSize + ' ' + numGens + ' ' + numRuns + ' ' + startingVertex);
+        ExecuteProcess(dir, graph + ' ' + numRobots + ' ' + popSize + ' ' + numGens + ' ' + numRuns + ' ' + startingVertex + ' ' + 1 + ' ' + 0);
     }
 
     // Update is called once per frame

@@ -1102,86 +1102,8 @@ MonoBehaviour:
   - Waypoints:
     - position: {x: -40.4, y: 52.36, z: -15.3}
       name: v0
-    - position: {x: -40.48, y: 18.37, z: -15.3}
-      name: v10
-    - position: {x: -38.38, y: 18.37, z: -15.3}
-      name: v13
-    - position: {x: 0.13, y: 18.37, z: -15.3}
-      name: v14
-    - position: {x: 19.64, y: 48.48, z: -15.3}
-      name: v6
-    - position: {x: 38.49, y: 18.37, z: -15.3}
-      name: v16
-    - position: {x: 40.59, y: 18.37, z: -15.3}
-      name: v15
-    - position: {x: 40.59, y: 9.47, z: -15.3}
-      name: v18
-    - position: {x: 37.92, y: 7.77, z: -15.3}
-      name: v19
-    - position: {x: 0.05, y: 7.77, z: -15.3}
-      name: v20
-    - position: {x: -40.56, y: 8.42, z: -15.3}
-      name: v17
-    - position: {x: -56.5, y: 15.95, z: -15.3}
-      name: v8
-    - position: {x: -57.31, y: 18.37, z: -15.3}
-      name: v9
     - position: {x: -59.09, y: 19.92, z: -15.3}
       name: v7
-  - Waypoints:
-    - position: {x: 38.49, y: 18.37, z: -15.3}
-      name: v16
-    - position: {x: 0.13, y: 18.37, z: -15.3}
-      name: v14
-    - position: {x: -38.38, y: 18.37, z: -15.3}
-      name: v13
-    - position: {x: -40.48, y: 18.37, z: -15.3}
-      name: v10
-    - position: {x: -57.31, y: 18.37, z: -15.3}
-      name: v9
-    - position: {x: -59.09, y: 19.92, z: -15.3}
-      name: v7
-    - position: {x: -40.4, y: 52.36, z: -15.3}
-      name: v0
-    - position: {x: -38.3, y: 52.36, z: -15.3}
-      name: v1
-    - position: {x: -0.03, y: 52.36, z: -15.3}
-      name: v2
-    - position: {x: 0.13, y: 18.37, z: -15.3}
-      name: v14
-    - position: {x: 0.05, y: 7.77, z: -15.3}
-      name: v20
-    - position: {x: 37.92, y: 7.77, z: -15.3}
-      name: v19
-    - position: {x: 40.59, y: 9.47, z: -15.3}
-      name: v18
-    - position: {x: 40.59, y: 18.37, z: -15.3}
-      name: v15
-    - position: {x: 40.51, y: 52.36, z: -15.3}
-      name: v3
-  - Waypoints:
-    - position: {x: 40.51, y: 52.36, z: -15.3}
-      name: v3
-    - position: {x: 38.41, y: 52.36, z: -15.3}
-      name: v4
-    - position: {x: 20.37, y: 21.85, z: -15.3}
-      name: v12
-    - position: {x: -0.03, y: 52.36, z: -15.3}
-      name: v2
-    - position: {x: -38.3, y: 52.36, z: -15.3}
-      name: v1
-    - position: {x: -40.4, y: 52.36, z: -15.3}
-      name: v0
-    - position: {x: -40.48, y: 18.37, z: -15.3}
-      name: v10
-    - position: {x: -38.38, y: 18.37, z: -15.3}
-      name: v13
-    - position: {x: -19.36, y: 48.48, z: -15.3}
-      name: v5
-    - position: {x: -38.38, y: 18.37, z: -15.3}
-      name: v13
-    - position: {x: -40.48, y: 18.37, z: -15.3}
-      name: v10
     - position: {x: -57.31, y: 18.37, z: -15.3}
       name: v9
     - position: {x: -56.5, y: 15.95, z: -15.3}
@@ -1190,44 +1112,51 @@ MonoBehaviour:
       name: v9
     - position: {x: -40.48, y: 18.37, z: -15.3}
       name: v10
+    - position: {x: -57.31, y: 18.37, z: -15.3}
+      name: v9
+    - position: {x: -56.5, y: 15.95, z: -15.3}
+      name: v8
     - position: {x: -40.56, y: 8.42, z: -15.3}
       name: v17
-  - Waypoints:
-    - position: {x: 38.41, y: 52.36, z: -15.3}
-      name: v4
-    - position: {x: -0.03, y: 52.36, z: -15.3}
-      name: v2
-    - position: {x: 20.37, y: 21.85, z: -15.3}
-      name: v12
-    - position: {x: -0.03, y: 52.36, z: -15.3}
-      name: v2
-    - position: {x: 0.13, y: 18.37, z: -15.3}
-      name: v14
-    - position: {x: 0.05, y: 7.77, z: -15.3}
-      name: v20
-    - position: {x: -40.56, y: 8.42, z: -15.3}
-      name: v17
-    - position: {x: 0.05, y: 7.77, z: -15.3}
-      name: v20
-    - position: {x: 0.13, y: 18.37, z: -15.3}
-      name: v14
+    - position: {x: -40.48, y: 18.37, z: -15.3}
+      name: v10
+    - position: {x: -38.38, y: 18.37, z: -15.3}
+      name: v13
     - position: {x: -19.36, y: 48.48, z: -15.3}
       name: v5
     - position: {x: 0.13, y: 18.37, z: -15.3}
       name: v14
-    - position: {x: 19.64, y: 48.48, z: -15.3}
-      name: v6
     - position: {x: 38.49, y: 18.37, z: -15.3}
       name: v16
-    - position: {x: 40.59, y: 18.37, z: -15.3}
-      name: v15
-    - position: {x: 40.59, y: 9.47, z: -15.3}
-      name: v18
-    - position: {x: 37.92, y: 7.77, z: -15.3}
-      name: v19
-  - Waypoints:
-    - position: {x: 57.92, y: 22.3, z: -15.3}
+    - position: {x: 0.13, y: 18.37, z: -15.3}
+      name: v14
+    - position: {x: 0.05, y: 7.77, z: -15.3}
       name: v21
+    - position: {x: -40.56, y: 8.42, z: -15.3}
+      name: v17
+  - Waypoints:
+    - position: {x: 38.49, y: 18.37, z: -15.3}
+      name: v16
+    - position: {x: 40.59, y: 18.37, z: -15.3}
+      name: v15
+    - position: {x: 40.59, y: 9.47, z: -15.3}
+      name: v18
+    - position: {x: 37.92, y: 7.77, z: -15.3}
+      name: v19
+    - position: {x: 0.05, y: 7.77, z: -15.3}
+      name: v21
+    - position: {x: 0.13, y: 18.37, z: -15.3}
+      name: v14
+    - position: {x: 19.64, y: 48.48, z: -15.3}
+      name: v6
+    - position: {x: 38.49, y: 18.37, z: -15.3}
+      name: v16
+    - position: {x: 40.59, y: 18.37, z: -15.3}
+      name: v15
+    - position: {x: 40.59, y: 9.47, z: -15.3}
+      name: v18
+    - position: {x: 40.59, y: 18.37, z: -15.3}
+      name: v15
     - position: {x: 40.51, y: 52.36, z: -15.3}
       name: v3
     - position: {x: 38.41, y: 52.36, z: -15.3}
@@ -1236,20 +1165,93 @@ MonoBehaviour:
       name: v2
     - position: {x: 0.13, y: 18.37, z: -15.3}
       name: v14
+    - position: {x: 0.05, y: 7.77, z: -15.3}
+      name: v21
+  - Waypoints:
+    - position: {x: 40.59, y: 18.37, z: -15.3}
+      name: v15
+    - position: {x: 40.51, y: 52.36, z: -15.3}
+      name: v3
+    - position: {x: 38.41, y: 52.36, z: -15.3}
+      name: v4
+    - position: {x: -0.03, y: 52.36, z: -15.3}
+      name: v2
+    - position: {x: 0.13, y: 18.37, z: -15.3}
+      name: v14
+    - position: {x: -19.36, y: 48.48, z: -15.3}
+      name: v5
+    - position: {x: 0.13, y: 18.37, z: -15.3}
+      name: v14
     - position: {x: 38.49, y: 18.37, z: -15.3}
       name: v16
     - position: {x: 40.59, y: 18.37, z: -15.3}
       name: v15
-    - position: {x: 38.49, y: 18.37, z: -15.3}
-      name: v16
-    - position: {x: 0.13, y: 18.37, z: -15.3}
-      name: v14
-    - position: {x: -0.03, y: 52.36, z: -15.3}
-      name: v2
+    - position: {x: 40.51, y: 52.36, z: -15.3}
+      name: v3
+    - position: {x: 57.92, y: 22.3, z: -15.3}
+      name: v20
+  - Waypoints:
     - position: {x: -18.87, y: 21.85, z: -15.3}
       name: v11
     - position: {x: -38.3, y: 52.36, z: -15.3}
       name: v1
+    - position: {x: -40.4, y: 52.36, z: -15.3}
+      name: v0
+    - position: {x: -40.48, y: 18.37, z: -15.3}
+      name: v10
+    - position: {x: -38.38, y: 18.37, z: -15.3}
+      name: v13
+    - position: {x: -40.48, y: 18.37, z: -15.3}
+      name: v10
+    - position: {x: -40.4, y: 52.36, z: -15.3}
+      name: v0
+    - position: {x: -40.48, y: 18.37, z: -15.3}
+      name: v10
+    - position: {x: -57.31, y: 18.37, z: -15.3}
+      name: v9
+    - position: {x: -59.09, y: 19.92, z: -15.3}
+      name: v7
+    - position: {x: -57.31, y: 18.37, z: -15.3}
+      name: v9
+    - position: {x: -40.48, y: 18.37, z: -15.3}
+      name: v10
+    - position: {x: -40.56, y: 8.42, z: -15.3}
+      name: v17
+    - position: {x: -40.48, y: 18.37, z: -15.3}
+      name: v10
+    - position: {x: -38.38, y: 18.37, z: -15.3}
+      name: v13
+    - position: {x: 0.13, y: 18.37, z: -15.3}
+      name: v14
+    - position: {x: -38.38, y: 18.37, z: -15.3}
+      name: v13
+    - position: {x: -40.48, y: 18.37, z: -15.3}
+      name: v10
+    - position: {x: -40.4, y: 52.36, z: -15.3}
+      name: v0
+    - position: {x: -38.3, y: 52.36, z: -15.3}
+      name: v1
+    - position: {x: -0.03, y: 52.36, z: -15.3}
+      name: v2
+  - Waypoints:
+    - position: {x: 38.41, y: 52.36, z: -15.3}
+      name: v4
+    - position: {x: 20.37, y: 21.85, z: -15.3}
+      name: v12
+    - position: {x: -0.03, y: 52.36, z: -15.3}
+      name: v2
+    - position: {x: -18.87, y: 21.85, z: -15.3}
+      name: v11
+    - position: {x: -0.03, y: 52.36, z: -15.3}
+      name: v2
+    - position: {x: 0.13, y: 18.37, z: -15.3}
+      name: v14
+    - position: {x: 0.05, y: 7.77, z: -15.3}
+      name: v21
+    - position: {x: 37.92, y: 7.77, z: -15.3}
+      name: v19
+    - position: {x: 40.59, y: 9.47, z: -15.3}
+      name: v18
   AllClimbingWaypoints:
   - position: {x: -40.4, y: 52.36, z: -15.3}
     name: v0
@@ -1291,13 +1293,13 @@ MonoBehaviour:
     name: v18
   - position: {x: 37.92, y: 7.77, z: -15.3}
     name: v19
-  - position: {x: 0.05, y: 7.77, z: -15.3}
-    name: v20
   - position: {x: 57.92, y: 22.3, z: -15.3}
+    name: v20
+  - position: {x: 0.05, y: 7.77, z: -15.3}
     name: v21
-  routeOutput: "R0 0 10 13 14 6 16 15 18 19 20 17 8 9 7\r\nR1 16 14 13 10 9 7 0 1
-    2 14 20 19 18 15 3\r\nR2 3 4 12 2 1 0 10 13 5 13 10 9 8 9 10 17\r\nR3 4 2 12 2
-    14 20 17 20 14 5 14 6 16 15 18 19\r\nR4 21 3 4 2 14 16 15 16 14 2 11 1\r\n"
+  routeOutput: "R0 0 7 9 8 9 10 9 8 17 10 13 5 14 16 14 21 17\r\nR1 16 15 18 19 21
+    14 6 16 15 18 15 3 4 2 14 21\r\nR2 15 3 4 2 14 5 14 16 15 3 20\r\nR3 11 1 0 10
+    13 10 0 10 9 7 9 10 17 10 13 14 13 10 0 1 2\r\nR4 4 12 2 11 2 14 21 19 18\r\n"
 --- !u!114 &94791393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5972,7 +5974,7 @@ Transform:
   m_GameObject: {fileID: 592400743}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1424977111}
   - {fileID: 1960310946}
@@ -11509,8 +11511,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1114144677}
-  m_LocalRotation: {x: 0.083153896, y: 0.2984007, z: 0.026106693, w: -0.950453}
-  m_LocalPosition: {x: -2.06, y: -29.060001, z: -52.55}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.36889172, y: -25.931477, z: -126.23081}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -13002,8 +13004,8 @@ Transform:
   - {fileID: 612206010}
   - {fileID: 1739826925}
   - {fileID: 1153720488}
-  - {fileID: 2055587593}
   - {fileID: 1935067114}
+  - {fileID: 2055587593}
   m_Father: {fileID: 1389814741}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -20614,7 +20616,7 @@ PrefabInstance:
     - target: {fileID: 7178463291150972761, guid: de1baf906427c754f84efe304e4f3fd8,
         type: 3}
       propertyPath: m_Name
-      value: v20
+      value: v21
       objectReference: {fileID: 0}
     - target: {fileID: 8928864383183829554, guid: de1baf906427c754f84efe304e4f3fd8,
         type: 3}
@@ -21487,7 +21489,7 @@ PrefabInstance:
     - target: {fileID: 7178463291150972761, guid: de1baf906427c754f84efe304e4f3fd8,
         type: 3}
       propertyPath: m_Name
-      value: v21
+      value: v20
       objectReference: {fileID: 0}
     - target: {fileID: 8928864383183829554, guid: de1baf906427c754f84efe304e4f3fd8,
         type: 3}
