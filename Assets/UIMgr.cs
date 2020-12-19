@@ -9,6 +9,7 @@ public enum EGameState
 {
     None = 0,
     GameMenu,
+    RouteOptimizing,
     ShowHelp,
     Briefing,
     Monitoring,
@@ -35,6 +36,7 @@ public class UIMgr : MonoBehaviour
     public StacsPanel BriefingPanel;
     public StacsPanel MenuPanel;
     public StacsPanel HelpPanel;
+    public StacsPanel OptimizerPanel;
 
     public RectTransform TopLevelMenuPanel;
 
@@ -50,14 +52,16 @@ public class UIMgr : MonoBehaviour
     //public GameObject myCanvas;
 
     public Button gameMenuButton;
+    public Button routeOptimizerButton;
     public Button briefingPanelOkButton;
     public Button menuHelpButton;
     public Button helpDoneButton;
+    public Button runOptimizerButton; //from optimizer panel
 
     // Start is called before the first frame update
     void Start()
     {
-        State = EGameState.Briefing;
+        State = EGameState.RouteOptimizing;
         CameraViewPanels.Clear();
     }
     public bool show = false;
@@ -67,9 +71,6 @@ public class UIMgr : MonoBehaviour
         //ProtoPanel.isValid = show;
         UpdateSelectedEntity();
         CheckForUINavigation();
-
-
-
     }
 
     public LineGraph Graph;
@@ -83,7 +84,6 @@ public class UIMgr : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.Joystick1Button7)) {
             State = EGameState.GameMenu;
         }
-
     }
 
     [ContextMenu("UpdateProto")] //For testing Stacs Panels
@@ -125,6 +125,7 @@ public class UIMgr : MonoBehaviour
             BriefingPanel.isValid = (_state == EGameState.Briefing);
             HelpPanel.isValid = (_state == EGameState.ShowHelp);
             MenuPanel.isValid = (_state == EGameState.GameMenu);
+            OptimizerPanel.isValid = (_state == EGameState.RouteOptimizing);
 
             //Game Controller UI/Playing switch and Navigation
             switch (_state) {
@@ -143,12 +144,14 @@ public class UIMgr : MonoBehaviour
                     EventSystem.current.firstSelectedGameObject = helpDoneButton.gameObject;
                     helpDoneButton.Select();
                     break;
+                case EGameState.RouteOptimizing:
+                    EventSystem.current.firstSelectedGameObject = runOptimizerButton.gameObject;
+                    runOptimizerButton.Select();
+                    break;
                 default:
                     EventSystem.current.firstSelectedGameObject = null;
                     break;
             }
-
-
         }
     }
 
@@ -172,6 +175,16 @@ public class UIMgr : MonoBehaviour
     public void HandleMenuBack()
     {
         State = priorState;
+    }
+
+    public void HandleRouteOptimizer()
+    {
+        State = EGameState.RouteOptimizing;
+    }
+
+    public void HandleDoneRouteOptimizer()
+    {
+        State = EGameState.Monitoring;
     }
 
     public void HandleMenuQuitTask()
