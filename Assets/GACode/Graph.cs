@@ -27,6 +27,29 @@ public class Path
     }
 }
 
+public class Edge
+{
+    public int vertex1;
+    public int vertex2;
+    public bool visited;
+    public float length;
+    public Edge(int v1, int v2, float len)
+    {
+        vertex1 = v1;
+        vertex2 = v2;
+        length = len;
+        visited = false;
+    }
+
+    public bool Same(Edge other)
+    {
+        return ((vertex1 == other.vertex1 && vertex2 == other.vertex2) ||
+            (vertex2 == other.vertex1 && vertex1 == other.vertex2));
+    }
+
+}
+
+
 public class VertexDistance : System.IComparable<VertexDistance>
 {
     public int vertex;
@@ -60,7 +83,7 @@ public class Graph
         {-1, -1, -1, 2, 1, 0}
     };
     public List<VertexDistance>[] adjacency = new List<VertexDistance>[Constants.MAX_VERTICES]; // an array of nVertices lists
-
+    public List<Edge> edges;
     public Options options;
 
     public Graph(string graphFilename)
@@ -115,20 +138,35 @@ public class Graph
         return outs;
     }
 
+    public bool ExistsEdge(Edge edge, List<Edge> edges)
+    {
+        foreach(Edge e in edges)
+        {
+            if (edge.Same(e))
+                return true;
+        }
+        return false;
+    }
+
     public void MakeAdjacencyList()
     {
         for(int i = 0; i < nVertices; i++) { // allocate lists
             adjacency[i] = new List<VertexDistance>();
         }
+        edges = new List<Edge>();
         for(int i = 0; i < nVertices; i++) {
             for(int j = 0; j < nVertices; j++) {
                 if(i != j) {
                     if(vertices[i, j] != -1) {
                         adjacency[i].Add(new VertexDistance(j, vertices[i, j]));
+                        Edge e = new Edge(i, j, vertices[i, j]);
+                        if(!ExistsEdge(e, edges))
+                            edges.Add(new Edge(i, j, vertices[i, j]));
                     }
                 }
             }
         }
+        Debug.Log("N Edges: " + edges.Count);
     }
 
     public void Dijsktra(int vertexId)
