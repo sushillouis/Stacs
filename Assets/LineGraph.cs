@@ -34,18 +34,17 @@ public class DynamicLine
 
     public void SetMinMax()
     {
-        if(points.Count > 0)
-        {
+        if(points.Count > 0) {
             minx = points.Min(point => point.x);
             maxx = points.Max(point => point.x);
-            diffx = maxx - minx +1;
+            diffx = maxx - minx + 1;
 
             miny = points.Min(point => point.y);
             maxy = points.Max(point => point.y);
-            diffy = maxy - miny +1;
+            diffy = maxy - miny + 1;
 
-            miny = points.Min(point => point.z);
-            maxy = points.Max(point => point.z);
+            minz = points.Min(point => point.z);
+            maxz = points.Max(point => point.z);
             diffz = maxz - minz + 1;
         }
     }
@@ -61,8 +60,7 @@ public class DynamicLine
         SetMinMax();
         lr.positionCount = points.Count();
         plottedPoints.Clear();
-        foreach(Vector3 point in points)
-        {
+        foreach(Vector3 point in points) {
             Vector3 p = ScaleOffsetPoint(point);
             plottedPoints.Add(p);
         }
@@ -88,9 +86,7 @@ public class DynamicLine
 
 public class LineGraph : MonoBehaviour
 {
-
     public LineRenderer SampleLR;
-
     public DynamicLine SampleLine;
 
     // Start is called before the first frame update
@@ -100,19 +96,18 @@ public class LineGraph : MonoBehaviour
         SampleLine.offset = new Vector3(-50, -50, -2);
         SampleLine.factor = 100f;
         SampleLine.Add(Vector3.zero);
-        
-
     }
 
     // Update is called once per frame
     void Update()    {
+        float x = 0;
+        float y = 0;
         if(Time.frameCount % 2 == 0 && entity != null)        {
             //Vector3 point = new Vector3(Time.frameCount, Random.Range(0, 50), 0);
             //SampleLine.Add(point);
             SampleLine.points = entity.SensorData.readings;
             SampleLine.Redraw();
         }
-        
     }
 
     StacsEntity entity = null;
@@ -125,4 +120,5 @@ public class LineGraph : MonoBehaviour
         SampleLine.points = ent.SensorData.readings;
         SampleLine.Redraw();
     }
+
 }

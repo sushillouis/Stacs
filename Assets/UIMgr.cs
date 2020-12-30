@@ -10,6 +10,7 @@ public enum EGameState
     None = 0,
     GameMenu,
     RouteOptimizing,
+    ShowingOptimizationProgress,
     ShowHelp,
     Briefing,
     Monitoring,
@@ -37,6 +38,7 @@ public class UIMgr : MonoBehaviour
     public StacsPanel MenuPanel;
     public StacsPanel HelpPanel;
     public StacsPanel OptimizerPanel;
+    public StacsPanel OptimizationProgressPanel;
 
     public RectTransform TopLevelMenuPanel;
 
@@ -57,6 +59,7 @@ public class UIMgr : MonoBehaviour
     public Button menuHelpButton;
     public Button helpDoneButton;
     public Button runOptimizerButton; //from optimizer panel
+    public Button doneWithOptimizationProgressButton; //from optimization progress panel
 
     // Start is called before the first frame update
     void Start()
@@ -126,6 +129,7 @@ public class UIMgr : MonoBehaviour
             HelpPanel.isValid = (_state == EGameState.ShowHelp);
             MenuPanel.isValid = (_state == EGameState.GameMenu);
             OptimizerPanel.isValid = (_state == EGameState.RouteOptimizing);
+            OptimizationProgressPanel.isValid = (_state == EGameState.ShowingOptimizationProgress);
 
             //Game Controller UI/Playing switch and Navigation
             switch (_state) {
@@ -147,6 +151,10 @@ public class UIMgr : MonoBehaviour
                 case EGameState.RouteOptimizing:
                     EventSystem.current.firstSelectedGameObject = runOptimizerButton.gameObject;
                     runOptimizerButton.Select();
+                    break;
+                case EGameState.ShowingOptimizationProgress:
+                    EventSystem.current.firstSelectedGameObject = doneWithOptimizationProgressButton.gameObject;
+                    doneWithOptimizationProgressButton.Select();
                     break;
                 default:
                     EventSystem.current.firstSelectedGameObject = null;
@@ -177,12 +185,25 @@ public class UIMgr : MonoBehaviour
         State = priorState;
     }
 
+    public void HandleRunOptimizer()
+    {
+        State = EGameState.ShowingOptimizationProgress;
+        GATest.inst.OnStartGA();
+        State = EGameState.ShowingOptimizationProgress;
+    }
+    /*
     public void HandleRouteOptimizer()
     {
         State = EGameState.RouteOptimizing;
     }
+    */
 
     public void HandleDoneRouteOptimizer()
+    {
+        State = EGameState.ShowingOptimizationProgress;
+    }
+
+    public void HandleDoneWithOptimizationProgress()
     {
         State = EGameState.Monitoring;
     }

@@ -25,4 +25,11 @@ public class GAUtils
     {
         System.IO.File.AppendAllText(filename, report);        
     }
+
+    public static int AddOneModulo(int x, int modulus)
+    { // base 0
+        return (x + 1 >= modulus ? 0 : x+1);
+    }
+    
+
 }
