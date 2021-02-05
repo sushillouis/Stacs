@@ -39,6 +39,26 @@ public class LineMgr : MonoBehaviour
         return lr;
     }
 
+    public LineRenderer CreateTrussMoveLine(Vector3 p1, Vector3 p2)
+    {
+        LineRenderer lr = Instantiate<LineRenderer>(MovePrefab, transform);
+        lr.SetPosition(0, p1);
+        lr.SetPosition(1, p2);
+        lines.Add(lr);
+        return lr;
+    }
+
+    public LineRenderer CreateTrussMoveLine(Vector3 p1, Vector3 p2, Vector3 p3)
+    {
+        LineRenderer lr = Instantiate<LineRenderer>(MovePrefab, transform);
+        lr.positionCount = 3;
+        lr.SetPosition(0, p1);
+        lr.SetPosition(1, p2);
+        lr.SetPosition(2, p3);
+        lines.Add(lr);
+        return lr;
+    }
+
     public LineRenderer CreatePotentialLine(Vector3 p1)
     {
         LineRenderer lr = Instantiate<LineRenderer>(PotentialPrefab, transform);

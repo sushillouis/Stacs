@@ -8,7 +8,7 @@ public class Follow : Move
 {
     public StacsEntity targetEntity;
     public Vector3 relativeOffset;
-    public Follow(StacsEntity ent, StacsEntity target, Vector3 delta) : base(ent, target.transform.position)
+    public Follow(StacsEntity ent, StacsEntity target, Vector3 delta) : base(ent, target.position)
     {
         targetEntity = target;
         relativeOffset = target.transform.InverseTransformVector(delta);

@@ -6,21 +6,25 @@ using UnityEngine;
 public class TrussMove : Command
 {
     //target position
-    public Vector3 movePosition;
+    public Waypoint destination;
     //public LineRenderer potentialLine;
 
     //distance needed for robot to come to a complete stop
     public float doneDistanceSq;
+    public Vector3 edgePoint;
 
     //CONSTRUCTOR
-    public TrussMove(StacsEntity ent, Vector3 pos) : base(ent)
+    public TrussMove(StacsEntity ent, Waypoint w) : base(ent)
     {
         //Get position in the plane of movement of the robot. So vertex placement doesn't have to be exact.
         //This will need updating when vertices may be on different planes
-        Plane plane = new Plane(entity.transform.up, entity.transform.position);
-        movePosition = plane.ClosestPointOnPlane(pos);
+        destination = w;
         //Create line but leave deactive until command begins
-        line = LineMgr.inst.CreateMoveLine(entity.position, movePosition);
+        edgePoint = Utils.GetEdgePoint(entity.transform.position, destination.position, entity.transform.up, destination.transform.up);
+        if(edgePoint == Vector3.zero)
+            line = LineMgr.inst.CreateTrussMoveLine(entity.position, destination.position);
+        else
+            line = LineMgr.inst.CreateTrussMoveLine(entity.position, edgePoint, destination.position);
         line.gameObject.SetActive(false);
     }
 
@@ -30,6 +34,8 @@ public class TrussMove : Command
     public bool going = false;
     public override void Tick()
     {
+        edgePoint = Utils.GetEdgePoint(entity.transform.position, destination.position, entity.transform.up, destination.transform.up);
+        line.positionCount = (edgePoint == Vector3.zero) ? 2 : 3;
         //Get desired speed and heading at current time
         DHDS dhds;
         dhds = ComputeDHDS();
@@ -38,7 +44,7 @@ public class TrussMove : Command
 
         //Check if time needed to stop is greater than remaining distance, if so begin stopping.
         //This method means the robot will overshoot, but it is only noticable when acceleration is very high.
-        if((entity.transform.position - movePosition).sqrMagnitude <= doneDistanceSq)
+        if(ComputeRealDistanceSq() <= doneDistanceSq)
         {
             stopping = true;
         }
@@ -66,7 +72,7 @@ public class TrussMove : Command
             entity.desiredHeading = dhds.dh;
         }
         //Update line position
-        line.SetPosition(1, movePosition);
+        line.SetPosition(1, destination.position);
     }
 
     //Get distance needed to come to a complete stop
@@ -80,6 +86,22 @@ public class TrussMove : Command
         return distance * distance;
     }
 
+    public float ComputeRealDistanceSq()
+    {
+        float distance;
+
+        if(entity.transform.up == destination.transform.up)
+        {
+            distance = (destination.position - entity.transform.position).magnitude;
+            return distance * distance;
+        }
+
+        Vector3 diff1 = destination.position - edgePoint;
+        Vector3 diff2 = edgePoint - entity.transform.position;
+        distance = diff1.magnitude + diff2.magnitude;
+        return distance * distance;
+    }
+
     public Vector3 diff = Vector3.positiveInfinity;
     public float dhRadians;
     public float dhDegrees;
@@ -88,7 +110,14 @@ public class TrussMove : Command
     public DHDS ComputeDHDS()
     {
         //distance to target point
-        diff = movePosition - entity.transform.position;
+        if(entity.transform.up == destination.transform.up)
+        {
+            diff = destination.position - entity.transform.position;
+        }
+        else
+        {
+            diff = edgePoint - entity.transform.position;
+        }
         //Convert diff from world space to local space
         diff = entity.transform.InverseTransformDirection(diff);
         //Calculate target heading in radians

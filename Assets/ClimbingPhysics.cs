@@ -113,6 +113,7 @@ public class ClimbingPhysics : MonoBehaviour
         entity.velocity.y = transform.InverseTransformDirection(entityRigidBody.velocity).y 
             + ((force/entity.mass) * Time.deltaTime);
         entityRigidBody.velocity = transform.TransformDirection(entity.velocity);
+        entity.position = transform.position;
     }
 
     public RaycastHit hitInfo;

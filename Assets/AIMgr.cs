@@ -38,6 +38,7 @@ public class AIMgr : MonoBehaviour
     public bool isOffsetting = false;
     public Vector3 startPos;
     public Vector3 endPos;
+    public Vector3 normal;
     public Vector3 offset;
     public Vector3 offsetXZ;
     public Vector3 startMousePos;
@@ -68,7 +69,7 @@ public class AIMgr : MonoBehaviour
             isOffsetting = false;
             SetEndPos();
             SetOffset(startPos, Input.mousePosition);
-            HandleCommand(startPos, endPos, offset, targetEntity);
+            HandleCommand(startPos, normal, endPos, offset, targetEntity);
             LineMgr.inst.DestroyLR(offsetLine);
         }
 
@@ -77,6 +78,7 @@ public class AIMgr : MonoBehaviour
             DrawOffset();
         }
     }
+    /*
     public void OldCommand()
     {
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue)) {
@@ -86,7 +88,7 @@ public class AIMgr : MonoBehaviour
             Debug.Log(pos);
             targetEntity = FindClosestEntInRadius(pos, rClickRadiusSq);
             if (targetEntity == null) {
-                HandleMove(SelectionMgr.inst.selectedEntities, pos);
+                HandleMove(SelectionMgr.inst.selectedEntities, pos, normal);
                 commandType = ECommandType.Move;
             } else {
                 if (Input.GetKey(KeyCode.LeftControl))
@@ -99,7 +101,7 @@ public class AIMgr : MonoBehaviour
         } else {
             //Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.TransformDirection(Vector3.forward) * 1000, Color.white, 2);
         }
-    }
+    }*/
 
     public void SetStartPosAndTarget()
     {
@@ -107,6 +109,7 @@ public class AIMgr : MonoBehaviour
         if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue)) {
             Debug.DrawLine(Camera.main.transform.position, hit.point, Color.yellow, 2); //for debugging
             startPos = hit.point;
+            normal = hit.normal;
             targetEntity = FindClosestEntInRadius(startPos, rClickRadiusSq);
         } else {
             startPos = Vector3.down;
@@ -139,12 +142,12 @@ public class AIMgr : MonoBehaviour
         offsetXZ *= xzFactor;
     }
 
-    public void HandleCommand(Vector3 start, Vector3 end, Vector3 offset, StacsEntity targetEntity) {
+    public void HandleCommand(Vector3 start, Vector3 norm, Vector3 end, Vector3 offset, StacsEntity targetEntity) {
         if (start == Vector3.down || end == Vector3.down)
             Debug.Log("Error in start position: " + startPos + " or end position: " + endPos);
         if(targetEntity == null) {
             //Debug.Log("Endposition = " + (start + offset).ToString());
-            HandleMove(SelectionMgr.inst.selectedEntities, start + offset);
+            HandleMove(SelectionMgr.inst.selectedEntities, start, offset, normal);
         } else {
             if (Input.GetKey(KeyCode.LeftControl))
                 HandleIntercept(SelectionMgr.inst.selectedEntities, targetEntity);
@@ -173,18 +176,18 @@ public class AIMgr : MonoBehaviour
     }
 
 
-    public void HandleMove(List<StacsEntity> entities, Vector3 point)
+    public void HandleMove(List<StacsEntity> entities, Vector3 start, Vector3 offset, Vector3 norm)
     {
         foreach (StacsEntity entity in entities) {
             if(entity.GetComponent<ClimbingPhysics>() != null)
             {
-                TrussMove tm = new TrussMove(entity, point);
+                TrussMove tm = new TrussMove(entity, new Waypoint(start, norm));
                 UnitAI uai = entity.GetComponent<UnitAI>();
                 AddOrSet(tm, uai);
             }
             else
             {
-                Move m = new Move(entity, point);
+                Move m = new Move(entity, start + offset);
                 UnitAI uai = entity.GetComponent<UnitAI>();
                 AddOrSet(m, uai);
             }
@@ -249,7 +252,7 @@ public class AIMgr : MonoBehaviour
                 {
                     if(ent.GetComponent<ClimbingPhysics>() != null)
                     {
-                        TrussMove tm = new TrussMove(ent, t.position);
+                        TrussMove tm = new TrussMove(ent, new Waypoint(t));
                         UnitAI uai = ent.GetComponent<UnitAI>();
                         uai.AddCommand(tm);
                     }

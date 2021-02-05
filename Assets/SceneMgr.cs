@@ -7,13 +7,27 @@ using System.IO;
 [System.Serializable]
 public class Waypoint
 {
-    public Vector3 position;
+    public GameObject go;
+    public Transform transform;
+    public Vector3 position
+    {
+        get
+        {return transform.position;}
+    }
     public string name;
 
-    public Waypoint(Vector3 position, string name = null)
+    public Waypoint(Transform transform, string name = null)
     {
-        this.position = position;
+        this.transform = transform;
         this.name = name;
+    }
+
+    public Waypoint(Vector3 pos, Vector3 norm)
+    {
+        go = GameObject.Instantiate(new GameObject());
+        go.transform.position = pos;
+        go.transform.up = norm;
+        this.transform = go.transform;
     }
 }
 
@@ -78,7 +92,7 @@ public class SceneMgr : MonoBehaviour
         {
             Transform t = AllClimbingWaypointsRoot.transform.GetChild(i).transform;
             t.gameObject.GetComponent<Vertex>().UpdateInfo('v' + i.ToString());
-            AllClimbingWaypoints.Add(new Waypoint(t.position, t.gameObject.name));
+            AllClimbingWaypoints.Add(new Waypoint(t, t.gameObject.name));
         }
     }
 
@@ -196,7 +210,7 @@ public class SceneMgr : MonoBehaviour
             }
             else
             {
-                tm = new TrussMove(ent, w.position);
+                tm = new TrussMove(ent, w);
                 uai.AddCommand(tm);
             }
             i++;
@@ -242,7 +256,7 @@ public class SceneMgr : MonoBehaviour
                 foreach (Transform w in r.GetComponentsInChildren<Transform>())
                 {
                     if (w.name.StartsWith("Cube"))
-                        route.Waypoints.Add(new Waypoint(w.position, w.gameObject.name));
+                        route.Waypoints.Add(new Waypoint(w, w.gameObject.name));
                 }
                 DroneRoutes.Add(route);
             }

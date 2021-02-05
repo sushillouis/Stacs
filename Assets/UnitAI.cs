@@ -57,7 +57,6 @@ public class UnitAI : MonoBehaviour
     void StopAndRemoveCommand(int index)
     {
         commands[index].Stop();
-        commands.RemoveAt(index);
         if (commands[index] is Intercept)
             intercepts.Remove(commands[index] as Intercept);
         else if (commands[index] is Follow)
@@ -66,6 +65,7 @@ public class UnitAI : MonoBehaviour
             moves.Remove(commands[index] as Move);
         else if (commands[index] is TrussMove)
             trussMoves.Remove(commands[index] as TrussMove);
+        commands.RemoveAt(index);
     }
 
     //Used before setting command
@@ -122,7 +122,9 @@ public class UnitAI : MonoBehaviour
             if (prior == null)
                 current.line.SetPosition(0, entity.position);
             else
-                current.line.SetPosition(0, prior.line.GetPosition(1));
+            {
+                current.line.SetPosition(0, prior.line.GetPosition(prior.line.positionCount - 1));
+            }
 
             if (current is Intercept) { //Most specific
                 Intercept intercept = current as Intercept;
@@ -137,6 +139,26 @@ public class UnitAI : MonoBehaviour
                 f.line.SetPosition(1, f.targetEntity.position + f.offset);
                 f.line.SetPosition(2, f.targetEntity.position);
                 //f.line.SetPosition(1, f.predictedMovePosition);
+
+            } else if(current is TrussMove){
+                TrussMove tm = current as TrussMove;
+
+                Vector3 norm1 = (prior == null) ? entity.transform.up : (prior as TrussMove).destination.transform.up;
+                Vector3 norm2 = tm.destination.transform.up;
+                Vector3 p1 = tm.line.GetPosition(0) + norm1 * 0.05f;
+                Vector3 p2 = tm.destination.position + norm2 * 0.05f;
+
+                tm.line.positionCount = (norm1 == norm2) ? 2 : 3;
+
+                if(tm.line.positionCount <= 2)
+                    tm.line.SetPosition(1, p2 + norm2 * 0.01f);
+                else
+                {
+                    Vector3 edgePoint = Utils.GetEdgePoint(p1, p2, norm1, norm2);
+                    Debug.Log("equal norms: " + (norm1 == norm2) + " edgePoint: " + edgePoint);
+                    tm.line.SetPosition(1, edgePoint);
+                    tm.line.SetPosition(2, p2);
+                }
             }
             //Moveposition never changes
         }
