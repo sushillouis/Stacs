@@ -3,26 +3,86 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class MenuMgr : MonoBehaviour
 {
     public Vector3 offScreenPos;
     public RectTransform mainMenuPanel;
     public RectTransform vrSelectionPanel;
+
+    public Button vrButton;
+    public Button pcButton;
+
+    public Text title;
     public Text countdownText;
 
-    public void Start()
+    private int mode = 0;
+    private int counterFontSize = 0;
+    public float secondsBeforeLaunch;
+    private GameObject eventSystem;
+
+    public void Awake()
     {
         mainMenuPanel.position += offScreenPos;
-        StartCoroutine("Countdown");
+
+
+
+        title.text = "Launching PC mode in:";
+
+        counterFontSize = countdownText.fontSize;
     }
 
-    public void GoToMenu(bool vr)
+    private void Start()
     {
-        StopAllCoroutines();
-        SettingsMgr.vrEnabled = vr;
+        DeselectAll();
+        pcButton.Select();
+        pcButton.OnSelect(null);
+    }
+
+    public void LaunchSelected()
+    {
+        if (mode == 0)
+        {
+            ShowMenu();
+        } else if (mode == 1)
+        {
+            ShowMenu();
+            EnableVR();
+        }
+    }
+
+    private void DeselectAll()
+    {
+        EventSystem.current.SetSelectedGameObject(null);
+    }
+
+    public void SelectPC()
+    {
+        mode = 0;
+        title.text = "Launching PC mode in:";
+/*        pcButton.Select();
+        pcButton.OnSelect(null);*/
+    }
+
+
+    public void SelectVR()
+    {
+        mode = 1;
+        title.text = "Launching VR mode in:";
+/*        vrButton.Select();
+        vrButton.OnSelect(null);*/
+    }
+
+    public void ShowMenu()
+    {
         mainMenuPanel.position -= offScreenPos;
         vrSelectionPanel.position += offScreenPos;
+    }
+
+    public void EnableVR()
+    {
+        SettingsMgr.vrEnabled = true;
     }
 
     public void LaunchScene(int bridge)
@@ -31,13 +91,21 @@ public class MenuMgr : MonoBehaviour
         SceneManager.LoadScene("SteelTrussBridge");
     }
 
-    IEnumerator Countdown()
+    private void Update()
     {
-        while(Time.time <= 5.0f)
+        if (secondsBeforeLaunch > 0)
         {
-            countdownText.text = (5.0f - Time.time).ToString("F0");
-            yield return null;
-        }
-        GoToMenu(true);
+            secondsBeforeLaunch -= Time.deltaTime;
+            countdownText.fontSize =  Mathf.CeilToInt((1f - (secondsBeforeLaunch - Mathf.Floor(secondsBeforeLaunch))) * (float) counterFontSize); // adjustst the size of the font 0 - 100% based on the time inbetween seconds
+            countdownText.text = Mathf.CeilToInt(secondsBeforeLaunch).ToString();
+
+            if (secondsBeforeLaunch <= 0)
+            {
+                LaunchSelected();
+            }
+        } 
     }
+
+
+
 }
