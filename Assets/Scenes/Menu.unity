@@ -1871,7 +1871,7 @@ MonoBehaviour:
   pcButton: {fileID: 2087255936}
   title: {fileID: 1429804773}
   countdownText: {fileID: 606340172}
-  secondsBeforeLaunch: 10
+  secondsBeforeLaunch: 5
 --- !u!4 &832972298
 Transform:
   m_ObjectHideFlags: 0
