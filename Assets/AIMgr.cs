@@ -51,26 +51,12 @@ public class AIMgr : MonoBehaviour
     void Update()
     {
         if (Input.GetMouseButtonDown(1)) {
-            isOffsetting = true;
-            SetStartPosAndTarget();
-            offsetLine = LineMgr.inst.CreateCommandOffsetLine(startPos, startPos, startPos);
-            if (targetEntity == null) {
-                commandType = ECommandType.Move;
-                offsetLine.loop = true;
-            } else {
-                if (Input.GetKey(KeyCode.LeftControl))
-                    commandType = ECommandType.Intercept;
-                else
-                    commandType = ECommandType.Follow;
-            }
+
+            StartOffsetting();
         }
 
         if (Input.GetMouseButtonUp(1)) {
-            isOffsetting = false;
-            SetEndPos();
-            SetOffset(startPos, Input.mousePosition);
-            HandleCommand(startPos, normal, endPos, offset, targetEntity);
-            LineMgr.inst.DestroyLR(offsetLine);
+            StopOffsetting();
         }
 
         if (isOffsetting) {
@@ -78,6 +64,35 @@ public class AIMgr : MonoBehaviour
             DrawOffset();
         }
     }
+
+    void StartOffsetting()
+    {
+        isOffsetting = true;
+        SetStartPosAndTarget();
+        offsetLine = LineMgr.inst.CreateCommandOffsetLine(startPos, startPos, startPos);
+        if (targetEntity == null)
+        {
+            commandType = ECommandType.Move;
+            offsetLine.loop = true;
+        }
+        else
+        {
+            if (Input.GetKey(KeyCode.LeftControl))
+                commandType = ECommandType.Intercept;
+            else
+                commandType = ECommandType.Follow;
+        }
+    }
+
+    void StopOffsetting()
+    {
+        isOffsetting = false;
+        SetEndPos();
+        SetOffset(startPos, Input.mousePosition);
+        HandleCommand(startPos, normal, endPos, offset, targetEntity);
+        LineMgr.inst.DestroyLR(offsetLine);
+    }
+
     /*
     public void OldCommand()
     {

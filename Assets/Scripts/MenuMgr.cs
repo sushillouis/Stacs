@@ -17,18 +17,26 @@ public class MenuMgr : MonoBehaviour
     public Text title;
     public Text countdownText;
 
-    private int mode = 0;
+    private int mode = 1;
     private int counterFontSize = 0;
     public float secondsBeforeLaunch;
     private GameObject eventSystem;
+    private bool autoLaunch;
 
     public void Awake()
     {
-        mainMenuPanel.position += offScreenPos;
+        autoLaunch = true;
+        if (Time.realtimeSinceStartup > 5.0f)
+        {
+            autoLaunch = false;
+            vrSelectionPanel.position += offScreenPos;
+        }
+        else
+        {
+            mainMenuPanel.position += offScreenPos;
+        }
 
-
-
-        title.text = "Launching PC mode in:";
+        title.text = "Launching VR mode in:";
 
         counterFontSize = countdownText.fontSize;
     }
@@ -36,8 +44,8 @@ public class MenuMgr : MonoBehaviour
     private void Start()
     {
         DeselectAll();
-        pcButton.Select();
-        pcButton.OnSelect(null);
+        vrButton.Select();
+        vrButton.OnSelect(null);
     }
 
     public void LaunchSelected()
@@ -85,27 +93,27 @@ public class MenuMgr : MonoBehaviour
         SettingsMgr.vrEnabled = true;
     }
 
-    public void LaunchScene(int bridge)
+    public void LaunchScene(int environment)
     {
-        SettingsMgr.bridge = bridge;
+        SettingsMgr.environment = environment;
         SceneManager.LoadScene("SteelTrussBridge");
     }
 
     private void Update()
     {
-        if (secondsBeforeLaunch > 0)
+        if(autoLaunch)
         {
-            secondsBeforeLaunch -= Time.deltaTime;
-            countdownText.fontSize =  Mathf.CeilToInt((1f - (secondsBeforeLaunch - Mathf.Floor(secondsBeforeLaunch))) * (float) counterFontSize); // adjustst the size of the font 0 - 100% based on the time inbetween seconds
-            countdownText.text = Mathf.CeilToInt(secondsBeforeLaunch).ToString();
-
-            if (secondsBeforeLaunch <= 0)
+            if (secondsBeforeLaunch > 0)
             {
-                LaunchSelected();
+                secondsBeforeLaunch -= Time.deltaTime;
+                countdownText.fontSize = Mathf.CeilToInt((1f - (secondsBeforeLaunch - Mathf.Floor(secondsBeforeLaunch))) * (float)counterFontSize); // adjustst the size of the font 0 - 100% based on the time inbetween seconds
+                countdownText.text = Mathf.CeilToInt(secondsBeforeLaunch).ToString();
+
+                if (secondsBeforeLaunch <= 0)
+                {
+                    LaunchSelected();
+                }
             }
-        } 
+        }
     }
-
-
-
 }

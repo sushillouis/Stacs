@@ -16,7 +16,7 @@ public class CameraController : MonoBehaviour
     public float yawRate = 10;
     public float pitchRate = 10;
 
-
+    float speedMultiplier;
 
     void Update()
     {
@@ -34,64 +34,79 @@ public class CameraController : MonoBehaviour
             Vector3 pos = transform.position;
 
             //Check for left shift, if so increase movement speed
-            float speedMultiplier = (Input.GetKey(KeyCode.LeftShift)) ? keyboardSpeedMultiplier : 1;
+            speedMultiplier = (Input.GetKey(KeyCode.LeftShift)) ? keyboardSpeedMultiplier : 1;
 
-            pos += cameraObject.transform.right * Input.GetAxis("DPadHorizontal") * speed * Time.deltaTime;
-            pos -= cameraObject.transform.forward * Input.GetAxis("DPadVertical") * speed * Time.deltaTime;
+            //pos += cameraObject.transform.right * Input.GetAxis("DPadHorizontal") * speed * Time.deltaTime;
+            //pos -= cameraObject.transform.forward * Input.GetAxis("DPadVertical") * speed * Time.deltaTime;
             //Keyboard arrow keys
             if (Input.GetKey(KeyCode.W))
-                pos += cameraObject.transform.forward * keyboardSpeed * speedMultiplier * Time.deltaTime;
+                Move(cameraObject.transform.forward);
             if (Input.GetKey(KeyCode.S))
-                pos -= cameraObject.transform.forward * keyboardSpeed * speedMultiplier * Time.deltaTime;
+                Move(-cameraObject.transform.forward);
             if (Input.GetKey(KeyCode.D))
-                pos += cameraObject.transform.right * keyboardSpeed * speedMultiplier * Time.deltaTime;
+                Move(cameraObject.transform.right);
             if (Input.GetKey(KeyCode.A))
-                pos -= cameraObject.transform.right * keyboardSpeed * speedMultiplier * Time.deltaTime;
-
+                Move(-cameraObject.transform.right);
+            /*
             //GameController, hold rightTrigger and use second joystick
             if (Input.GetAxis("CameraUp") > 0.5f) {
                 pos.y += Input.GetAxis("Up") * speed * Time.deltaTime;
                 pos.y -= Input.GetAxis("Down") * speed * Time.deltaTime;
             }
+            */
             //Keyboard
             if (Input.GetKey(KeyCode.R))
-                pos.y += keyboardSpeed * speedMultiplier * Time.deltaTime;
+                Move(Vector3.up);// pos.y += keyboardSpeed * speedMultiplier * Time.deltaTime;
             if (Input.GetKey(KeyCode.F))
-                pos.y -= keyboardSpeed * speedMultiplier * Time.deltaTime;
+                Move(-Vector3.up);// pos.y -= keyboardSpeed * speedMultiplier * Time.deltaTime;
 
-            transform.position = pos;
+            //transform.position = pos;
             //-------Rotation Game Controller YAW-------------------------------------
-            Vector3 yaw = yawNode.transform.eulerAngles;
-            yaw.y += Input.GetAxis("LookX") * turnRate * Time.deltaTime;
+            //Vector3 yaw = yawNode.transform.eulerAngles;
+            //yaw.y += Input.GetAxis("LookX") * turnRate * Time.deltaTime;
 
             //These lines make it impossible to move camera laterally, seems better without
             //if (Input.GetKey(KeyCode.LeftShift))
-                //yaw.y += Input.GetAxis("Horizontal") * turnRate * Time.deltaTime;
+            //yaw.y += Input.GetAxis("Horizontal") * turnRate * Time.deltaTime;
 
             //---Keyboard
 
             if (Input.GetKey(KeyCode.Q))
-                yaw.y -= yawRate + Time.deltaTime;
+                Yaw(-1);
             if (Input.GetKey(KeyCode.E))
-                yaw.y += yawRate + Time.deltaTime;
-
-
-            yawNode.transform.eulerAngles = yaw;
+                Yaw(1);
 
             //---------------Rotation pitch--------------------------------
-            Vector3 pitch = pitchNode.transform.eulerAngles;
-            pitch.x += Input.GetAxis("LookY") * turnRate * Time.deltaTime;
+            //Vector3 pitch = pitchNode.transform.eulerAngles;
+            //pitch.x += Input.GetAxis("LookY") * turnRate * Time.deltaTime;
             //if (Input.GetKey(KeyCode.LeftShift))
-                //pitch.x += Input.GetAxis("Vertical") * turnRate * Time.deltaTime;
+            //pitch.x += Input.GetAxis("Vertical") * turnRate * Time.deltaTime;
             //Keyboard
             if (Input.GetKey(KeyCode.Z))
-                pitch.x += pitchRate * Time.deltaTime;
+                Pitch(1);
             if (Input.GetKey(KeyCode.X))
-                pitch.x -= pitchRate * Time.deltaTime;
+                Pitch(-1);
 
-            pitchNode.transform.eulerAngles = pitch;
         }
     }
 
+    void Move(Vector3 moveVec)
+    {
+        transform.position += moveVec * keyboardSpeed * speedMultiplier * Time.deltaTime;
+    }
+
+    void Yaw(float direction)
+    {
+        Vector3 yaw = yawNode.transform.eulerAngles;
+        yaw.y += direction * yawRate + Time.deltaTime;
+        yawNode.transform.eulerAngles = yaw;
+    }
+
+    void Pitch(float direction)
+    {
+        Vector3 pitch = pitchNode.transform.eulerAngles;
+        pitch.x += direction * pitchRate + Time.deltaTime;
+        pitchNode.transform.eulerAngles = pitch;
+    }
 
 }

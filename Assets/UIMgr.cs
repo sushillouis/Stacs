@@ -81,9 +81,14 @@ public class UIMgr : MonoBehaviour
     void CheckForUINavigation()
     {
         if (Input.GetKeyUp(KeyCode.Joystick1Button7)) {
-            State = EGameState.GameMenu;
+            PauseGame();
         }
 
+    }
+
+    void PauseGame()
+    {
+        State = EGameState.GameMenu;
     }
 
     [ContextMenu("UpdateProto")] //For testing Stacs Panels

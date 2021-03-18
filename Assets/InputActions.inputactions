@@ -7,64 +7,104 @@
             "actions": [
                 {
                     "name": "IncreaseSpeed",
+                    "type": "Value",
                     "id": "4e02df27-9a71-447a-9c66-4da051355bc8",
-                    "expectedControlLayout": "",
-                    "continuous": false,
-                    "passThrough": false,
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
-                    "bindings": []
+                    "interactions": ""
                 },
                 {
                     "name": "DecreaseSpeed",
+                    "type": "Value",
                     "id": "299ba88a-45d9-4d7c-9643-05aa28990290",
-                    "expectedControlLayout": "",
-                    "continuous": false,
-                    "passThrough": false,
+                    "expectedControlType": "",
                     "processors": "",
-                    "interactions": "",
-                    "bindings": []
+                    "interactions": ""
+                },
+                {
+                    "name": "Test0",
+                    "type": "Value",
+                    "id": "f8ebb7d1-6521-4226-be2e-de1c4c6493ee",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "Press"
                 }
             ],
             "bindings": [
                 {
                     "name": "",
+                    "id": "ba865551-9ee2-491a-af1f-d4e4f6139889",
                     "path": "<Keyboard>/upArrow",
                     "interactions": "Press",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";New control scheme",
                     "action": "IncreaseSpeed",
-                    "chainWithPrevious": false,
                     "isComposite": false,
-                    "isPartOfComposite": false,
-                    "modifiers": ""
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
+                    "id": "5f7922a9-2777-44a9-bc5b-f5fab2933922",
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
                     "action": "IncreaseSpeed",
-                    "chainWithPrevious": false,
                     "isComposite": false,
-                    "isPartOfComposite": false,
-                    "modifiers": ""
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
+                    "id": "4d3427b9-0820-45bb-8921-834334e60154",
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";New control scheme",
                     "action": "DecreaseSpeed",
-                    "chainWithPrevious": false,
                     "isComposite": false,
-                    "isPartOfComposite": false,
-                    "modifiers": ""
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e9917cd0-d601-485d-aa88-5aa3a0f4ce9c",
+                    "path": "<Keyboard>/space",
+                    "interactions": "Press,Tap",
+                    "processors": "",
+                    "groups": ";New control scheme",
+                    "action": "Test0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c1ced890-0c62-4451-8ad4-6fe179bb8fcd",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": ";New control scheme",
+                    "action": "Test0",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
     ],
-    "controlSchemes": []
+    "controlSchemes": [
+        {
+            "name": "Main",
+            "bindingGroup": "New control scheme",
+            "devices": [
+                {
+                    "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Gamepad>",
+                    "isOptional": true,
+                    "isOR": false
+                }
+            ]
+        }
+    ]
 }

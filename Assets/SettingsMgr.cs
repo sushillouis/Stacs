@@ -5,5 +5,5 @@ using UnityEngine;
 public static class SettingsMgr
 {
     public static bool vrEnabled = false;
-    public static int bridge = 0;
+    public static int environment;
 }

@@ -14,7 +14,6 @@ public class LevelMgr : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log(SettingsMgr.vrEnabled);
         VREnabled = SettingsMgr.vrEnabled;
         oculus.SetActive(VREnabled);
         canvas.renderMode = VREnabled ? RenderMode.ScreenSpaceCamera : RenderMode.ScreenSpaceOverlay;

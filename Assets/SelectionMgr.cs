@@ -32,29 +32,32 @@ public class SelectionMgr : MonoBehaviour
         toggleTimer -= (toggleTimer < 0 ? 0 : Time.deltaTime);
 
         if (Input.GetMouseButtonDown(0)) { //start box selecting
-            isSelecting = true;
             StartBoxSelecting();
         }
 
         if (Input.GetMouseButtonUp(0)) { //end box selecting
-            isSelecting = false;
             EndBoxSelecting();
         }
 
         if (isSelecting) // while box selecting
             UpdateSelectionBox(startMousePosition, Input.mousePosition);
-
     }
     void StartBoxSelecting()
     {
+        isSelecting = true;
         startMousePosition = Input.mousePosition;
         SelectionBoxPanel.gameObject.SetActive(true);
     }
     public float selectionSensitivity = 25;
     void EndBoxSelecting()
     {
+        isSelecting = false;
+
         if ((Input.mousePosition - startMousePosition).sqrMagnitude > selectionSensitivity)
+        {
             ClearSelection(); // if not small box, then clear selection
+            Debug.Log("Cleared Selection");
+        }
 
         SelectEntitiesInBox(startMousePosition, Input.mousePosition);
         SelectionBoxPanel.gameObject.SetActive(false);
