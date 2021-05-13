@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraMgr : MonoBehaviour
 {
@@ -21,20 +22,25 @@ public class CameraMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetKeyUp(KeyCode.Joystick1Button1) || Input.GetKeyUp(KeyCode.Backslash) ) {
             SelectNextCameraEntity();
         }
         //FollowEntity();
+        */
     }
     public int entityIndex = 0; //This is RTS camera
     public StacsEntity cameraEntity;
     public RenderTexture RenderTextureToCopyForEntityCams;
 
-    public void SelectNextCameraEntity()
+    public void SelectNextCameraEntity(InputAction.CallbackContext context)
     {
-        entityIndex = (entityIndex >= EntityMgr.inst.entities.Count - 1 ? 0 : entityIndex + 1);
-        cameraEntity = EntityMgr.inst.entities[entityIndex];
-        SwitchViewTo(EntityMgr.inst.entities[entityIndex]);
+        if(context.started)
+        {
+            entityIndex = (entityIndex >= EntityMgr.inst.entities.Count - 1 ? 0 : entityIndex + 1);
+            cameraEntity = EntityMgr.inst.entities[entityIndex];
+            SwitchViewTo(EntityMgr.inst.entities[entityIndex]);
+        }
     }
 
     // Follow camera code - if needed
@@ -59,8 +65,10 @@ public class CameraMgr : MonoBehaviour
         CameraRoot.transform.SetParent(ent.cameraRig.transform, false);
         foreach (Transform t in ent.cameraRig.GetComponentsInChildren<Transform>()) {
             //Debug.Log(t.gameObject.name);
-            if (t.gameObject.name.Contains("CameraRig")) continue;
+            if (t.gameObject.name.Contains("CameraRig") || t.gameObject.name.Contains("ParrotDroneCamera")) continue;
             t.localPosition = Vector3.zero;
+            if(t.gameObject.name.Contains("CameraRoot") && SelectionMgr.inst.selectedEntity.entityType == EntityType.ParrotDrone)
+                t.localPosition =  new Vector3(0, -0.438f, 0.23f);
             t.localRotation = Quaternion.identity;
         }
     }

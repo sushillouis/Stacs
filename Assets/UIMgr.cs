@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public enum EGameState
 {
@@ -66,7 +67,7 @@ public class UIMgr : MonoBehaviour
     {
         //ProtoPanel.isValid = show;
         UpdateSelectedEntity();
-        CheckForUINavigation();
+        //CheckForUINavigation();
 
 
 
@@ -80,15 +81,19 @@ public class UIMgr : MonoBehaviour
 
     void CheckForUINavigation()
     {
+        /*
         if (Input.GetKeyUp(KeyCode.Joystick1Button7)) {
             PauseGame();
         }
-
+        */
     }
 
-    void PauseGame()
+    public void PauseGame(InputAction.CallbackContext context)
     {
-        State = EGameState.GameMenu;
+        if(context.started && State != EGameState.GameMenu)
+        {
+            State = EGameState.GameMenu;
+        }
     }
 
     [ContextMenu("UpdateProto")] //For testing Stacs Panels

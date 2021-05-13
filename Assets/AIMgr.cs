@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum ECommandType
 {
@@ -47,9 +48,12 @@ public class AIMgr : MonoBehaviour
     public StacsEntity targetEntity;
     public LineRenderer offsetLine = null;
 
+    private bool chainCommand = false;
+
     // Update is called once per frame
     void Update()
     {
+        /*
         if (Input.GetMouseButtonDown(1)) {
 
             StartOffsetting();
@@ -58,6 +62,7 @@ public class AIMgr : MonoBehaviour
         if (Input.GetMouseButtonUp(1)) {
             StopOffsetting();
         }
+        */
 
         if (isOffsetting) {
             SetOffset(startPos, Input.mousePosition);
@@ -65,32 +70,34 @@ public class AIMgr : MonoBehaviour
         }
     }
 
-    void StartOffsetting()
+    public void GiveCommand(InputAction.CallbackContext context)
     {
-        isOffsetting = true;
-        SetStartPosAndTarget();
-        offsetLine = LineMgr.inst.CreateCommandOffsetLine(startPos, startPos, startPos);
-        if (targetEntity == null)
+        if(context.started)
         {
-            commandType = ECommandType.Move;
-            offsetLine.loop = true;
-        }
-        else
-        {
-            if (Input.GetKey(KeyCode.LeftControl))
-                commandType = ECommandType.Intercept;
+            isOffsetting = true;
+            SetStartPosAndTarget();
+            offsetLine = LineMgr.inst.CreateCommandOffsetLine(startPos, startPos, startPos);
+            if (targetEntity == null)
+            {
+                commandType = ECommandType.Move;
+                offsetLine.loop = true;
+            }
             else
-                commandType = ECommandType.Follow;
+            {
+                if (Input.GetKey(KeyCode.LeftControl))
+                    commandType = ECommandType.Intercept;
+                else
+                    commandType = ECommandType.Follow;
+            }
         }
-    }
-
-    void StopOffsetting()
-    {
-        isOffsetting = false;
-        SetEndPos();
-        SetOffset(startPos, Input.mousePosition);
-        HandleCommand(startPos, normal, endPos, offset, targetEntity);
-        LineMgr.inst.DestroyLR(offsetLine);
+        else if(context.canceled)
+        {
+            isOffsetting = false;
+            SetEndPos();
+            SetOffset(startPos, Input.mousePosition);
+            HandleCommand(startPos, normal, endPos, offset, targetEntity);
+            LineMgr.inst.DestroyLR(offsetLine);
+        }
     }
 
     /*
@@ -120,26 +127,64 @@ public class AIMgr : MonoBehaviour
 
     public void SetStartPosAndTarget()
     {
-        startMousePos = Input.mousePosition;
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue)) {
-            Debug.DrawLine(Camera.main.transform.position, hit.point, Color.yellow, 2); //for debugging
-            startPos = hit.point;
-            normal = hit.normal;
-            targetEntity = FindClosestEntInRadius(startPos, rClickRadiusSq);
-        } else {
-            startPos = Vector3.down;
-            targetEntity = null;
+        if (SettingsMgr.vrEnabled)
+        {
+            ControlMgr.inst.rightHand.DoRaycast(out hit);
+            if(hit.point != Vector3.zero)
+            {
+                startPos = hit.point;
+                normal = hit.normal;
+                targetEntity = FindClosestEntInRadius(startPos, rClickRadiusSq);
+            }
+            else
+            {
+                startPos = Vector3.down;
+                targetEntity = null;
+            }
         }
-
+        else
+        {
+            startMousePos = Input.mousePosition;
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue))
+            {
+                Debug.DrawLine(Camera.main.transform.position, hit.point, Color.yellow, 2); //for debugging
+                startPos = hit.point;
+                normal = hit.normal;
+                targetEntity = FindClosestEntInRadius(startPos, rClickRadiusSq);
+            }
+            else
+            {
+                startPos = Vector3.down;
+                targetEntity = null;
+            }
+        }
     }
 
     public void SetEndPos()
     {
-        if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue)) {
-            //Debug.DrawLine(Camera.main.transform.position, hit.point, Color.yellow, 2); //for debugging
-            endPos = hit.point;
-        } else {
-            endPos = Vector3.down;
+        if(SettingsMgr.vrEnabled)
+        {
+            ControlMgr.inst.rightHand.DoRaycast(out hit);
+            if(hit.point != Vector3.zero)
+            {
+                endPos = hit.point;
+            }
+            else
+            {
+                endPos = Vector3.down;
+            }
+        }
+        else
+        {
+            if (Physics.Raycast(Camera.main.ScreenPointToRay(Input.mousePosition), out hit, float.MaxValue))
+            {
+                //Debug.DrawLine(Camera.main.transform.position, hit.point, Color.yellow, 2); //for debugging
+                endPos = hit.point;
+            }
+            else
+            {
+                endPos = Vector3.down;
+            }
         }
     }
 
@@ -149,12 +194,25 @@ public class AIMgr : MonoBehaviour
     {
         offset = Vector3.zero;  //startPos;// Camera.main.ScreenToWorldPoint(Input.mousePosition);
         offsetXZ = Vector3.zero;
-        Vector3 diff = mousePos - startMousePos;
-        offset.y = diff.y * altitudeFactor;
+        if(!SettingsMgr.vrEnabled)
+        {
+            Vector3 diff = mousePos - startMousePos;
+            offset.y = diff.y * altitudeFactor;
 
-        offsetXZ.x = diff.x;
-        offsetXZ.z = diff.y;
-        offsetXZ *= xzFactor;
+            offsetXZ.x = diff.x;
+            offsetXZ.z = diff.y;
+            offsetXZ *= xzFactor;
+        }
+        else
+        {
+            Transform hand = ControlMgr.inst.rightHand.transform;
+            Vector3 diff = startPos - ControlMgr.inst.rightHand.transform.position;
+            Vector3 norm = Vector3.ProjectOnPlane(diff, Vector3.up);
+            Plane target = new Plane(norm, startPos);
+            Ray ray = new Ray(hand.position, hand.forward);
+            target.Raycast(ray, out float dist);
+            offset.y = (hand.position + (hand.forward * dist)).y - startPos.y;
+        }
     }
 
     public void HandleCommand(Vector3 start, Vector3 norm, Vector3 end, Vector3 offset, StacsEntity targetEntity) {
@@ -211,13 +269,19 @@ public class AIMgr : MonoBehaviour
 
     void AddOrSet(Command c, UnitAI uai)
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (chainCommand)
             uai.AddCommand(c);
         else
             uai.SetCommand(c);
     }
 
-
+    public void SetChainCommand(InputAction.CallbackContext context)
+    {
+        if (context.started)
+            chainCommand = true;
+        else if (context.canceled)
+            chainCommand = false;
+    }
 
     public void HandleFollow(List<StacsEntity> entities, StacsEntity ent, Vector3 offset)
     {

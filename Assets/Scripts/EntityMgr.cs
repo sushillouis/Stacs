@@ -64,7 +64,7 @@ public class EntityMgr : MonoBehaviour
                         Debug.LogError("Not Enough Drone Positions Provided in EnvironmentMgr!");
                         break;
                     }
-                    e.transform.position = dronePositions[droneIndex].position;
+                    e.transform.position = e.position = dronePositions[droneIndex].position;
                     e.transform.transform.eulerAngles = dronePositions[droneIndex++].eulerAngles;
                     break;
             }

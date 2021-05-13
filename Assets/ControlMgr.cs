@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class ControlMgr : MonoBehaviour
 {
@@ -11,128 +12,83 @@ public class ControlMgr : MonoBehaviour
         inst = this;
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
     public float deltaSpeed = 5f;
     public float deltaHeading = 5f;
     public float deltaAltitude = 5f ;
+    public VRPointer leftHand;
+    public VRPointer rightHand;
 
-    // Update is called once per frame
-    void Update()
+    public void RunRoutes(InputAction.CallbackContext context)
     {
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetAxis("EntitySpeed") > 0)//|| Input.GetKeyUp(KeyCode.Joystick1Button3))
-            IncreaseSpeed();
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetAxis("EntitySpeed") < 0)// || Input.GetKeyUp(KeyCode.Joystick1Button1))
-            DecreaseSpeed();
-
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetAxis("SteerEntity") < 0)
-            DecreaseHeading();
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetAxis("SteerEntity") > 0)
-            IncreaseHeading();
-
-        if (Input.GetKey(KeyCode.PageUp) || Input.GetAxis("UpEntity") > 0)
-            IncreaseAltitude();
-        if (Input.GetKey(KeyCode.PageDown) || Input.GetAxis("DownEntity") > 0)
-            DecreaseAltitude();
-
-        //---------------Automated inspection by UAV
-
-        if (Input.GetKeyDown(KeyCode.P))
+        if(context.started)
         {
-            RunRoutes();
+            SceneMgr.inst.RunClimbingRobotRoutes();
+            SceneMgr.inst.RunDroneRoutes();
         }
     }
 
-    void IncreaseSpeed()
+    public void ChangeSpeed(InputAction.CallbackContext context)
     {
-        if (UIMgr.inst.State == EGameState.Monitoring)
+        if(context.started)
         {
-            if (SelectionMgr.inst.selectedEntity != null)
+            if (UIMgr.inst.State == EGameState.Monitoring)
             {
-                SelectionMgr.inst.selectedEntity.desiredSpeed += deltaSpeed * Time.deltaTime;
+                if (SelectionMgr.inst.selectedEntity != null)
+                {
+                    SelectionMgr.inst.selectedEntity.desiredSpeed += deltaSpeed * context.ReadValue<float>();// * Time.deltaTime;
+                }
             }
+            SelectionMgr.inst.selectedEntity.desiredSpeed =
+                Utils.Clamp(SelectionMgr.inst.selectedEntity.desiredSpeed, SelectionMgr.inst.selectedEntity.minSpeed, SelectionMgr.inst.selectedEntity.maxSpeed);
         }
-        SelectionMgr.inst.selectedEntity.desiredSpeed =
-            Utils.Clamp(SelectionMgr.inst.selectedEntity.desiredSpeed, SelectionMgr.inst.selectedEntity.minSpeed, SelectionMgr.inst.selectedEntity.maxSpeed);
     }
 
-    void DecreaseSpeed()
+    public void ChangeHeading(InputAction.CallbackContext context)
     {
-        if (UIMgr.inst.State == EGameState.Monitoring)
+        if (context.started)
         {
-            if (SelectionMgr.inst.selectedEntity != null)
+            if (UIMgr.inst.State == EGameState.Monitoring)
             {
-                SelectionMgr.inst.selectedEntity.desiredSpeed -= deltaSpeed * Time.deltaTime;
+                if (SelectionMgr.inst.selectedEntity != null)
+                {
+                    SelectionMgr.inst.selectedEntity.desiredHeading += deltaHeading * context.ReadValue<float>();// * Time.deltaTime;
+                }
             }
+            SelectionMgr.inst.selectedEntity.desiredHeading =
+                Utils.Degrees360(SelectionMgr.inst.selectedEntity.desiredHeading);
         }
-        SelectionMgr.inst.selectedEntity.desiredSpeed =
-            Utils.Clamp(SelectionMgr.inst.selectedEntity.desiredSpeed, SelectionMgr.inst.selectedEntity.minSpeed, SelectionMgr.inst.selectedEntity.maxSpeed);
     }
 
-    void IncreaseHeading()
+    public void ChangeAltitude(InputAction.CallbackContext context)
     {
-        if (UIMgr.inst.State == EGameState.Monitoring)
+        if(context.started)
         {
-            if (SelectionMgr.inst.selectedEntity != null)
+            if (UIMgr.inst.State == EGameState.Monitoring)
             {
-                SelectionMgr.inst.selectedEntity.desiredHeading += deltaHeading * Time.deltaTime;
+                if (SelectionMgr.inst.selectedEntity != null)
+                {
+                    SelectionMgr.inst.selectedEntity.desiredAltitude += deltaAltitude * context.ReadValue<float>();
+                }
             }
+            SelectionMgr.inst.selectedEntity.desiredAltitude =
+                Utils.Clamp(SelectionMgr.inst.selectedEntity.desiredAltitude,
+                SelectionMgr.inst.selectedEntity.minAltitude,
+                SelectionMgr.inst.selectedEntity.maxAltitude);
         }
-        SelectionMgr.inst.selectedEntity.desiredHeading =
-            Utils.Degrees360(SelectionMgr.inst.selectedEntity.desiredHeading);
     }
 
-    void DecreaseHeading()
+    public void DrawLasers(InputAction.CallbackContext context)
     {
-        if (UIMgr.inst.State == EGameState.Monitoring)
+        Debug.Log("Pressed");
+        if(context.started)
         {
-            if (SelectionMgr.inst.selectedEntity != null)
-            {
-                SelectionMgr.inst.selectedEntity.desiredHeading -= deltaHeading * Time.deltaTime;
-            }
+            leftHand.SetLaser(true);
+            rightHand.SetLaser(true);
         }
-        SelectionMgr.inst.selectedEntity.desiredHeading =
-            Utils.Degrees360(SelectionMgr.inst.selectedEntity.desiredHeading);
-    }
-
-    void IncreaseAltitude()
-    {
-        if (UIMgr.inst.State == EGameState.Monitoring)
+        if(context.canceled)
         {
-            if (SelectionMgr.inst.selectedEntity != null)
-            {
-                SelectionMgr.inst.selectedEntity.desiredAltitude += deltaAltitude * Time.deltaTime;
-            }
+            leftHand.SetLaser(false);
+            rightHand.SetLaser(false);
         }
-        SelectionMgr.inst.selectedEntity.desiredAltitude =
-            Utils.Clamp(SelectionMgr.inst.selectedEntity.desiredAltitude,
-            SelectionMgr.inst.selectedEntity.minAltitude,
-            SelectionMgr.inst.selectedEntity.maxAltitude);
     }
-
-    void DecreaseAltitude()
-    {
-        if (UIMgr.inst.State == EGameState.Monitoring)
-        {
-            if (SelectionMgr.inst.selectedEntity != null)
-            {
-                SelectionMgr.inst.selectedEntity.desiredAltitude -= deltaAltitude * Time.deltaTime;
-            }
-        }
-        SelectionMgr.inst.selectedEntity.desiredAltitude =
-            Utils.Clamp(SelectionMgr.inst.selectedEntity.desiredAltitude,
-            SelectionMgr.inst.selectedEntity.minAltitude,
-            SelectionMgr.inst.selectedEntity.maxAltitude);
-    }
-
-    void RunRoutes()
-    {
-        SceneMgr.inst.RunClimbingRobotRoutes();
-        SceneMgr.inst.RunDroneRoutes();
-    }
-
 }

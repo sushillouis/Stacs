@@ -7,12 +7,17 @@ using UnityEngine.EventSystems;
 
 public class MenuMgr : MonoBehaviour
 {
+    public Canvas mainCanvas;
     public Vector3 offScreenPos;
+    public Vector3 vrCanvasPos;
+    public Vector3 vrCanvasRotation;
+    public Vector3 vrCanvasScale;
     public RectTransform mainMenuPanel;
     public RectTransform vrSelectionPanel;
 
     public Button vrButton;
     public Button pcButton;
+    public Button defaultMenuButton;
 
     public Text title;
     public Text countdownText;
@@ -26,15 +31,19 @@ public class MenuMgr : MonoBehaviour
     public void Awake()
     {
         autoLaunch = true;
+        /*
         if (Time.realtimeSinceStartup > 5.0f)
         {
             autoLaunch = false;
             vrSelectionPanel.position += offScreenPos;
+            if (SettingsMgr.vrEnabled)
+                SetupVRCanvas();
         }
+
         else
-        {
+        {*/
             mainMenuPanel.position += offScreenPos;
-        }
+        //}
 
         title.text = "Launching VR mode in:";
 
@@ -56,8 +65,11 @@ public class MenuMgr : MonoBehaviour
         } else if (mode == 1)
         {
             ShowMenu();
+            SetupVRCanvas();
             EnableVR();
         }
+        defaultMenuButton.Select();
+        defaultMenuButton.OnSelect(null);
     }
 
     private void DeselectAll()
@@ -86,6 +98,14 @@ public class MenuMgr : MonoBehaviour
     {
         mainMenuPanel.position -= offScreenPos;
         vrSelectionPanel.position += offScreenPos;
+    }
+
+    public void SetupVRCanvas()
+    {
+        mainCanvas.renderMode = RenderMode.WorldSpace;
+        mainCanvas.transform.position = vrCanvasPos;
+        mainCanvas.transform.eulerAngles = vrCanvasRotation;
+        mainCanvas.transform.localScale = vrCanvasScale;
     }
 
     public void EnableVR()

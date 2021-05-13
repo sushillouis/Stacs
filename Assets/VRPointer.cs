@@ -4,25 +4,20 @@ using UnityEngine;
 
 public class VRPointer : MonoBehaviour
 {
-    public LineRenderer lr;
+    public float lineLength;
+
+    LineRenderer lr;
+    RaycastHit hit;
 
     // Start is called before the first frame update
     void Awake()
     {
         lr = GetComponent<LineRenderer>();
         lr.positionCount = 2;
+        lr.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (OVRInput.Get(OVRInput.Button.One))
-        {
-            GiveCommand();
-        }
-    }
-
-    void GiveCommand()
+    /*void GiveCommand()
     {
         if (OVRInput.Get(OVRInput.Axis1D.SecondaryIndexTrigger) != 0.0f)
         {
@@ -47,5 +42,33 @@ public class VRPointer : MonoBehaviour
         {
             lr.enabled = false;
         }
+    }*/
+
+    public void SetLaser(bool val)
+    {
+        lr.enabled = val;
+    }
+
+    private void Update()
+    {
+        if(lr.enabled)
+        {
+            lr.SetPosition(0, transform.position);
+            float dist = lineLength;
+            if (Physics.Raycast(transform.position, transform.forward, out hit, 1000.0f))
+            {
+                dist = (hit.point - transform.position).magnitude;
+            }
+            else
+            {
+                hit.point = Vector3.zero;
+            }
+            lr.SetPosition(1, transform.position + (transform.forward * dist));
+        }
+    }
+
+    public void DoRaycast(out RaycastHit outHit)
+    {
+        outHit = hit;
     }
 }

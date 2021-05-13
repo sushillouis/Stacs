@@ -94,6 +94,8 @@ public class StacsEntity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(entityType == EntityType.ParrotDrone)
+            cameraRig.transform.forward = LookAtBridgeObject.transform.position - cameraRig.transform.position;
     }
 
     //private void OnCollisionEnter(Collision collision)
