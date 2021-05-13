@@ -8,6 +8,10 @@ public class ClimbingPhysics : MonoBehaviour
     public float magneticForce;
     public float gravityForce;
     public float groundCheckDistance;
+    public float wallCheckDistance;
+    public float wallCheckWidth;
+    public float robotLength;
+    public float robotHeight;
 
     public Vector3 groundNormal;
     public Vector3 oldGroundNormal;
@@ -42,13 +46,7 @@ public class ClimbingPhysics : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Utils.ApproximatelyEqualAngle(entity.heading, entity.desiredHeading, 2 * Utils.ANGLE_EPSILON))
-        //{
-        //    usableTurnRate = entity.turnRate / fineTuneFactor;
-        //} else
-        //{
-        //    usableTurnRate = entity.turnRate;
-        //}
+
         //Indicates forward and up direction for debugging
         if(entity.batteryState <= 0) {
             entity.speed = 0; entityRigidBody.velocity = Vector3.zero;
@@ -66,19 +64,11 @@ public class ClimbingPhysics : MonoBehaviour
             //altitude
             entity.altitude = entity.desiredAltitude = 0;
             SetRotation();
-            ApplyPhysics();
         }
+        ApplyPhysics();
     }
 
     public void UpdateSpeed() {
-
-        //if(Utils.ApproximatelyEqual(entity.speed, entity.desiredSpeed, 2 * Utils.EPSILON))
-        //{
-        //    usableAcceleration = entity.acceleration / fineTuneFactor;
-        //} else
-        //{
-        //    usableAcceleration = entity.acceleration;
-        //}
 
         if (Utils.ApproximatelyEqual(entity.speed, entity.desiredSpeed)) {
             entity.speed = entity.desiredSpeed;
@@ -103,12 +93,20 @@ public class ClimbingPhysics : MonoBehaviour
 
     public void ApplyPhysics()
     {
+        CheckWall();
         CheckGroundStatus();
 
-        entity.velocity = transform.InverseTransformDirection(localYawNode.transform.forward * entity.speed);
-        entity.velocity.y = transform.InverseTransformDirection(entityRigidBody.velocity).y 
-            + ((force/entity.mass) * Time.deltaTime);
-        entityRigidBody.velocity = transform.TransformDirection(entity.velocity);
+        if(grounded)
+        {
+            entity.velocity = transform.InverseTransformDirection(localYawNode.transform.forward * entity.speed);
+            entityRigidBody.velocity = transform.TransformDirection(entity.velocity);
+            entity.position = transform.position;
+        }
+        else
+        {
+            entityRigidBody.velocity += Vector3.up * (force / entity.mass) * Time.deltaTime;// = entity.velocity;
+            Debug.Log(transform.InverseTransformDirection(Vector3.down));
+        }
     }
 
     public RaycastHit hitInfo;
@@ -117,24 +115,44 @@ public class ClimbingPhysics : MonoBehaviour
     public Transform cubeT;
     public void CheckGroundStatus()
     {
+        //Origin of downward ray to check if still on surface
         Vector3 rayPos = transform.position + (transform.up * 0.1f);
+        //Origin of ray to find new surface
         Vector3 rayPos2 = transform.position + (transform.forward * 0.1f);
-        Debug.DrawRay(rayPos, entityRigidBody.velocity, Color.red);
 
+        //Debug.DrawRay(rayPos, entityRigidBody.velocity, Color.red);
+        //Debug.DrawRay(rayPos, -transform.up * groundCheckDistance, Color.green);
+
+        //Raycast down to check if still on surface
         if(Physics.Raycast(rayPos, -transform.up, out hitInfo, groundCheckDistance)) {
+            //Update ground normal in case of slight angle change
             oldGroundNormal = groundNormal;
             groundNormal = hitInfo.normal;
-            Debug.DrawRay(rayPos2, groundNormal, Color.yellow);
+
+            if(groundNormal != Vector3.back)
+            {
+                Debug.Log(entity.gameObject.name + ": Wrong normal found: " + groundNormal);
+            }
+
+            //Debug.DrawRay(rayPos2, groundNormal, Color.yellow);
+
+            //If newly grounded, adjust up direction
             if(!grounded) {
                 transform.up = groundNormal;
                 grounded = true;
             }
-            SetRotation();
-            transform.position = hitInfo.point;
-            force = (hitInfo.collider.gameObject.tag == "Truss" ? magneticForce : gravityForce);
 
-            //if(oldGroundNormal != groundNormal) // for down ramps
-            //    RotateToNewSurface();
+            //Correct the yaw rotation of the entity
+            SetRotation();
+            //Snap to surface if slightly above
+            transform.position = hitInfo.point;
+            //Stick if truss, otherwise fall
+            force = (hitInfo.collider.gameObject.tag == "Truss" ? magneticForce : gravityForce);
+            Debug.Log("Entity: " + entity.gameObject.name + " oldGroundNormal: " + oldGroundNormal + " groundNormal: " + groundNormal);
+            
+            if(oldGroundNormal != groundNormal) // for down ramps
+                RotateToNewSurface();
+            
             //Next if raycast forward shows ramp, rotate to go up ramp
         } else { //cliff edge
             if(Physics.Raycast(transform.position, -localYawNode.transform.up - localYawNode.transform.forward, out hitInfo, groundCheckDistance)) {
@@ -156,11 +174,48 @@ public class ClimbingPhysics : MonoBehaviour
 
     void RotateToNewSurface()
     {
+        Debug.Log("Entity: " + entity.gameObject.name + " oldGroundNormal: " + oldGroundNormal + " groundNormal: " + groundNormal + " objectName: " + hitInfo.collider.name);
         SetRotation();
         transform.position = hitInfo.point;
         transform.RotateAround(transform.position, Vector3.Cross(oldGroundNormal, groundNormal),
             Vector3.Angle(oldGroundNormal, groundNormal));
     }
 
+    public void CheckWall()
+    {
+        Vector3 center = transform.position + (transform.up * 0.1f);
+        Vector3 left = center + localYawNode.transform.InverseTransformDirection(Vector3.left) * wallCheckWidth;
+        Vector3 right = center - localYawNode.transform.InverseTransformDirection(Vector3.left) * wallCheckWidth;
 
+        if (Physics.Raycast(center, localYawNode.transform.forward, out hitInfo, wallCheckDistance))
+        {
+            SnapToWall();
+        }
+        else if (Physics.Raycast(left, localYawNode.transform.forward, out hitInfo, wallCheckDistance) ||
+            Physics.Raycast(right, localYawNode.transform.forward, out hitInfo, wallCheckDistance))
+        {
+            if (Physics.Raycast(center, localYawNode.transform.forward, out hitInfo, wallCheckDistance * 4))
+            {
+                SnapToWall();
+            }
+        }
+
+        //Debug.DrawLine(center, center + (localYawNode.transform.forward * wallCheckDistance));
+        //Debug.DrawLine(left, left + (localYawNode.transform.forward * wallCheckDistance));
+        //Debug.DrawLine(right, right + (localYawNode.transform.forward * wallCheckDistance));
+        //Debug.DrawLine(center, center - localYawNode.transform.forward * robotLength);
+        //Debug.DrawLine(transform.position, transform.position - transform.up * robotHeight);
+    }
+
+    public void SnapToWall()
+    {
+        Debug.Log(entity.gameObject.name + ": Snapped to wall!");
+        oldGroundNormal = groundNormal;
+        groundNormal = hitInfo.normal;
+        transform.RotateAround(transform.position, Vector3.Cross(oldGroundNormal, groundNormal),
+            Vector3.Angle(oldGroundNormal, groundNormal));
+        Vector3 wallOffsetDirection = Vector3.Cross(groundNormal, localYawNode.transform.TransformDirection(Vector3.right));
+        //Debug.DrawLine(hitInfo.point, hitInfo.point - (wallOffsetDirection * (robotLength - 0.1f)), Color.green, 3.0f);
+        transform.position = hitInfo.point - (wallOffsetDirection * (robotLength - 0.1f));// + (groundNormal * robotHeight);
+    }
 }

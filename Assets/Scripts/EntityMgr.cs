@@ -19,7 +19,56 @@ public class EntityMgr : MonoBehaviour
     private void Start()
     {
         selected = entities[selectedIndex];
-        //selected.Select();
+    }
+
+    public void PlaceEntities()
+    {
+        foreach(StacsEntity e in entities)
+        {
+            e.gameObject.SetActive(false);
+        }
+
+        StartingPoint camPoint = GameObject.Find("EnvironmentMgr").GetComponent<EnvironmentMgr>().current.camPoint;
+        List<StartingPoint> climbingPositions = GameObject.Find("EnvironmentMgr").GetComponent<EnvironmentMgr>().current.climbingPositions;
+        List<StartingPoint> dronePositions = GameObject.Find("EnvironmentMgr").GetComponent<EnvironmentMgr>().current.dronePositions;
+
+        int climbingIndex = 0;
+        int droneIndex = 0;
+
+        foreach(StacsEntity e in entities)
+        {
+            e.gameObject.SetActive(true);
+            switch (e.entityType)
+            {
+                case EntityType.Camera:
+                    if (camPoint == null)
+                    {
+                        Debug.LogError("Camera Position Not Set in EnvironmentMgr!");
+                        break;
+                    }
+                    e.transform.position = camPoint.position;
+                    e.transform.transform.eulerAngles = camPoint.eulerAngles;
+                    break;
+                case EntityType.ClimbingRobot:
+                    if (climbingIndex >= climbingPositions.Count)
+                    {
+                        Debug.LogError("Not Enough Climbing Positions Provided in EnvironmentMgr!");
+                        break;
+                    }
+                    e.transform.position = climbingPositions[climbingIndex].position;
+                    e.transform.transform.eulerAngles = climbingPositions[climbingIndex++].eulerAngles;
+                    break;
+                case EntityType.ParrotDrone:
+                    if (droneIndex >= dronePositions.Count)
+                    {
+                        Debug.LogError("Not Enough Drone Positions Provided in EnvironmentMgr!");
+                        break;
+                    }
+                    e.transform.position = e.position = dronePositions[droneIndex].position;
+                    e.transform.transform.eulerAngles = dronePositions[droneIndex++].eulerAngles;
+                    break;
+            }
+        }
     }
 
     // Update is called once per frame

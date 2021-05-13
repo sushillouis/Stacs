@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SelectionMgr : MonoBehaviour
 {
@@ -25,39 +26,25 @@ public class SelectionMgr : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        /*
         if (!Input.GetKeyDown(KeyCode.LeftShift) &&  Input.GetKeyUp(KeyCode.Tab) || Input.GetAxis("TabSelect") > 0.5f && (toggleTimer <= 0)) {
             toggleTimer = 0.5f;
             SelectNextEntity();
         }
+
         toggleTimer -= (toggleTimer < 0 ? 0 : Time.deltaTime);
 
         if (Input.GetMouseButtonDown(0)) { //start box selecting
-            isSelecting = true;
             StartBoxSelecting();
         }
 
         if (Input.GetMouseButtonUp(0)) { //end box selecting
-            isSelecting = false;
             EndBoxSelecting();
         }
+        */
 
         if (isSelecting) // while box selecting
             UpdateSelectionBox(startMousePosition, Input.mousePosition);
-
-    }
-    void StartBoxSelecting()
-    {
-        startMousePosition = Input.mousePosition;
-        SelectionBoxPanel.gameObject.SetActive(true);
-    }
-    public float selectionSensitivity = 25;
-    void EndBoxSelecting()
-    {
-        if ((Input.mousePosition - startMousePosition).sqrMagnitude > selectionSensitivity)
-            ClearSelection(); // if not small box, then clear selection
-
-        SelectEntitiesInBox(startMousePosition, Input.mousePosition);
-        SelectionBoxPanel.gameObject.SetActive(false);
     }
 
     public void UpdateSelectionBox(Vector3 start, Vector3 end)
@@ -114,12 +101,15 @@ public class SelectionMgr : MonoBehaviour
     public StacsEntity selectedEntity = null;
     public List<StacsEntity> selectedEntities = new List<StacsEntity>();
 
-    public void SelectNextEntity()
+    public void SelectNextEntity(InputAction.CallbackContext context)
     {
-        selectedEntityIndex =
-            (selectedEntityIndex >= EntityMgr.inst.entities.Count - 1 ? 0 : selectedEntityIndex + 1);
-        SelectEntity(EntityMgr.inst.entities[selectedEntityIndex],
-            shouldClearSelection: !Input.GetKey(KeyCode.LeftShift));
+        if(context.started)
+        {
+            selectedEntityIndex =
+                (selectedEntityIndex >= EntityMgr.inst.entities.Count - 1 ? 0 : selectedEntityIndex + 1);
+            SelectEntity(EntityMgr.inst.entities[selectedEntityIndex],
+                shouldClearSelection: !Input.GetKey(KeyCode.LeftShift));
+        }
     }
 
     public void ClearSelection()
@@ -143,5 +133,26 @@ public class SelectionMgr : MonoBehaviour
         }
     }
 
+    public float selectionSensitivity = 25;
+    public void BoxSelection(InputAction.CallbackContext context)
+    {
+        if(context.started)
+        {
+            isSelecting = true;
+            startMousePosition = Input.mousePosition;
+            SelectionBoxPanel.gameObject.SetActive(true);
+        }
+        else if(context.canceled)
+        {
+            isSelecting = false;
 
+            if ((Input.mousePosition - startMousePosition).sqrMagnitude > selectionSensitivity)
+            {
+                ClearSelection(); // if not small box, then clear selection
+            }
+
+            SelectEntitiesInBox(startMousePosition, Input.mousePosition);
+            SelectionBoxPanel.gameObject.SetActive(false);
+        }
+    }
 }

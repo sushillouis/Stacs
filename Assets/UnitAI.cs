@@ -5,28 +5,40 @@ using UnityEngine;
 public class UnitAI : MonoBehaviour
 {
     public StacsEntity entity; //public only for ease of debugging
+
     // Start is called before the first frame update
     void Start()
     {
+        //StacsEntity component to work on
         entity = GetComponentInParent<StacsEntity>();
+        //Create empty lists
         commands = new List<Command>();
         intercepts = new List<Intercept>();
         moves = new List<Move>();
         trussMoves = new List<TrussMove>();
     }
 
+    //Keep lists of of all moves created
     public List<Move> moves;
     public List<TrussMove> trussMoves;
     public List<Command> commands;
     public List<Intercept> intercepts;
 
+    //Hold waypoints assigned to this robot
+    public List<Transform> waypoints;
+
     // Update is called once per frame
     void Update()
     {
         if (commands.Count > 0) {
-            if (commands[0].IsDone()) {
+            //If current command is done, kill it and start the next
+            if (commands[0].IsDone())
+            {
                 StopAndRemoveCommand(0);
-            } else {
+            }
+            //Otherwise call tick on current command
+            else
+            {
                 commands[0].Tick();
                 commands[0].isRunning = true;
                 DecorateAll();
@@ -34,12 +46,29 @@ public class UnitAI : MonoBehaviour
         }
     }
 
+    //Used to place robot at route starting position.
+    //Someday the robot will have to find the starting position on its own.
+    public void Teleport(Waypoint waypoint)
+    {
+        GetComponent<StacsEntity>().position = transform.position = waypoint.position;
+    }
+
+    //Calls functions to kill current command
     void StopAndRemoveCommand(int index)
     {
         commands[index].Stop();
+        if (commands[index] is Intercept)
+            intercepts.Remove(commands[index] as Intercept);
+        else if (commands[index] is Follow)
+            ;
+        else if (commands[index] is Move)
+            moves.Remove(commands[index] as Move);
+        else if (commands[index] is TrussMove)
+            trussMoves.Remove(commands[index] as TrussMove);
         commands.RemoveAt(index);
     }
 
+    //Used before setting command
     public void StopAndRemoveAllCommands()
     {
         for (int i = commands.Count - 1; i >= 0; i--) {
@@ -47,24 +76,25 @@ public class UnitAI : MonoBehaviour
         }
     }
 
+    //When the user shift right-clicks, maintain current commands when adding
     public void AddCommand(Command c)
     {
-        //print("Adding command; " + c.ToString());
-        c.Init();
+        //Add command to commands list no matter what
         commands.Add(c);
-        if(c is Intercept)
+        //Also add to the appropriate list based on type
+        if (c is Intercept)
             intercepts.Add(c as Intercept);
-        else if(c is TrussMove)
-            trussMoves.Add(c as TrussMove);
-        else if(c is Follow)
+        else if (c is Follow)
             ;
-        else
+        else if (c is Move)
             moves.Add(c as Move);
+        else if (c is TrussMove)
+            trussMoves.Add(c as TrussMove);
     }
 
+    //Clear all other commands before adding
     public void SetCommand(Command c)
     {
-        //print("Setting command: " + c.ToString());
         StopAndRemoveAllCommands();
         commands.Clear();
         moves.Clear();
@@ -92,7 +122,9 @@ public class UnitAI : MonoBehaviour
             if (prior == null)
                 current.line.SetPosition(0, entity.position);
             else
-                current.line.SetPosition(0, prior.line.GetPosition(1));
+            {
+                current.line.SetPosition(0, prior.line.GetPosition(prior.line.positionCount - 1));
+            }
 
             if (current is Intercept) { //Most specific
                 Intercept intercept = current as Intercept;
@@ -107,6 +139,26 @@ public class UnitAI : MonoBehaviour
                 f.line.SetPosition(1, f.targetEntity.position + f.offset);
                 f.line.SetPosition(2, f.targetEntity.position);
                 //f.line.SetPosition(1, f.predictedMovePosition);
+
+            } else if(current is TrussMove){
+                TrussMove tm = current as TrussMove;
+
+                Vector3 norm1 = (prior == null) ? entity.transform.up : (prior as TrussMove).destination.transform.up;
+                Vector3 norm2 = tm.destination.transform.up;
+                Vector3 p1 = tm.line.GetPosition(0) + norm1 * 0.05f;
+                Vector3 p2 = tm.destination.position + norm2 * 0.05f;
+
+                tm.line.positionCount = (norm1 == norm2) ? 2 : 3;
+
+                if(tm.line.positionCount <= 2)
+                    tm.line.SetPosition(1, p2 + norm2 * 0.01f);
+                else
+                {
+                    Vector3 edgePoint = Utils.GetEdgePoint(p1, p2, norm1, norm2);
+                    Debug.Log("equal norms: " + (norm1 == norm2) + " edgePoint: " + edgePoint);
+                    tm.line.SetPosition(1, edgePoint);
+                    tm.line.SetPosition(2, p2);
+                }
             }
             //Moveposition never changes
         }
@@ -123,8 +175,6 @@ public class UnitAI : MonoBehaviour
             m.potentialLine.SetPosition(1, entity.position + newpos);
             m.potentialLine.gameObject.SetActive(entity.isSelected);
         }
-
-
     }
 
 }

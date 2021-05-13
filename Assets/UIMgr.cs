@@ -4,13 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 public enum EGameState
 {
     None = 0,
     GameMenu,
-    RouteOptimizing,
-    ShowingOptimizationProgress,
     ShowHelp,
     Briefing,
     Monitoring,
@@ -37,8 +36,6 @@ public class UIMgr : MonoBehaviour
     public StacsPanel BriefingPanel;
     public StacsPanel MenuPanel;
     public StacsPanel HelpPanel;
-    public StacsPanel OptimizerPanel;
-    public StacsPanel OptimizationProgressPanel;
 
     public RectTransform TopLevelMenuPanel;
 
@@ -54,17 +51,14 @@ public class UIMgr : MonoBehaviour
     //public GameObject myCanvas;
 
     public Button gameMenuButton;
-    public Button routeOptimizerButton;
     public Button briefingPanelOkButton;
     public Button menuHelpButton;
     public Button helpDoneButton;
-    public Button runOptimizerButton; //from optimizer panel
-    public Button doneWithOptimizationProgressButton; //from optimization progress panel
 
     // Start is called before the first frame update
     void Start()
     {
-        State = EGameState.RouteOptimizing;
+        State = EGameState.Briefing;
         CameraViewPanels.Clear();
     }
     public bool show = false;
@@ -73,7 +67,10 @@ public class UIMgr : MonoBehaviour
     {
         //ProtoPanel.isValid = show;
         UpdateSelectedEntity();
-        CheckForUINavigation();
+        //CheckForUINavigation();
+
+
+
     }
 
     public LineGraph Graph;
@@ -84,7 +81,17 @@ public class UIMgr : MonoBehaviour
 
     void CheckForUINavigation()
     {
+        /*
         if (Input.GetKeyUp(KeyCode.Joystick1Button7)) {
+            PauseGame();
+        }
+        */
+    }
+
+    public void PauseGame(InputAction.CallbackContext context)
+    {
+        if(context.started && State != EGameState.GameMenu)
+        {
             State = EGameState.GameMenu;
         }
     }
@@ -128,8 +135,6 @@ public class UIMgr : MonoBehaviour
             BriefingPanel.isValid = (_state == EGameState.Briefing);
             HelpPanel.isValid = (_state == EGameState.ShowHelp);
             MenuPanel.isValid = (_state == EGameState.GameMenu);
-            OptimizerPanel.isValid = (_state == EGameState.RouteOptimizing);
-            OptimizationProgressPanel.isValid = (_state == EGameState.ShowingOptimizationProgress);
 
             //Game Controller UI/Playing switch and Navigation
             switch (_state) {
@@ -148,18 +153,12 @@ public class UIMgr : MonoBehaviour
                     EventSystem.current.firstSelectedGameObject = helpDoneButton.gameObject;
                     helpDoneButton.Select();
                     break;
-                case EGameState.RouteOptimizing:
-                    EventSystem.current.firstSelectedGameObject = runOptimizerButton.gameObject;
-                    runOptimizerButton.Select();
-                    break;
-                case EGameState.ShowingOptimizationProgress:
-                    EventSystem.current.firstSelectedGameObject = doneWithOptimizationProgressButton.gameObject;
-                    doneWithOptimizationProgressButton.Select();
-                    break;
                 default:
                     EventSystem.current.firstSelectedGameObject = null;
                     break;
             }
+
+
         }
     }
 
@@ -183,29 +182,6 @@ public class UIMgr : MonoBehaviour
     public void HandleMenuBack()
     {
         State = priorState;
-    }
-
-    public void HandleRunOptimizer()
-    {
-        State = EGameState.ShowingOptimizationProgress;
-        GATest.inst.OnStartGA();
-        State = EGameState.ShowingOptimizationProgress;
-    }
-    /*
-    public void HandleRouteOptimizer()
-    {
-        State = EGameState.RouteOptimizing;
-    }
-    */
-
-    public void HandleDoneRouteOptimizer()
-    {
-        State = EGameState.ShowingOptimizationProgress;
-    }
-
-    public void HandleDoneWithOptimizationProgress()
-    {
-        State = EGameState.Monitoring;
     }
 
     public void HandleMenuQuitTask()
