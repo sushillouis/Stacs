@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Path
+public class GraphPath
 {
-    public List<Vertex> vertices;
+    public List<GraphVertex> vertices;
     //public List<int> edgeIds;
     public float length;
 
-    public Path()
+    public GraphPath()
     {
-        vertices = new List<Vertex>();
+        vertices = new List<GraphVertex>();
         length = 0;
     }
 
@@ -21,7 +21,7 @@ public class Path
     public string Vtos()
     {
         string tmp = "";
-        foreach(Vertex vd in vertices) {
+        foreach(GraphVertex vd in vertices) {
             tmp += vd.vertex.ToString("0") + ", " + vd.distance.ToString() + " | ";
         }
         return tmp;
@@ -55,13 +55,13 @@ public class Edge
 }
 
 
-public class Vertex : System.IComparable<Vertex>
+public class GraphVertex : System.IComparable<GraphVertex>
 {
     public int vertex;
     public float distance; //for distance from a previously visited vertex (Dijsktra)
     public bool visited;
     //public List<Vertex> adjacents;
-    public Vertex(int v, float dist)
+    public GraphVertex(int v, float dist)
     {
         vertex = v;
         distance = dist;
@@ -69,7 +69,7 @@ public class Vertex : System.IComparable<Vertex>
         //adjacents = new List<Vertex>();
     }
 
-    public int CompareTo(Vertex v2)
+    public int CompareTo(GraphVertex v2)
     {
         return (int) (distance - v2.distance);
     }
@@ -79,14 +79,14 @@ public class Vertex : System.IComparable<Vertex>
 public class RobotRoute
 {
     public int robot;
-    public Path route;
+    public GraphPath route;
     public RobotRoute(int r)
     {
         robot = r;
-        route = new Path();
+        route = new GraphPath();
     }
 
-    public void AddPath(Path p)
+    public void AddPath(GraphPath p)
     {
         for(int i = 1; i < p.vertices.Count; i++){//skip first vertex
             route.vertices.Add(p.vertices[i]);
@@ -121,7 +121,7 @@ public class Graph
         {10, -1, -1, -1, 10, 0}
     };
 
-    public List<Vertex>[] adjacency = new List<Vertex>[Constants.MAX_VERTICES]; // an array of nVertices lists
+    public List<GraphVertex>[] adjacency = new List<GraphVertex>[Constants.MAX_VERTICES]; // an array of nVertices lists
     public List<Edge> edges;
     public Options options;
 
@@ -132,10 +132,10 @@ public class Graph
         Debug.Log(StringTo());
         MakeAdjacencyListEdgesList();
         Debug.Log(AdjacencyStringTo());
-        Path[] testPaths = Dijsktra(0);
+        GraphPath[] testPaths = Dijsktra(0);
         MakePathCache();
         //PrintCache();
-        EulerCircuit(new Vertex(1, 0));
+        EulerCircuit(new GraphVertex(1, 0));
     }
 
     public void ReadGraph(string filepath)
@@ -172,7 +172,7 @@ public class Graph
     {
         string outs = "";
         for(int i = 0; i < nVertices; i++) {
-            foreach( Vertex vd in adjacency[i]) {
+            foreach( GraphVertex vd in adjacency[i]) {
                 outs += vd.vertex.ToString("0") + "," + vd.distance.ToString("0") + " | ";
             }
             outs += "\n";
@@ -193,14 +193,14 @@ public class Graph
     public void MakeAdjacencyListEdgesList()
     {
         for(int i = 0; i < nVertices; i++) { // allocate lists
-            adjacency[i] = new List<Vertex>();
+            adjacency[i] = new List<GraphVertex>();
         }
         edges = new List<Edge>();
         for(int i = 0; i < nVertices; i++) {
             for(int j = 0; j < nVertices; j++) {
                 if(i != j) {
                     if(vertices[i, j] != -1) {
-                        adjacency[i].Add(new Vertex(j, vertices[i, j]));
+                        adjacency[i].Add(new GraphVertex(j, vertices[i, j]));
                         Edge e = new Edge(i, j, vertices[i, j]);
                         if(!ExistsEdge(e, edges))
                             edges.Add(e);
@@ -223,19 +223,19 @@ public class Graph
     /// Assuming a graph that only contains vertices of even degree.
     /// CPP needs a prior algorithm to convert the graph into one with only even degree vertices
     /// </summary>
-    public void EulerCircuit(Vertex vertex)
+    public void EulerCircuit(GraphVertex vertex)
     {
-        Path tour = new Path();
-        List<Path> subtours = new List<Path>();
-        Path subtour = new Path();
+        GraphPath tour = new GraphPath();
+        List<GraphPath> subtours = new List<GraphPath>();
+        GraphPath subtour = new GraphPath();
 
-        Vertex start = vertex;
+        GraphVertex start = vertex;
         subtour.vertices.Add(vertex);
         tour.vertices.Add(vertex);
         //int tourIndex = tour.vertices.Count ;
         int counter = 0;
         while(!AllEdgesInTour(tour) && counter++ < 100) {
-            Vertex unvisited = ChooseUnvisitedEdge(start, subtour);
+            GraphVertex unvisited = ChooseUnvisitedEdge(start, subtour);
             //Debug.Log("start: " + start.vertex + " unvisited: " + unvisited.vertex);
             if(unvisited == null) { // if no unvisited edges on this vertex,
                 Debug.Log("Closing subtour" + subtour);
@@ -245,7 +245,7 @@ public class Graph
                 if(start == null)
                     break;
                 else
-                    subtour = new Path();
+                    subtour = new GraphPath();
             } else {
                 //Debug.Log("adding vertex: " + unvisited.vertex);
                 subtour.vertices.Add(unvisited);
@@ -258,16 +258,16 @@ public class Graph
         InsertSubtour(subtour, tour, start);
 
         Debug.Log("Tour: " + tour.StringTo());
-        foreach(Path p in subtours) {
+        foreach(GraphPath p in subtours) {
             Debug.Log("Subtour: " + p.StringTo());
         }
 
     }
     
-    public int FindVertexInTour(Vertex vd, Path tour)
+    public int FindVertexInTour(GraphVertex vd, GraphPath tour)
     {
         int index = -1;
-        foreach(Vertex tvd in tour.vertices) {
+        foreach(GraphVertex tvd in tour.vertices) {
             index += 1;
             if(vd.vertex == tvd.vertex)
                 return index;
@@ -275,7 +275,7 @@ public class Graph
         return index;
     }
 
-    public void InsertSubtour(Path subtour, Path tour, Vertex start)
+    public void InsertSubtour(GraphPath subtour, GraphPath tour, GraphVertex start)
     {
         Debug.Log("Inserting subtour at: " + start.vertex);
         int index = FindVertexInTour(start, tour);
@@ -289,17 +289,17 @@ public class Graph
         //Debug.Log("New tour: " + tour.StringTo());
     }
 
-    public Vertex FindVertexWithUnvisitedEdges(Path tour)
+    public GraphVertex FindVertexWithUnvisitedEdges(GraphPath tour)
     {
-        foreach(Vertex vertex in tour.vertices) {
-            Vertex neighbor = ChooseUnvisitedEdge(vertex, tour);
+        foreach(GraphVertex vertex in tour.vertices) {
+            GraphVertex neighbor = ChooseUnvisitedEdge(vertex, tour);
             if(neighbor != null)
                 return vertex;
         }
         return null;
     }
 
-    public bool AllEdgesInTour(Path tour)
+    public bool AllEdgesInTour(GraphPath tour)
     {
         foreach(Edge edge in edges) {
             if(!edge.visited) return false;
@@ -312,17 +312,17 @@ public class Graph
         return 0;
     }
 
-    public Vertex ChooseUnvisitedEdge(Vertex vd, Path tour)
+    public GraphVertex ChooseUnvisitedEdge(GraphVertex vd, GraphPath tour)
     {
-        Vertex start = vd;
-        foreach(Vertex neighbor in adjacency[start.vertex]) {
+        GraphVertex start = vd;
+        foreach(GraphVertex neighbor in adjacency[start.vertex]) {
             if(!IsVisitedEdge(vd, neighbor))
                 return neighbor;
         }
         return null;
     }
     
-    public void VisitEdge(Vertex v1, Vertex v2)
+    public void VisitEdge(GraphVertex v1, GraphVertex v2)
     {
         Edge edge = new Edge(v1.vertex, v2.vertex, vertices[v1.vertex, v2.vertex]);
         bool found = false;
@@ -338,7 +338,7 @@ public class Graph
     }
 
 
-    public bool IsVisitedEdge(Vertex v1, Vertex v2)
+    public bool IsVisitedEdge(GraphVertex v1, GraphVertex v2)
     {
         Edge edge = new Edge(v1.vertex, v2.vertex, vertices[v1.vertex, v2.vertex]);
         foreach(Edge e in edges) {
@@ -349,12 +349,12 @@ public class Graph
         return false;
     }
 
-    public Path[] Dijsktra(int vertexId)
+    public GraphPath[] Dijsktra(int vertexId)
     {
         List<float> dist = new List<float>(nVertices);
         List<int> verts = new List<int>(nVertices);
-        List<Vertex> pq = new List<Vertex>();
-        pq.Add(new Vertex(vertexId, 0));
+        List<GraphVertex> pq = new List<GraphVertex>();
+        pq.Add(new GraphVertex(vertexId, 0));
 
         for(int i = 0; i < nVertices; i++) {
             //dist.Add(System.Int32.MaxValue);
@@ -366,21 +366,21 @@ public class Graph
         while(pq.Count != 0) {
             int vertM = pq[0].vertex;
             pq.RemoveAt(0);
-            foreach(Vertex vdM in adjacency[vertM]) {
+            foreach(GraphVertex vdM in adjacency[vertM]) {
                 float distance = vdM.distance;
                 int newAdjacentVertex = vdM.vertex;
                 if(dist[newAdjacentVertex] > dist[vertM] + distance) {
                     dist[newAdjacentVertex] = dist[vertM] + distance;
                     verts[newAdjacentVertex] = vertM;
-                    pq.Add(new Vertex(newAdjacentVertex, dist[newAdjacentVertex]));
+                    pq.Add(new GraphVertex(newAdjacentVertex, dist[newAdjacentVertex]));
                     pq.Sort();
                 }
             }
         }
-        Path[] pathsTo = new Path[nVertices];
+        GraphPath[] pathsTo = new GraphPath[nVertices];
         for(int i = 0; i < nVertices; i++) {
             if(i != vertexId) {
-                Path p = TracePath(dist, verts, i, vertexId);
+                GraphPath p = TracePath(dist, verts, i, vertexId);
                 p.vertices.Reverse();
                 pathsTo[i] = p;
 //                Debug.Log(pathsTo[i].StringTo());
@@ -395,28 +395,28 @@ public class Graph
         return pathsTo;
     }
 
-    public Path TracePath(List<float> dist, List<int> verts, int dest, int src)
+    public GraphPath TracePath(List<float> dist, List<int> verts, int dest, int src)
     {
-        Path p = new Path();
+        GraphPath p = new GraphPath();
         int index = 0;
-        p.vertices.Add(new Vertex(dest, -1));
+        p.vertices.Add(new GraphVertex(dest, -1));
         p.length = dist[dest];
         while(dest != src && index < nVertices) {
             index++;
             int vertex = verts[dest];
-            p.vertices.Add(new Vertex(vertex, vertices[dest, vertex]));
+            p.vertices.Add(new GraphVertex(vertex, vertices[dest, vertex]));
             dest = vertex;
         }
         return p;
 
     }
-    public Path[,] pathCache;
+    public GraphPath[,] pathCache;
     public void MakePathCache()
     {
-        pathCache = new Path[nVertices, nVertices];
+        pathCache = new GraphPath[nVertices, nVertices];
 
         for(int i = 0; i < nVertices; i++) {
-            Path[] paths = new Path[nVertices];
+            GraphPath[] paths = new GraphPath[nVertices];
             paths = Dijsktra(i);
             for(int j = 0; j < nVertices; j++) {
                 pathCache[i, j] = paths[j];

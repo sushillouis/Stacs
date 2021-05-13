@@ -194,40 +194,40 @@ public class Individual
                 int nextEdgeIndex = routeChromosome[index + 1];
                 int v11 = options.graph.edges[nextEdgeIndex].vertex1;
                 int v22 = options.graph.edges[nextEdgeIndex].vertex2;
-                List<Path> paths = new List<Path>
+                List<GraphPath> paths = new List<GraphPath>
                 {
                 options.graph.pathCache[v1, v11],
                 options.graph.pathCache[v1, v22],
                 options.graph.pathCache[v2, v11],
                 options.graph.pathCache[v2, v22]
                 };
-                Path minPath = FindMinLengthPath(paths);
+                GraphPath minPath = FindMinLengthPath(paths);
                 if(minPath == null) {
                     Debug.Log("Fatal Error. MinPath does not exist");
                     throw new System.Exception("Min Path does not exist");
                 } 
                 if(minPath.vertices[0].vertex == v1) { // if v1 is closer to second edge
-                    currentRoute.route.vertices.Add(new Vertex(v2, 0)); // start at v2 and end at v1
-                    currentRoute.route.vertices.Add(new Vertex(v1, e.length)); // so you can get to 2nd edge
+                    currentRoute.route.vertices.Add(new GraphVertex(v2, 0)); // start at v2 and end at v1
+                    currentRoute.route.vertices.Add(new GraphVertex(v1, e.length)); // so you can get to 2nd edge
                 } else {
-                    currentRoute.route.vertices.Add(new Vertex(v1, 0));
-                    currentRoute.route.vertices.Add(new Vertex(v2, e.length));
+                    currentRoute.route.vertices.Add(new GraphVertex(v1, 0));
+                    currentRoute.route.vertices.Add(new GraphVertex(v2, e.length));
                 }
                 currentRoute.route.length += e.length;
             }
         } else {//True => IsRobotAtIndex(index+1) so just add a one edge route
-            currentRoute.route.vertices.Add(new Vertex(v1, 0)); // or v2
-            currentRoute.route.vertices.Add(new Vertex(v2, e.length));
+            currentRoute.route.vertices.Add(new GraphVertex(v1, 0)); // or v2
+            currentRoute.route.vertices.Add(new GraphVertex(v2, e.length));
             currentRoute.route.length += e.length;
         }
     }
 
-    public Path FindMinLengthPath(List<Path> paths)
+    public GraphPath FindMinLengthPath(List<GraphPath> paths)
     {//uses the fact that legal paths have length >= 0. 
      //Path from vertex to itself has length -1
         float min = float.MaxValue;
-        Path minPath = null;
-        foreach(Path p in paths) {
+        GraphPath minPath = null;
+        foreach(GraphPath p in paths) {
             if(p != null) { //ensures checked first
                 if(p.length < min) {
                     min = p.length;
@@ -252,7 +252,7 @@ public class Individual
     {
         Edge e = options.graph.edges[routeChromosome[index]];
         //Get route endpoint vertex
-        Vertex start = currentRoute.route.vertices[currentRoute.route.vertices.Count - 1];
+        GraphVertex start = currentRoute.route.vertices[currentRoute.route.vertices.Count - 1];
 
         if(IsAdjacentEdge(e, start)) {
             AddAdjacentEdge(e, start);
@@ -260,33 +260,33 @@ public class Individual
 
             //Debug.Log("Adding to vertex: " + start.vertex);
             //Check both vertices of edge to see what is shortest path
-            List<Path> paths = new List<Path>{
+            List<GraphPath> paths = new List<GraphPath>{
             options.graph.pathCache[start.vertex, e.vertex1],
             options.graph.pathCache[start.vertex, e.vertex2]
             };
 
-            Path minPath = FindMinLengthPath(paths);
+            GraphPath minPath = FindMinLengthPath(paths);
             currentRoute.AddPath(minPath); //Also adds path length
             if(minPath.vertices[minPath.vertices.Count - 1].vertex == e.vertex1) {
-                currentRoute.route.vertices.Add(new Vertex(e.vertex2, e.length));
+                currentRoute.route.vertices.Add(new GraphVertex(e.vertex2, e.length));
             } else {
-                currentRoute.route.vertices.Add(new Vertex(e.vertex1, e.length));
+                currentRoute.route.vertices.Add(new GraphVertex(e.vertex1, e.length));
             }
             currentRoute.route.length += e.length;
         }
     }
     
-    public bool IsAdjacentEdge(Edge e, Vertex start)
+    public bool IsAdjacentEdge(Edge e, GraphVertex start)
     {
         return (start.vertex == e.vertex1 || start.vertex == e.vertex2);
     }
 
-    public void AddAdjacentEdge(Edge e, Vertex start)
+    public void AddAdjacentEdge(Edge e, GraphVertex start)
     {
         if(start.vertex == e.vertex1) {
-            currentRoute.route.vertices.Add(new Vertex(e.vertex2, e.length));
+            currentRoute.route.vertices.Add(new GraphVertex(e.vertex2, e.length));
         } else if (start.vertex == e.vertex2) {
-            currentRoute.route.vertices.Add(new Vertex(e.vertex1, e.length));
+            currentRoute.route.vertices.Add(new GraphVertex(e.vertex1, e.length));
         }
         currentRoute.route.length += e.length;
     }
