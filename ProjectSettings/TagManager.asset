@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Truss
+  - Vertex
+  - Robot
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - 
   - 
   - PostProcessing
-  - Robot
-  - Truss
+  - Bridge
+  - ClickWall
   - 
   - 
   - 

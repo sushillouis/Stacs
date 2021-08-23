@@ -1,0 +1,39 @@
+Quantum MetaClouds Sample
+-------------------------
+
+Quantum Theory Entertainment presents, Quantum MetaClouds, a set of modular cloud models for Unity.
+
+
+The Retail Package Contains:
+
+* 15 low polygon models. Duplicate, move, rotate, and scale the clouds in your scene to create an epic artistic direction.
+
+* 3 custom shaders: Hard-edged Alpha Blend, Soft-edged Alpha Blend, and Alpha Clip. These shaders use just the RGB channels of the texture and not the alpha channel, keeping memory footprints low.
+
+* A special Editor Script to make editing your clouds fast and easy. Dynamically change the ambient and sun color of the clouds. Also modify the contrast, density, thickness, and opacity. Easily orient them towards an object or the scene camera.
+
+Questions? Comments? Need Help? Contact support@quantumtheoryentertainment.com. 
+
+*The Quantum Cold terrain models and the background skybox featured in the webplayer demo are both sold seperately.
+
+Usage
+-----
+
+2 sample cloud models are found in Quantum Theory/Quantum MetaClouds Sample/Meshes. Simply drag and drop them into your scene. 
+
+You may  want to increase the scale of the clouds. A value of 25-50 in each axis is a good range. 
+
+Modify the ambient and sun color swatches in the materials to match the lighting in your scene. Adjust the contrast and density to get the mood you desire. Higher densities give threatening clouds. Lower the contrast to visually push them into the background.
+
+You can find more details at http://quantumtheoryentertainment.com/projects/quantum-metaclouds/ which also includes links to the asset store and a webplayer demo.
+
+EULA
+----
+
+Users of this package are bound to licensing terms described at http://unity3d.com/company/legal/as_terms
+
+
+Version History
+---------------
+
+1.0 - initial release.

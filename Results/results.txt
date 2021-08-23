@@ -1,0 +1,23 @@
+Steel Truss Bridge	Easy	Practice Test	0	35.74773	34.34886	0	0
+Steel Truss Bridge	Easy	Practice Test	0	0.2200031	2.145535	0	0
+Steel Truss Bridge	Easy	Test	100	0.2200031	2.633597	0	0
+Steel Truss Bridge	Easy	Test	0	0.2200031	2.348352	0	0
+Steel Truss Bridge	Easy	Test	0	0.2200031	1.978118	0	0
+Steel Truss Bridge	Easy	Test	0	0.2200031	2.016865	0	0
+Steel Truss Bridge	Easy	Test	100	35.50544	32.97297	0	0
+Steel Truss Bridge	Easy	Practice Test	0	35.52037	32.13173	0	0
+Steel Truss Bridge	Easy	Practice Test	0	0.2200031	2.489549	0	0
+Steel Truss Bridge	Easy	Practice Test	0	0.2200031	2.035788	0	0
+Steel Truss Bridge	Hard	Test	0	0.3517945	2.244558	0	0
+Steel Truss Bridge	Hard	Test	0	0.3495667	2.442584	0	0
+Steel Truss Bridge	Easy	Practice Test	90	35.41389	38.79545	0	0
+Steel Truss Bridge	Easy	Test	100	35.47511	23.74895	0	0
+Steel Truss Bridge	Medium	Test	0	0.002248768	0	0	0
+Steel Truss Bridge	Medium	Test	0	0.8682293	3.944921	0	0
+Steel Truss Bridge	Easy	Test	100	35.57533	22.68161	0	0
+Steel Truss Bridge	Easy	Test	0	0.2200031	0	0	0
+Steel Truss Bridge	Hard	Test	0	0.9296982	4.201396	0	0
+Steel Truss Bridge	Hard	Test	0	0.5527451	2.970393	0	0
+Steel Truss Bridge	Hard	Test	0	0.6063912	2.620844	0	0
+Steel Truss Bridge	Easy	Test	100	35.5041	23.90387	0	0
+Steel Truss Bridge	Easy	Practice Test	100	35.53447	32.29445	0	0
