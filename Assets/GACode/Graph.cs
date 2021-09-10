@@ -73,7 +73,6 @@ public class GraphVertex : System.IComparable<GraphVertex>
     {
         return (int) (distance - v2.distance);
     }
-
 }
 
 public class RobotRoute
