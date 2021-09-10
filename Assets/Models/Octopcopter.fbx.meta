@@ -1,0 +1,2873 @@
+fileFormatVersion: 2
+guid: e993731b72f0b554da2cf2fc27d453a7
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: 2nd_top
+    100002: 2nd_tube
+    100004: 6000Mah_Battery
+    100006: 6000Mah_Battery_2
+    100008: A2
+    100010: A2_Flight_controller
+    100012: "A2_Flight_controlle\u043A_IMU"
+    100014: arm_head_plate_mount_
+    100016: arm_head_plate_mount__2
+    100018: arm_head_plate_mount__3
+    100020: arm_head_plate_mount__4
+    100022: arm_head_plate_mount__5
+    100024: arm_head_plate_mount__6
+    100026: arm_head_plate_mount__7
+    100028: arm_head_plate_mount__8
+    100030: arm_lights
+    100032: arm_mounts
+    100034: Arms
+    100036: Battery_and_cable
+    100038: battery_holder
+    100040: battery_stand
+    100042: Battery_wires
+    100044: Boole
+    100046: Boole_1
+    100048: Boole_2
+    100050: Boole_2_2
+    100052: Boole_2_3
+    100054: Boole_2_4
+    100056: Boole_2_5
+    100058: Boole_2_6
+    100060: Boole_2_7
+    100062: Boole_2_8
+    100064: Boole_3
+    100066: Boole_3_2
+    100068: Boole_3_3
+    100070: Boole_3_4
+    100072: Boole_3_5
+    100074: Boole_3_6
+    100076: Boole_3_7
+    100078: Boole_3_8
+    100080: bottom
+    100082: cables
+    100084: camera_holder
+    100086: Cap_1
+    100088: Cap_1_10
+    100090: Cap_1_11
+    100092: Cap_1_12
+    100094: Cap_1_13
+    100096: Cap_1_14
+    100098: Cap_1_15
+    100100: Cap_1_16
+    100102: Cap_1_17
+    100104: Cap_1_18
+    100106: Cap_1_19
+    100108: Cap_1_2
+    100110: Cap_1_20
+    100112: Cap_1_21
+    100114: Cap_1_22
+    100116: Cap_1_23
+    100118: Cap_1_24
+    100120: Cap_1_25
+    100122: Cap_1_26
+    100124: Cap_1_27
+    100126: Cap_1_28
+    100128: Cap_1_29
+    100130: Cap_1_3
+    100132: Cap_1_30
+    100134: Cap_1_31
+    100136: Cap_1_32
+    100138: Cap_1_4
+    100140: Cap_1_5
+    100142: Cap_1_6
+    100144: Cap_1_7
+    100146: Cap_1_8
+    100148: Cap_1_9
+    100150: Cap_2
+    100152: Cap_2_10
+    100154: Cap_2_11
+    100156: Cap_2_12
+    100158: Cap_2_13
+    100160: Cap_2_14
+    100162: Cap_2_15
+    100164: Cap_2_16
+    100166: Cap_2_17
+    100168: Cap_2_18
+    100170: Cap_2_19
+    100172: Cap_2_2
+    100174: Cap_2_20
+    100176: Cap_2_21
+    100178: Cap_2_22
+    100180: Cap_2_23
+    100182: Cap_2_24
+    100184: Cap_2_25
+    100186: Cap_2_26
+    100188: Cap_2_27
+    100190: Cap_2_28
+    100192: Cap_2_29
+    100194: Cap_2_3
+    100196: Cap_2_30
+    100198: Cap_2_31
+    100200: Cap_2_32
+    100202: Cap_2_4
+    100204: Cap_2_5
+    100206: Cap_2_6
+    100208: Cap_2_7
+    100210: Cap_2_8
+    100212: Cap_2_9
+    100214: connector
+    100216: connector_2
+    100218: Connectors
+    100220: Cube.001
+    100222: Cube_0
+    100224: Cube_1
+    100226: Cube_1_2
+    100228: Cube_1_3
+    100230: Cube_2
+    100232: Cube_2_2
+    100234: Cube_3
+    100236: Cube_4
+    100238: Cube_5
+    100240: Cube_6
+    100242: Cube_7
+    100244: Cylinder
+    100246: Cylinder_0
+    100248: Cylinder_1
+    100250: Cylinder_10
+    100252: Cylinder_11
+    100254: Cylinder_12
+    100256: Cylinder_13
+    100258: Cylinder_14
+    100260: Cylinder_15
+    100262: Cylinder_16
+    100264: Cylinder_17
+    100266: Cylinder_18
+    100268: Cylinder_19
+    100270: Cylinder_1_10
+    100272: Cylinder_1_11
+    100274: Cylinder_1_12
+    100276: Cylinder_1_13
+    100278: Cylinder_1_14
+    100280: Cylinder_1_15
+    100282: Cylinder_1_16
+    100284: Cylinder_1_17
+    100286: Cylinder_1_18
+    100288: Cylinder_1_19
+    100290: Cylinder_1_2
+    100292: Cylinder_1_20
+    100294: Cylinder_1_21
+    100296: Cylinder_1_22
+    100298: Cylinder_1_23
+    100300: Cylinder_1_24
+    100302: Cylinder_1_25
+    100304: Cylinder_1_26
+    100306: Cylinder_1_27
+    100308: Cylinder_1_28
+    100310: Cylinder_1_29
+    100312: Cylinder_1_3
+    100314: Cylinder_1_30
+    100316: Cylinder_1_31
+    100318: Cylinder_1_32
+    100320: Cylinder_1_33
+    100322: Cylinder_1_34
+    100324: Cylinder_1_35
+    100326: Cylinder_1_36
+    100328: Cylinder_1_37
+    100330: Cylinder_1_38
+    100332: Cylinder_1_39
+    100334: Cylinder_1_4
+    100336: Cylinder_1_40
+    100338: Cylinder_1_41
+    100340: Cylinder_1_42
+    100342: Cylinder_1_43
+    100344: Cylinder_1_44
+    100346: Cylinder_1_45
+    100348: Cylinder_1_46
+    100350: Cylinder_1_47
+    100352: Cylinder_1_48
+    100354: Cylinder_1_49
+    100356: Cylinder_1_5
+    100358: Cylinder_1_50
+    100360: Cylinder_1_51
+    100362: Cylinder_1_52
+    100364: Cylinder_1_53
+    100366: Cylinder_1_54
+    100368: Cylinder_1_55
+    100370: Cylinder_1_56
+    100372: Cylinder_1_57
+    100374: Cylinder_1_58
+    100376: Cylinder_1_59
+    100378: Cylinder_1_6
+    100380: Cylinder_1_60
+    100382: Cylinder_1_61
+    100384: Cylinder_1_62
+    100386: Cylinder_1_63
+    100388: Cylinder_1_64
+    100390: Cylinder_1_65
+    100392: Cylinder_1_66
+    100394: Cylinder_1_67
+    100396: Cylinder_1_68
+    100398: Cylinder_1_69
+    100400: Cylinder_1_7
+    100402: Cylinder_1_70
+    100404: Cylinder_1_71
+    100406: Cylinder_1_72
+    100408: Cylinder_1_73
+    100410: Cylinder_1_74
+    100412: Cylinder_1_75
+    100414: Cylinder_1_76
+    100416: Cylinder_1_77
+    100418: Cylinder_1_78
+    100420: Cylinder_1_79
+    100422: Cylinder_1_8
+    100424: Cylinder_1_80
+    100426: Cylinder_1_81
+    100428: Cylinder_1_82
+    100430: Cylinder_1_83
+    100432: Cylinder_1_84
+    100434: Cylinder_1_85
+    100436: Cylinder_1_86
+    100438: Cylinder_1_87
+    100440: Cylinder_1_88
+    100442: Cylinder_1_89
+    100444: Cylinder_1_9
+    100446: Cylinder_1_90
+    100448: Cylinder_1_91
+    100450: Cylinder_2
+    100452: Cylinder_20
+    100454: Cylinder_21
+    100456: Cylinder_22
+    100458: Cylinder_23
+    100460: Cylinder_24
+    100462: Cylinder_25
+    100464: Cylinder_26
+    100466: Cylinder_27
+    100468: Cylinder_28
+    100470: Cylinder_29
+    100472: Cylinder_2_2
+    100474: Cylinder_2_3
+    100476: Cylinder_2_4
+    100478: Cylinder_2_5
+    100480: Cylinder_3
+    100482: Cylinder_30
+    100484: Cylinder_31
+    100486: Cylinder_32
+    100488: Cylinder_33
+    100490: Cylinder_34
+    100492: Cylinder_35
+    100494: Cylinder_36
+    100496: Cylinder_37
+    100498: Cylinder_38
+    100500: Cylinder_39
+    100502: Cylinder_3_2
+    100504: Cylinder_3_3
+    100506: Cylinder_3_4
+    100508: Cylinder_4
+    100510: Cylinder_40
+    100512: Cylinder_41
+    100514: Cylinder_42
+    100516: Cylinder_43
+    100518: Cylinder_44
+    100520: Cylinder_45
+    100522: Cylinder_46
+    100524: Cylinder_47
+    100526: Cylinder_48
+    100528: Cylinder_49
+    100530: Cylinder_4_2
+    100532: Cylinder_4_3
+    100534: Cylinder_5
+    100536: Cylinder_50
+    100538: Cylinder_51
+    100540: Cylinder_52
+    100542: Cylinder_53
+    100544: Cylinder_54
+    100546: Cylinder_55
+    100548: Cylinder_56
+    100550: Cylinder_57
+    100552: Cylinder_58
+    100554: Cylinder_59
+    100556: Cylinder_5_2
+    100558: Cylinder_5_3
+    100560: Cylinder_6
+    100562: Cylinder_60
+    100564: Cylinder_61
+    100566: Cylinder_62
+    100568: Cylinder_63
+    100570: Cylinder_64
+    100572: Cylinder_65
+    100574: Cylinder_66
+    100576: Cylinder_67
+    100578: Cylinder_68
+    100580: Cylinder_69
+    100582: Cylinder_6_2
+    100584: Cylinder_6_3
+    100586: Cylinder_7
+    100588: Cylinder_70
+    100590: Cylinder_71
+    100592: Cylinder_72
+    100594: Cylinder_73
+    100596: Cylinder_74
+    100598: Cylinder_75
+    100600: Cylinder_76
+    100602: Cylinder_77
+    100604: Cylinder_78
+    100606: Cylinder_79
+    100608: Cylinder_7_2
+    100610: Cylinder_8
+    100612: Cylinder_80
+    100614: Cylinder_81
+    100616: Cylinder_82
+    100618: Cylinder_83
+    100620: Cylinder_84
+    100622: Cylinder_85
+    100624: Cylinder_86
+    100626: Cylinder_87
+    100628: Cylinder_88
+    100630: Cylinder_89
+    100632: Cylinder_9
+    100634: Cylinder_90
+    100636: dumper
+    100638: dumper_1
+    100640: dumper_2
+    100642: dumper_3
+    100644: dumpers
+    100646: electronics
+    100648: Gh4
+    100650: gimbal
+    100652: gimbal_and_camera
+    100654: gimball
+    100656: GPS
+    100658: GPS_mount
+    100660: gps_naza
+    100662: landing_gear
+    100664: landing_gear_2
+    100666: landing_gear_plastic
+    100668: landing_rubbers
+    100670: motor_11
+    100672: motor_13
+    100674: motor_14
+    100676: motor_15
+    100678: motor_17
+    100680: motor_2
+    100682: motor_3
+    100684: motor_5
+    100686: motor_7
+    100688: motor_9
+    100690: motor_fc_cable
+    100692: motor_holder
+    100694: motor_holder_2
+    100696: motor_mount
+    100698: motor_mount_2
+    100700: motor_mount_3
+    100702: motor_mount_4
+    100704: motor_mount_5
+    100706: motor_mount_6
+    100708: motor_mount_7
+    100710: motor_mount_8
+    100712: motors_and_motor_holders
+    100714: Null
+    100716: Null_1_0
+    100718: Null_1_1
+    100720: Null_1_2
+    100722: Null_1_3
+    100724: Null_1_4
+    100726: Null_1_5
+    100728: Null_1_6
+    100730: Null_1_7
+    100732: //RootNode
+    100734: plate_mounts
+    100736: plates
+    100738: Prop14Inch
+    100740: Prop14Inch_10
+    100742: Prop14Inch_11
+    100744: Prop14Inch_12
+    100746: Prop14Inch_13
+    100748: Prop14Inch_14
+    100750: Prop14Inch_15
+    100752: Prop14Inch_16
+    100754: Prop14Inch_2
+    100756: Prop14Inch_3
+    100758: Prop14Inch_4
+    100760: Prop14Inch_5
+    100762: Prop14Inch_6
+    100764: Prop14Inch_7
+    100766: Prop14Inch_8
+    100768: Prop14Inch_9
+    100770: prop_adapter
+    100772: prop_adapter_2
+    100774: prop_adapter_3
+    100776: prop_adapter_4
+    100778: prop_adapter_5
+    100780: prop_adapter_6
+    100782: prop_adapter_7
+    100784: prop_adapter_8
+    100786: props
+    100788: props_2
+    100790: props_3
+    100792: props_4
+    100794: props_5
+    100796: props_6
+    100798: props_7
+    100800: props_8
+    100802: props_and_motors_0
+    100804: props_and_motors_1
+    100806: props_and_motors_2
+    100808: props_and_motors_3
+    100810: props_and_motors_4
+    100812: props_and_motors_5
+    100814: props_and_motors_6
+    100816: props_and_motors_7
+    100818: red_wire
+    100820: S1000_
+    100822: screw
+    100824: screw_1
+    100826: screw_10
+    100828: screw_11
+    100830: screw_12
+    100832: screw_13
+    100834: screw_14
+    100836: screw_15
+    100838: screw_16
+    100840: screw_1_10
+    100842: screw_1_11
+    100844: screw_1_12
+    100846: screw_1_13
+    100848: screw_1_14
+    100850: screw_1_15
+    100852: screw_1_16
+    100854: screw_1_2
+    100856: screw_1_3
+    100858: screw_1_4
+    100860: screw_1_5
+    100862: screw_1_6
+    100864: screw_1_7
+    100866: screw_1_8
+    100868: screw_1_9
+    100870: screw_2
+    100872: screw_2_2
+    100874: screw_2_3
+    100876: screw_2_4
+    100878: screw_2_5
+    100880: screw_2_6
+    100882: screw_2_7
+    100884: screw_2_8
+    100886: screw_2_9
+    100888: screw_3
+    100890: screw_3_2
+    100892: screw_3_3
+    100894: screw_3_4
+    100896: screw_3_5
+    100898: screw_3_6
+    100900: screw_3_7
+    100902: screw_3_8
+    100904: screw_3_9
+    100906: screw_4
+    100908: screw_4_2
+    100910: screw_4_3
+    100912: screw_4_4
+    100914: screw_4_5
+    100916: screw_4_6
+    100918: screw_4_7
+    100920: screw_4_8
+    100922: screw_4_9
+    100924: screw_5
+    100926: screw_5_2
+    100928: screw_5_3
+    100930: screw_5_4
+    100932: screw_5_5
+    100934: screw_5_6
+    100936: screw_5_7
+    100938: screw_5_8
+    100940: screw_5_9
+    100942: screw_6
+    100944: screw_6_2
+    100946: screw_6_3
+    100948: screw_6_4
+    100950: screw_6_5
+    100952: screw_6_6
+    100954: screw_6_7
+    100956: screw_6_8
+    100958: screw_6_9
+    100960: screw_7
+    100962: screw_7_2
+    100964: screw_7_3
+    100966: screw_7_4
+    100968: screw_7_5
+    100970: screw_7_6
+    100972: screw_7_7
+    100974: screw_7_8
+    100976: screw_7_9
+    100978: screw_8
+    100980: screw_8_2
+    100982: screw_8_3
+    100984: screw_8_4
+    100986: screw_8_5
+    100988: screw_8_6
+    100990: screw_8_7
+    100992: screw_8_8
+    100994: screw_8_9
+    100996: screw_9
+    100998: screws
+    101000: screws_0
+    101002: screws_1
+    101004: screws_2
+    101006: screws_2_2
+    101008: screws_3
+    101010: screws_3_2
+    101012: screws_4
+    101014: screws_4_2
+    101016: screws_5
+    101018: screws_5_2
+    101020: screws_6
+    101022: screws_6_2
+    101024: screws_7
+    101026: screws_7_2
+    101028: screws_8
+    101030: screws_9
+    101032: servo
+    101034: spreading_wings_servo
+    101036: spring
+    101038: Spring_and_connector
+    101040: Symmetry
+    101042: Symmetry_2
+    101044: top
+    101046: Tube
+    101048: wing_spreader__D
+    101050: wings_60diagree_to_spread
+    101052: xt60
+    101054: xt60_2
+    101056: XT60_connector
+    400000: 2nd_top
+    400002: 2nd_tube
+    400004: 6000Mah_Battery
+    400006: 6000Mah_Battery_2
+    400008: A2
+    400010: A2_Flight_controller
+    400012: "A2_Flight_controlle\u043A_IMU"
+    400014: arm_head_plate_mount_
+    400016: arm_head_plate_mount__2
+    400018: arm_head_plate_mount__3
+    400020: arm_head_plate_mount__4
+    400022: arm_head_plate_mount__5
+    400024: arm_head_plate_mount__6
+    400026: arm_head_plate_mount__7
+    400028: arm_head_plate_mount__8
+    400030: arm_lights
+    400032: arm_mounts
+    400034: Arms
+    400036: Battery_and_cable
+    400038: battery_holder
+    400040: battery_stand
+    400042: Battery_wires
+    400044: Boole
+    400046: Boole_1
+    400048: Boole_2
+    400050: Boole_2_2
+    400052: Boole_2_3
+    400054: Boole_2_4
+    400056: Boole_2_5
+    400058: Boole_2_6
+    400060: Boole_2_7
+    400062: Boole_2_8
+    400064: Boole_3
+    400066: Boole_3_2
+    400068: Boole_3_3
+    400070: Boole_3_4
+    400072: Boole_3_5
+    400074: Boole_3_6
+    400076: Boole_3_7
+    400078: Boole_3_8
+    400080: bottom
+    400082: cables
+    400084: camera_holder
+    400086: Cap_1
+    400088: Cap_1_10
+    400090: Cap_1_11
+    400092: Cap_1_12
+    400094: Cap_1_13
+    400096: Cap_1_14
+    400098: Cap_1_15
+    400100: Cap_1_16
+    400102: Cap_1_17
+    400104: Cap_1_18
+    400106: Cap_1_19
+    400108: Cap_1_2
+    400110: Cap_1_20
+    400112: Cap_1_21
+    400114: Cap_1_22
+    400116: Cap_1_23
+    400118: Cap_1_24
+    400120: Cap_1_25
+    400122: Cap_1_26
+    400124: Cap_1_27
+    400126: Cap_1_28
+    400128: Cap_1_29
+    400130: Cap_1_3
+    400132: Cap_1_30
+    400134: Cap_1_31
+    400136: Cap_1_32
+    400138: Cap_1_4
+    400140: Cap_1_5
+    400142: Cap_1_6
+    400144: Cap_1_7
+    400146: Cap_1_8
+    400148: Cap_1_9
+    400150: Cap_2
+    400152: Cap_2_10
+    400154: Cap_2_11
+    400156: Cap_2_12
+    400158: Cap_2_13
+    400160: Cap_2_14
+    400162: Cap_2_15
+    400164: Cap_2_16
+    400166: Cap_2_17
+    400168: Cap_2_18
+    400170: Cap_2_19
+    400172: Cap_2_2
+    400174: Cap_2_20
+    400176: Cap_2_21
+    400178: Cap_2_22
+    400180: Cap_2_23
+    400182: Cap_2_24
+    400184: Cap_2_25
+    400186: Cap_2_26
+    400188: Cap_2_27
+    400190: Cap_2_28
+    400192: Cap_2_29
+    400194: Cap_2_3
+    400196: Cap_2_30
+    400198: Cap_2_31
+    400200: Cap_2_32
+    400202: Cap_2_4
+    400204: Cap_2_5
+    400206: Cap_2_6
+    400208: Cap_2_7
+    400210: Cap_2_8
+    400212: Cap_2_9
+    400214: connector
+    400216: connector_2
+    400218: Connectors
+    400220: Cube.001
+    400222: Cube_0
+    400224: Cube_1
+    400226: Cube_1_2
+    400228: Cube_1_3
+    400230: Cube_2
+    400232: Cube_2_2
+    400234: Cube_3
+    400236: Cube_4
+    400238: Cube_5
+    400240: Cube_6
+    400242: Cube_7
+    400244: Cylinder
+    400246: Cylinder_0
+    400248: Cylinder_1
+    400250: Cylinder_10
+    400252: Cylinder_11
+    400254: Cylinder_12
+    400256: Cylinder_13
+    400258: Cylinder_14
+    400260: Cylinder_15
+    400262: Cylinder_16
+    400264: Cylinder_17
+    400266: Cylinder_18
+    400268: Cylinder_19
+    400270: Cylinder_1_10
+    400272: Cylinder_1_11
+    400274: Cylinder_1_12
+    400276: Cylinder_1_13
+    400278: Cylinder_1_14
+    400280: Cylinder_1_15
+    400282: Cylinder_1_16
+    400284: Cylinder_1_17
+    400286: Cylinder_1_18
+    400288: Cylinder_1_19
+    400290: Cylinder_1_2
+    400292: Cylinder_1_20
+    400294: Cylinder_1_21
+    400296: Cylinder_1_22
+    400298: Cylinder_1_23
+    400300: Cylinder_1_24
+    400302: Cylinder_1_25
+    400304: Cylinder_1_26
+    400306: Cylinder_1_27
+    400308: Cylinder_1_28
+    400310: Cylinder_1_29
+    400312: Cylinder_1_3
+    400314: Cylinder_1_30
+    400316: Cylinder_1_31
+    400318: Cylinder_1_32
+    400320: Cylinder_1_33
+    400322: Cylinder_1_34
+    400324: Cylinder_1_35
+    400326: Cylinder_1_36
+    400328: Cylinder_1_37
+    400330: Cylinder_1_38
+    400332: Cylinder_1_39
+    400334: Cylinder_1_4
+    400336: Cylinder_1_40
+    400338: Cylinder_1_41
+    400340: Cylinder_1_42
+    400342: Cylinder_1_43
+    400344: Cylinder_1_44
+    400346: Cylinder_1_45
+    400348: Cylinder_1_46
+    400350: Cylinder_1_47
+    400352: Cylinder_1_48
+    400354: Cylinder_1_49
+    400356: Cylinder_1_5
+    400358: Cylinder_1_50
+    400360: Cylinder_1_51
+    400362: Cylinder_1_52
+    400364: Cylinder_1_53
+    400366: Cylinder_1_54
+    400368: Cylinder_1_55
+    400370: Cylinder_1_56
+    400372: Cylinder_1_57
+    400374: Cylinder_1_58
+    400376: Cylinder_1_59
+    400378: Cylinder_1_6
+    400380: Cylinder_1_60
+    400382: Cylinder_1_61
+    400384: Cylinder_1_62
+    400386: Cylinder_1_63
+    400388: Cylinder_1_64
+    400390: Cylinder_1_65
+    400392: Cylinder_1_66
+    400394: Cylinder_1_67
+    400396: Cylinder_1_68
+    400398: Cylinder_1_69
+    400400: Cylinder_1_7
+    400402: Cylinder_1_70
+    400404: Cylinder_1_71
+    400406: Cylinder_1_72
+    400408: Cylinder_1_73
+    400410: Cylinder_1_74
+    400412: Cylinder_1_75
+    400414: Cylinder_1_76
+    400416: Cylinder_1_77
+    400418: Cylinder_1_78
+    400420: Cylinder_1_79
+    400422: Cylinder_1_8
+    400424: Cylinder_1_80
+    400426: Cylinder_1_81
+    400428: Cylinder_1_82
+    400430: Cylinder_1_83
+    400432: Cylinder_1_84
+    400434: Cylinder_1_85
+    400436: Cylinder_1_86
+    400438: Cylinder_1_87
+    400440: Cylinder_1_88
+    400442: Cylinder_1_89
+    400444: Cylinder_1_9
+    400446: Cylinder_1_90
+    400448: Cylinder_1_91
+    400450: Cylinder_2
+    400452: Cylinder_20
+    400454: Cylinder_21
+    400456: Cylinder_22
+    400458: Cylinder_23
+    400460: Cylinder_24
+    400462: Cylinder_25
+    400464: Cylinder_26
+    400466: Cylinder_27
+    400468: Cylinder_28
+    400470: Cylinder_29
+    400472: Cylinder_2_2
+    400474: Cylinder_2_3
+    400476: Cylinder_2_4
+    400478: Cylinder_2_5
+    400480: Cylinder_3
+    400482: Cylinder_30
+    400484: Cylinder_31
+    400486: Cylinder_32
+    400488: Cylinder_33
+    400490: Cylinder_34
+    400492: Cylinder_35
+    400494: Cylinder_36
+    400496: Cylinder_37
+    400498: Cylinder_38
+    400500: Cylinder_39
+    400502: Cylinder_3_2
+    400504: Cylinder_3_3
+    400506: Cylinder_3_4
+    400508: Cylinder_4
+    400510: Cylinder_40
+    400512: Cylinder_41
+    400514: Cylinder_42
+    400516: Cylinder_43
+    400518: Cylinder_44
+    400520: Cylinder_45
+    400522: Cylinder_46
+    400524: Cylinder_47
+    400526: Cylinder_48
+    400528: Cylinder_49
+    400530: Cylinder_4_2
+    400532: Cylinder_4_3
+    400534: Cylinder_5
+    400536: Cylinder_50
+    400538: Cylinder_51
+    400540: Cylinder_52
+    400542: Cylinder_53
+    400544: Cylinder_54
+    400546: Cylinder_55
+    400548: Cylinder_56
+    400550: Cylinder_57
+    400552: Cylinder_58
+    400554: Cylinder_59
+    400556: Cylinder_5_2
+    400558: Cylinder_5_3
+    400560: Cylinder_6
+    400562: Cylinder_60
+    400564: Cylinder_61
+    400566: Cylinder_62
+    400568: Cylinder_63
+    400570: Cylinder_64
+    400572: Cylinder_65
+    400574: Cylinder_66
+    400576: Cylinder_67
+    400578: Cylinder_68
+    400580: Cylinder_69
+    400582: Cylinder_6_2
+    400584: Cylinder_6_3
+    400586: Cylinder_7
+    400588: Cylinder_70
+    400590: Cylinder_71
+    400592: Cylinder_72
+    400594: Cylinder_73
+    400596: Cylinder_74
+    400598: Cylinder_75
+    400600: Cylinder_76
+    400602: Cylinder_77
+    400604: Cylinder_78
+    400606: Cylinder_79
+    400608: Cylinder_7_2
+    400610: Cylinder_8
+    400612: Cylinder_80
+    400614: Cylinder_81
+    400616: Cylinder_82
+    400618: Cylinder_83
+    400620: Cylinder_84
+    400622: Cylinder_85
+    400624: Cylinder_86
+    400626: Cylinder_87
+    400628: Cylinder_88
+    400630: Cylinder_89
+    400632: Cylinder_9
+    400634: Cylinder_90
+    400636: dumper
+    400638: dumper_1
+    400640: dumper_2
+    400642: dumper_3
+    400644: dumpers
+    400646: electronics
+    400648: Gh4
+    400650: gimbal
+    400652: gimbal_and_camera
+    400654: gimball
+    400656: GPS
+    400658: GPS_mount
+    400660: gps_naza
+    400662: landing_gear
+    400664: landing_gear_2
+    400666: landing_gear_plastic
+    400668: landing_rubbers
+    400670: motor_11
+    400672: motor_13
+    400674: motor_14
+    400676: motor_15
+    400678: motor_17
+    400680: motor_2
+    400682: motor_3
+    400684: motor_5
+    400686: motor_7
+    400688: motor_9
+    400690: motor_fc_cable
+    400692: motor_holder
+    400694: motor_holder_2
+    400696: motor_mount
+    400698: motor_mount_2
+    400700: motor_mount_3
+    400702: motor_mount_4
+    400704: motor_mount_5
+    400706: motor_mount_6
+    400708: motor_mount_7
+    400710: motor_mount_8
+    400712: motors_and_motor_holders
+    400714: Null
+    400716: Null_1_0
+    400718: Null_1_1
+    400720: Null_1_2
+    400722: Null_1_3
+    400724: Null_1_4
+    400726: Null_1_5
+    400728: Null_1_6
+    400730: Null_1_7
+    400732: //RootNode
+    400734: plate_mounts
+    400736: plates
+    400738: Prop14Inch
+    400740: Prop14Inch_10
+    400742: Prop14Inch_11
+    400744: Prop14Inch_12
+    400746: Prop14Inch_13
+    400748: Prop14Inch_14
+    400750: Prop14Inch_15
+    400752: Prop14Inch_16
+    400754: Prop14Inch_2
+    400756: Prop14Inch_3
+    400758: Prop14Inch_4
+    400760: Prop14Inch_5
+    400762: Prop14Inch_6
+    400764: Prop14Inch_7
+    400766: Prop14Inch_8
+    400768: Prop14Inch_9
+    400770: prop_adapter
+    400772: prop_adapter_2
+    400774: prop_adapter_3
+    400776: prop_adapter_4
+    400778: prop_adapter_5
+    400780: prop_adapter_6
+    400782: prop_adapter_7
+    400784: prop_adapter_8
+    400786: props
+    400788: props_2
+    400790: props_3
+    400792: props_4
+    400794: props_5
+    400796: props_6
+    400798: props_7
+    400800: props_8
+    400802: props_and_motors_0
+    400804: props_and_motors_1
+    400806: props_and_motors_2
+    400808: props_and_motors_3
+    400810: props_and_motors_4
+    400812: props_and_motors_5
+    400814: props_and_motors_6
+    400816: props_and_motors_7
+    400818: red_wire
+    400820: S1000_
+    400822: screw
+    400824: screw_1
+    400826: screw_10
+    400828: screw_11
+    400830: screw_12
+    400832: screw_13
+    400834: screw_14
+    400836: screw_15
+    400838: screw_16
+    400840: screw_1_10
+    400842: screw_1_11
+    400844: screw_1_12
+    400846: screw_1_13
+    400848: screw_1_14
+    400850: screw_1_15
+    400852: screw_1_16
+    400854: screw_1_2
+    400856: screw_1_3
+    400858: screw_1_4
+    400860: screw_1_5
+    400862: screw_1_6
+    400864: screw_1_7
+    400866: screw_1_8
+    400868: screw_1_9
+    400870: screw_2
+    400872: screw_2_2
+    400874: screw_2_3
+    400876: screw_2_4
+    400878: screw_2_5
+    400880: screw_2_6
+    400882: screw_2_7
+    400884: screw_2_8
+    400886: screw_2_9
+    400888: screw_3
+    400890: screw_3_2
+    400892: screw_3_3
+    400894: screw_3_4
+    400896: screw_3_5
+    400898: screw_3_6
+    400900: screw_3_7
+    400902: screw_3_8
+    400904: screw_3_9
+    400906: screw_4
+    400908: screw_4_2
+    400910: screw_4_3
+    400912: screw_4_4
+    400914: screw_4_5
+    400916: screw_4_6
+    400918: screw_4_7
+    400920: screw_4_8
+    400922: screw_4_9
+    400924: screw_5
+    400926: screw_5_2
+    400928: screw_5_3
+    400930: screw_5_4
+    400932: screw_5_5
+    400934: screw_5_6
+    400936: screw_5_7
+    400938: screw_5_8
+    400940: screw_5_9
+    400942: screw_6
+    400944: screw_6_2
+    400946: screw_6_3
+    400948: screw_6_4
+    400950: screw_6_5
+    400952: screw_6_6
+    400954: screw_6_7
+    400956: screw_6_8
+    400958: screw_6_9
+    400960: screw_7
+    400962: screw_7_2
+    400964: screw_7_3
+    400966: screw_7_4
+    400968: screw_7_5
+    400970: screw_7_6
+    400972: screw_7_7
+    400974: screw_7_8
+    400976: screw_7_9
+    400978: screw_8
+    400980: screw_8_2
+    400982: screw_8_3
+    400984: screw_8_4
+    400986: screw_8_5
+    400988: screw_8_6
+    400990: screw_8_7
+    400992: screw_8_8
+    400994: screw_8_9
+    400996: screw_9
+    400998: screws
+    401000: screws_0
+    401002: screws_1
+    401004: screws_2
+    401006: screws_2_2
+    401008: screws_3
+    401010: screws_3_2
+    401012: screws_4
+    401014: screws_4_2
+    401016: screws_5
+    401018: screws_5_2
+    401020: screws_6
+    401022: screws_6_2
+    401024: screws_7
+    401026: screws_7_2
+    401028: screws_8
+    401030: screws_9
+    401032: servo
+    401034: spreading_wings_servo
+    401036: spring
+    401038: Spring_and_connector
+    401040: Symmetry
+    401042: Symmetry_2
+    401044: top
+    401046: Tube
+    401048: wing_spreader__D
+    401050: wings_60diagree_to_spread
+    401052: xt60
+    401054: xt60_2
+    401056: XT60_connector
+    2100000: Glossy Black
+    2100002: carbon fiber
+    2100004: carbon fiber.001
+    2100006: carbon fiber.2
+    2100008: carbon fiber.4
+    2100010: carbon fiber.5
+    2100012: Mat.1
+    2100014: Mat.6
+    2100016: Mat.003
+    2100018: Mat.004
+    2100020: Mat.005
+    2100022: Mat.5
+    2100024: Mat.008
+    2100026: Mat_11_-1
+    2100028: carbon fiber.7
+    2100030: carbon fiber.8
+    2100032: carbon fiber.9
+    2100034: carbon fiber.10
+    2100036: carbon fiber.11
+    2100038: carbon fiber.12
+    2100040: carbon fiber.13
+    2100042: Mat.4
+    2100044: Metal - Copper
+    2100046: Mat_11_-1.001
+    2100048: Mat.009
+    2100050: Mat.010
+    2100052: Mat.011
+    2100054: Mat.012
+    2100056: Mat_11_-1.003
+    2100058: Mat.013
+    2100060: Mat_11_-1.002
+    2100062: Mat_11_-1.3
+    2100064: Mat.014
+    2100066: Mat.016
+    2100068: Mat.017
+    2100070: Mat.018
+    2100072: Mat.2.9
+    2100074: Mat.2.4
+    2100076: Mat.2.5
+    2100078: Mat.2.6
+    2100080: Mat.2.7
+    2100082: Mat.2.8
+    2100084: Mat.2.10
+    2100086: Mat.2.11
+    2100088: Mat.3
+    2100090: Mat.019
+    2100092: carbon fiber.22
+    2100094: carbon fiber.23
+    2100096: carbon fiber.24
+    2100098: carbon fiber.25
+    2100100: carbon fiber.26
+    2100102: carbon fiber.27
+    2100104: carbon fiber.28
+    2100106: carbon fiber.29
+    2100108: carbon fiber.014
+    2100110: carbon fiber.015
+    2100112: carbon fiber.016
+    2100114: carbon fiber.017
+    2100116: carbon fiber.018
+    2100118: carbon fiber.30
+    2300000: 2nd_top
+    2300002: 2nd_tube
+    2300004: A2_Flight_controller
+    2300006: "A2_Flight_controlle\u043A_IMU"
+    2300008: arm_head_plate_mount_
+    2300010: arm_head_plate_mount__2
+    2300012: arm_head_plate_mount__3
+    2300014: arm_head_plate_mount__4
+    2300016: arm_head_plate_mount__5
+    2300018: arm_head_plate_mount__6
+    2300020: arm_head_plate_mount__7
+    2300022: arm_head_plate_mount__8
+    2300024: arm_lights
+    2300026: battery_holder
+    2300028: Boole
+    2300030: Boole_1
+    2300032: Boole_2
+    2300034: Boole_2_2
+    2300036: Boole_2_3
+    2300038: Boole_2_4
+    2300040: Boole_2_5
+    2300042: Boole_2_6
+    2300044: Boole_2_7
+    2300046: Boole_2_8
+    2300048: Boole_3
+    2300050: Boole_3_2
+    2300052: Boole_3_3
+    2300054: Boole_3_4
+    2300056: Boole_3_5
+    2300058: Boole_3_6
+    2300060: Boole_3_7
+    2300062: Boole_3_8
+    2300064: bottom
+    2300066: camera_holder
+    2300068: Cap_1
+    2300070: Cap_1_10
+    2300072: Cap_1_11
+    2300074: Cap_1_12
+    2300076: Cap_1_13
+    2300078: Cap_1_14
+    2300080: Cap_1_15
+    2300082: Cap_1_16
+    2300084: Cap_1_17
+    2300086: Cap_1_18
+    2300088: Cap_1_19
+    2300090: Cap_1_2
+    2300092: Cap_1_20
+    2300094: Cap_1_21
+    2300096: Cap_1_22
+    2300098: Cap_1_23
+    2300100: Cap_1_24
+    2300102: Cap_1_25
+    2300104: Cap_1_26
+    2300106: Cap_1_27
+    2300108: Cap_1_28
+    2300110: Cap_1_29
+    2300112: Cap_1_3
+    2300114: Cap_1_30
+    2300116: Cap_1_31
+    2300118: Cap_1_32
+    2300120: Cap_1_4
+    2300122: Cap_1_5
+    2300124: Cap_1_6
+    2300126: Cap_1_7
+    2300128: Cap_1_8
+    2300130: Cap_1_9
+    2300132: Cap_2
+    2300134: Cap_2_10
+    2300136: Cap_2_11
+    2300138: Cap_2_12
+    2300140: Cap_2_13
+    2300142: Cap_2_14
+    2300144: Cap_2_15
+    2300146: Cap_2_16
+    2300148: Cap_2_17
+    2300150: Cap_2_18
+    2300152: Cap_2_19
+    2300154: Cap_2_2
+    2300156: Cap_2_20
+    2300158: Cap_2_21
+    2300160: Cap_2_22
+    2300162: Cap_2_23
+    2300164: Cap_2_24
+    2300166: Cap_2_25
+    2300168: Cap_2_26
+    2300170: Cap_2_27
+    2300172: Cap_2_28
+    2300174: Cap_2_29
+    2300176: Cap_2_3
+    2300178: Cap_2_30
+    2300180: Cap_2_31
+    2300182: Cap_2_32
+    2300184: Cap_2_4
+    2300186: Cap_2_5
+    2300188: Cap_2_6
+    2300190: Cap_2_7
+    2300192: Cap_2_8
+    2300194: Cap_2_9
+    2300196: connector
+    2300198: connector_2
+    2300200: Connectors
+    2300202: Cube.001
+    2300204: Cube_0
+    2300206: Cube_1
+    2300208: Cube_1_2
+    2300210: Cube_1_3
+    2300212: Cube_2
+    2300214: Cube_2_2
+    2300216: Cube_3
+    2300218: Cube_4
+    2300220: Cube_5
+    2300222: Cube_6
+    2300224: Cube_7
+    2300226: Cylinder
+    2300228: Cylinder_0
+    2300230: Cylinder_1
+    2300232: Cylinder_10
+    2300234: Cylinder_11
+    2300236: Cylinder_12
+    2300238: Cylinder_13
+    2300240: Cylinder_14
+    2300242: Cylinder_15
+    2300244: Cylinder_16
+    2300246: Cylinder_17
+    2300248: Cylinder_18
+    2300250: Cylinder_19
+    2300252: Cylinder_1_10
+    2300254: Cylinder_1_11
+    2300256: Cylinder_1_12
+    2300258: Cylinder_1_13
+    2300260: Cylinder_1_14
+    2300262: Cylinder_1_15
+    2300264: Cylinder_1_16
+    2300266: Cylinder_1_17
+    2300268: Cylinder_1_18
+    2300270: Cylinder_1_19
+    2300272: Cylinder_1_2
+    2300274: Cylinder_1_20
+    2300276: Cylinder_1_21
+    2300278: Cylinder_1_22
+    2300280: Cylinder_1_23
+    2300282: Cylinder_1_24
+    2300284: Cylinder_1_25
+    2300286: Cylinder_1_26
+    2300288: Cylinder_1_27
+    2300290: Cylinder_1_28
+    2300292: Cylinder_1_29
+    2300294: Cylinder_1_3
+    2300296: Cylinder_1_30
+    2300298: Cylinder_1_31
+    2300300: Cylinder_1_32
+    2300302: Cylinder_1_33
+    2300304: Cylinder_1_34
+    2300306: Cylinder_1_35
+    2300308: Cylinder_1_36
+    2300310: Cylinder_1_37
+    2300312: Cylinder_1_38
+    2300314: Cylinder_1_39
+    2300316: Cylinder_1_4
+    2300318: Cylinder_1_40
+    2300320: Cylinder_1_41
+    2300322: Cylinder_1_42
+    2300324: Cylinder_1_43
+    2300326: Cylinder_1_44
+    2300328: Cylinder_1_45
+    2300330: Cylinder_1_46
+    2300332: Cylinder_1_47
+    2300334: Cylinder_1_48
+    2300336: Cylinder_1_49
+    2300338: Cylinder_1_5
+    2300340: Cylinder_1_50
+    2300342: Cylinder_1_51
+    2300344: Cylinder_1_52
+    2300346: Cylinder_1_53
+    2300348: Cylinder_1_54
+    2300350: Cylinder_1_55
+    2300352: Cylinder_1_56
+    2300354: Cylinder_1_57
+    2300356: Cylinder_1_58
+    2300358: Cylinder_1_59
+    2300360: Cylinder_1_6
+    2300362: Cylinder_1_60
+    2300364: Cylinder_1_61
+    2300366: Cylinder_1_62
+    2300368: Cylinder_1_63
+    2300370: Cylinder_1_64
+    2300372: Cylinder_1_65
+    2300374: Cylinder_1_66
+    2300376: Cylinder_1_67
+    2300378: Cylinder_1_68
+    2300380: Cylinder_1_69
+    2300382: Cylinder_1_7
+    2300384: Cylinder_1_70
+    2300386: Cylinder_1_71
+    2300388: Cylinder_1_72
+    2300390: Cylinder_1_73
+    2300392: Cylinder_1_74
+    2300394: Cylinder_1_75
+    2300396: Cylinder_1_76
+    2300398: Cylinder_1_77
+    2300400: Cylinder_1_78
+    2300402: Cylinder_1_79
+    2300404: Cylinder_1_8
+    2300406: Cylinder_1_80
+    2300408: Cylinder_1_81
+    2300410: Cylinder_1_82
+    2300412: Cylinder_1_83
+    2300414: Cylinder_1_84
+    2300416: Cylinder_1_85
+    2300418: Cylinder_1_86
+    2300420: Cylinder_1_87
+    2300422: Cylinder_1_88
+    2300424: Cylinder_1_89
+    2300426: Cylinder_1_9
+    2300428: Cylinder_1_90
+    2300430: Cylinder_1_91
+    2300432: Cylinder_2
+    2300434: Cylinder_20
+    2300436: Cylinder_21
+    2300438: Cylinder_22
+    2300440: Cylinder_23
+    2300442: Cylinder_24
+    2300444: Cylinder_25
+    2300446: Cylinder_26
+    2300448: Cylinder_27
+    2300450: Cylinder_28
+    2300452: Cylinder_29
+    2300454: Cylinder_2_2
+    2300456: Cylinder_2_3
+    2300458: Cylinder_2_4
+    2300460: Cylinder_2_5
+    2300462: Cylinder_3
+    2300464: Cylinder_30
+    2300466: Cylinder_31
+    2300468: Cylinder_32
+    2300470: Cylinder_33
+    2300472: Cylinder_34
+    2300474: Cylinder_35
+    2300476: Cylinder_36
+    2300478: Cylinder_37
+    2300480: Cylinder_38
+    2300482: Cylinder_39
+    2300484: Cylinder_3_2
+    2300486: Cylinder_3_3
+    2300488: Cylinder_3_4
+    2300490: Cylinder_4
+    2300492: Cylinder_40
+    2300494: Cylinder_41
+    2300496: Cylinder_42
+    2300498: Cylinder_43
+    2300500: Cylinder_44
+    2300502: Cylinder_45
+    2300504: Cylinder_46
+    2300506: Cylinder_47
+    2300508: Cylinder_48
+    2300510: Cylinder_49
+    2300512: Cylinder_4_2
+    2300514: Cylinder_4_3
+    2300516: Cylinder_5
+    2300518: Cylinder_50
+    2300520: Cylinder_51
+    2300522: Cylinder_52
+    2300524: Cylinder_53
+    2300526: Cylinder_54
+    2300528: Cylinder_55
+    2300530: Cylinder_56
+    2300532: Cylinder_57
+    2300534: Cylinder_58
+    2300536: Cylinder_59
+    2300538: Cylinder_5_2
+    2300540: Cylinder_5_3
+    2300542: Cylinder_6
+    2300544: Cylinder_60
+    2300546: Cylinder_61
+    2300548: Cylinder_62
+    2300550: Cylinder_63
+    2300552: Cylinder_64
+    2300554: Cylinder_65
+    2300556: Cylinder_66
+    2300558: Cylinder_67
+    2300560: Cylinder_68
+    2300562: Cylinder_69
+    2300564: Cylinder_6_2
+    2300566: Cylinder_6_3
+    2300568: Cylinder_7
+    2300570: Cylinder_70
+    2300572: Cylinder_71
+    2300574: Cylinder_72
+    2300576: Cylinder_73
+    2300578: Cylinder_74
+    2300580: Cylinder_75
+    2300582: Cylinder_76
+    2300584: Cylinder_77
+    2300586: Cylinder_78
+    2300588: Cylinder_79
+    2300590: Cylinder_7_2
+    2300592: Cylinder_8
+    2300594: Cylinder_80
+    2300596: Cylinder_81
+    2300598: Cylinder_82
+    2300600: Cylinder_83
+    2300602: Cylinder_84
+    2300604: Cylinder_85
+    2300606: Cylinder_86
+    2300608: Cylinder_87
+    2300610: Cylinder_88
+    2300612: Cylinder_89
+    2300614: Cylinder_9
+    2300616: Cylinder_90
+    2300618: dumper
+    2300620: dumper_1
+    2300622: dumper_2
+    2300624: dumper_3
+    2300626: Gh4
+    2300628: GPS_mount
+    2300630: gps_naza
+    2300632: landing_rubbers
+    2300634: motor_14
+    2300636: motor_fc_cable
+    2300638: motor_holder
+    2300640: motor_holder_2
+    2300642: motor_mount
+    2300644: motor_mount_2
+    2300646: motor_mount_3
+    2300648: motor_mount_4
+    2300650: motor_mount_5
+    2300652: motor_mount_6
+    2300654: motor_mount_7
+    2300656: motor_mount_8
+    2300658: plate_mounts
+    2300660: Prop14Inch
+    2300662: Prop14Inch_10
+    2300664: Prop14Inch_11
+    2300666: Prop14Inch_12
+    2300668: Prop14Inch_13
+    2300670: Prop14Inch_14
+    2300672: Prop14Inch_15
+    2300674: Prop14Inch_16
+    2300676: Prop14Inch_2
+    2300678: Prop14Inch_3
+    2300680: Prop14Inch_4
+    2300682: Prop14Inch_5
+    2300684: Prop14Inch_6
+    2300686: Prop14Inch_7
+    2300688: Prop14Inch_8
+    2300690: Prop14Inch_9
+    2300692: prop_adapter
+    2300694: prop_adapter_2
+    2300696: prop_adapter_3
+    2300698: prop_adapter_4
+    2300700: prop_adapter_5
+    2300702: prop_adapter_6
+    2300704: prop_adapter_7
+    2300706: prop_adapter_8
+    2300708: red_wire
+    2300710: servo
+    2300712: spring
+    2300714: top
+    2300716: Tube
+    2300718: wing_spreader__D
+    2300720: xt60
+    2300722: xt60_2
+    3300000: 2nd_top
+    3300002: 2nd_tube
+    3300004: A2_Flight_controller
+    3300006: "A2_Flight_controlle\u043A_IMU"
+    3300008: arm_head_plate_mount_
+    3300010: arm_head_plate_mount__2
+    3300012: arm_head_plate_mount__3
+    3300014: arm_head_plate_mount__4
+    3300016: arm_head_plate_mount__5
+    3300018: arm_head_plate_mount__6
+    3300020: arm_head_plate_mount__7
+    3300022: arm_head_plate_mount__8
+    3300024: arm_lights
+    3300026: battery_holder
+    3300028: Boole
+    3300030: Boole_1
+    3300032: Boole_2
+    3300034: Boole_2_2
+    3300036: Boole_2_3
+    3300038: Boole_2_4
+    3300040: Boole_2_5
+    3300042: Boole_2_6
+    3300044: Boole_2_7
+    3300046: Boole_2_8
+    3300048: Boole_3
+    3300050: Boole_3_2
+    3300052: Boole_3_3
+    3300054: Boole_3_4
+    3300056: Boole_3_5
+    3300058: Boole_3_6
+    3300060: Boole_3_7
+    3300062: Boole_3_8
+    3300064: bottom
+    3300066: camera_holder
+    3300068: Cap_1
+    3300070: Cap_1_10
+    3300072: Cap_1_11
+    3300074: Cap_1_12
+    3300076: Cap_1_13
+    3300078: Cap_1_14
+    3300080: Cap_1_15
+    3300082: Cap_1_16
+    3300084: Cap_1_17
+    3300086: Cap_1_18
+    3300088: Cap_1_19
+    3300090: Cap_1_2
+    3300092: Cap_1_20
+    3300094: Cap_1_21
+    3300096: Cap_1_22
+    3300098: Cap_1_23
+    3300100: Cap_1_24
+    3300102: Cap_1_25
+    3300104: Cap_1_26
+    3300106: Cap_1_27
+    3300108: Cap_1_28
+    3300110: Cap_1_29
+    3300112: Cap_1_3
+    3300114: Cap_1_30
+    3300116: Cap_1_31
+    3300118: Cap_1_32
+    3300120: Cap_1_4
+    3300122: Cap_1_5
+    3300124: Cap_1_6
+    3300126: Cap_1_7
+    3300128: Cap_1_8
+    3300130: Cap_1_9
+    3300132: Cap_2
+    3300134: Cap_2_10
+    3300136: Cap_2_11
+    3300138: Cap_2_12
+    3300140: Cap_2_13
+    3300142: Cap_2_14
+    3300144: Cap_2_15
+    3300146: Cap_2_16
+    3300148: Cap_2_17
+    3300150: Cap_2_18
+    3300152: Cap_2_19
+    3300154: Cap_2_2
+    3300156: Cap_2_20
+    3300158: Cap_2_21
+    3300160: Cap_2_22
+    3300162: Cap_2_23
+    3300164: Cap_2_24
+    3300166: Cap_2_25
+    3300168: Cap_2_26
+    3300170: Cap_2_27
+    3300172: Cap_2_28
+    3300174: Cap_2_29
+    3300176: Cap_2_3
+    3300178: Cap_2_30
+    3300180: Cap_2_31
+    3300182: Cap_2_32
+    3300184: Cap_2_4
+    3300186: Cap_2_5
+    3300188: Cap_2_6
+    3300190: Cap_2_7
+    3300192: Cap_2_8
+    3300194: Cap_2_9
+    3300196: connector
+    3300198: connector_2
+    3300200: Connectors
+    3300202: Cube.001
+    3300204: Cube_0
+    3300206: Cube_1
+    3300208: Cube_1_2
+    3300210: Cube_1_3
+    3300212: Cube_2
+    3300214: Cube_2_2
+    3300216: Cube_3
+    3300218: Cube_4
+    3300220: Cube_5
+    3300222: Cube_6
+    3300224: Cube_7
+    3300226: Cylinder
+    3300228: Cylinder_0
+    3300230: Cylinder_1
+    3300232: Cylinder_10
+    3300234: Cylinder_11
+    3300236: Cylinder_12
+    3300238: Cylinder_13
+    3300240: Cylinder_14
+    3300242: Cylinder_15
+    3300244: Cylinder_16
+    3300246: Cylinder_17
+    3300248: Cylinder_18
+    3300250: Cylinder_19
+    3300252: Cylinder_1_10
+    3300254: Cylinder_1_11
+    3300256: Cylinder_1_12
+    3300258: Cylinder_1_13
+    3300260: Cylinder_1_14
+    3300262: Cylinder_1_15
+    3300264: Cylinder_1_16
+    3300266: Cylinder_1_17
+    3300268: Cylinder_1_18
+    3300270: Cylinder_1_19
+    3300272: Cylinder_1_2
+    3300274: Cylinder_1_20
+    3300276: Cylinder_1_21
+    3300278: Cylinder_1_22
+    3300280: Cylinder_1_23
+    3300282: Cylinder_1_24
+    3300284: Cylinder_1_25
+    3300286: Cylinder_1_26
+    3300288: Cylinder_1_27
+    3300290: Cylinder_1_28
+    3300292: Cylinder_1_29
+    3300294: Cylinder_1_3
+    3300296: Cylinder_1_30
+    3300298: Cylinder_1_31
+    3300300: Cylinder_1_32
+    3300302: Cylinder_1_33
+    3300304: Cylinder_1_34
+    3300306: Cylinder_1_35
+    3300308: Cylinder_1_36
+    3300310: Cylinder_1_37
+    3300312: Cylinder_1_38
+    3300314: Cylinder_1_39
+    3300316: Cylinder_1_4
+    3300318: Cylinder_1_40
+    3300320: Cylinder_1_41
+    3300322: Cylinder_1_42
+    3300324: Cylinder_1_43
+    3300326: Cylinder_1_44
+    3300328: Cylinder_1_45
+    3300330: Cylinder_1_46
+    3300332: Cylinder_1_47
+    3300334: Cylinder_1_48
+    3300336: Cylinder_1_49
+    3300338: Cylinder_1_5
+    3300340: Cylinder_1_50
+    3300342: Cylinder_1_51
+    3300344: Cylinder_1_52
+    3300346: Cylinder_1_53
+    3300348: Cylinder_1_54
+    3300350: Cylinder_1_55
+    3300352: Cylinder_1_56
+    3300354: Cylinder_1_57
+    3300356: Cylinder_1_58
+    3300358: Cylinder_1_59
+    3300360: Cylinder_1_6
+    3300362: Cylinder_1_60
+    3300364: Cylinder_1_61
+    3300366: Cylinder_1_62
+    3300368: Cylinder_1_63
+    3300370: Cylinder_1_64
+    3300372: Cylinder_1_65
+    3300374: Cylinder_1_66
+    3300376: Cylinder_1_67
+    3300378: Cylinder_1_68
+    3300380: Cylinder_1_69
+    3300382: Cylinder_1_7
+    3300384: Cylinder_1_70
+    3300386: Cylinder_1_71
+    3300388: Cylinder_1_72
+    3300390: Cylinder_1_73
+    3300392: Cylinder_1_74
+    3300394: Cylinder_1_75
+    3300396: Cylinder_1_76
+    3300398: Cylinder_1_77
+    3300400: Cylinder_1_78
+    3300402: Cylinder_1_79
+    3300404: Cylinder_1_8
+    3300406: Cylinder_1_80
+    3300408: Cylinder_1_81
+    3300410: Cylinder_1_82
+    3300412: Cylinder_1_83
+    3300414: Cylinder_1_84
+    3300416: Cylinder_1_85
+    3300418: Cylinder_1_86
+    3300420: Cylinder_1_87
+    3300422: Cylinder_1_88
+    3300424: Cylinder_1_89
+    3300426: Cylinder_1_9
+    3300428: Cylinder_1_90
+    3300430: Cylinder_1_91
+    3300432: Cylinder_2
+    3300434: Cylinder_20
+    3300436: Cylinder_21
+    3300438: Cylinder_22
+    3300440: Cylinder_23
+    3300442: Cylinder_24
+    3300444: Cylinder_25
+    3300446: Cylinder_26
+    3300448: Cylinder_27
+    3300450: Cylinder_28
+    3300452: Cylinder_29
+    3300454: Cylinder_2_2
+    3300456: Cylinder_2_3
+    3300458: Cylinder_2_4
+    3300460: Cylinder_2_5
+    3300462: Cylinder_3
+    3300464: Cylinder_30
+    3300466: Cylinder_31
+    3300468: Cylinder_32
+    3300470: Cylinder_33
+    3300472: Cylinder_34
+    3300474: Cylinder_35
+    3300476: Cylinder_36
+    3300478: Cylinder_37
+    3300480: Cylinder_38
+    3300482: Cylinder_39
+    3300484: Cylinder_3_2
+    3300486: Cylinder_3_3
+    3300488: Cylinder_3_4
+    3300490: Cylinder_4
+    3300492: Cylinder_40
+    3300494: Cylinder_41
+    3300496: Cylinder_42
+    3300498: Cylinder_43
+    3300500: Cylinder_44
+    3300502: Cylinder_45
+    3300504: Cylinder_46
+    3300506: Cylinder_47
+    3300508: Cylinder_48
+    3300510: Cylinder_49
+    3300512: Cylinder_4_2
+    3300514: Cylinder_4_3
+    3300516: Cylinder_5
+    3300518: Cylinder_50
+    3300520: Cylinder_51
+    3300522: Cylinder_52
+    3300524: Cylinder_53
+    3300526: Cylinder_54
+    3300528: Cylinder_55
+    3300530: Cylinder_56
+    3300532: Cylinder_57
+    3300534: Cylinder_58
+    3300536: Cylinder_59
+    3300538: Cylinder_5_2
+    3300540: Cylinder_5_3
+    3300542: Cylinder_6
+    3300544: Cylinder_60
+    3300546: Cylinder_61
+    3300548: Cylinder_62
+    3300550: Cylinder_63
+    3300552: Cylinder_64
+    3300554: Cylinder_65
+    3300556: Cylinder_66
+    3300558: Cylinder_67
+    3300560: Cylinder_68
+    3300562: Cylinder_69
+    3300564: Cylinder_6_2
+    3300566: Cylinder_6_3
+    3300568: Cylinder_7
+    3300570: Cylinder_70
+    3300572: Cylinder_71
+    3300574: Cylinder_72
+    3300576: Cylinder_73
+    3300578: Cylinder_74
+    3300580: Cylinder_75
+    3300582: Cylinder_76
+    3300584: Cylinder_77
+    3300586: Cylinder_78
+    3300588: Cylinder_79
+    3300590: Cylinder_7_2
+    3300592: Cylinder_8
+    3300594: Cylinder_80
+    3300596: Cylinder_81
+    3300598: Cylinder_82
+    3300600: Cylinder_83
+    3300602: Cylinder_84
+    3300604: Cylinder_85
+    3300606: Cylinder_86
+    3300608: Cylinder_87
+    3300610: Cylinder_88
+    3300612: Cylinder_89
+    3300614: Cylinder_9
+    3300616: Cylinder_90
+    3300618: dumper
+    3300620: dumper_1
+    3300622: dumper_2
+    3300624: dumper_3
+    3300626: Gh4
+    3300628: GPS_mount
+    3300630: gps_naza
+    3300632: landing_rubbers
+    3300634: motor_14
+    3300636: motor_fc_cable
+    3300638: motor_holder
+    3300640: motor_holder_2
+    3300642: motor_mount
+    3300644: motor_mount_2
+    3300646: motor_mount_3
+    3300648: motor_mount_4
+    3300650: motor_mount_5
+    3300652: motor_mount_6
+    3300654: motor_mount_7
+    3300656: motor_mount_8
+    3300658: plate_mounts
+    3300660: Prop14Inch
+    3300662: Prop14Inch_10
+    3300664: Prop14Inch_11
+    3300666: Prop14Inch_12
+    3300668: Prop14Inch_13
+    3300670: Prop14Inch_14
+    3300672: Prop14Inch_15
+    3300674: Prop14Inch_16
+    3300676: Prop14Inch_2
+    3300678: Prop14Inch_3
+    3300680: Prop14Inch_4
+    3300682: Prop14Inch_5
+    3300684: Prop14Inch_6
+    3300686: Prop14Inch_7
+    3300688: Prop14Inch_8
+    3300690: Prop14Inch_9
+    3300692: prop_adapter
+    3300694: prop_adapter_2
+    3300696: prop_adapter_3
+    3300698: prop_adapter_4
+    3300700: prop_adapter_5
+    3300702: prop_adapter_6
+    3300704: prop_adapter_7
+    3300706: prop_adapter_8
+    3300708: red_wire
+    3300710: servo
+    3300712: spring
+    3300714: top
+    3300716: Tube
+    3300718: wing_spreader__D
+    3300720: xt60
+    3300722: xt60_2
+    4300000: Gh4
+    4300002: Cylinder_1
+    4300004: Boole
+    4300006: Boole_1
+    4300008: Cube_1
+    4300010: Cylinder_2
+    4300012: Cylinder_2_2
+    4300014: Cylinder_3
+    4300016: Cylinder
+    4300018: Cube_1_2
+    4300020: dumper_2
+    4300022: dumper_1
+    4300024: dumper
+    4300026: dumper_3
+    4300028: camera_holder
+    4300030: motor_holder
+    4300032: motor_holder_2
+    4300034: Cap_1
+    4300036: Cap_2
+    4300038: Cap_1_2
+    4300040: Cap_2_2
+    4300042: Cap_1_29
+    4300044: Cap_2_29
+    4300046: Cap_1_30
+    4300048: Cap_2_30
+    4300050: motor_fc_cable
+    4300052: Cap_1_3
+    4300054: Cap_2_3
+    4300056: Cap_1_4
+    4300058: Cap_2_4
+    4300060: Cap_1_5
+    4300062: Cap_2_5
+    4300064: Cap_1_6
+    4300066: Cap_2_6
+    4300068: Cap_1_7
+    4300070: Cap_2_7
+    4300072: Cap_1_8
+    4300074: Cap_2_8
+    4300076: Cap_1_9
+    4300078: Cap_2_9
+    4300080: Cap_1_10
+    4300082: Cap_2_10
+    4300084: Cap_1_11
+    4300086: Cap_2_11
+    4300088: Cap_1_12
+    4300090: Cap_2_12
+    4300092: Cap_1_13
+    4300094: Cap_2_13
+    4300096: Cap_1_14
+    4300098: Cap_2_14
+    4300100: Cap_1_15
+    4300102: Cap_2_15
+    4300104: Cap_1_16
+    4300106: Cap_2_16
+    4300108: Cap_1_17
+    4300110: Cap_2_17
+    4300112: Cap_1_18
+    4300114: Cap_2_18
+    4300116: Cap_1_19
+    4300118: Cap_2_19
+    4300120: Cap_1_20
+    4300122: Cap_2_20
+    4300124: Cap_1_21
+    4300126: Cap_2_21
+    4300128: Cap_1_22
+    4300130: Cap_2_22
+    4300132: Cap_1_23
+    4300134: Cap_2_23
+    4300136: Cap_1_24
+    4300138: Cap_2_24
+    4300140: Cap_1_25
+    4300142: Cap_2_25
+    4300144: Cap_1_26
+    4300146: Cap_2_26
+    4300148: xt60
+    4300150: xt60_2
+    4300152: red_wire
+    4300154: Cap_1_27
+    4300156: Cap_2_27
+    4300158: Cap_1_28
+    4300160: Cap_2_28
+    4300162: Cube.001
+    4300164: Cube_2
+    4300166: Cylinder_2_3
+    4300168: Cylinder_2_4
+    4300170: Cylinder_1_2
+    4300172: Cylinder_3_2
+    4300174: Cylinder_4
+    4300176: Cylinder_5
+    4300178: Cylinder_6
+    4300180: Boole_2
+    4300182: Boole_3
+    4300184: Boole_2_2
+    4300186: Boole_3_2
+    4300188: Boole_2_3
+    4300190: Boole_3_3
+    4300192: Boole_2_4
+    4300194: Boole_3_4
+    4300196: Boole_2_5
+    4300198: Boole_3_5
+    4300200: Boole_2_6
+    4300202: Boole_3_6
+    4300204: Boole_2_7
+    4300206: Boole_3_7
+    4300208: Boole_2_8
+    4300210: Boole_3_8
+    4300212: servo
+    4300214: wing_spreader__D
+    4300216: spring
+    4300218: Cap_1_31
+    4300220: Cap_2_31
+    4300222: connector
+    4300224: Tube
+    4300226: connector_2
+    4300228: 2nd_tube
+    4300230: landing_rubbers
+    4300232: Connectors
+    4300234: A2_Flight_controller
+    4300236: "A2_Flight_controlle\u043A_IMU"
+    4300238: GPS_mount
+    4300240: gps_naza
+    4300242: plate_mounts
+    4300244: Cylinder_1_3
+    4300246: Cylinder_3_3
+    4300248: Cylinder_1_4
+    4300250: Cylinder_4_2
+    4300252: Cylinder_1_5
+    4300254: Cylinder_5_2
+    4300256: Cylinder_1_6
+    4300258: Cylinder_6_2
+    4300260: Cylinder_1_7
+    4300262: Cylinder_7
+    4300264: Cylinder_1_8
+    4300266: Cylinder_8
+    4300268: Cylinder_1_9
+    4300270: Cylinder_9
+    4300272: Cylinder_1_10
+    4300274: Cylinder_10
+    4300276: Cylinder_1_11
+    4300278: Cylinder_11
+    4300280: Cylinder_1_12
+    4300282: Cylinder_12
+    4300284: Cylinder_1_13
+    4300286: Cylinder_13
+    4300288: Cylinder_1_14
+    4300290: Cylinder_14
+    4300292: Cylinder_1_15
+    4300294: Cylinder_15
+    4300296: Cylinder_1_16
+    4300298: Cylinder_16
+    4300300: Cylinder_1_17
+    4300302: Cylinder_17
+    4300304: Cylinder_1_18
+    4300306: Cylinder_18
+    4300308: Cylinder_1_19
+    4300310: Cylinder_19
+    4300312: Cylinder_1_20
+    4300314: Cylinder_20
+    4300316: Cylinder_1_21
+    4300318: Cylinder_21
+    4300320: Cylinder_1_22
+    4300322: Cylinder_22
+    4300324: Cylinder_1_23
+    4300326: Cylinder_23
+    4300328: Cylinder_1_24
+    4300330: Cylinder_24
+    4300332: Cylinder_1_25
+    4300334: Cylinder_25
+    4300336: Cylinder_1_26
+    4300338: Cylinder_26
+    4300340: Cylinder_1_27
+    4300342: Cylinder_27
+    4300344: Cylinder_1_28
+    4300346: Cylinder_28
+    4300348: Cylinder_1_29
+    4300350: Cylinder_29
+    4300352: Cylinder_1_30
+    4300354: Cylinder_30
+    4300356: Cylinder_1_31
+    4300358: Cylinder_31
+    4300360: Cylinder_1_32
+    4300362: Cylinder_32
+    4300364: Cylinder_1_33
+    4300366: Cylinder_33
+    4300368: Cylinder_1_34
+    4300370: Cylinder_34
+    4300372: Cylinder_1_35
+    4300374: Cylinder_35
+    4300376: Cylinder_1_36
+    4300378: Cylinder_36
+    4300380: Cylinder_1_37
+    4300382: Cylinder_37
+    4300384: Cylinder_1_38
+    4300386: Cylinder_38
+    4300388: Cylinder_1_39
+    4300390: Cylinder_39
+    4300392: Cylinder_1_40
+    4300394: Cylinder_40
+    4300396: Cylinder_1_41
+    4300398: Cylinder_41
+    4300400: Cylinder_1_42
+    4300402: Cylinder_42
+    4300404: Cylinder_1_43
+    4300406: Cylinder_43
+    4300408: Cylinder_1_44
+    4300410: Cylinder_44
+    4300412: Cylinder_1_45
+    4300414: Cylinder_45
+    4300416: Cylinder_1_46
+    4300418: Cylinder_46
+    4300420: Cylinder_1_47
+    4300422: Cylinder_47
+    4300424: Cylinder_1_48
+    4300426: Cylinder_48
+    4300428: Cylinder_1_49
+    4300430: Cylinder_49
+    4300432: Cylinder_1_50
+    4300434: Cylinder_50
+    4300436: Cylinder_1_51
+    4300438: Cylinder_51
+    4300440: Cylinder_1_52
+    4300442: Cylinder_52
+    4300444: Cylinder_1_53
+    4300446: Cylinder_53
+    4300448: Cylinder_1_54
+    4300450: Cylinder_54
+    4300452: Cylinder_1_55
+    4300454: Cylinder_55
+    4300456: Cylinder_1_56
+    4300458: Cylinder_56
+    4300460: Cylinder_1_57
+    4300462: Cylinder_57
+    4300464: Cylinder_1_58
+    4300466: Cylinder_58
+    4300468: Cylinder_1_59
+    4300470: Cylinder_59
+    4300472: Cylinder_1_60
+    4300474: Cylinder_60
+    4300476: Cylinder_1_61
+    4300478: Cylinder_61
+    4300480: Cylinder_1_62
+    4300482: Cylinder_62
+    4300484: Cylinder_1_63
+    4300486: Cylinder_63
+    4300488: Cylinder_1_64
+    4300490: Cylinder_64
+    4300492: Cylinder_1_65
+    4300494: Cylinder_65
+    4300496: Cylinder_1_66
+    4300498: Cylinder_66
+    4300500: Cylinder_1_67
+    4300502: Cylinder_67
+    4300504: Cylinder_1_68
+    4300506: Cylinder_68
+    4300508: Cylinder_1_69
+    4300510: Cylinder_69
+    4300512: Cylinder_1_70
+    4300514: Cylinder_70
+    4300516: Cylinder_1_71
+    4300518: Cylinder_71
+    4300520: Cylinder_1_72
+    4300522: Cylinder_72
+    4300524: Cylinder_1_73
+    4300526: Cylinder_73
+    4300528: Cylinder_1_74
+    4300530: Cylinder_74
+    4300532: Cube_0
+    4300534: Cube_1_3
+    4300536: Cube_2_2
+    4300538: Cube_3
+    4300540: Cube_4
+    4300542: Cube_5
+    4300544: Cube_6
+    4300546: Cube_7
+    4300548: Prop14Inch
+    4300550: Prop14Inch_2
+    4300552: prop_adapter
+    4300554: Cylinder_1_75
+    4300556: Cylinder_75
+    4300558: Cylinder_1_76
+    4300560: Cylinder_76
+    4300562: motor_mount
+    4300564: arm_head_plate_mount_
+    4300566: Prop14Inch_3
+    4300568: Prop14Inch_4
+    4300570: prop_adapter_2
+    4300572: Cylinder_1_77
+    4300574: Cylinder_77
+    4300576: Cylinder_1_78
+    4300578: Cylinder_78
+    4300580: motor_mount_2
+    4300582: arm_head_plate_mount__2
+    4300584: Prop14Inch_5
+    4300586: Prop14Inch_6
+    4300588: prop_adapter_3
+    4300590: Cylinder_1_79
+    4300592: Cylinder_79
+    4300594: Cylinder_1_80
+    4300596: Cylinder_80
+    4300598: motor_mount_3
+    4300600: arm_head_plate_mount__3
+    4300602: Prop14Inch_7
+    4300604: Prop14Inch_8
+    4300606: prop_adapter_4
+    4300608: Cylinder_1_81
+    4300610: Cylinder_81
+    4300612: Cylinder_1_82
+    4300614: Cylinder_82
+    4300616: motor_mount_4
+    4300618: arm_head_plate_mount__4
+    4300620: Prop14Inch_9
+    4300622: Prop14Inch_10
+    4300624: prop_adapter_5
+    4300626: Cylinder_1_83
+    4300628: Cylinder_83
+    4300630: Cylinder_1_84
+    4300632: Cylinder_84
+    4300634: motor_mount_5
+    4300636: arm_head_plate_mount__5
+    4300638: Prop14Inch_11
+    4300640: Prop14Inch_12
+    4300642: prop_adapter_6
+    4300644: Cylinder_1_85
+    4300646: Cylinder_85
+    4300648: Cylinder_1_86
+    4300650: Cylinder_86
+    4300652: motor_14
+    4300654: motor_mount_6
+    4300656: arm_head_plate_mount__6
+    4300658: Prop14Inch_13
+    4300660: Prop14Inch_14
+    4300662: prop_adapter_7
+    4300664: Cylinder_1_87
+    4300666: Cylinder_87
+    4300668: Cylinder_1_88
+    4300670: Cylinder_88
+    4300672: motor_mount_7
+    4300674: arm_head_plate_mount__7
+    4300676: Prop14Inch_15
+    4300678: Prop14Inch_16
+    4300680: prop_adapter_8
+    4300682: Cylinder_1_89
+    4300684: Cylinder_89
+    4300686: Cylinder_1_90
+    4300688: Cylinder_90
+    4300690: motor_mount_8
+    4300692: arm_head_plate_mount__8
+    4300694: arm_lights
+    4300696: Cylinder_0
+    4300698: Cylinder_1_91
+    4300700: Cylinder_2_5
+    4300702: Cylinder_3_4
+    4300704: Cylinder_4_3
+    4300706: Cylinder_5_3
+    4300708: Cylinder_6_3
+    4300710: Cylinder_7_2
+    4300712: 2nd_top
+    4300714: Cap_1_32
+    4300716: Cap_2_32
+    4300718: top
+    4300720: bottom
+    4300722: battery_holder
+    7400000: Prop14Inch|Prop14Inch_10|C4D Animation Take|Layer0
+    7400002: Prop14Inch|Prop14Inch_11|C4D Animation Take|Layer0
+    7400004: Prop14Inch|Prop14Inch_12|C4D Animation Take|Layer0
+    7400006: Prop14Inch|Prop14Inch_13|C4D Animation Take|Layer0
+    7400008: Prop14Inch|Prop14Inch_14|C4D Animation Take|Layer0
+    7400010: Prop14Inch|Prop14Inch_15|C4D Animation Take|Layer0
+    7400012: Prop14Inch|Prop14Inch_16|C4D Animation Take|Layer0
+    7400014: Prop14Inch|Prop14Inch_2|C4D Animation Take|Layer0
+    7400016: Prop14Inch|Prop14Inch_3|C4D Animation Take|Layer0
+    7400018: Prop14Inch|Prop14Inch_4|C4D Animation Take|Layer0
+    7400020: Prop14Inch|Prop14Inch_5|C4D Animation Take|Layer0
+    7400022: Prop14Inch|Prop14Inch_6|C4D Animation Take|Layer0
+    7400024: Prop14Inch|Prop14Inch_7|C4D Animation Take|Layer0
+    7400026: Prop14Inch|Prop14Inch_8|C4D Animation Take|Layer0
+    7400028: Prop14Inch|Prop14Inch_9|C4D Animation Take|Layer0
+    7400030: Prop14Inch|Prop14Inch|C4D Animation Take|Layer0
+    7400032: Prop14Inch|prop_adapter_2|C4D Animation Take|Layer0
+    7400034: Prop14Inch|prop_adapter_3|C4D Animation Take|Layer0
+    7400036: Prop14Inch|prop_adapter_4|C4D Animation Take|Layer0
+    7400038: Prop14Inch|prop_adapter_5|C4D Animation Take|Layer0
+    7400040: Prop14Inch|prop_adapter_6|C4D Animation Take|Layer0
+    7400042: Prop14Inch|prop_adapter_7|C4D Animation Take|Layer0
+    7400044: Prop14Inch|prop_adapter_8|C4D Animation Take|Layer0
+    7400046: Prop14Inch|prop_adapter|C4D Animation Take|Layer0
+    7400048: Prop14Inch_2|Prop14Inch_10|C4D Animation Take|Layer0
+    7400050: Prop14Inch_2|Prop14Inch_11|C4D Animation Take|Layer0
+    7400052: Prop14Inch_2|Prop14Inch_12|C4D Animation Take|Layer0
+    7400054: Prop14Inch_2|Prop14Inch_13|C4D Animation Take|Layer0
+    7400056: Prop14Inch_2|Prop14Inch_14|C4D Animation Take|Layer0
+    7400058: Prop14Inch_2|Prop14Inch_15|C4D Animation Take|Layer0
+    7400060: Prop14Inch_2|Prop14Inch_16|C4D Animation Take|Layer0
+    7400062: Prop14Inch_2|Prop14Inch_2|C4D Animation Take|Layer0
+    7400064: Prop14Inch_2|Prop14Inch_3|C4D Animation Take|Layer0
+    7400066: Prop14Inch_2|Prop14Inch_4|C4D Animation Take|Layer0
+    7400068: Prop14Inch_2|Prop14Inch_5|C4D Animation Take|Layer0
+    7400070: Prop14Inch_2|Prop14Inch_6|C4D Animation Take|Layer0
+    7400072: Prop14Inch_2|Prop14Inch_7|C4D Animation Take|Layer0
+    7400074: Prop14Inch_2|Prop14Inch_8|C4D Animation Take|Layer0
+    7400076: Prop14Inch_2|Prop14Inch_9|C4D Animation Take|Layer0
+    7400078: Prop14Inch_2|Prop14Inch|C4D Animation Take|Layer0
+    7400080: Prop14Inch_2|prop_adapter_2|C4D Animation Take|Layer0
+    7400082: Prop14Inch_2|prop_adapter_3|C4D Animation Take|Layer0
+    7400084: Prop14Inch_2|prop_adapter_4|C4D Animation Take|Layer0
+    7400086: Prop14Inch_2|prop_adapter_5|C4D Animation Take|Layer0
+    7400088: Prop14Inch_2|prop_adapter_6|C4D Animation Take|Layer0
+    7400090: Prop14Inch_2|prop_adapter_7|C4D Animation Take|Layer0
+    7400092: Prop14Inch_2|prop_adapter_8|C4D Animation Take|Layer0
+    7400094: Prop14Inch_2|prop_adapter|C4D Animation Take|Layer0
+    7400096: prop_adapter|Prop14Inch_10|C4D Animation Take|Layer0
+    7400098: prop_adapter|Prop14Inch_11|C4D Animation Take|Layer0
+    7400100: prop_adapter|Prop14Inch_12|C4D Animation Take|Layer0
+    7400102: prop_adapter|Prop14Inch_13|C4D Animation Take|Layer0
+    7400104: prop_adapter|Prop14Inch_14|C4D Animation Take|Layer0
+    7400106: prop_adapter|Prop14Inch_15|C4D Animation Take|Layer0
+    7400108: prop_adapter|Prop14Inch_16|C4D Animation Take|Layer0
+    7400110: prop_adapter|Prop14Inch_2|C4D Animation Take|Layer0
+    7400112: prop_adapter|Prop14Inch_3|C4D Animation Take|Layer0
+    7400114: prop_adapter|Prop14Inch_4|C4D Animation Take|Layer0
+    7400116: prop_adapter|Prop14Inch_5|C4D Animation Take|Layer0
+    7400118: prop_adapter|Prop14Inch_6|C4D Animation Take|Layer0
+    7400120: prop_adapter|Prop14Inch_7|C4D Animation Take|Layer0
+    7400122: prop_adapter|Prop14Inch_8|C4D Animation Take|Layer0
+    7400124: prop_adapter|Prop14Inch_9|C4D Animation Take|Layer0
+    7400126: prop_adapter|Prop14Inch|C4D Animation Take|Layer0
+    7400128: prop_adapter|prop_adapter_2|C4D Animation Take|Layer0
+    7400130: prop_adapter|prop_adapter_3|C4D Animation Take|Layer0
+    7400132: prop_adapter|prop_adapter_4|C4D Animation Take|Layer0
+    7400134: prop_adapter|prop_adapter_5|C4D Animation Take|Layer0
+    7400136: prop_adapter|prop_adapter_6|C4D Animation Take|Layer0
+    7400138: prop_adapter|prop_adapter_7|C4D Animation Take|Layer0
+    7400140: prop_adapter|prop_adapter_8|C4D Animation Take|Layer0
+    7400142: prop_adapter|prop_adapter|C4D Animation Take|Layer0
+    7400144: Prop14Inch_3|Prop14Inch_10|C4D Animation Take|Layer0
+    7400146: Prop14Inch_3|Prop14Inch_11|C4D Animation Take|Layer0
+    7400148: Prop14Inch_3|Prop14Inch_12|C4D Animation Take|Layer0
+    7400150: Prop14Inch_3|Prop14Inch_13|C4D Animation Take|Layer0
+    7400152: Prop14Inch_3|Prop14Inch_14|C4D Animation Take|Layer0
+    7400154: Prop14Inch_3|Prop14Inch_15|C4D Animation Take|Layer0
+    7400156: Prop14Inch_3|Prop14Inch_16|C4D Animation Take|Layer0
+    7400158: Prop14Inch_3|Prop14Inch_2|C4D Animation Take|Layer0
+    7400160: Prop14Inch_3|Prop14Inch_3|C4D Animation Take|Layer0
+    7400162: Prop14Inch_3|Prop14Inch_4|C4D Animation Take|Layer0
+    7400164: Prop14Inch_3|Prop14Inch_5|C4D Animation Take|Layer0
+    7400166: Prop14Inch_3|Prop14Inch_6|C4D Animation Take|Layer0
+    7400168: Prop14Inch_3|Prop14Inch_7|C4D Animation Take|Layer0
+    7400170: Prop14Inch_3|Prop14Inch_8|C4D Animation Take|Layer0
+    7400172: Prop14Inch_3|Prop14Inch_9|C4D Animation Take|Layer0
+    7400174: Prop14Inch_3|Prop14Inch|C4D Animation Take|Layer0
+    7400176: Prop14Inch_3|prop_adapter_2|C4D Animation Take|Layer0
+    7400178: Prop14Inch_3|prop_adapter_3|C4D Animation Take|Layer0
+    7400180: Prop14Inch_3|prop_adapter_4|C4D Animation Take|Layer0
+    7400182: Prop14Inch_3|prop_adapter_5|C4D Animation Take|Layer0
+    7400184: Prop14Inch_3|prop_adapter_6|C4D Animation Take|Layer0
+    7400186: Prop14Inch_3|prop_adapter_7|C4D Animation Take|Layer0
+    7400188: Prop14Inch_3|prop_adapter_8|C4D Animation Take|Layer0
+    7400190: Prop14Inch_3|prop_adapter|C4D Animation Take|Layer0
+    7400192: Prop14Inch_4|Prop14Inch_10|C4D Animation Take|Layer0
+    7400194: Prop14Inch_4|Prop14Inch_11|C4D Animation Take|Layer0
+    7400196: Prop14Inch_4|Prop14Inch_12|C4D Animation Take|Layer0
+    7400198: Prop14Inch_4|Prop14Inch_13|C4D Animation Take|Layer0
+    7400200: Prop14Inch_4|Prop14Inch_14|C4D Animation Take|Layer0
+    7400202: Prop14Inch_4|Prop14Inch_15|C4D Animation Take|Layer0
+    7400204: Prop14Inch_4|Prop14Inch_16|C4D Animation Take|Layer0
+    7400206: Prop14Inch_4|Prop14Inch_2|C4D Animation Take|Layer0
+    7400208: Prop14Inch_4|Prop14Inch_3|C4D Animation Take|Layer0
+    7400210: Prop14Inch_4|Prop14Inch_4|C4D Animation Take|Layer0
+    7400212: Prop14Inch_4|Prop14Inch_5|C4D Animation Take|Layer0
+    7400214: Prop14Inch_4|Prop14Inch_6|C4D Animation Take|Layer0
+    7400216: Prop14Inch_4|Prop14Inch_7|C4D Animation Take|Layer0
+    7400218: Prop14Inch_4|Prop14Inch_8|C4D Animation Take|Layer0
+    7400220: Prop14Inch_4|Prop14Inch_9|C4D Animation Take|Layer0
+    7400222: Prop14Inch_4|Prop14Inch|C4D Animation Take|Layer0
+    7400224: Prop14Inch_4|prop_adapter_2|C4D Animation Take|Layer0
+    7400226: Prop14Inch_4|prop_adapter_3|C4D Animation Take|Layer0
+    7400228: Prop14Inch_4|prop_adapter_4|C4D Animation Take|Layer0
+    7400230: Prop14Inch_4|prop_adapter_5|C4D Animation Take|Layer0
+    7400232: Prop14Inch_4|prop_adapter_6|C4D Animation Take|Layer0
+    7400234: Prop14Inch_4|prop_adapter_7|C4D Animation Take|Layer0
+    7400236: Prop14Inch_4|prop_adapter_8|C4D Animation Take|Layer0
+    7400238: Prop14Inch_4|prop_adapter|C4D Animation Take|Layer0
+    7400240: prop_adapter_2|Prop14Inch_10|C4D Animation Take|Layer0
+    7400242: prop_adapter_2|Prop14Inch_11|C4D Animation Take|Layer0
+    7400244: prop_adapter_2|Prop14Inch_12|C4D Animation Take|Layer0
+    7400246: prop_adapter_2|Prop14Inch_13|C4D Animation Take|Layer0
+    7400248: prop_adapter_2|Prop14Inch_14|C4D Animation Take|Layer0
+    7400250: prop_adapter_2|Prop14Inch_15|C4D Animation Take|Layer0
+    7400252: prop_adapter_2|Prop14Inch_16|C4D Animation Take|Layer0
+    7400254: prop_adapter_2|Prop14Inch_2|C4D Animation Take|Layer0
+    7400256: prop_adapter_2|Prop14Inch_3|C4D Animation Take|Layer0
+    7400258: prop_adapter_2|Prop14Inch_4|C4D Animation Take|Layer0
+    7400260: prop_adapter_2|Prop14Inch_5|C4D Animation Take|Layer0
+    7400262: prop_adapter_2|Prop14Inch_6|C4D Animation Take|Layer0
+    7400264: prop_adapter_2|Prop14Inch_7|C4D Animation Take|Layer0
+    7400266: prop_adapter_2|Prop14Inch_8|C4D Animation Take|Layer0
+    7400268: prop_adapter_2|Prop14Inch_9|C4D Animation Take|Layer0
+    7400270: prop_adapter_2|Prop14Inch|C4D Animation Take|Layer0
+    7400272: prop_adapter_2|prop_adapter_2|C4D Animation Take|Layer0
+    7400274: prop_adapter_2|prop_adapter_3|C4D Animation Take|Layer0
+    7400276: prop_adapter_2|prop_adapter_4|C4D Animation Take|Layer0
+    7400278: prop_adapter_2|prop_adapter_5|C4D Animation Take|Layer0
+    7400280: prop_adapter_2|prop_adapter_6|C4D Animation Take|Layer0
+    7400282: prop_adapter_2|prop_adapter_7|C4D Animation Take|Layer0
+    7400284: prop_adapter_2|prop_adapter_8|C4D Animation Take|Layer0
+    7400286: prop_adapter_2|prop_adapter|C4D Animation Take|Layer0
+    7400288: Prop14Inch_5|Prop14Inch_10|C4D Animation Take|Layer0
+    7400290: Prop14Inch_5|Prop14Inch_11|C4D Animation Take|Layer0
+    7400292: Prop14Inch_5|Prop14Inch_12|C4D Animation Take|Layer0
+    7400294: Prop14Inch_5|Prop14Inch_13|C4D Animation Take|Layer0
+    7400296: Prop14Inch_5|Prop14Inch_14|C4D Animation Take|Layer0
+    7400298: Prop14Inch_5|Prop14Inch_15|C4D Animation Take|Layer0
+    7400300: Prop14Inch_5|Prop14Inch_16|C4D Animation Take|Layer0
+    7400302: Prop14Inch_5|Prop14Inch_2|C4D Animation Take|Layer0
+    7400304: Prop14Inch_5|Prop14Inch_3|C4D Animation Take|Layer0
+    7400306: Prop14Inch_5|Prop14Inch_4|C4D Animation Take|Layer0
+    7400308: Prop14Inch_5|Prop14Inch_5|C4D Animation Take|Layer0
+    7400310: Prop14Inch_5|Prop14Inch_6|C4D Animation Take|Layer0
+    7400312: Prop14Inch_5|Prop14Inch_7|C4D Animation Take|Layer0
+    7400314: Prop14Inch_5|Prop14Inch_8|C4D Animation Take|Layer0
+    7400316: Prop14Inch_5|Prop14Inch_9|C4D Animation Take|Layer0
+    7400318: Prop14Inch_5|Prop14Inch|C4D Animation Take|Layer0
+    7400320: Prop14Inch_5|prop_adapter_2|C4D Animation Take|Layer0
+    7400322: Prop14Inch_5|prop_adapter_3|C4D Animation Take|Layer0
+    7400324: Prop14Inch_5|prop_adapter_4|C4D Animation Take|Layer0
+    7400326: Prop14Inch_5|prop_adapter_5|C4D Animation Take|Layer0
+    7400328: Prop14Inch_5|prop_adapter_6|C4D Animation Take|Layer0
+    7400330: Prop14Inch_5|prop_adapter_7|C4D Animation Take|Layer0
+    7400332: Prop14Inch_5|prop_adapter_8|C4D Animation Take|Layer0
+    7400334: Prop14Inch_5|prop_adapter|C4D Animation Take|Layer0
+    7400336: Prop14Inch_6|Prop14Inch_10|C4D Animation Take|Layer0
+    7400338: Prop14Inch_6|Prop14Inch_11|C4D Animation Take|Layer0
+    7400340: Prop14Inch_6|Prop14Inch_12|C4D Animation Take|Layer0
+    7400342: Prop14Inch_6|Prop14Inch_13|C4D Animation Take|Layer0
+    7400344: Prop14Inch_6|Prop14Inch_14|C4D Animation Take|Layer0
+    7400346: Prop14Inch_6|Prop14Inch_15|C4D Animation Take|Layer0
+    7400348: Prop14Inch_6|Prop14Inch_16|C4D Animation Take|Layer0
+    7400350: Prop14Inch_6|Prop14Inch_2|C4D Animation Take|Layer0
+    7400352: Prop14Inch_6|Prop14Inch_3|C4D Animation Take|Layer0
+    7400354: Prop14Inch_6|Prop14Inch_4|C4D Animation Take|Layer0
+    7400356: Prop14Inch_6|Prop14Inch_5|C4D Animation Take|Layer0
+    7400358: Prop14Inch_6|Prop14Inch_6|C4D Animation Take|Layer0
+    7400360: Prop14Inch_6|Prop14Inch_7|C4D Animation Take|Layer0
+    7400362: Prop14Inch_6|Prop14Inch_8|C4D Animation Take|Layer0
+    7400364: Prop14Inch_6|Prop14Inch_9|C4D Animation Take|Layer0
+    7400366: Prop14Inch_6|Prop14Inch|C4D Animation Take|Layer0
+    7400368: Prop14Inch_6|prop_adapter_2|C4D Animation Take|Layer0
+    7400370: Prop14Inch_6|prop_adapter_3|C4D Animation Take|Layer0
+    7400372: Prop14Inch_6|prop_adapter_4|C4D Animation Take|Layer0
+    7400374: Prop14Inch_6|prop_adapter_5|C4D Animation Take|Layer0
+    7400376: Prop14Inch_6|prop_adapter_6|C4D Animation Take|Layer0
+    7400378: Prop14Inch_6|prop_adapter_7|C4D Animation Take|Layer0
+    7400380: Prop14Inch_6|prop_adapter_8|C4D Animation Take|Layer0
+    7400382: Prop14Inch_6|prop_adapter|C4D Animation Take|Layer0
+    7400384: prop_adapter_3|Prop14Inch_10|C4D Animation Take|Layer0
+    7400386: prop_adapter_3|Prop14Inch_11|C4D Animation Take|Layer0
+    7400388: prop_adapter_3|Prop14Inch_12|C4D Animation Take|Layer0
+    7400390: prop_adapter_3|Prop14Inch_13|C4D Animation Take|Layer0
+    7400392: prop_adapter_3|Prop14Inch_14|C4D Animation Take|Layer0
+    7400394: prop_adapter_3|Prop14Inch_15|C4D Animation Take|Layer0
+    7400396: prop_adapter_3|Prop14Inch_16|C4D Animation Take|Layer0
+    7400398: prop_adapter_3|Prop14Inch_2|C4D Animation Take|Layer0
+    7400400: prop_adapter_3|Prop14Inch_3|C4D Animation Take|Layer0
+    7400402: prop_adapter_3|Prop14Inch_4|C4D Animation Take|Layer0
+    7400404: prop_adapter_3|Prop14Inch_5|C4D Animation Take|Layer0
+    7400406: prop_adapter_3|Prop14Inch_6|C4D Animation Take|Layer0
+    7400408: prop_adapter_3|Prop14Inch_7|C4D Animation Take|Layer0
+    7400410: prop_adapter_3|Prop14Inch_8|C4D Animation Take|Layer0
+    7400412: prop_adapter_3|Prop14Inch_9|C4D Animation Take|Layer0
+    7400414: prop_adapter_3|Prop14Inch|C4D Animation Take|Layer0
+    7400416: prop_adapter_3|prop_adapter_2|C4D Animation Take|Layer0
+    7400418: prop_adapter_3|prop_adapter_3|C4D Animation Take|Layer0
+    7400420: prop_adapter_3|prop_adapter_4|C4D Animation Take|Layer0
+    7400422: prop_adapter_3|prop_adapter_5|C4D Animation Take|Layer0
+    7400424: prop_adapter_3|prop_adapter_6|C4D Animation Take|Layer0
+    7400426: prop_adapter_3|prop_adapter_7|C4D Animation Take|Layer0
+    7400428: prop_adapter_3|prop_adapter_8|C4D Animation Take|Layer0
+    7400430: prop_adapter_3|prop_adapter|C4D Animation Take|Layer0
+    7400432: Prop14Inch_7|Prop14Inch_10|C4D Animation Take|Layer0
+    7400434: Prop14Inch_7|Prop14Inch_11|C4D Animation Take|Layer0
+    7400436: Prop14Inch_7|Prop14Inch_12|C4D Animation Take|Layer0
+    7400438: Prop14Inch_7|Prop14Inch_13|C4D Animation Take|Layer0
+    7400440: Prop14Inch_7|Prop14Inch_14|C4D Animation Take|Layer0
+    7400442: Prop14Inch_7|Prop14Inch_15|C4D Animation Take|Layer0
+    7400444: Prop14Inch_7|Prop14Inch_16|C4D Animation Take|Layer0
+    7400446: Prop14Inch_7|Prop14Inch_2|C4D Animation Take|Layer0
+    7400448: Prop14Inch_7|Prop14Inch_3|C4D Animation Take|Layer0
+    7400450: Prop14Inch_7|Prop14Inch_4|C4D Animation Take|Layer0
+    7400452: Prop14Inch_7|Prop14Inch_5|C4D Animation Take|Layer0
+    7400454: Prop14Inch_7|Prop14Inch_6|C4D Animation Take|Layer0
+    7400456: Prop14Inch_7|Prop14Inch_7|C4D Animation Take|Layer0
+    7400458: Prop14Inch_7|Prop14Inch_8|C4D Animation Take|Layer0
+    7400460: Prop14Inch_7|Prop14Inch_9|C4D Animation Take|Layer0
+    7400462: Prop14Inch_7|Prop14Inch|C4D Animation Take|Layer0
+    7400464: Prop14Inch_7|prop_adapter_2|C4D Animation Take|Layer0
+    7400466: Prop14Inch_7|prop_adapter_3|C4D Animation Take|Layer0
+    7400468: Prop14Inch_7|prop_adapter_4|C4D Animation Take|Layer0
+    7400470: Prop14Inch_7|prop_adapter_5|C4D Animation Take|Layer0
+    7400472: Prop14Inch_7|prop_adapter_6|C4D Animation Take|Layer0
+    7400474: Prop14Inch_7|prop_adapter_7|C4D Animation Take|Layer0
+    7400476: Prop14Inch_7|prop_adapter_8|C4D Animation Take|Layer0
+    7400478: Prop14Inch_7|prop_adapter|C4D Animation Take|Layer0
+    7400480: Prop14Inch_8|Prop14Inch_10|C4D Animation Take|Layer0
+    7400482: Prop14Inch_8|Prop14Inch_11|C4D Animation Take|Layer0
+    7400484: Prop14Inch_8|Prop14Inch_12|C4D Animation Take|Layer0
+    7400486: Prop14Inch_8|Prop14Inch_13|C4D Animation Take|Layer0
+    7400488: Prop14Inch_8|Prop14Inch_14|C4D Animation Take|Layer0
+    7400490: Prop14Inch_8|Prop14Inch_15|C4D Animation Take|Layer0
+    7400492: Prop14Inch_8|Prop14Inch_16|C4D Animation Take|Layer0
+    7400494: Prop14Inch_8|Prop14Inch_2|C4D Animation Take|Layer0
+    7400496: Prop14Inch_8|Prop14Inch_3|C4D Animation Take|Layer0
+    7400498: Prop14Inch_8|Prop14Inch_4|C4D Animation Take|Layer0
+    7400500: Prop14Inch_8|Prop14Inch_5|C4D Animation Take|Layer0
+    7400502: Prop14Inch_8|Prop14Inch_6|C4D Animation Take|Layer0
+    7400504: Prop14Inch_8|Prop14Inch_7|C4D Animation Take|Layer0
+    7400506: Prop14Inch_8|Prop14Inch_8|C4D Animation Take|Layer0
+    7400508: Prop14Inch_8|Prop14Inch_9|C4D Animation Take|Layer0
+    7400510: Prop14Inch_8|Prop14Inch|C4D Animation Take|Layer0
+    7400512: Prop14Inch_8|prop_adapter_2|C4D Animation Take|Layer0
+    7400514: Prop14Inch_8|prop_adapter_3|C4D Animation Take|Layer0
+    7400516: Prop14Inch_8|prop_adapter_4|C4D Animation Take|Layer0
+    7400518: Prop14Inch_8|prop_adapter_5|C4D Animation Take|Layer0
+    7400520: Prop14Inch_8|prop_adapter_6|C4D Animation Take|Layer0
+    7400522: Prop14Inch_8|prop_adapter_7|C4D Animation Take|Layer0
+    7400524: Prop14Inch_8|prop_adapter_8|C4D Animation Take|Layer0
+    7400526: Prop14Inch_8|prop_adapter|C4D Animation Take|Layer0
+    7400528: prop_adapter_4|Prop14Inch_10|C4D Animation Take|Layer0
+    7400530: prop_adapter_4|Prop14Inch_11|C4D Animation Take|Layer0
+    7400532: prop_adapter_4|Prop14Inch_12|C4D Animation Take|Layer0
+    7400534: prop_adapter_4|Prop14Inch_13|C4D Animation Take|Layer0
+    7400536: prop_adapter_4|Prop14Inch_14|C4D Animation Take|Layer0
+    7400538: prop_adapter_4|Prop14Inch_15|C4D Animation Take|Layer0
+    7400540: prop_adapter_4|Prop14Inch_16|C4D Animation Take|Layer0
+    7400542: prop_adapter_4|Prop14Inch_2|C4D Animation Take|Layer0
+    7400544: prop_adapter_4|Prop14Inch_3|C4D Animation Take|Layer0
+    7400546: prop_adapter_4|Prop14Inch_4|C4D Animation Take|Layer0
+    7400548: prop_adapter_4|Prop14Inch_5|C4D Animation Take|Layer0
+    7400550: prop_adapter_4|Prop14Inch_6|C4D Animation Take|Layer0
+    7400552: prop_adapter_4|Prop14Inch_7|C4D Animation Take|Layer0
+    7400554: prop_adapter_4|Prop14Inch_8|C4D Animation Take|Layer0
+    7400556: prop_adapter_4|Prop14Inch_9|C4D Animation Take|Layer0
+    7400558: prop_adapter_4|Prop14Inch|C4D Animation Take|Layer0
+    7400560: prop_adapter_4|prop_adapter_2|C4D Animation Take|Layer0
+    7400562: prop_adapter_4|prop_adapter_3|C4D Animation Take|Layer0
+    7400564: prop_adapter_4|prop_adapter_4|C4D Animation Take|Layer0
+    7400566: prop_adapter_4|prop_adapter_5|C4D Animation Take|Layer0
+    7400568: prop_adapter_4|prop_adapter_6|C4D Animation Take|Layer0
+    7400570: prop_adapter_4|prop_adapter_7|C4D Animation Take|Layer0
+    7400572: prop_adapter_4|prop_adapter_8|C4D Animation Take|Layer0
+    7400574: prop_adapter_4|prop_adapter|C4D Animation Take|Layer0
+    7400576: Prop14Inch_9|Prop14Inch_10|C4D Animation Take|Layer0
+    7400578: Prop14Inch_9|Prop14Inch_11|C4D Animation Take|Layer0
+    7400580: Prop14Inch_9|Prop14Inch_12|C4D Animation Take|Layer0
+    7400582: Prop14Inch_9|Prop14Inch_13|C4D Animation Take|Layer0
+    7400584: Prop14Inch_9|Prop14Inch_14|C4D Animation Take|Layer0
+    7400586: Prop14Inch_9|Prop14Inch_15|C4D Animation Take|Layer0
+    7400588: Prop14Inch_9|Prop14Inch_16|C4D Animation Take|Layer0
+    7400590: Prop14Inch_9|Prop14Inch_2|C4D Animation Take|Layer0
+    7400592: Prop14Inch_9|Prop14Inch_3|C4D Animation Take|Layer0
+    7400594: Prop14Inch_9|Prop14Inch_4|C4D Animation Take|Layer0
+    7400596: Prop14Inch_9|Prop14Inch_5|C4D Animation Take|Layer0
+    7400598: Prop14Inch_9|Prop14Inch_6|C4D Animation Take|Layer0
+    7400600: Prop14Inch_9|Prop14Inch_7|C4D Animation Take|Layer0
+    7400602: Prop14Inch_9|Prop14Inch_8|C4D Animation Take|Layer0
+    7400604: Prop14Inch_9|Prop14Inch_9|C4D Animation Take|Layer0
+    7400606: Prop14Inch_9|Prop14Inch|C4D Animation Take|Layer0
+    7400608: Prop14Inch_9|prop_adapter_2|C4D Animation Take|Layer0
+    7400610: Prop14Inch_9|prop_adapter_3|C4D Animation Take|Layer0
+    7400612: Prop14Inch_9|prop_adapter_4|C4D Animation Take|Layer0
+    7400614: Prop14Inch_9|prop_adapter_5|C4D Animation Take|Layer0
+    7400616: Prop14Inch_9|prop_adapter_6|C4D Animation Take|Layer0
+    7400618: Prop14Inch_9|prop_adapter_7|C4D Animation Take|Layer0
+    7400620: Prop14Inch_9|prop_adapter_8|C4D Animation Take|Layer0
+    7400622: Prop14Inch_9|prop_adapter|C4D Animation Take|Layer0
+    7400624: Prop14Inch_10|Prop14Inch_10|C4D Animation Take|Layer0
+    7400626: Prop14Inch_10|Prop14Inch_11|C4D Animation Take|Layer0
+    7400628: Prop14Inch_10|Prop14Inch_12|C4D Animation Take|Layer0
+    7400630: Prop14Inch_10|Prop14Inch_13|C4D Animation Take|Layer0
+    7400632: Prop14Inch_10|Prop14Inch_14|C4D Animation Take|Layer0
+    7400634: Prop14Inch_10|Prop14Inch_15|C4D Animation Take|Layer0
+    7400636: Prop14Inch_10|Prop14Inch_16|C4D Animation Take|Layer0
+    7400638: Prop14Inch_10|Prop14Inch_2|C4D Animation Take|Layer0
+    7400640: Prop14Inch_10|Prop14Inch_3|C4D Animation Take|Layer0
+    7400642: Prop14Inch_10|Prop14Inch_4|C4D Animation Take|Layer0
+    7400644: Prop14Inch_10|Prop14Inch_5|C4D Animation Take|Layer0
+    7400646: Prop14Inch_10|Prop14Inch_6|C4D Animation Take|Layer0
+    7400648: Prop14Inch_10|Prop14Inch_7|C4D Animation Take|Layer0
+    7400650: Prop14Inch_10|Prop14Inch_8|C4D Animation Take|Layer0
+    7400652: Prop14Inch_10|Prop14Inch_9|C4D Animation Take|Layer0
+    7400654: Prop14Inch_10|Prop14Inch|C4D Animation Take|Layer0
+    7400656: Prop14Inch_10|prop_adapter_2|C4D Animation Take|Layer0
+    7400658: Prop14Inch_10|prop_adapter_3|C4D Animation Take|Layer0
+    7400660: Prop14Inch_10|prop_adapter_4|C4D Animation Take|Layer0
+    7400662: Prop14Inch_10|prop_adapter_5|C4D Animation Take|Layer0
+    7400664: Prop14Inch_10|prop_adapter_6|C4D Animation Take|Layer0
+    7400666: Prop14Inch_10|prop_adapter_7|C4D Animation Take|Layer0
+    7400668: Prop14Inch_10|prop_adapter_8|C4D Animation Take|Layer0
+    7400670: Prop14Inch_10|prop_adapter|C4D Animation Take|Layer0
+    7400672: prop_adapter_5|Prop14Inch_10|C4D Animation Take|Layer0
+    7400674: prop_adapter_5|Prop14Inch_11|C4D Animation Take|Layer0
+    7400676: prop_adapter_5|Prop14Inch_12|C4D Animation Take|Layer0
+    7400678: prop_adapter_5|Prop14Inch_13|C4D Animation Take|Layer0
+    7400680: prop_adapter_5|Prop14Inch_14|C4D Animation Take|Layer0
+    7400682: prop_adapter_5|Prop14Inch_15|C4D Animation Take|Layer0
+    7400684: prop_adapter_5|Prop14Inch_16|C4D Animation Take|Layer0
+    7400686: prop_adapter_5|Prop14Inch_2|C4D Animation Take|Layer0
+    7400688: prop_adapter_5|Prop14Inch_3|C4D Animation Take|Layer0
+    7400690: prop_adapter_5|Prop14Inch_4|C4D Animation Take|Layer0
+    7400692: prop_adapter_5|Prop14Inch_5|C4D Animation Take|Layer0
+    7400694: prop_adapter_5|Prop14Inch_6|C4D Animation Take|Layer0
+    7400696: prop_adapter_5|Prop14Inch_7|C4D Animation Take|Layer0
+    7400698: prop_adapter_5|Prop14Inch_8|C4D Animation Take|Layer0
+    7400700: prop_adapter_5|Prop14Inch_9|C4D Animation Take|Layer0
+    7400702: prop_adapter_5|Prop14Inch|C4D Animation Take|Layer0
+    7400704: prop_adapter_5|prop_adapter_2|C4D Animation Take|Layer0
+    7400706: prop_adapter_5|prop_adapter_3|C4D Animation Take|Layer0
+    7400708: prop_adapter_5|prop_adapter_4|C4D Animation Take|Layer0
+    7400710: prop_adapter_5|prop_adapter_5|C4D Animation Take|Layer0
+    7400712: prop_adapter_5|prop_adapter_6|C4D Animation Take|Layer0
+    7400714: prop_adapter_5|prop_adapter_7|C4D Animation Take|Layer0
+    7400716: prop_adapter_5|prop_adapter_8|C4D Animation Take|Layer0
+    7400718: prop_adapter_5|prop_adapter|C4D Animation Take|Layer0
+    7400720: Prop14Inch_11|Prop14Inch_10|C4D Animation Take|Layer0
+    7400722: Prop14Inch_11|Prop14Inch_11|C4D Animation Take|Layer0
+    7400724: Prop14Inch_11|Prop14Inch_12|C4D Animation Take|Layer0
+    7400726: Prop14Inch_11|Prop14Inch_13|C4D Animation Take|Layer0
+    7400728: Prop14Inch_11|Prop14Inch_14|C4D Animation Take|Layer0
+    7400730: Prop14Inch_11|Prop14Inch_15|C4D Animation Take|Layer0
+    7400732: Prop14Inch_11|Prop14Inch_16|C4D Animation Take|Layer0
+    7400734: Prop14Inch_11|Prop14Inch_2|C4D Animation Take|Layer0
+    7400736: Prop14Inch_11|Prop14Inch_3|C4D Animation Take|Layer0
+    7400738: Prop14Inch_11|Prop14Inch_4|C4D Animation Take|Layer0
+    7400740: Prop14Inch_11|Prop14Inch_5|C4D Animation Take|Layer0
+    7400742: Prop14Inch_11|Prop14Inch_6|C4D Animation Take|Layer0
+    7400744: Prop14Inch_11|Prop14Inch_7|C4D Animation Take|Layer0
+    7400746: Prop14Inch_11|Prop14Inch_8|C4D Animation Take|Layer0
+    7400748: Prop14Inch_11|Prop14Inch_9|C4D Animation Take|Layer0
+    7400750: Prop14Inch_11|Prop14Inch|C4D Animation Take|Layer0
+    7400752: Prop14Inch_11|prop_adapter_2|C4D Animation Take|Layer0
+    7400754: Prop14Inch_11|prop_adapter_3|C4D Animation Take|Layer0
+    7400756: Prop14Inch_11|prop_adapter_4|C4D Animation Take|Layer0
+    7400758: Prop14Inch_11|prop_adapter_5|C4D Animation Take|Layer0
+    7400760: Prop14Inch_11|prop_adapter_6|C4D Animation Take|Layer0
+    7400762: Prop14Inch_11|prop_adapter_7|C4D Animation Take|Layer0
+    7400764: Prop14Inch_11|prop_adapter_8|C4D Animation Take|Layer0
+    7400766: Prop14Inch_11|prop_adapter|C4D Animation Take|Layer0
+    7400768: Prop14Inch_12|Prop14Inch_10|C4D Animation Take|Layer0
+    7400770: Prop14Inch_12|Prop14Inch_11|C4D Animation Take|Layer0
+    7400772: Prop14Inch_12|Prop14Inch_12|C4D Animation Take|Layer0
+    7400774: Prop14Inch_12|Prop14Inch_13|C4D Animation Take|Layer0
+    7400776: Prop14Inch_12|Prop14Inch_14|C4D Animation Take|Layer0
+    7400778: Prop14Inch_12|Prop14Inch_15|C4D Animation Take|Layer0
+    7400780: Prop14Inch_12|Prop14Inch_16|C4D Animation Take|Layer0
+    7400782: Prop14Inch_12|Prop14Inch_2|C4D Animation Take|Layer0
+    7400784: Prop14Inch_12|Prop14Inch_3|C4D Animation Take|Layer0
+    7400786: Prop14Inch_12|Prop14Inch_4|C4D Animation Take|Layer0
+    7400788: Prop14Inch_12|Prop14Inch_5|C4D Animation Take|Layer0
+    7400790: Prop14Inch_12|Prop14Inch_6|C4D Animation Take|Layer0
+    7400792: Prop14Inch_12|Prop14Inch_7|C4D Animation Take|Layer0
+    7400794: Prop14Inch_12|Prop14Inch_8|C4D Animation Take|Layer0
+    7400796: Prop14Inch_12|Prop14Inch_9|C4D Animation Take|Layer0
+    7400798: Prop14Inch_12|Prop14Inch|C4D Animation Take|Layer0
+    7400800: Prop14Inch_12|prop_adapter_2|C4D Animation Take|Layer0
+    7400802: Prop14Inch_12|prop_adapter_3|C4D Animation Take|Layer0
+    7400804: Prop14Inch_12|prop_adapter_4|C4D Animation Take|Layer0
+    7400806: Prop14Inch_12|prop_adapter_5|C4D Animation Take|Layer0
+    7400808: Prop14Inch_12|prop_adapter_6|C4D Animation Take|Layer0
+    7400810: Prop14Inch_12|prop_adapter_7|C4D Animation Take|Layer0
+    7400812: Prop14Inch_12|prop_adapter_8|C4D Animation Take|Layer0
+    7400814: Prop14Inch_12|prop_adapter|C4D Animation Take|Layer0
+    7400816: prop_adapter_6|Prop14Inch_10|C4D Animation Take|Layer0
+    7400818: prop_adapter_6|Prop14Inch_11|C4D Animation Take|Layer0
+    7400820: prop_adapter_6|Prop14Inch_12|C4D Animation Take|Layer0
+    7400822: prop_adapter_6|Prop14Inch_13|C4D Animation Take|Layer0
+    7400824: prop_adapter_6|Prop14Inch_14|C4D Animation Take|Layer0
+    7400826: prop_adapter_6|Prop14Inch_15|C4D Animation Take|Layer0
+    7400828: prop_adapter_6|Prop14Inch_16|C4D Animation Take|Layer0
+    7400830: prop_adapter_6|Prop14Inch_2|C4D Animation Take|Layer0
+    7400832: prop_adapter_6|Prop14Inch_3|C4D Animation Take|Layer0
+    7400834: prop_adapter_6|Prop14Inch_4|C4D Animation Take|Layer0
+    7400836: prop_adapter_6|Prop14Inch_5|C4D Animation Take|Layer0
+    7400838: prop_adapter_6|Prop14Inch_6|C4D Animation Take|Layer0
+    7400840: prop_adapter_6|Prop14Inch_7|C4D Animation Take|Layer0
+    7400842: prop_adapter_6|Prop14Inch_8|C4D Animation Take|Layer0
+    7400844: prop_adapter_6|Prop14Inch_9|C4D Animation Take|Layer0
+    7400846: prop_adapter_6|Prop14Inch|C4D Animation Take|Layer0
+    7400848: prop_adapter_6|prop_adapter_2|C4D Animation Take|Layer0
+    7400850: prop_adapter_6|prop_adapter_3|C4D Animation Take|Layer0
+    7400852: prop_adapter_6|prop_adapter_4|C4D Animation Take|Layer0
+    7400854: prop_adapter_6|prop_adapter_5|C4D Animation Take|Layer0
+    7400856: prop_adapter_6|prop_adapter_6|C4D Animation Take|Layer0
+    7400858: prop_adapter_6|prop_adapter_7|C4D Animation Take|Layer0
+    7400860: prop_adapter_6|prop_adapter_8|C4D Animation Take|Layer0
+    7400862: prop_adapter_6|prop_adapter|C4D Animation Take|Layer0
+    7400864: Prop14Inch_13|Prop14Inch_10|C4D Animation Take|Layer0
+    7400866: Prop14Inch_13|Prop14Inch_11|C4D Animation Take|Layer0
+    7400868: Prop14Inch_13|Prop14Inch_12|C4D Animation Take|Layer0
+    7400870: Prop14Inch_13|Prop14Inch_13|C4D Animation Take|Layer0
+    7400872: Prop14Inch_13|Prop14Inch_14|C4D Animation Take|Layer0
+    7400874: Prop14Inch_13|Prop14Inch_15|C4D Animation Take|Layer0
+    7400876: Prop14Inch_13|Prop14Inch_16|C4D Animation Take|Layer0
+    7400878: Prop14Inch_13|Prop14Inch_2|C4D Animation Take|Layer0
+    7400880: Prop14Inch_13|Prop14Inch_3|C4D Animation Take|Layer0
+    7400882: Prop14Inch_13|Prop14Inch_4|C4D Animation Take|Layer0
+    7400884: Prop14Inch_13|Prop14Inch_5|C4D Animation Take|Layer0
+    7400886: Prop14Inch_13|Prop14Inch_6|C4D Animation Take|Layer0
+    7400888: Prop14Inch_13|Prop14Inch_7|C4D Animation Take|Layer0
+    7400890: Prop14Inch_13|Prop14Inch_8|C4D Animation Take|Layer0
+    7400892: Prop14Inch_13|Prop14Inch_9|C4D Animation Take|Layer0
+    7400894: Prop14Inch_13|Prop14Inch|C4D Animation Take|Layer0
+    7400896: Prop14Inch_13|prop_adapter_2|C4D Animation Take|Layer0
+    7400898: Prop14Inch_13|prop_adapter_3|C4D Animation Take|Layer0
+    7400900: Prop14Inch_13|prop_adapter_4|C4D Animation Take|Layer0
+    7400902: Prop14Inch_13|prop_adapter_5|C4D Animation Take|Layer0
+    7400904: Prop14Inch_13|prop_adapter_6|C4D Animation Take|Layer0
+    7400906: Prop14Inch_13|prop_adapter_7|C4D Animation Take|Layer0
+    7400908: Prop14Inch_13|prop_adapter_8|C4D Animation Take|Layer0
+    7400910: Prop14Inch_13|prop_adapter|C4D Animation Take|Layer0
+    7400912: Prop14Inch_14|Prop14Inch_10|C4D Animation Take|Layer0
+    7400914: Prop14Inch_14|Prop14Inch_11|C4D Animation Take|Layer0
+    7400916: Prop14Inch_14|Prop14Inch_12|C4D Animation Take|Layer0
+    7400918: Prop14Inch_14|Prop14Inch_13|C4D Animation Take|Layer0
+    7400920: Prop14Inch_14|Prop14Inch_14|C4D Animation Take|Layer0
+    7400922: Prop14Inch_14|Prop14Inch_15|C4D Animation Take|Layer0
+    7400924: Prop14Inch_14|Prop14Inch_16|C4D Animation Take|Layer0
+    7400926: Prop14Inch_14|Prop14Inch_2|C4D Animation Take|Layer0
+    7400928: Prop14Inch_14|Prop14Inch_3|C4D Animation Take|Layer0
+    7400930: Prop14Inch_14|Prop14Inch_4|C4D Animation Take|Layer0
+    7400932: Prop14Inch_14|Prop14Inch_5|C4D Animation Take|Layer0
+    7400934: Prop14Inch_14|Prop14Inch_6|C4D Animation Take|Layer0
+    7400936: Prop14Inch_14|Prop14Inch_7|C4D Animation Take|Layer0
+    7400938: Prop14Inch_14|Prop14Inch_8|C4D Animation Take|Layer0
+    7400940: Prop14Inch_14|Prop14Inch_9|C4D Animation Take|Layer0
+    7400942: Prop14Inch_14|Prop14Inch|C4D Animation Take|Layer0
+    7400944: Prop14Inch_14|prop_adapter_2|C4D Animation Take|Layer0
+    7400946: Prop14Inch_14|prop_adapter_3|C4D Animation Take|Layer0
+    7400948: Prop14Inch_14|prop_adapter_4|C4D Animation Take|Layer0
+    7400950: Prop14Inch_14|prop_adapter_5|C4D Animation Take|Layer0
+    7400952: Prop14Inch_14|prop_adapter_6|C4D Animation Take|Layer0
+    7400954: Prop14Inch_14|prop_adapter_7|C4D Animation Take|Layer0
+    7400956: Prop14Inch_14|prop_adapter_8|C4D Animation Take|Layer0
+    7400958: Prop14Inch_14|prop_adapter|C4D Animation Take|Layer0
+    7400960: prop_adapter_7|Prop14Inch_10|C4D Animation Take|Layer0
+    7400962: prop_adapter_7|Prop14Inch_11|C4D Animation Take|Layer0
+    7400964: prop_adapter_7|Prop14Inch_12|C4D Animation Take|Layer0
+    7400966: prop_adapter_7|Prop14Inch_13|C4D Animation Take|Layer0
+    7400968: prop_adapter_7|Prop14Inch_14|C4D Animation Take|Layer0
+    7400970: prop_adapter_7|Prop14Inch_15|C4D Animation Take|Layer0
+    7400972: prop_adapter_7|Prop14Inch_16|C4D Animation Take|Layer0
+    7400974: prop_adapter_7|Prop14Inch_2|C4D Animation Take|Layer0
+    7400976: prop_adapter_7|Prop14Inch_3|C4D Animation Take|Layer0
+    7400978: prop_adapter_7|Prop14Inch_4|C4D Animation Take|Layer0
+    7400980: prop_adapter_7|Prop14Inch_5|C4D Animation Take|Layer0
+    7400982: prop_adapter_7|Prop14Inch_6|C4D Animation Take|Layer0
+    7400984: prop_adapter_7|Prop14Inch_7|C4D Animation Take|Layer0
+    7400986: prop_adapter_7|Prop14Inch_8|C4D Animation Take|Layer0
+    7400988: prop_adapter_7|Prop14Inch_9|C4D Animation Take|Layer0
+    7400990: prop_adapter_7|Prop14Inch|C4D Animation Take|Layer0
+    7400992: prop_adapter_7|prop_adapter_2|C4D Animation Take|Layer0
+    7400994: prop_adapter_7|prop_adapter_3|C4D Animation Take|Layer0
+    7400996: prop_adapter_7|prop_adapter_4|C4D Animation Take|Layer0
+    7400998: prop_adapter_7|prop_adapter_5|C4D Animation Take|Layer0
+    7401000: prop_adapter_7|prop_adapter_6|C4D Animation Take|Layer0
+    7401002: prop_adapter_7|prop_adapter_7|C4D Animation Take|Layer0
+    7401004: prop_adapter_7|prop_adapter_8|C4D Animation Take|Layer0
+    7401006: prop_adapter_7|prop_adapter|C4D Animation Take|Layer0
+    7401008: Prop14Inch_15|Prop14Inch_10|C4D Animation Take|Layer0
+    7401010: Prop14Inch_15|Prop14Inch_11|C4D Animation Take|Layer0
+    7401012: Prop14Inch_15|Prop14Inch_12|C4D Animation Take|Layer0
+    7401014: Prop14Inch_15|Prop14Inch_13|C4D Animation Take|Layer0
+    7401016: Prop14Inch_15|Prop14Inch_14|C4D Animation Take|Layer0
+    7401018: Prop14Inch_15|Prop14Inch_15|C4D Animation Take|Layer0
+    7401020: Prop14Inch_15|Prop14Inch_16|C4D Animation Take|Layer0
+    7401022: Prop14Inch_15|Prop14Inch_2|C4D Animation Take|Layer0
+    7401024: Prop14Inch_15|Prop14Inch_3|C4D Animation Take|Layer0
+    7401026: Prop14Inch_15|Prop14Inch_4|C4D Animation Take|Layer0
+    7401028: Prop14Inch_15|Prop14Inch_5|C4D Animation Take|Layer0
+    7401030: Prop14Inch_15|Prop14Inch_6|C4D Animation Take|Layer0
+    7401032: Prop14Inch_15|Prop14Inch_7|C4D Animation Take|Layer0
+    7401034: Prop14Inch_15|Prop14Inch_8|C4D Animation Take|Layer0
+    7401036: Prop14Inch_15|Prop14Inch_9|C4D Animation Take|Layer0
+    7401038: Prop14Inch_15|Prop14Inch|C4D Animation Take|Layer0
+    7401040: Prop14Inch_15|prop_adapter_2|C4D Animation Take|Layer0
+    7401042: Prop14Inch_15|prop_adapter_3|C4D Animation Take|Layer0
+    7401044: Prop14Inch_15|prop_adapter_4|C4D Animation Take|Layer0
+    7401046: Prop14Inch_15|prop_adapter_5|C4D Animation Take|Layer0
+    7401048: Prop14Inch_15|prop_adapter_6|C4D Animation Take|Layer0
+    7401050: Prop14Inch_15|prop_adapter_7|C4D Animation Take|Layer0
+    7401052: Prop14Inch_15|prop_adapter_8|C4D Animation Take|Layer0
+    7401054: Prop14Inch_15|prop_adapter|C4D Animation Take|Layer0
+    7401056: Prop14Inch_16|Prop14Inch_10|C4D Animation Take|Layer0
+    7401058: Prop14Inch_16|Prop14Inch_11|C4D Animation Take|Layer0
+    7401060: Prop14Inch_16|Prop14Inch_12|C4D Animation Take|Layer0
+    7401062: Prop14Inch_16|Prop14Inch_13|C4D Animation Take|Layer0
+    7401064: Prop14Inch_16|Prop14Inch_14|C4D Animation Take|Layer0
+    7401066: Prop14Inch_16|Prop14Inch_15|C4D Animation Take|Layer0
+    7401068: Prop14Inch_16|Prop14Inch_16|C4D Animation Take|Layer0
+    7401070: Prop14Inch_16|Prop14Inch_2|C4D Animation Take|Layer0
+    7401072: Prop14Inch_16|Prop14Inch_3|C4D Animation Take|Layer0
+    7401074: Prop14Inch_16|Prop14Inch_4|C4D Animation Take|Layer0
+    7401076: Prop14Inch_16|Prop14Inch_5|C4D Animation Take|Layer0
+    7401078: Prop14Inch_16|Prop14Inch_6|C4D Animation Take|Layer0
+    7401080: Prop14Inch_16|Prop14Inch_7|C4D Animation Take|Layer0
+    7401082: Prop14Inch_16|Prop14Inch_8|C4D Animation Take|Layer0
+    7401084: Prop14Inch_16|Prop14Inch_9|C4D Animation Take|Layer0
+    7401086: Prop14Inch_16|Prop14Inch|C4D Animation Take|Layer0
+    7401088: Prop14Inch_16|prop_adapter_2|C4D Animation Take|Layer0
+    7401090: Prop14Inch_16|prop_adapter_3|C4D Animation Take|Layer0
+    7401092: Prop14Inch_16|prop_adapter_4|C4D Animation Take|Layer0
+    7401094: Prop14Inch_16|prop_adapter_5|C4D Animation Take|Layer0
+    7401096: Prop14Inch_16|prop_adapter_6|C4D Animation Take|Layer0
+    7401098: Prop14Inch_16|prop_adapter_7|C4D Animation Take|Layer0
+    7401100: Prop14Inch_16|prop_adapter_8|C4D Animation Take|Layer0
+    7401102: Prop14Inch_16|prop_adapter|C4D Animation Take|Layer0
+    7401104: prop_adapter_8|Prop14Inch_10|C4D Animation Take|Layer0
+    7401106: prop_adapter_8|Prop14Inch_11|C4D Animation Take|Layer0
+    7401108: prop_adapter_8|Prop14Inch_12|C4D Animation Take|Layer0
+    7401110: prop_adapter_8|Prop14Inch_13|C4D Animation Take|Layer0
+    7401112: prop_adapter_8|Prop14Inch_14|C4D Animation Take|Layer0
+    7401114: prop_adapter_8|Prop14Inch_15|C4D Animation Take|Layer0
+    7401116: prop_adapter_8|Prop14Inch_16|C4D Animation Take|Layer0
+    7401118: prop_adapter_8|Prop14Inch_2|C4D Animation Take|Layer0
+    7401120: prop_adapter_8|Prop14Inch_3|C4D Animation Take|Layer0
+    7401122: prop_adapter_8|Prop14Inch_4|C4D Animation Take|Layer0
+    7401124: prop_adapter_8|Prop14Inch_5|C4D Animation Take|Layer0
+    7401126: prop_adapter_8|Prop14Inch_6|C4D Animation Take|Layer0
+    7401128: prop_adapter_8|Prop14Inch_7|C4D Animation Take|Layer0
+    7401130: prop_adapter_8|Prop14Inch_8|C4D Animation Take|Layer0
+    7401132: prop_adapter_8|Prop14Inch_9|C4D Animation Take|Layer0
+    7401134: prop_adapter_8|Prop14Inch|C4D Animation Take|Layer0
+    7401136: prop_adapter_8|prop_adapter_2|C4D Animation Take|Layer0
+    7401138: prop_adapter_8|prop_adapter_3|C4D Animation Take|Layer0
+    7401140: prop_adapter_8|prop_adapter_4|C4D Animation Take|Layer0
+    7401142: prop_adapter_8|prop_adapter_5|C4D Animation Take|Layer0
+    7401144: prop_adapter_8|prop_adapter_6|C4D Animation Take|Layer0
+    7401146: prop_adapter_8|prop_adapter_7|C4D Animation Take|Layer0
+    7401148: prop_adapter_8|prop_adapter_8|C4D Animation Take|Layer0
+    7401150: prop_adapter_8|prop_adapter|C4D Animation Take|Layer0
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
