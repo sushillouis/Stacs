@@ -7,7 +7,6 @@ public class Vertex : MonoBehaviour
 {
     // public
     public Text text;
-    public vector3 coordinate; // this is actually the transform position
 
     // private
     private bool selected;

@@ -244,10 +244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   vertices: []
   edges: []
-  defaultVertex: {fileID: 4744854493218279416, guid: fdf2a1cc0c1f1234f9981032faf24733,
-    type: 3}
-  defaultEdge: {fileID: 2421537204048332663, guid: ddd2fae88639a3a46a81febfeb7a4b23,
-    type: 3}
 --- !u!4 &1044582652
 Transform:
   m_ObjectHideFlags: 0
