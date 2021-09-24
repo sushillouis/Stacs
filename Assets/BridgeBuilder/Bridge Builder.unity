@@ -242,8 +242,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 056c7fa40f590bf41873f8bb7e453293, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bridgeName: 
+  objFile: 
+  outputPath: 
+  defaultVertex: {fileID: 4744854493218279416, guid: fdf2a1cc0c1f1234f9981032faf24733,
+    type: 3}
+  defaultEdge: {fileID: 2421537204048332663, guid: ddd2fae88639a3a46a81febfeb7a4b23,
+    type: 3}
   vertices: []
   edges: []
+  numSegments: 6
+  segmentSpacing: 1
+  roadWidth: 2
+  bridgeHeight: 2
+  bridgeType: Warren
 --- !u!4 &1044582652
 Transform:
   m_ObjectHideFlags: 0

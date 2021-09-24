@@ -15,7 +15,9 @@ using System;
 public class BridgeBuilder : MonoBehaviour
 {
     // public members variables
+    public string bridgeName = "";
     public string objFile = "Assets/BridgeBuilder/test-bridge.obj";
+    public string outputPath = "";
 
     public GameObject defaultVertex;
     public GameObject defaultEdge;
@@ -84,6 +86,9 @@ public class BridgeBuilder : MonoBehaviour
                 case "K-Truss":
                     (v1, v2) = MakeKTrussSegement(v1, v2, xPos, zPos, bridgeHeight - heightReduction);
                     break;
+                case "Warren":
+                    (v1, v2) = MakeWarrenSegement(v1, v2, xPos, zPos, bridgeHeight - heightReduction);
+                    break;
             }
             MakeUpperXSegment(v2, prev_v2, xPos, zPos);
             xPos += segmentSpacing;
@@ -129,6 +134,28 @@ public class BridgeBuilder : MonoBehaviour
         CreateEdge(newV1, newV2, true, true);
         // diagonal
         CreateEdge(newV2, prev_v1, true, true);
+
+        return (newV1, newV2);
+    }
+
+    public (BridgeVertex newV1, BridgeVertex newV2) MakeWarrenSegement(BridgeVertex prev_v1, BridgeVertex prev_v2, float xPos, float zPos, float height)
+    {
+        // make vertices
+        BridgeVertex newV1 = CreateVertex(new Vector3(xPos, 0, zPos), true, true);
+        BridgeVertex newV2 = CreateVertex(new Vector3(xPos, height, zPos), true, true);
+
+        BridgeVertex vmid = CreateVertex(new Vector3(xPos - (0.5f * (float) segmentSpacing), 0, zPos), true, true);
+
+        // make edges along x axis
+        // horizontal
+        CreateEdge(newV1, vmid, true, true);
+        CreateEdge(vmid, prev_v1, true, true);
+        CreateEdge(newV2, prev_v2, true, true);
+        // diagonal
+        CreateEdge(newV2, vmid, true, true);
+        CreateEdge(prev_v2, vmid, true, true);
+        // diagonal
+        //CreateEdge(newV2, prev_v1, true, true);
 
         return (newV1, newV2);
     }
