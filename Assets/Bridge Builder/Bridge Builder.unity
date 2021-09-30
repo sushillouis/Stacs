@@ -252,11 +252,11 @@ MonoBehaviour:
     type: 3}
   vertices: []
   edges: []
-  numSegments: 6
+  numSegments: 12
   segmentSpacing: 0.5
   surfaceWidth: 1
   bridgeHeight: 1
-  bridgeType: Howe
+  bridgeType: Pratt
 --- !u!4 &1044582652
 Transform:
   m_ObjectHideFlags: 0

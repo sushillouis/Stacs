@@ -17,7 +17,6 @@ using SFB; // Standalone file browser package
 public class BridgeBuilder : MonoBehaviour
 {
     // public members variables
-    public Button saveFileButton;
 
     public bool arched = false;
     public string objFile = "Assets/BridgeBuilder/test-bridge.obj";
@@ -49,11 +48,26 @@ public class BridgeBuilder : MonoBehaviour
 
     void Start()
     {
-        GenerateBridge();
-        saveFileButton.onClick.AddListener(SaveFile);
+        //GenerateBridge();
+        //saveFileButton.onClick.AddListener(SaveFile);
     }
 
-    void SaveFile()
+    public void ClearBridge()
+    {
+        // TODO Prompt are you sure?
+        foreach (BridgeVertex bv in vertices)
+        {
+            Destroy(bv.gameObject);
+        }
+        vertices.Clear();
+        foreach (BridgeEdge be in edges)
+        {
+            Destroy(be.gameObject);
+        }
+        edges.Clear();
+    }
+
+    public void SaveBridge()
     {
         var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", bridgeName, "json");
 
@@ -61,6 +75,45 @@ public class BridgeBuilder : MonoBehaviour
 
 
         //ShowOutputFile();
+    }
+
+    public void SetNumSegments(string segments)
+    {
+        numSegments = Int32.Parse(segments);
+    }
+
+    public void SetBridgeHeight(string height)
+    {
+        bridgeHeight = float.Parse(height);
+    }
+
+    public void SetBridgeWidth(string width)
+    {
+        surfaceWidth = float.Parse(width);
+    }
+
+    public void SetSegmentLength(string len)
+    {
+        segmentSpacing = float.Parse(len);
+    }
+
+    public void SetBridgeType(int type)
+    {
+        switch(type)
+        {
+            case 0:
+                bridgeType = "Pratt";
+                break;
+            case 1:
+                bridgeType = "Howe";
+                break;
+            case 2:
+                bridgeType = "Warren";
+                break;
+            case 3:
+                bridgeType = "K-Truss";
+                break;
+        }
     }
 
     void ShowOutputFile()
@@ -112,6 +165,8 @@ public class BridgeBuilder : MonoBehaviour
 
     public void GenerateBridge()
     {
+        ClearBridge();
+
         if (arched)
             bridgeName = "arched-" + bridgeType.ToLower() + "-truss-bridge-" + numSegments.ToString() + "-segment";
         else

@@ -15,6 +15,7 @@ public class BridgeEdge : MonoBehaviour
         string data = "\t{\n";
         data += "\t\t\"id\": " + id.ToString() + ",\n";
         data += "\t\t\"mesh\": \"" + GetComponent<MeshFilter>().mesh.name + "\",\n";
+        data += "\t\t\"length\": " + transform.localScale.z + ",\n";
         data += "\t\t\"vIDs\": [" + v1.id.ToString() + ", " + v2.id.ToString() + "]\n"; 
         data += "\t}";
         return data;

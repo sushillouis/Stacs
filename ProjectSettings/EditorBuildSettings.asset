@@ -5,10 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 8c4e8c18c030faa4b9022309662fcec1
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/SteelTrussBridge.unity
     guid: 194d010fa798e1d46802afcad8f979da
   - enabled: 1
