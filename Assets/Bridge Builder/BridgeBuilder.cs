@@ -36,6 +36,9 @@ public class BridgeBuilder : MonoBehaviour
 
     public string bridgeType = "K-Truss";
 
+    public bool mirrorZ = true;
+    public bool mirrorX = true;
+
     // private members variables
     private GameObject primaryObject;
     private string bridgeName = "";
@@ -50,6 +53,11 @@ public class BridgeBuilder : MonoBehaviour
     {
         //GenerateBridge();
         //saveFileButton.onClick.AddListener(SaveFile);
+    }
+
+    void Update()
+    {
+
     }
 
     public void ClearBridge()
@@ -68,6 +76,16 @@ public class BridgeBuilder : MonoBehaviour
     }
 
     public void SaveBridge()
+    {
+        var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", bridgeName, "json");
+
+        File.WriteAllText(path, GetHumanReadableJSON());
+
+
+        //ShowOutputFile();
+    }
+
+    public void SaveOneFaceOfBridge()
     {
         var path = StandaloneFileBrowser.SaveFilePanel("Save File", "", bridgeName, "json");
 
@@ -230,7 +248,6 @@ public class BridgeBuilder : MonoBehaviour
         List<BridgeVertex> newV = new List<BridgeVertex>();
         newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
-        newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
 
         // horizontal
         CreateEdge(newV[0], prev[0], true, true);
@@ -240,9 +257,15 @@ public class BridgeBuilder : MonoBehaviour
         // diagonal
         CreateEdge(newV[0], prev[1], true, true);
         // top
-        CreateEdge(newV[2], prev[1], true, true);
-        CreateEdge(newV[2], newV[1], true, true);
-        CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+        if (mirrorZ)
+        {
+            newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
+
+            CreateEdge(newV[2], prev[1], true, true);
+            CreateEdge(newV[2], newV[1], true, true);
+            CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+        }
+
 
         return newV;
     }
@@ -253,7 +276,6 @@ public class BridgeBuilder : MonoBehaviour
         List<BridgeVertex> newV = new List<BridgeVertex>();
         newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
-        newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
 
         // horizontal
         CreateEdge(newV[0], prev[0], true, true);
@@ -263,9 +285,13 @@ public class BridgeBuilder : MonoBehaviour
         // diagonal
         CreateEdge(newV[1], prev[0], true, true);
         // top
-        CreateEdge(newV[2], prev[1], true, true);
-        CreateEdge(newV[2], newV[1], true, true);
-        CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+        if (mirrorZ)
+        {
+            newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
+            CreateEdge(newV[2], prev[1], true, true);
+            CreateEdge(newV[2], newV[1], true, true);
+            CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+        }
 
         return newV;
     }
@@ -276,23 +302,26 @@ public class BridgeBuilder : MonoBehaviour
         List<BridgeVertex> newV = new List<BridgeVertex>();
         newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
-        newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
         newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, 0, zPos), true, true));
 
         // horizontal
-        CreateEdge(newV[0], newV[3], true, true);
-        CreateEdge(newV[3], prev[0], true, true);
+        CreateEdge(newV[0], newV[2], true, true);
+        CreateEdge(newV[2], prev[0], true, true);
         CreateEdge(newV[1], prev[1], true, true);
         // vertical
         //CreateEdge(newV[0], newV[1], true, true);
         // diagonal
-        CreateEdge(newV[3], prev[1], true, true);
-        CreateEdge(newV[3], newV[1], true, true);
-
-        // top
         CreateEdge(newV[2], prev[1], true, true);
         CreateEdge(newV[2], newV[1], true, true);
-        CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+
+        // top
+        if (mirrorZ)
+        {
+            newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
+            CreateEdge(newV[3], prev[1], true, true);
+            CreateEdge(newV[3], newV[1], true, true);
+            CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+        }
 
         return newV;
     }
@@ -303,7 +332,6 @@ public class BridgeBuilder : MonoBehaviour
         List<BridgeVertex> newV = new List<BridgeVertex>();
         newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
-        newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
         newV.Add(CreateVertex(new Vector3(xPos, height / 2, zPos), true, true));
 
         // make edges along x axis
@@ -311,16 +339,20 @@ public class BridgeBuilder : MonoBehaviour
         CreateEdge(newV[0], prev[0], true, true);
         CreateEdge(newV[1], prev[1], true, true);
         // vertical
-        CreateEdge(newV[0], newV[3], true, true);
-        CreateEdge(newV[1], newV[3], true, true);
+        CreateEdge(newV[0], newV[2], true, true);
+        CreateEdge(newV[1], newV[2], true, true);
         // diagonal
-        CreateEdge(prev[0], newV[3], true, true);
-        CreateEdge(prev[1], newV[3], true, true);
+        CreateEdge(prev[0], newV[2], true, true);
+        CreateEdge(prev[1], newV[2], true, true);
 
         // top
-        CreateEdge(newV[2], prev[1], true, true);
-        CreateEdge(newV[2], newV[1], true, true);
-        CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+        if (mirrorZ)
+        {
+            newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
+            CreateEdge(newV[3], prev[1], true, true);
+            CreateEdge(newV[3], newV[1], true, true);
+            CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
+        }
 
         return newV;
     }
@@ -370,6 +402,9 @@ public class BridgeBuilder : MonoBehaviour
     // public methods
     public BridgeVertex CreateVertex(Vector3 coordinate, bool mirrorAlongX, bool mirrorAlongZ)
     {
+        mirrorAlongX = mirrorAlongX && mirrorX;
+        mirrorAlongZ = mirrorAlongZ && mirrorZ;
+
         // mirroring
         if (mirrorAlongX)
             CreateVertex(new Vector3(-coordinate.x, coordinate.y, coordinate.z));
@@ -396,6 +431,8 @@ public class BridgeBuilder : MonoBehaviour
 
     public BridgeEdge CreateEdge(BridgeVertex vertex1, BridgeVertex vertex2)
     {
+        if (vertex1 == null || vertex2 == null)
+            return null;
         // check if edge exists
         if (GetEdge(vertex1, vertex2) != null)
             return null;
@@ -425,6 +462,9 @@ public class BridgeBuilder : MonoBehaviour
 
     public BridgeEdge CreateEdge(BridgeVertex vertex1, BridgeVertex vertex2, bool mirrorAlongX, bool mirrorAlongZ)
     {
+        mirrorAlongX = mirrorAlongX && mirrorX;
+        mirrorAlongZ = mirrorAlongZ && mirrorZ;
+
         // mirroring
         if (mirrorAlongX)
         {
@@ -457,6 +497,11 @@ public class BridgeBuilder : MonoBehaviour
         }
 
         return CreateEdge(vertex1, vertex2);
+    }
+
+    public void Select()
+    {
+
     }
 
     public void RemoveVertex(BridgeVertex vertex)
