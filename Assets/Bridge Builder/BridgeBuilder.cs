@@ -24,6 +24,8 @@ public class BridgeBuilder : MonoBehaviour
 
     public GameObject defaultVertex;
     public GameObject defaultEdge;
+    public GameObject surface;
+    public GameObject railing;
 
     public List<BridgeVertex> vertices;
     public List<BridgeEdge> edges;
@@ -33,6 +35,7 @@ public class BridgeBuilder : MonoBehaviour
     public float segmentSpacing = 1;
     public float surfaceWidth = 2;
     public float bridgeHeight = 2;
+    private float bridgeLength = 0;
 
     public string bridgeType = "K-Truss";
 
@@ -43,6 +46,9 @@ public class BridgeBuilder : MonoBehaviour
     private GameObject primaryObject;
     private string bridgeName = "";
 
+    private float roadWidth = 3.7f; // meters
+    private float trussWidth = 0.3f;
+
     void Awake()
     {
         primaryObject = new GameObject();
@@ -51,7 +57,7 @@ public class BridgeBuilder : MonoBehaviour
 
     void Start()
     {
-        //GenerateBridge();
+        GenerateBridge();
         //saveFileButton.onClick.AddListener(SaveFile);
     }
 
@@ -184,6 +190,9 @@ public class BridgeBuilder : MonoBehaviour
     public void GenerateBridge()
     {
         ClearBridge();
+        bridgeLength = numSegments * segmentSpacing;
+        MakeSurface();
+
 
         if (arched)
             bridgeName = "arched-" + bridgeType.ToLower() + "-truss-bridge-" + numSegments.ToString() + "-segment";
@@ -239,7 +248,27 @@ public class BridgeBuilder : MonoBehaviour
             endv = CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, 0, zPos), true, true);
         CreateEdge(prevVertices[0], endv, true, true);
         CreateEdge(prevVertices[1], endv, true, true);
+    }
 
+    private void MakeSurface()
+    {
+        // surface types
+        string type = "Single Lane";
+        switch(type) {
+            case "Single Lane":
+                MakeRoad(2);
+                break;
+        }
+    }
+
+    private void MakeRoad(int numLanes)
+    {
+        surfaceWidth = roadWidth * numLanes + trussWidth;
+        float startZPos = (roadWidth * numLanes);
+        GameObject go = Instantiate(surface);
+        go.transform.position = new Vector3(0, 0, 0);
+        go.transform.localScale = new Vector3(bridgeLength, 1, roadWidth * numLanes);
+        go.transform.parent = primaryObject.transform;
     }
 
     public List<BridgeVertex> MakeHoweSegement(List<BridgeVertex> prev, float xPos, float zPos, float height)
