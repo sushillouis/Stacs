@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SteelTrussBridge.unity
     guid: 194d010fa798e1d46802afcad8f979da
   - enabled: 1
-    path: Assets/Bridge Builder/Bridge Builder.unity
+    path: Assets/ScenarioGenerator/Bridge Builder/Bridge Builder.unity
     guid: d9b7240520cff66489e1ed7479fe384e
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: fb5a8320cacb6af4290a05d34654e7de,

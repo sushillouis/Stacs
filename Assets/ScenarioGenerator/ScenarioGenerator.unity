@@ -223,7 +223,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetBridgeType
         m_Mode: 0
         m_Arguments:
@@ -470,6 +470,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23911671}
   m_CullTransparentMesh: 0
+--- !u!1 &36204216
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 36204218}
+  - component: {fileID: 36204217}
+  m_Layer: 0
+  m_Name: ScenarioGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &36204217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f80e76d414247643bac5da26393cc6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  builderObject: {fileID: 1710053070}
+--- !u!4 &36204218
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 3.7878706, y: -1.6084211, z: 2.5765836}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &56091442
 GameObject:
   m_ObjectHideFlags: 0
@@ -896,7 +940,7 @@ Transform:
   m_Children:
   - {fileID: 1007661788}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &169475224
 GameObject:
@@ -980,7 +1024,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SaveBridge
         m_Mode: 1
         m_Arguments:
@@ -1623,7 +1667,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetBridgeType
         m_Mode: 0
         m_Arguments:
@@ -2627,7 +2671,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetBridgeType
         m_Mode: 0
         m_Arguments:
@@ -2836,8 +2880,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
-        m_MethodName: GenerateBridge
+      - m_Target: {fileID: 36204217}
+        m_MethodName: Generate
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4499,7 +4543,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetSegmentLength
         m_Mode: 0
         m_Arguments:
@@ -4639,7 +4683,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SaveBridge
         m_Mode: 1
         m_Arguments:
@@ -4941,7 +4985,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetBridgeType
         m_Mode: 0
         m_Arguments:
@@ -6490,7 +6534,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -7382,7 +7426,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetBridgeHeight
         m_Mode: 0
         m_Arguments:
@@ -7828,7 +7872,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: ClearBridge
         m_Mode: 1
         m_Arguments:
@@ -8420,6 +8464,95 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707856210}
   m_CullTransparentMesh: 0
+--- !u!1 &1710053070
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1710053074}
+  - component: {fileID: 1710053073}
+  - component: {fileID: 1710053072}
+  - component: {fileID: 1710053071}
+  m_Layer: 0
+  m_Name: Builders
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1710053071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710053070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451204dd54d62e747ae2c37fcf3d8129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  land: {fileID: 919132149155446097, guid: 13c7bea566a5b4a48ad492a868abfc1d, type: 3}
+  bank: {fileID: 919132149155446097, guid: 95866230ef858f5449fffb6dc4d99d72, type: 3}
+--- !u!114 &1710053072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710053070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d652e4f71a3f0549949ac43a0827380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  surface: {fileID: 919132149155446097, guid: 9e276a8bfd6b53343883080456b0e9ea, type: 3}
+  sidewalk: {fileID: 919132149155446097, guid: 213b4db5de98dbc48865b009c81ad0b8, type: 3}
+  railing: {fileID: 0}
+--- !u!114 &1710053073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710053070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056c7fa40f590bf41873f8bb7e453293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arched: 0
+  objFile: Assets/BridgeBuilder/test-bridge.obj
+  outputPath: 
+  defaultVertex: {fileID: 4744854493218279416, guid: fdf2a1cc0c1f1234f9981032faf24733,
+    type: 3}
+  defaultEdge: {fileID: 2421537204048332663, guid: ddd2fae88639a3a46a81febfeb7a4b23,
+    type: 3}
+  vertices: []
+  edges: []
+  numSegments: 4
+  segmentSpacing: 6
+  bridgeHeight: 7
+  bridgeType: K-Truss
+  mirrorZ: 1
+  mirrorX: 1
+--- !u!4 &1710053074
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710053070}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.7060963, y: 0.72095627, z: -1.8377289}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1710065709
 GameObject:
   m_ObjectHideFlags: 0
@@ -8678,7 +8811,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetBridgeHeight
         m_Mode: 0
         m_Arguments:
@@ -8970,67 +9103,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1884165622}
   m_CullTransparentMesh: 0
---- !u!1 &1908634341
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1908634343}
-  - component: {fileID: 1908634342}
-  m_Layer: 0
-  m_Name: BridgeBuilder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1908634342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908634341}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056c7fa40f590bf41873f8bb7e453293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arched: 0
-  objFile: Assets/BridgeBuilder/test-bridge.obj
-  outputPath: 
-  defaultVertex: {fileID: 4744854493218279416, guid: fdf2a1cc0c1f1234f9981032faf24733,
-    type: 3}
-  defaultEdge: {fileID: 2421537204048332663, guid: ddd2fae88639a3a46a81febfeb7a4b23,
-    type: 3}
-  surface: {fileID: 919132149155446097, guid: 9e276a8bfd6b53343883080456b0e9ea, type: 3}
-  railing: {fileID: 0}
-  vertices: []
-  edges: []
-  numSegments: 4
-  segmentSpacing: 6
-  surfaceWidth: 7.4
-  bridgeHeight: 7
-  bridgeType: Pratt
-  mirrorZ: 1
-  mirrorX: 1
---- !u!4 &1908634343
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1908634341}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 738.125, y: 359.375, z: 6.15}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1928329649
 GameObject:
   m_ObjectHideFlags: 0
@@ -9322,7 +9394,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1908634342}
+      - m_Target: {fileID: 0}
         m_MethodName: SetNumSegments
         m_Mode: 0
         m_Arguments:
