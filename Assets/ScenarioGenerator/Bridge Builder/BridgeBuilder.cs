@@ -57,7 +57,7 @@ public class BridgeBuilder : MonoBehaviour
 
     }
 
-    public void ClearBridge()
+    public void Clear()
     {
         // TODO Prompt are you sure?
         foreach (BridgeVertex bv in vertices)
@@ -185,7 +185,7 @@ public class BridgeBuilder : MonoBehaviour
 
     public void Generate(float width)
     {
-        ClearBridge();
+        Clear();
         surfaceWidth = width + trussWidth;
         bridgeLength = numSegments * segmentSpacing;
 

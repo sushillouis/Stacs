@@ -8476,6 +8476,7 @@ GameObject:
   - component: {fileID: 1710053073}
   - component: {fileID: 1710053072}
   - component: {fileID: 1710053071}
+  - component: {fileID: 1710053075}
   m_Layer: 0
   m_Name: Builders
   m_TagString: Untagged
@@ -8533,7 +8534,7 @@ MonoBehaviour:
     type: 3}
   vertices: []
   edges: []
-  numSegments: 4
+  numSegments: 6
   segmentSpacing: 6
   bridgeHeight: 7
   bridgeType: K-Truss
@@ -8553,6 +8554,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1710053075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1710053070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230dd4172916470448fe5bbecb19f32c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numDefects: 5
+  defectObject: {fileID: 4081570877868246440, guid: 2c11e8d43dd4dbe429838b98dd627e10,
+    type: 3}
 --- !u!1 &1710065709
 GameObject:
   m_ObjectHideFlags: 0

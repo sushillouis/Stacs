@@ -12,14 +12,26 @@ public class LandBuilder : MonoBehaviour
 
     void Awake()
     {
+        MakeRootLandObject();
+    }
+
+    public void MakeRootLandObject()
+    {
         primaryObject = new GameObject();
         primaryObject.name = "Land";
     }
 
     public void Generate(float maxX, float maxZ)
     {
+        Clear();
         MakeLand(maxX, maxZ);
         MakeBanks(maxX, maxZ);
+    }
+
+    public void Clear()
+    {
+        Destroy(primaryObject);
+        MakeRootLandObject();
     }
 
     private void MakeLand(float maxX, float maxZ)

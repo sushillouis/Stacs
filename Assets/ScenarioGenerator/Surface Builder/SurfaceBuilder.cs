@@ -17,14 +17,13 @@ public class SurfaceBuilder : MonoBehaviour
 
     void Awake()
     {
-        primaryObject = new GameObject();
-        primaryObject.name = "Surface";
+        MakeRootObject();
     }
 
-    // Update is called once per frame
-    void Update()
+    void MakeRootObject()
     {
-
+        primaryObject = new GameObject();
+        primaryObject.name = "Surface";
     }
 
     public float GetWidth()
@@ -35,6 +34,12 @@ public class SurfaceBuilder : MonoBehaviour
     public void Generate(float maxLength)
     {
         MakeSurface(maxLength);
+    }
+
+    public void Clear()
+    {
+        Destroy(primaryObject);
+        MakeRootObject();
     }
 
     private void MakeSurface(float maxLength)

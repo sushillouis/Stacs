@@ -8,6 +8,7 @@ public class ScenarioGenerator : MonoBehaviour
 
     private SurfaceBuilder surfaceBuilder;
     private BridgeBuilder bridgeBuilder;
+    private DefectsGenerator defectsGenerator;
     private LandBuilder landBuilder;
 
     private float maxZ = 1000;
@@ -17,6 +18,7 @@ public class ScenarioGenerator : MonoBehaviour
     {
         surfaceBuilder = builderObject.GetComponent<SurfaceBuilder>();
         bridgeBuilder = builderObject.GetComponent<BridgeBuilder>();
+        defectsGenerator = builderObject.GetComponent<DefectsGenerator>();
         landBuilder = builderObject.GetComponent<LandBuilder>();
     }
 
@@ -29,6 +31,7 @@ public class ScenarioGenerator : MonoBehaviour
     {
         surfaceBuilder.Generate(maxX);
         bridgeBuilder.Generate(surfaceBuilder.GetWidth());
+        defectsGenerator.Generate();
         landBuilder.Generate(bridgeBuilder.GetLength(), maxZ);
     }
 }
