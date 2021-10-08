@@ -480,6 +480,11 @@ GameObject:
   m_Component:
   - component: {fileID: 36204218}
   - component: {fileID: 36204217}
+  - component: {fileID: 36204219}
+  - component: {fileID: 36204222}
+  - component: {fileID: 36204221}
+  - component: {fileID: 36204220}
+  - component: {fileID: 36204223}
   m_Layer: 0
   m_Name: ScenarioGenerator
   m_TagString: Untagged
@@ -499,7 +504,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f80e76d414247643bac5da26393cc6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  builderObject: {fileID: 1710053070}
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  surfaceGenerator: {fileID: 0}
+  bridgeGenerator: {fileID: 0}
+  defectsGenerator: {fileID: 0}
+  landGenerator: {fileID: 0}
+  robotGenerator: {fileID: 0}
+  maxZ: 1000
+  maxX: 1000
 --- !u!4 &36204218
 Transform:
   m_ObjectHideFlags: 0
@@ -512,8 +525,109 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &36204219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056c7fa40f590bf41873f8bb7e453293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  arched: 0
+  objFile: Assets/BridgeBuilder/test-bridge.obj
+  outputPath: 
+  defaultVertex: {fileID: 4744854493218279416, guid: fdf2a1cc0c1f1234f9981032faf24733,
+    type: 3}
+  defaultEdge: {fileID: 2421537204048332663, guid: ddd2fae88639a3a46a81febfeb7a4b23,
+    type: 3}
+  vertices: []
+  edges: []
+  numSegments: 8
+  segmentSpacing: 4
+  bridgeHeight: 7
+  bridgeType: K-Truss
+  mirrorZ: 1
+  mirrorX: 1
+  scenarioGenerator: {fileID: 0}
+--- !u!114 &36204220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 451204dd54d62e747ae2c37fcf3d8129, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  land: {fileID: 919132149155446097, guid: 13c7bea566a5b4a48ad492a868abfc1d, type: 3}
+  bank: {fileID: 919132149155446097, guid: 95866230ef858f5449fffb6dc4d99d72, type: 3}
+  scenarioGenerator: {fileID: 0}
+--- !u!114 &36204221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d652e4f71a3f0549949ac43a0827380, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  surface: {fileID: 919132149155446097, guid: 9e276a8bfd6b53343883080456b0e9ea, type: 3}
+  sidewalk: {fileID: 919132149155446097, guid: 213b4db5de98dbc48865b009c81ad0b8, type: 3}
+  railing: {fileID: 0}
+  scenarioGenerator: {fileID: 0}
+--- !u!114 &36204222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 230dd4172916470448fe5bbecb19f32c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  numDefects: 4
+  defectObject: {fileID: 4081570877868246440, guid: 2c11e8d43dd4dbe429838b98dd627e10,
+    type: 3}
+  scenarioGenerator: {fileID: 0}
+--- !u!114 &36204223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c14db70b152c094b9fb8e48ef2eed5a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  numRobots: 4
+  climbingRobot: {fileID: 2342501925828184307, guid: a7104c9fe98e5ee47867d45822cb060a,
+    type: 3}
+  scenarioGenerator: {fileID: 0}
 --- !u!1 &56091442
 GameObject:
   m_ObjectHideFlags: 0
@@ -8464,111 +8578,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1707856210}
   m_CullTransparentMesh: 0
---- !u!1 &1710053070
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1710053074}
-  - component: {fileID: 1710053073}
-  - component: {fileID: 1710053072}
-  - component: {fileID: 1710053071}
-  - component: {fileID: 1710053075}
-  m_Layer: 0
-  m_Name: Builders
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1710053071
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710053070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 451204dd54d62e747ae2c37fcf3d8129, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  land: {fileID: 919132149155446097, guid: 13c7bea566a5b4a48ad492a868abfc1d, type: 3}
-  bank: {fileID: 919132149155446097, guid: 95866230ef858f5449fffb6dc4d99d72, type: 3}
---- !u!114 &1710053072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710053070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d652e4f71a3f0549949ac43a0827380, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  surface: {fileID: 919132149155446097, guid: 9e276a8bfd6b53343883080456b0e9ea, type: 3}
-  sidewalk: {fileID: 919132149155446097, guid: 213b4db5de98dbc48865b009c81ad0b8, type: 3}
-  railing: {fileID: 0}
---- !u!114 &1710053073
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710053070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 056c7fa40f590bf41873f8bb7e453293, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arched: 0
-  objFile: Assets/BridgeBuilder/test-bridge.obj
-  outputPath: 
-  defaultVertex: {fileID: 4744854493218279416, guid: fdf2a1cc0c1f1234f9981032faf24733,
-    type: 3}
-  defaultEdge: {fileID: 2421537204048332663, guid: ddd2fae88639a3a46a81febfeb7a4b23,
-    type: 3}
-  vertices: []
-  edges: []
-  numSegments: 6
-  segmentSpacing: 6
-  bridgeHeight: 7
-  bridgeType: K-Truss
-  mirrorZ: 1
-  mirrorX: 1
---- !u!4 &1710053074
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710053070}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.7060963, y: 0.72095627, z: -1.8377289}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1710053075
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1710053070}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 230dd4172916470448fe5bbecb19f32c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  numDefects: 5
-  defectObject: {fileID: 4081570877868246440, guid: 2c11e8d43dd4dbe429838b98dd627e10,
-    type: 3}
 --- !u!1 &1710065709
 GameObject:
   m_ObjectHideFlags: 0

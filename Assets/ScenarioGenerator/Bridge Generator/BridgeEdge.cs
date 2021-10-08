@@ -7,7 +7,7 @@ public class BridgeEdge : MonoBehaviour
     public int id;
     public BridgeVertex v1;
     public BridgeVertex v2;
-    public BridgeBuilder bridgeBuilder;
+    public BridgeGenerator bridgeBuilder;
 
 
     public string GetHumanReadableJSON()

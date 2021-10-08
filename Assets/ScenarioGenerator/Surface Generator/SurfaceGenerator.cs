@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SurfaceBuilder : MonoBehaviour
+public class SurfaceGenerator : Generator
 {
     public GameObject surface;
     public GameObject sidewalk;
@@ -13,17 +13,13 @@ public class SurfaceBuilder : MonoBehaviour
     private float roadWidth = 3.7f; // meters
     private float sidewalkWidth = 1.2192f; // meters
 
-    private GameObject primaryObject;
+    public ScenarioGenerator scenarioGenerator;
 
-    void Awake()
-    {
-        MakeRootObject();
-    }
 
-    void MakeRootObject()
+    public override void Awake()
     {
-        primaryObject = new GameObject();
-        primaryObject.name = "Surface";
+        rootObjectName = "Surface";
+        base.Awake();
     }
 
     public float GetWidth()
@@ -31,15 +27,11 @@ public class SurfaceBuilder : MonoBehaviour
         return surfaceWidth;
     }
 
-    public void Generate(float maxLength)
+    public override void Generate()
     {
+        base.Generate();
+        float maxLength = scenarioGenerator.maxX;
         MakeSurface(maxLength);
-    }
-
-    public void Clear()
-    {
-        Destroy(primaryObject);
-        MakeRootObject();
     }
 
     private void MakeSurface(float maxLength)
@@ -63,7 +55,7 @@ public class SurfaceBuilder : MonoBehaviour
         GameObject go = Instantiate(surface);
         go.transform.position = new Vector3(0, 0, 0);
         go.transform.localScale = new Vector3(maxLength, 1, roadWidth * numLanes);
-        go.transform.parent = primaryObject.transform;
+        go.transform.parent = rootObject.transform;
     }
 
     private void MakeSidewalk(float maxLength)
@@ -71,12 +63,12 @@ public class SurfaceBuilder : MonoBehaviour
         GameObject go = Instantiate(sidewalk);
         go.transform.position = new Vector3(0, 0, (surfaceWidth / 2) + (sidewalkWidth / 2));
         go.transform.localScale = new Vector3(maxLength, sidewalkWidth, 1);
-        go.transform.parent = primaryObject.transform;
+        go.transform.parent = rootObject.transform;
 
         go = Instantiate(sidewalk);
         go.transform.position = new Vector3(0, 0, -(surfaceWidth / 2) - (sidewalkWidth / 2));
         go.transform.localScale = new Vector3(maxLength, sidewalkWidth, 1);
-        go.transform.parent = primaryObject.transform;
+        go.transform.parent = rootObject.transform;
 
         surfaceWidth += 2 * sidewalkWidth;
     }

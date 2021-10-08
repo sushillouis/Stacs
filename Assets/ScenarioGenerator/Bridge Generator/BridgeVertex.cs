@@ -7,7 +7,7 @@ public class BridgeVertex : MonoBehaviour
     public int id;
     public string model;
     public List<BridgeEdge> edges;
-    public BridgeBuilder bridgeBuilder;
+    public BridgeGenerator bridgeBuilder;
 
     private void Awake()
     {

@@ -2,24 +2,29 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScenarioGenerator : MonoBehaviour
+public class ScenarioGenerator : Generator
 {
-    public GameObject builderObject;
+    public SurfaceGenerator surfaceGenerator;
+    public BridgeGenerator bridgeGenerator;
+    public DefectsGenerator defectsGenerator;
+    public LandGenerator landGenerator;
+    public RobotGenerator robotGenerator;
 
-    private SurfaceBuilder surfaceBuilder;
-    private BridgeBuilder bridgeBuilder;
-    private DefectsGenerator defectsGenerator;
-    private LandBuilder landBuilder;
+    public float maxZ = 1000;
+    public float maxX = 1000;
 
-    private float maxZ = 1000;
-    private float maxX = 1000;
-
-    private void Awake()
+    public override void Awake()
     {
-        surfaceBuilder = builderObject.GetComponent<SurfaceBuilder>();
-        bridgeBuilder = builderObject.GetComponent<BridgeBuilder>();
-        defectsGenerator = builderObject.GetComponent<DefectsGenerator>();
-        landBuilder = builderObject.GetComponent<LandBuilder>();
+        surfaceGenerator = transform.GetComponent<SurfaceGenerator>();
+        surfaceGenerator.scenarioGenerator = this;
+        bridgeGenerator = transform.GetComponent<BridgeGenerator>();
+        bridgeGenerator.scenarioGenerator = this;
+        defectsGenerator = transform.GetComponent<DefectsGenerator>();
+        defectsGenerator.scenarioGenerator = this;
+        landGenerator = transform.GetComponent<LandGenerator>();
+        landGenerator.scenarioGenerator = this;
+        robotGenerator = transform.GetComponent<RobotGenerator>();
+        robotGenerator.scenarioGenerator = this;
     }
 
     public void Start()
@@ -27,11 +32,12 @@ public class ScenarioGenerator : MonoBehaviour
         Generate();
     }
 
-    public void Generate()
+    public override void Generate()
     {
-        surfaceBuilder.Generate(maxX);
-        bridgeBuilder.Generate(surfaceBuilder.GetWidth());
+        surfaceGenerator.Generate();
+        bridgeGenerator.Generate();
         defectsGenerator.Generate();
-        landBuilder.Generate(bridgeBuilder.GetLength(), maxZ);
+        landGenerator.Generate();
+        robotGenerator.Generate();
     }
 }

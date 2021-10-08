@@ -6,18 +6,8 @@ using System.IO;
 using System;
 using SFB; // Standalone file browser package
 
-
-
-/*
- * Description: This class give the user interaction functionality to construct graphs in 3D space.
- * 
- * Dependencies: 
- */
-
-public class BridgeBuilder : MonoBehaviour
+public class BridgeGenerator : Generator
 {
-    // public members variables
-
     public bool arched = false;
     public string objFile = "Assets/BridgeBuilder/test-bridge.obj";
     public string outputPath = "";
@@ -29,35 +19,30 @@ public class BridgeBuilder : MonoBehaviour
     public List<BridgeEdge> edges;
 
     // bridge generation variables
-    public int numSegments = 3;
-    public float segmentSpacing = 1;
-    private float surfaceWidth = 2;
-    public float bridgeHeight = 2;
+    public int numSegments = 4;
+    public float segmentSpacing = 4;
+    private float surfaceWidth = 4f;
+    public float bridgeHeight = 7;
     private float bridgeLength = 0;
     private float trussWidth = 0.3f;
-
 
     public string bridgeType = "K-Truss";
 
     public bool mirrorZ = true;
     public bool mirrorX = true;
 
+    public ScenarioGenerator scenarioGenerator;
+
     // private members variables
-    private GameObject primaryObject;
     private string bridgeName = "";
 
-    void Awake()
+    public override void Awake()
     {
-        primaryObject = new GameObject();
-        primaryObject.name = "Bridge";
+        rootObjectName = "Bridge";
+        base.Awake();
     }
 
-    void Update()
-    {
-
-    }
-
-    public void Clear()
+    public override void Clear()
     {
         // TODO Prompt are you sure?
         foreach (BridgeVertex bv in vertices)
@@ -70,6 +55,8 @@ public class BridgeBuilder : MonoBehaviour
             Destroy(be.gameObject);
         }
         edges.Clear();
+
+        base.Clear();
     }
 
     public void SaveBridge()
@@ -183,9 +170,11 @@ public class BridgeBuilder : MonoBehaviour
 
     // ------------------------------------------- GENERATING BRIDGES ----------------------------------- //
 
-    public void Generate(float width)
+    public override void Generate()
     {
-        Clear();
+        base.Generate();
+
+        float width = scenarioGenerator.surfaceGenerator.GetWidth();
         surfaceWidth = width + trussWidth;
         bridgeLength = numSegments * segmentSpacing;
 
@@ -391,7 +380,7 @@ public class BridgeBuilder : MonoBehaviour
         GameObject go = Instantiate(defaultVertex);
         go.name = "V" + vertices.Count.ToString();
         go.transform.position = coordinate;
-        go.transform.parent = primaryObject.transform;
+        go.transform.parent = rootObject.transform;
 
         // create vertex component
         BridgeVertex bv = go.AddComponent<BridgeVertex>();
@@ -443,7 +432,7 @@ public class BridgeBuilder : MonoBehaviour
         // create edge object
         GameObject go = Instantiate(defaultEdge);
         go.name = "E" + edges.Count.ToString();
-        go.transform.parent = primaryObject.transform;
+        go.transform.parent = rootObject.transform;
         Vector3 dir = (vertex2.transform.position - vertex1.transform.position);
         go.transform.position = vertex1.transform.position + (dir / 2);
         go.transform.LookAt(vertex2.transform);
