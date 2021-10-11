@@ -32,6 +32,16 @@ public class ScenarioGenerator : Generator
         Generate();
     }
 
+    public override void Clear()
+    {
+        base.Clear();
+        surfaceGenerator.Clear();
+        bridgeGenerator.Clear();
+        defectsGenerator.Clear();
+        landGenerator.Clear();
+        robotGenerator.Clear();
+    }
+
     public override void Generate()
     {
         surfaceGenerator.Generate();
