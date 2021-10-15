@@ -6,19 +6,26 @@ public class LandGenerator : Generator
 {
     public GameObject land;
     public GameObject bank;
+    public float canalDepth = 1;
     private float bankHeight = 4;
     private float bankWidth = 4;
     private float canalWidth;
 
     public ScenarioGenerator scenarioGenerator;
 
-
+    public override void Awake()
+    {
+        rootObjectName = "Land";
+        base.Awake();
+    }
     public override void Generate()
     {
         base.Generate();
 
         float maxX = scenarioGenerator.maxX;
         float maxZ = scenarioGenerator.maxZ;
+        bankHeight = canalDepth;
+        bankWidth = (float) Random.RandomRange(canalDepth, canalDepth + 2);
         canalWidth = scenarioGenerator.bridgeGenerator.GetLength();
         MakeLand(maxX, maxZ);
         MakeBanks(maxX, maxZ);

@@ -8,6 +8,8 @@ public class SurfaceGenerator : Generator
     public GameObject sidewalk;
     public GameObject railing;
 
+    public int numLanes;
+
     private float surfaceWidth;
 
     private float roadWidth = 3.7f; // meters
@@ -41,14 +43,14 @@ public class SurfaceGenerator : Generator
         switch (type)
         {
             case "Single Lane":
-                MakeRoad(2, maxLength);
+                MakeRoad(maxLength);
                 break;
         }
 
         MakeSidewalk(maxLength);
     }
 
-    private void MakeRoad(int numLanes, float maxLength)
+    private void MakeRoad(float maxLength)
     {
         surfaceWidth = roadWidth * numLanes;
         float startZPos = (roadWidth * numLanes);

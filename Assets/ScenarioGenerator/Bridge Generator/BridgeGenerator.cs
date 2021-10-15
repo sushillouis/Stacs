@@ -6,6 +6,7 @@ using System.IO;
 using System;
 using SFB; // Standalone file browser package
 
+[Serializable]
 public class BridgeGenerator : Generator
 {
     public bool arched = false;
@@ -18,6 +19,8 @@ public class BridgeGenerator : Generator
     public List<BridgeVertex> vertices;
     public List<BridgeEdge> edges;
 
+    public BridgeVertex deploymentVertex;
+
     // bridge generation variables
     public int numSegments = 4;
     public float segmentSpacing = 4;
@@ -25,8 +28,10 @@ public class BridgeGenerator : Generator
     public float bridgeHeight = 7;
     private float bridgeLength = 0;
     private float trussWidth = 0.3f;
-
-    public string bridgeType = "K-Truss";
+    
+    [Serializable]
+    public enum BridgeType {Pratt, Howe, Warren, KTruss};
+    public BridgeType bridgeType = BridgeType.Pratt;
 
     public bool mirrorZ = true;
     public bool mirrorX = true;
@@ -101,7 +106,7 @@ public class BridgeGenerator : Generator
 
     public float GetLength()
     {
-        return segmentSpacing * numSegments;
+        return bridgeLength;
     }
 
     public void SetBridgeType(int type)
@@ -109,16 +114,16 @@ public class BridgeGenerator : Generator
         switch(type)
         {
             case 0:
-                bridgeType = "Pratt";
+                bridgeType = BridgeType.Pratt;
                 break;
             case 1:
-                bridgeType = "Howe";
+                bridgeType = BridgeType.Howe;
                 break;
             case 2:
-                bridgeType = "Warren";
+                bridgeType = BridgeType.Warren;
                 break;
             case 3:
-                bridgeType = "K-Truss";
+                bridgeType = BridgeType.KTruss;
                 break;
         }
     }
@@ -132,7 +137,7 @@ public class BridgeGenerator : Generator
     {
         string data = "{\n";
         data += "\t\"name\": \"" + bridgeName + "\",\n";
-        data += "\t\"type\": \"" + bridgeType.ToLower() + "\",\n";
+        data += "\t\"type\": \"" + bridgeType + "\",\n";
         data += "\t\"numVertices\": " + vertices.Count + ",\n";
         data += "\t\"numEdges\": " + edges.Count + ",\n";
         data += "\t\"length\": " + segmentSpacing * Mathf.Ceil(numSegments) + ",\n";
@@ -173,15 +178,15 @@ public class BridgeGenerator : Generator
     public override void Generate()
     {
         base.Generate();
-
+        numSegments = (int) Mathf.Ceil(numSegments / 2) * 2;
         float width = scenarioGenerator.surfaceGenerator.GetWidth();
         surfaceWidth = width + trussWidth;
         bridgeLength = numSegments * segmentSpacing;
 
         if (arched)
-            bridgeName = "arched-" + bridgeType.ToLower() + "-truss-bridge-" + numSegments.ToString() + "-segment";
+            bridgeName = "arched-" + bridgeType + "-truss-bridge-" + numSegments.ToString() + "-segment";
         else
-            bridgeName = bridgeType.ToLower() + "-truss-bridge-" + numSegments.ToString() + "-segment";
+            bridgeName = bridgeType + "-truss-bridge-" + numSegments.ToString() + "-segment";
 
         print("Generating: " + bridgeName);
         // get positive z position on one side of road
@@ -192,7 +197,7 @@ public class BridgeGenerator : Generator
         prevVertices.Add(CreateVertex(new Vector3(0, 0, zPos), false, true));
         prevVertices.Add(CreateVertex(new Vector3(0, bridgeHeight, zPos), false, true));
 
-        if (bridgeType != "Warren")
+        if (bridgeType != BridgeType.Warren)
         {
             CreateEdge(prevVertices[0], prevVertices[1], false, true);
         }
@@ -202,21 +207,22 @@ public class BridgeGenerator : Generator
         float xPos = segmentSpacing;
         float heightReduction = 0;
         //BridgeVertex prev_v2 = v2;
-        for (int i = 1; i < Mathf.Ceil(numSegments / 2); ++i)
+        for (int i = 1; i < numSegments / 2; ++i)
         {
             //prev_v2 = v2;
             switch(bridgeType) {
-                case "Pratt":
+                case BridgeType.Pratt:
                     prevVertices = MakePrattSegement(prevVertices, xPos, zPos, bridgeHeight - heightReduction);
                     break;
-                case "Howe":
+                case BridgeType.Howe:
                     prevVertices = MakeHoweSegement(prevVertices, xPos, zPos, bridgeHeight - heightReduction);
                     break;
-                case "K-Truss":
+                case BridgeType.KTruss:
                     prevVertices = MakeKTrussSegement(prevVertices, xPos, zPos, bridgeHeight - heightReduction);
                     break;
-                case "Warren":
+                case BridgeType.Warren:
                     prevVertices = MakeWarrenSegement(prevVertices, i, xPos, zPos, bridgeHeight - heightReduction);
+                    bridgeLength = (numSegments - 1) * segmentSpacing;
                     break;
             }
             //MakeUpperXSegment(v2, prev_v2, xPos, zPos);
@@ -226,12 +232,15 @@ public class BridgeGenerator : Generator
 
         // make end segment
         BridgeVertex endv;
-        if (bridgeType != "Warren")
+        if (bridgeType != BridgeType.Warren)
             endv = CreateVertex(new Vector3(xPos, 0, zPos), true, true);
         else
             endv = CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, 0, zPos), true, true);
         CreateEdge(prevVertices[0], endv, true, true);
         CreateEdge(prevVertices[1], endv, true, true);
+
+        deploymentVertex = endv;
+
     }
 
     public List<BridgeVertex> MakeHoweSegement(List<BridgeVertex> prev, float xPos, float zPos, float height)
@@ -240,6 +249,8 @@ public class BridgeGenerator : Generator
         List<BridgeVertex> newV = new List<BridgeVertex>();
         newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
+
+
 
         // horizontal
         CreateEdge(newV[0], prev[0], true, true);
@@ -294,7 +305,7 @@ public class BridgeGenerator : Generator
         List<BridgeVertex> newV = new List<BridgeVertex>();
         newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
-        newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, 0, zPos), true, true));
+        newV.Add(CreateVertex(new Vector3(xPos - (segmentSpacing / 2.0f), 0, zPos), true, true));
 
         // horizontal
         CreateEdge(newV[0], newV[2], true, true);

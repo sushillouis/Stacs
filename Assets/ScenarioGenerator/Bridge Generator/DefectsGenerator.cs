@@ -8,6 +8,11 @@ public class DefectsGenerator : Generator
     public GameObject defectObject;
 
     public ScenarioGenerator scenarioGenerator;
+    public override void Awake()
+    {
+        rootObjectName = "Defects";
+        base.Awake();
+    }
 
     public override void Generate()
     {
