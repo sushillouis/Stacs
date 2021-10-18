@@ -17,7 +17,7 @@ public class RobotGenerator : Generator
     public List<GameObject> robots;
 
     private bool placing;
-    private float robotSpacing = 1;
+    private float robotSpacing = .75f;
 
     public override void Awake()
     {
@@ -34,7 +34,7 @@ public class RobotGenerator : Generator
         {
             GameObject vertex = scenarioGenerator.bridgeGenerator.deploymentVertex.gameObject;
             Vector3 rayPoint = vertex.transform.position + new Vector3(1, 0, 0);
-            Vector3 posOnSurface = vertex.transform.position + new Vector3((robotSpacing * i) - (numClimbingV1Robots * robotSpacing)/2, 0.3f, -0.4f);
+            Vector3 posOnSurface = vertex.transform.position + new Vector3((robotSpacing * (i+ 1)) /*- (numClimbingV1Robots * robotSpacing)/2 */, 0.0f, 0.1f);
             posOnSurface += .15f * posOnSurface.normalized;
 
             Vector3 surfaceNormal = Vector3.up;
@@ -53,7 +53,7 @@ public class RobotGenerator : Generator
         {
             GameObject vertex = scenarioGenerator.bridgeGenerator.deploymentVertex.gameObject;
             Vector3 rayPoint = vertex.transform.position + new Vector3(1, 0, 0);
-            Vector3 posOnSurface = vertex.transform.position + new Vector3((robotSpacing * i) - (numClimbingV2Robots * robotSpacing) / 2, 0.3f, -0.9f);
+            Vector3 posOnSurface = vertex.transform.position + new Vector3((robotSpacing * (i + 1) + ((numClimbingV1Robots) * robotSpacing)) /*- (numClimbingV2Robots * robotSpacing) / 2 */, 0.0f, 0.1f);
             posOnSurface += .15f * posOnSurface.normalized;
 
             Vector3 surfaceNormal = Vector3.up;
