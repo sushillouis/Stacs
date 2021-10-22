@@ -459,6 +459,10 @@ public class BridgeGenerator : Generator
 
         // update vertices
         vertex1.edges.Add(be);
+        vertex1.neighborVertices.Add(vertex2);
+
+        vertex2.edges.Add(be);
+        vertex2.neighborVertices.Add(vertex1);
 
         return be;
     }

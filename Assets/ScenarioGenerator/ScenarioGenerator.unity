@@ -3079,7 +3079,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Generate Medium
+  m_Text: Medium
 --- !u!222 &482731896
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4198,7 +4198,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Generate Hard
+  m_Text: Hard
 --- !u!222 &722481443
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4365,7 +4365,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Generate Easy
+  m_Text: Easy
 --- !u!222 &736175375
 CanvasRenderer:
   m_ObjectHideFlags: 0

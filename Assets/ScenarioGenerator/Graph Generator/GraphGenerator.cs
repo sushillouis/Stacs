@@ -13,7 +13,7 @@ public class GraphGenerator : Generator
     public override void Awake()
     {
         scenarioGenerator = transform.GetComponent<ScenarioGenerator>();
-        rootObjectName = "Waypoints";
+        rootObjectName = "Graph";
         base.Awake();
     }
 
@@ -24,28 +24,30 @@ public class GraphGenerator : Generator
         {
             foreach (GameObject waypoint in vertex.nearWaypoints)
             {
-                foreach (BridgeVertex otherVertex in scenarioGenerator.bridgeGenerator.vertices)
+                foreach (BridgeVertex otherVertex in vertex.neighborVertices)
                 {
-                    if (vertex != otherVertex)
+                    foreach (GameObject otherWaypoint in otherVertex.nearWaypoints)
                     {
-                        foreach (GameObject otherWaypoint in otherVertex.nearWaypoints)
+                        Vector3 direction = (otherWaypoint.transform.position - waypoint.transform.position);
+                        // Does the ray intersect any objects excluding the player layer
+// Debug.DrawRay(waypoint.transform.position, direction, Color.yellow, 5);
+
+                        RaycastHit hit;
+
+                        if (Physics.Raycast(waypoint.transform.position, direction, out hit))
                         {
-                            int layerMask = 1 << 8;
-                            float maxRange = 1000;
-
-                            RaycastHit hit;
-                            Vector3 direction = (otherWaypoint.transform.position - waypoint.transform.position);
-                            // Does the ray intersect any objects excluding the player layer
-                            if (Physics.Raycast(waypoint.transform.position, direction, out hit, maxRange))
+                            if (hit.collider.gameObject.name == "Waypoint")
                             {
-                                //Debug.DrawRay(waypoint.transform.position, direction * hit.distance, Color.yellow, 100);
-                                Debug.DrawLine(waypoint.transform.position, direction , Color.yellow, 100);
-                                Debug.Log("Did Hit");
+                                Debug.DrawRay(waypoint.transform.position, direction, Color.yellow, 15);
+                                Debug.Log("Did Hit:" + hit.collider.gameObject.name);
                             }
-                            else
-                            {
 
-                            }
+                            //Debug.DrawRay(waypoint.transform.position, direction * hit.distance, Color.yellow, 100);
+
+                        }
+                        else
+                        {
+
                         }
                     }
 

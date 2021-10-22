@@ -20,6 +20,7 @@ public class WaypointGenerator : Generator
     private void CreateWaypoint(BridgeVertex vertex, Vector3 direction)
     {
         GameObject obj = Instantiate(waypointObject);
+        obj.name = "Waypoint";
         obj.transform.parent = rootObject.transform;
         obj.transform.position = vertex.transform.position + direction * nearDistance;
 /*
@@ -44,15 +45,5 @@ public class WaypointGenerator : Generator
             CreateWaypoint(vertex, Vector3.back);
 
         }
-        /*        for (int i = 0; i < numDefects; i++)
-                {
-                    int ei = (int) Mathf.Floor(Random.Range(0, scenarioGenerator.bridgeGenerator.edges.Count - 1));
-                    GameObject edge = scenarioGenerator.bridgeGenerator.edges[ei].transform.gameObject;
-
-                    GameObject defect = Instantiate(defectObject);
-                    defect.transform.parent = rootObject.transform;
-                    Vector3 offsetOnEdge = edge.transform.forward * Random.Range(-edge.transform.localScale.z * 0.5f, edge.transform.localScale.z * 0.5f);
-                    defect.transform.position = edge.transform.position + offsetOnEdge;
-                }*/
     }
 }

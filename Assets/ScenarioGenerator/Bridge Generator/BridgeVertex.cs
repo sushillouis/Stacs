@@ -7,6 +7,7 @@ public class BridgeVertex : MonoBehaviour
     public int id;
     public string model;
     public List<BridgeEdge> edges;
+    public List<BridgeVertex> neighborVertices;
     public BridgeGenerator bridgeBuilder;
 
     public List<GameObject> nearWaypoints;
@@ -16,6 +17,7 @@ public class BridgeVertex : MonoBehaviour
     private void Awake()
     {
         edges = new List<BridgeEdge>();
+        neighborVertices = new List<BridgeVertex>();
         nearWaypoints = new List<GameObject>();
         farWaypoints = new List<GameObject>();
     }
