@@ -9,9 +9,15 @@ public class BridgeVertex : MonoBehaviour
     public List<BridgeEdge> edges;
     public BridgeGenerator bridgeBuilder;
 
+    public List<GameObject> nearWaypoints;
+    public List<GameObject> farWaypoints;
+
+
     private void Awake()
     {
         edges = new List<BridgeEdge>();
+        nearWaypoints = new List<GameObject>();
+        farWaypoints = new List<GameObject>();
     }
 
     Vector2 Get2DPos()

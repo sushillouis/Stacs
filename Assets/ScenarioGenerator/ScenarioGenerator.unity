@@ -615,6 +615,8 @@ GameObject:
   - component: {fileID: 36204221}
   - component: {fileID: 36204220}
   - component: {fileID: 36204223}
+  - component: {fileID: 36204224}
+  - component: {fileID: 36204225}
   m_Layer: 0
   m_Name: ScenarioGenerator
   m_TagString: Untagged
@@ -641,6 +643,8 @@ MonoBehaviour:
   defectsGenerator: {fileID: 0}
   landGenerator: {fileID: 0}
   robotGenerator: {fileID: 0}
+  waypointGenerator: {fileID: 0}
+  graphGenerator: {fileID: 0}
   maxZ: 1000
   maxX: 1000
 --- !u!4 &36204218
@@ -768,6 +772,38 @@ MonoBehaviour:
     type: 3}
   scenarioGenerator: {fileID: 0}
   robots: []
+--- !u!114 &36204224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bea855a369dd504a9d11cba0c33b453, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  waypointObject: {fileID: 8265464975227969787, guid: d435bed6a8d4f8c4ab3453a63c61009f,
+    type: 3}
+  scenarioGenerator: {fileID: 0}
+--- !u!114 &36204225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 36204216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97452c9176590524baf7e73bd818bca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootObjectName: Generator
+  rootObject: {fileID: 0}
+  scenarioGenerator: {fileID: 0}
 --- !u!1 &56091442
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,6 +9,8 @@ public class ScenarioGenerator : Generator
     public DefectsGenerator defectsGenerator;
     public LandGenerator landGenerator;
     public RobotGenerator robotGenerator;
+    public WaypointGenerator waypointGenerator;
+    public GraphGenerator graphGenerator;
 
     public float maxZ = 1000;
     public float maxX = 1000;
@@ -25,6 +27,10 @@ public class ScenarioGenerator : Generator
         landGenerator.scenarioGenerator = this;
         robotGenerator = transform.GetComponent<RobotGenerator>();
         robotGenerator.scenarioGenerator = this;
+        waypointGenerator = transform.GetComponent<WaypointGenerator>();
+        waypointGenerator.scenarioGenerator = this;
+        graphGenerator = transform.GetComponent<GraphGenerator>();
+        graphGenerator.scenarioGenerator = this;
     }
 
     public void Start()
@@ -40,6 +46,8 @@ public class ScenarioGenerator : Generator
         defectsGenerator.Clear();
         landGenerator.Clear();
         robotGenerator.Clear();
+        waypointGenerator.Clear();
+        graphGenerator.Clear();
     }
 
     public void GenerateEasy()
@@ -132,5 +140,7 @@ public class ScenarioGenerator : Generator
         defectsGenerator.Generate();
         landGenerator.Generate();
         robotGenerator.Generate();
+        waypointGenerator.Generate();
+        graphGenerator.Generate();
     }
 }
