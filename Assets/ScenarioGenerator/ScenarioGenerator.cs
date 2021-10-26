@@ -12,11 +12,21 @@ public class ScenarioGenerator : Generator
     public WaypointGenerator waypointGenerator;
     public GraphGenerator graphGenerator;
 
+    private List<Generator> generators;
+
     public float maxZ = 1000;
     public float maxX = 1000;
 
     public override void Awake()
     {
+        foreach (var component in transform.GetComponents<Generator>())
+        {
+            if (component != this)
+            {
+                generators.Add(component);
+            }
+        }
+
         surfaceGenerator = transform.GetComponent<SurfaceGenerator>();
         surfaceGenerator.scenarioGenerator = this;
         bridgeGenerator = transform.GetComponent<BridgeGenerator>();
@@ -27,10 +37,11 @@ public class ScenarioGenerator : Generator
         landGenerator.scenarioGenerator = this;
         robotGenerator = transform.GetComponent<RobotGenerator>();
         robotGenerator.scenarioGenerator = this;
-        waypointGenerator = transform.GetComponent<WaypointGenerator>();
-        waypointGenerator.scenarioGenerator = this;
-        graphGenerator = transform.GetComponent<GraphGenerator>();
-        graphGenerator.scenarioGenerator = this;
+        /*        waypointGenerator = transform.GetComponent<WaypointGenerator>();
+                waypointGenerator.scenarioGenerator = this;
+                graphGenerator = transform.GetComponent<GraphGenerator>();
+                graphGenerator.scenarioGenerator = this;*/
+
     }
 
     public void Start()
@@ -41,17 +52,23 @@ public class ScenarioGenerator : Generator
     public override void Clear()
     {
         base.Clear();
-        surfaceGenerator.Clear();
+        foreach (var generator in generators)
+        {
+            generator.Clear();
+        }
+  /*      surfaceGenerator.Clear();
         bridgeGenerator.Clear();
         defectsGenerator.Clear();
         landGenerator.Clear();
         robotGenerator.Clear();
         waypointGenerator.Clear();
-        graphGenerator.Clear();
+        graphGenerator.Clear();*/
     }
 
     public void GenerateEasy()
     {
+
+        
         bridgeGenerator.numSegments = Random.Range(4, 6);
         switch(Random.Range(1, 4))
         {
