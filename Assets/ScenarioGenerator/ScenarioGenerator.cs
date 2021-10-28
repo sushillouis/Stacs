@@ -10,7 +10,8 @@ public class ScenarioGenerator : Generator
     public LandGenerator landGenerator;
     public RobotGenerator robotGenerator;
     public WaypointGenerator waypointGenerator;
-    public GraphGenerator graphGenerator;
+
+    public Graphv2 graph;
 
     private List<Generator> generators;
 
@@ -19,6 +20,7 @@ public class ScenarioGenerator : Generator
 
     public override void Awake()
     {
+        generators = new List<Generator>();
         foreach (var component in transform.GetComponents<Generator>())
         {
             if (component != this)
@@ -37,6 +39,9 @@ public class ScenarioGenerator : Generator
         landGenerator.scenarioGenerator = this;
         robotGenerator = transform.GetComponent<RobotGenerator>();
         robotGenerator.scenarioGenerator = this;
+
+        //graph = transform.GetComponent<Graphv2>();
+        
         /*        waypointGenerator = transform.GetComponent<WaypointGenerator>();
                 waypointGenerator.scenarioGenerator = this;
                 graphGenerator = transform.GetComponent<GraphGenerator>();
@@ -152,12 +157,28 @@ public class ScenarioGenerator : Generator
 
     public override void Generate()
     {
+        //
         surfaceGenerator.Generate();
         bridgeGenerator.Generate();
         defectsGenerator.Generate();
         landGenerator.Generate();
         robotGenerator.Generate();
-        waypointGenerator.Generate();
-        graphGenerator.Generate();
+
+        // Make graph
+        CreateGraphFromBridge();
+    }
+
+    public void CreateGraphFromBridge()
+    {
+        // Clear the graph
+        graph.Clear();
+
+        // Add all edges to graph to
+        foreach(BridgeEdge edge in bridgeGenerator.edges)
+        {
+            graph.AddEdge(edge.id, edge.v1.id, edge.v2.id, edge.cost);
+        }
+
+        print(graph.ToString());
     }
 }

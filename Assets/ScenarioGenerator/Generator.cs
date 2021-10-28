@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Generator : MonoBehaviour
+public abstract class Generator : MonoBehaviour
 {
     public string rootObjectName = "Generator";
     private Transform parent;

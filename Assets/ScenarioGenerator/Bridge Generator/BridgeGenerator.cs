@@ -6,6 +6,8 @@ using System.IO;
 using System;
 using SFB; // Standalone file browser package
 
+// Bridge generator constructs verious bridges with various parameters
+
 [Serializable]
 public class BridgeGenerator : Generator
 {
@@ -447,7 +449,8 @@ public class BridgeGenerator : Generator
         Vector3 dir = (vertex2.transform.position - vertex1.transform.position);
         go.transform.position = vertex1.transform.position + (dir / 2);
         go.transform.LookAt(vertex2.transform);
-        go.transform.localScale = new Vector3(go.transform.localScale.x, go.transform.localScale.y, dir.magnitude);
+        float length = dir.magnitude;
+        go.transform.localScale = new Vector3(go.transform.localScale.x, go.transform.localScale.y, length);
 
         // create edge component
         BridgeEdge be = go.AddComponent<BridgeEdge>();
@@ -455,6 +458,7 @@ public class BridgeGenerator : Generator
         be.id = edges.Count;
         be.v1 = vertex1;
         be.v2 = vertex2;
+        be.cost = length;
         edges.Add(be);
 
         // update vertices
