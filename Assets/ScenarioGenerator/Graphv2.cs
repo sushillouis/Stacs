@@ -225,35 +225,38 @@ public class Graphv2 : MonoBehaviour
         }
     }
 
-    int MinDistance(List<float> dist, List<bool> visited)
+    int MinDistance(ref List<float> dist, ref List<bool> visited)
     {
         // Initialize min value
-        float min = float.PositiveInfinity;
+        float min_value = float.PositiveInfinity;
         int min_index = 0;
 
-        for (int v = 0; v < adjacencyMatrix.Count; v++)
-            if (visited[v] == false && dist[v] <= min && dist[v] != 0)
+        for (int v = 0; v < adjacencyMatrix.Count; ++v)
+        {
+            if (!visited[v] && dist[v] <= min_value)
             {
-                min = dist[v];
+                min_value = dist[v];
                 min_index = v;
             }
-
-        print(min);
+        }
+  
         return min_index;
     }
 
-    public void SolveAndCacheDijkstras()
+    public void SolveAndCacheShortestPaths()
     {
         int numVertices = adjacencyMatrix.Count;
+        const float huge = 99999;
         for (int startVertex = 0; startVertex < numVertices; startVertex++)
         {
+            // Initialization
             List<float> dist = new List<float>();
             List<bool> visited = new List<bool>();
             List<List<int>> subTours = new List<List<int>>();
 
             for (int i = 0; i < numVertices; i++)
             {
-                dist.Add(float.PositiveInfinity);
+                dist.Add(huge);
                 visited.Add(false);
                 subTours.Add(new List<int>());
                 subTours[i].Add(startVertex);
@@ -268,14 +271,13 @@ public class Graphv2 : MonoBehaviour
 
             for (int count = 0; count < numVertices - 1; count++)
             {
-                int nearestUnvisitedVertex = MinDistance(dist, visited);
+                int nearestUnvisitedVertex = MinDistance(ref dist, ref visited);
                 visited[nearestUnvisitedVertex] = true;
 
                 for (int v = 0; v < numVertices; v++)
                 {
-                    if (!visited[v]     // not visited
-                        && 0 < adjacencyMatrix[nearestUnvisitedVertex][v] // edge exists
-                        && !float.IsPositiveInfinity(dist[nearestUnvisitedVertex])  // explored
+                    if (!visited[v] && 0 < adjacencyMatrix[nearestUnvisitedVertex][v] // edge exists
+                        && dist[nearestUnvisitedVertex] != huge  // explored
                         && dist[nearestUnvisitedVertex] + adjacencyMatrix[nearestUnvisitedVertex][v] < dist[v])
                     {
 

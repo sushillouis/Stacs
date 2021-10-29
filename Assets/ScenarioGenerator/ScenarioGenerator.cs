@@ -182,7 +182,7 @@ public class ScenarioGenerator : Generator
         print(graph.ToString());
 
 
-        graph.SolveAndCacheDijkstras();
+        graph.SolveAndCacheShortestPaths();
 
         print(graph.ToString());
         print(graph.cachedDijkstras[11][0].ToString());
