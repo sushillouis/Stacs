@@ -2,19 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Tour : MonoBehaviour
+public class Tour
 {
     public Graphv2 graph;
 
-    public List<int> edgeSequence;
-    public List<int> vertexSequence;
+    public List<int> edgeSequence = new List<int>();
+    public List<int> vertexSequence = new List<int>();
     public float cost;
-
-    private void Awake()
-    {
-        edgeSequence = new List<int>();
-        vertexSequence = new List<int>();
-    }
 
     private bool GraphExists()
     {
@@ -26,12 +20,19 @@ public class Tour : MonoBehaviour
         return true;
     }
 
-    public void AddVertex(int vertexId)
+    public override string ToString()
     {
-        if (!GraphExists()) return;
-
-
-        //TODO implement
+        string str = "Tour(" + cost.ToString() + ") : [";
+        for (int i = 0; i < vertexSequence.Count; ++i)
+        {
+            str += vertexSequence[i].ToString();
+            if (i < vertexSequence.Count - 1)
+            {
+                str += ",";
+            }
+        }
+        str += "]";
+        return str;
     }
 
     void Clear()
@@ -49,21 +50,23 @@ public class Tour : MonoBehaviour
             float tempCost = 0;
             for (int i = 0; i < vertexSequence.Count - 1; i++)
             {
-                if (!graph->IsValidEdge(vertexSequence[i], vertexSequence[i + 1]))
+                // If edge is valid
+                if (!graph.IsValidEdge(vertexSequence[i], vertexSequence[i + 1]))
                 {
-                    cout << "Invalid edge found" << endl;
+                    Debug.Log("Invalid edge found");
                     return false;
                 }
-                if (graph->GetEdge(vertexSequence[i], vertexSequence[i + 1]).id != edgeSequence[i].id)
+                // Idk what's happening here.
+                if (graph.GetEdge(vertexSequence[i], vertexSequence[i + 1]) != edgeSequence[i])
                 {
-                    cout << "Invalid vertex found" << endl;
+                    Debug.Log("Invalid vertex found");
                     return false;
                 }
-                tempCost += edgeSequence[i].cost;
+                tempCost += graph.GetEdgeCost(edgeSequence[i]);
             }
             if (tempCost != cost)
             {
-                cout << "Invalid cost" << endl;
+                Debug.Log("Invalid cost");
                 return false;
             }
         }
@@ -71,27 +74,27 @@ public class Tour : MonoBehaviour
     }
 
     // Add the vertex regardless if the path makes sense
-    void InsertVertex(int& vertexId)
+    public void InsertVertex(int vertexId)
     {
         if (vertexSequence.Count == 0 && edgeSequence.Count == 0)
         {
-            vertexSequence.push_back(vertexId);
+            vertexSequence.Add(vertexId);
         }
-        else if (vertexSequence.Count > 0 && edgeSequence.Count == 0 && vertexId != vertexSequence.back())
+        else if (vertexSequence.Count > 0 && edgeSequence.Count == 0 && vertexId != vertexSequence[vertexSequence.Count - 1])
         {
-            edgeSequence.push_back(graph->GetEdge(vertexId, vertexSequence.back()));
-            vertexSequence.push_back(vertexId);
-            cost += edgeSequence.back().cost;
+            edgeSequence.Add(graph.GetEdge(vertexId, vertexSequence[vertexSequence.Count - 1]));
+            vertexSequence.Add(vertexId);
+            cost += graph.GetEdgeCost(edgeSequence[edgeSequence.Count - 1]);
         }
-        else if (vertexSequence.Count > 0 && edgeSequence.Count > 0 && vertexId != vertexSequence.back())
+        else if (vertexSequence.Count > 0 && edgeSequence.Count > 0 && vertexId != vertexSequence[vertexSequence.Count - 1])
         {
-            edgeSequence.push_back(graph->GetEdge(vertexId, vertexSequence.back()));
-            vertexSequence.push_back(vertexId);
-            cost += edgeSequence.back().cost;
+            edgeSequence.Add(graph.GetEdge(vertexId, vertexSequence[vertexSequence.Count - 1]));
+            vertexSequence.Add(vertexId);
+            cost += graph.GetEdgeCost(edgeSequence[edgeSequence.Count - 1]);
         }
     }
 
-    void InjectShortestPathToVertex(int& vertex, Path& shortestPath)
+    void InjectShortestPathToVertex(int vertex, Tour shortestPath)
     {
         for (int i = 0; i < shortestPath.vertexSequence.Count; i++)
         {
@@ -99,47 +102,47 @@ public class Tour : MonoBehaviour
         }
     }
 
-    void HandleFirstVertexNoEdges(int& vertex)
+    void HandleFirstVertexNoEdges(int vertex)
     {
-        vertexSequence.push_back(vertex);
+        vertexSequence.Add(vertex);
     }
 
-    void HandleFirstVertexOneEdge(int& vertex)
+    void HandleFirstVertexOneEdge(int vertex)
     {
-        vertexSequence.push_back(vertex);
-        vertexSequence.push_back(graph->GetOppositeVertexOnEdge(vertex, edgeSequence.back()));
+        vertexSequence.Add(vertex);
+        vertexSequence.Add(graph.GetOppositeVertexOnEdge(vertex, edgeSequence[edgeSequence.Count - 1]));
     }
 
-    void HandleSecondVertexNoEdges(int& vertex)
+    void HandleSecondVertexNoEdges(int vertex)
     {
-        if (vertex != vertexSequence.back())
+        if (vertex != vertexSequence[vertexSequence.Count - 1])
         {
-            edgeSequence.push_back(graph->GetEdge(vertexSequence.back(), vertex));
-            cost += edgeSequence.back().cost;
-            vertexSequence.push_back(vertex);
+            edgeSequence.Add(graph.GetEdge(vertexSequence[vertexSequence.Count - 1], vertex));
+            cost += graph.GetEdgeCost(edgeSequence[edgeSequence.Count - 1]);
+            vertexSequence.Add(vertex);
         }
     }
 
-    void HandleAllOtherVertexCases(int& vertex)
+    void HandleAllOtherVertexCases(int vertex)
     {
-        if (vertex != vertexSequence.back())
+        if (vertex != vertexSequence[vertexSequence.Count - 1])
         {
-            if (graph->IsValidEdge(vertexSequence.back(), vertex))
+            if (graph.IsValidEdge(vertexSequence[vertexSequence.Count - 1], vertex))
             {
-                Edge edge = graph->GetEdge(vertexSequence.back(), vertex);
-                edgeSequence.push_back(edge);
-                vertexSequence.push_back(vertex);
-                cost += edge.cost;
+                int edge = graph.GetEdge(vertexSequence[vertexSequence.Count - 1], vertex);
+                edgeSequence.Add(edge);
+                vertexSequence.Add(vertex);
+                cost += graph.GetEdgeCost(edge);
             }
             else
             {
-                InjectShortestPathToVertex(vertex, *graph->GetShortestPathBetweenVertices(vertexSequence.back(), vertex));
+                InjectShortestPathToVertex(vertex, graph.GetShortestTourBetweenVertices(vertexSequence[vertexSequence.Count - 1], vertex));
             }
         }
     }
 
     // Adds a vertex and resolves the path
-    void AddVertex(int& vertex)
+    public void AddVertex(int vertex)
     {
         if (vertexSequence.Count == 0 && edgeSequence.Count == 0)
         {
@@ -151,7 +154,7 @@ public class Tour : MonoBehaviour
         }
         else if (vertexSequence.Count == 1 && edgeSequence.Count == 0)
         {
-            HandleSecondVertexNoEdges(vertex);
+            HandleAllOtherVertexCases(vertex);
         }
         else if (vertexSequence.Count > 0 && edgeSequence.Count > 0)
         {
@@ -159,7 +162,7 @@ public class Tour : MonoBehaviour
         }
     }
 
-    void InjectShortestPathToEdge(Edge& edge, Path& shortestPath)
+    void InjectShortestTourToEdge(int edge, Tour shortestPath)
     {
         for (int i = 0; i < shortestPath.edgeSequence.Count; i++)
         {
@@ -168,77 +171,79 @@ public class Tour : MonoBehaviour
         AddEdge(edge);
     }
 
-    void HandleFirstEdgeNoStartingVertex(Edge& edge)
+    void HandleFirstEdgeNoStartingVertex(int edge)
     {
-        edgeSequence.push_back(edge);
-        cost += edge.cost;
+        edgeSequence.Add(edge);
+        cost += graph.GetEdgeCost(edge);
     }
 
-    void HandleFirstEdgeWithStartingVertex(Edge& edge)
+    void HandleFirstEdgeWithStartingVertex(int edge)
     {
-        if (!(edge.vertexA == vertexSequence.back() || edge.vertexB == vertexSequence.back()))
+        (int, int) vertices = graph.GetEdgeVertices(edge);
+        if (!(vertices.Item1 == vertexSequence[vertexSequence.Count - 1] || vertices.Item2 == vertexSequence[vertexSequence.Count - 1]))
         {
-            InjectShortestPathToEdge(edge, *graph->GetShortestPathBetweenVertexAndEdge(vertexSequence.back(), edge));
+            InjectShortestTourToEdge(edge, graph.GetShortestTourBetweenVertexAndEdge(vertexSequence[vertexSequence.Count - 1], edge));
         }
         else
         {
-            edgeSequence.push_back(edge);
-            vertexSequence.push_back(graph->GetOppositeVertexOnEdge(vertexSequence.back(), edge));
-            cost += edge.cost;
+            edgeSequence.Add(edge);
+            vertexSequence.Add(graph.GetOppositeVertexOnEdge(vertexSequence[vertexSequence.Count - 1], edge));
+            cost += graph.GetEdgeCost(edge);
         }
     }
 
-    void HandleSecondEdgeNoStartingVertex(Edge& edge)
+    void HandleSecondEdgeNoStartingVertex(int edge)
     {
-        if (!graph->EdgesAreConnectedByVertex(edge, edgeSequence.back()))
+        int connectingVertex = graph.GetEdgesConnectingVertex(edge, edgeSequence[edgeSequence.Count - 1]);
+        if (connectingVertex == -1)
         {
-            InjectShortestPathToEdge(edge, *graph->GetShortestPathBetweenEdges(edgeSequence.back(), edge));
+            InjectShortestTourToEdge(edge, graph.GetShortestTourBetweenEdges(edgeSequence[edgeSequence.Count - 1], edge));
         }
         else
         {
-            int sharedVertex = graph->GetEdgesConnectingVertex(edgeSequence.back(), edge);
-            int startVertex = graph->GetOppositeVertexOnEdge(sharedVertex, edgeSequence.back());
-            vertexSequence.push_back(startVertex);
-            vertexSequence.push_back(sharedVertex);
-            edgeSequence.push_back(edge);
-            vertexSequence.push_back(graph->GetOppositeVertexOnEdge(sharedVertex, edgeSequence.back()));
-            cost += edge.cost;
+            int startVertex = graph.GetOppositeVertexOnEdge(connectingVertex, edgeSequence[edgeSequence.Count - 1]);
+            vertexSequence.Add(startVertex);
+            vertexSequence.Add(connectingVertex);
+            edgeSequence.Add(edge);
+            vertexSequence.Add(graph.GetOppositeVertexOnEdge(connectingVertex, edgeSequence[edgeSequence.Count - 1]));
+            cost += graph.GetEdgeCost(edge);
         }
     }
 
-    void HandleAllOtherEdgeCases(Edge& edge)
+    void HandleAllOtherEdgeCases(int edge)
     {
-        if (!graph->EdgesAreConnectedByVertex(edge, edgeSequence.back()))
+        int connectingVertex = graph.GetEdgesConnectingVertex(edge, edgeSequence[edgeSequence.Count - 1]);
+        if (connectingVertex == -1)
         {
-            InjectShortestPathToEdge(edge, *graph->GetShortestPathBetweenEdges(edgeSequence.back(), edge));
+            InjectShortestTourToEdge(edge, graph.GetShortestTourBetweenEdges(edgeSequence[edgeSequence.Count - 1], edge));
         }
         else
         {
-            if (edge.id != edgeSequence.back().id)
+            if (edge != edgeSequence[edgeSequence.Count - 1])
             {
-                int sharedVertex = graph->GetEdgesConnectingVertex(edgeSequence.back(), edge);
-                if (sharedVertex != vertexSequence.back())
+                int sharedVertex = graph.GetEdgesConnectingVertex(edgeSequence[edgeSequence.Count - 1], edge);
+                if (sharedVertex != vertexSequence[vertexSequence.Count - 1])
                 {
-                    if (!graph->IsValidEdge(vertexSequence.back(), sharedVertex))
-                        cout << "HELP" << endl;
-                    vertexSequence.push_back(sharedVertex);
-                    cost += edgeSequence.back().cost;
-                    edgeSequence.push_back(edgeSequence.back());
+                    if (!graph.IsValidEdge(vertexSequence[vertexSequence.Count - 1], sharedVertex))
+                        Debug.Log("HELP");
+                    vertexSequence.Add(sharedVertex);
+                    cost += graph.GetEdgeCost(edgeSequence[edgeSequence.Count - 1]);
+                    edgeSequence.Add(edgeSequence[edgeSequence.Count - 1]);
                 }
             }
 
             // add any other edge
-            int oppositeVertex = graph->GetOppositeVertexOnEdge(vertexSequence.back(), edge);
-            if (!graph->IsValidEdge(vertexSequence.back(), oppositeVertex))
-                cout << "HELP" << endl;
-            vertexSequence.push_back(oppositeVertex);
-            edgeSequence.push_back(edge);
-            cost += edge.cost;
+            int oppositeVertex = graph.GetOppositeVertexOnEdge(vertexSequence[vertexSequence.Count - 1], edge);
+            if (!graph.IsValidEdge(vertexSequence[vertexSequence.Count - 1], oppositeVertex))
+                Debug.Log("HELP");
+            vertexSequence.Add(oppositeVertex);
+            edgeSequence.Add(edge);
+            cost += graph.GetEdgeCost(edge);
         }
     }
 
     // Adds a edge and resolves the path
-    void AddEdge(Edge& edge)
+    public void AddEdge(int edge)
     {
         if (vertexSequence.Count == 0 && edgeSequence.Count == 0)
         {
@@ -258,18 +263,13 @@ public class Tour : MonoBehaviour
         }
     }
 
-    vector<Edge> GetEdgePath()
+    List<int> GetEdgePath()
     {
         return edgeSequence;
     }
 
-    vector<int> GetVertexPath()
+    List<int> GetVertexPath()
     {
         return vertexSequence;
-    }
-
-    const float GetCost()
-    {
-        return cost;
     }
 }

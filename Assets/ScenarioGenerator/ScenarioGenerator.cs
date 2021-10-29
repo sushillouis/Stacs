@@ -180,5 +180,18 @@ public class ScenarioGenerator : Generator
         }
 
         print(graph.ToString());
+
+
+        graph.SolveAndCacheDijkstras();
+
+        print(graph.ToString());
+        print(graph.cachedDijkstras[11][0].ToString());
+
+
+        Tour newTour = new Tour();
+        newTour.graph = graph;
+        newTour.AddVertex(0);
+        newTour.AddVertex(11);
+        print(newTour.ToString());
     }
 }
