@@ -23,6 +23,11 @@ public class Graphv2 : MonoBehaviour
 
     }
 
+    public int SizeV()
+    {
+        return adjacencyMatrix.Count;
+    }
+
     public override string ToString()
     {
         string str = "";
@@ -44,13 +49,7 @@ public class Graphv2 : MonoBehaviour
             str += "[";
             for (int j = 0; j < cachedDijkstras[i].Count; j++)
             {
-                if (cachedDijkstras[i][j] == null)
-                {
-                    str += "X";
-                } else
-                {
-                    str += "O";
-                }
+                str += cachedDijkstras[i][j].cost.ToString();
                 if (j != cachedDijkstras[i].Count - 1)
                     str += ",";
             }
@@ -72,7 +71,6 @@ public class Graphv2 : MonoBehaviour
         {
             i++;
             adjacencyMatrix.Add(new List<float>());
-            cachedDijkstras.Add(new List<Tour>());
         }
 
         // Fix the cols
@@ -81,7 +79,6 @@ public class Graphv2 : MonoBehaviour
             while (adjacencyMatrix[i].Count < newLim)
             {
                 adjacencyMatrix[i].Add(0);
-                cachedDijkstras[i].Add(null);
             }
         }
     }
@@ -137,7 +134,7 @@ public class Graphv2 : MonoBehaviour
     }
 
     public Tour GetShortestTourBetweenVertices(int startVertex, int endVertex) {
-        print(startVertex.ToString() + endVertex.ToString());
+// print(startVertex.ToString() + endVertex.ToString());
         Tour tour = cachedDijkstras[startVertex][endVertex];
         if (tour == null)
         {
@@ -225,80 +222,84 @@ public class Graphv2 : MonoBehaviour
         }
     }
 
-    int MinDistance(ref List<float> dist, ref List<bool> visited)
+    int minDistance(ref float[] dist, ref bool[] spSet)
     {
-        // Initialize min value
-        float min_value = float.PositiveInfinity;
-        int min_index = 0;
+        (int, float) best = (-1, float.PositiveInfinity);
 
-        for (int v = 0; v < adjacencyMatrix.Count; ++v)
+        for (int v = 0; v < SizeV(); ++v)
+            if (!spSet[v] && dist[v] <= best.Item2)
+                best = (v, dist[v]);
+
+        return best.Item1;
+    }
+
+    private void Dijkstras(int src)
+    {
+        // initialization
+        float[] dist = new float[SizeV()];
+        bool[] spSet = new bool[SizeV()];
+       
+        for (int i = 0; i < SizeV(); i++)
         {
-            if (!visited[v] && dist[v] <= min_value)
+            dist[i] = float.PositiveInfinity;
+            spSet[i] = false;
+            cachedDijkstras[src][i].AddVertex(src);
+        }
+
+        dist[src] = 0;
+
+        // Find shortest paths
+        for (int count = 0; count < SizeV() - 1; count++)
+        {
+            int u = minDistance(ref dist, ref spSet);
+            spSet[u] = true;
+
+            for (int v = 0; v < SizeV(); v++)
             {
-                min_value = dist[v];
-                min_index = v;
+                if (!spSet[v] 
+                    && adjacencyMatrix[u][v] > 0 
+                    && !float.IsPositiveInfinity(dist[u])
+                    && dist[u] + adjacencyMatrix[u][v] < dist[v])
+                {
+                    dist[v] = dist[u] + adjacencyMatrix[u][v];
+
+/*                    tempTours[v] = cachedDijkstras[src][u];
+                    tempTours[v].AddVertex(v);*/
+                    cachedDijkstras[v][u].AddVertex(v);
+
+                    for (int i = 0; i < cachedDijkstras[v][u].vertexSequence.Count; i++)
+                    {
+                        cachedDijkstras[src][u].AddVertex(cachedDijkstras[v][u].vertexSequence[i]);
+                    }
+
+/*                    for (int i = 0; i < tempTours[v].vertexSequence.Count; i++)
+                    {
+                        cachedDijkstras[src][v].AddVertex(tempTours[v].vertexSequence[i]);
+                    }*/
+
+                }
             }
         }
-  
-        return min_index;
     }
 
     public void SolveAndCacheShortestPaths()
     {
-        int numVertices = adjacencyMatrix.Count;
-        const float huge = 99999;
-        for (int startVertex = 0; startVertex < numVertices; startVertex++)
+        // init cache
+        cachedDijkstras = new List<List<Tour>>();
+        for (int i = 0; i < SizeV(); i++)
         {
-            // Initialization
-            List<float> dist = new List<float>();
-            List<bool> visited = new List<bool>();
-            List<List<int>> subTours = new List<List<int>>();
-
-            for (int i = 0; i < numVertices; i++)
+            cachedDijkstras.Add(new List<Tour>());
+            for (int j = 0; j < SizeV(); j++)
             {
-                dist.Add(huge);
-                visited.Add(false);
-                subTours.Add(new List<int>());
-                subTours[i].Add(startVertex);
+                cachedDijkstras[i].Add(new Tour());
+                cachedDijkstras[i][j].graph = this;
             }
+        }
 
-            dist[startVertex] = 0;
-
-            // The path to self is self
-            cachedDijkstras[startVertex][startVertex] = new Tour();
-            cachedDijkstras[startVertex][startVertex].graph = this;
-            cachedDijkstras[startVertex][startVertex].AddVertex(startVertex);
-
-            for (int count = 0; count < numVertices - 1; count++)
-            {
-                int nearestUnvisitedVertex = MinDistance(ref dist, ref visited);
-                visited[nearestUnvisitedVertex] = true;
-
-                for (int v = 0; v < numVertices; v++)
-                {
-                    if (!visited[v] && 0 < adjacencyMatrix[nearestUnvisitedVertex][v] // edge exists
-                        && dist[nearestUnvisitedVertex] != huge  // explored
-                        && dist[nearestUnvisitedVertex] + adjacencyMatrix[nearestUnvisitedVertex][v] < dist[v])
-                    {
-
-                        dist[v] = dist[nearestUnvisitedVertex] + adjacencyMatrix[nearestUnvisitedVertex][v];
-
-                        subTours[v] = subTours[nearestUnvisitedVertex];
-                        subTours[v].Add(v);
-
-                        cachedDijkstras[startVertex][v] = new Tour();
-                        cachedDijkstras[startVertex][v].graph = this;
-                        //cachedDijkstras[v][startVertex] = new Tour();
-                        //cachedDijkstras[v][startVertex].graph = this;
-                        for (int i = 0; i < subTours[v].Count; i++)
-                        {
-                            cachedDijkstras[startVertex][v].InsertVertex(subTours[v][i]);
-                            //cachedDijkstras[v][startVertex].AddVertex(subTours[v][subTours[v].Count - 1 - i]);
-                        }
-                        print(cachedDijkstras[startVertex][v].ToString());
-                    }
-                }
-            }
+        // Solve dijkstras
+        for (int v = 0; v < SizeV(); v++)
+        {
+            Dijkstras(v);
         }
     }
 }
