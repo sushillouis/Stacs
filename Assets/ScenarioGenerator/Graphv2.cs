@@ -89,7 +89,7 @@ public class Graphv2 : MonoBehaviour
         {
             return true;
         }
-        print("Trying to access edge (" + v1.ToString() + " " + v2.ToString() + ")");
+        //print("Trying to access edge (" + v1.ToString() + " " + v2.ToString() + ")");
         return false;
     }
 
@@ -108,7 +108,7 @@ public class Graphv2 : MonoBehaviour
 
     public int GetEdge(int v1, int v2) {
         if (!IsValidEdge(v1, v2)) {
-            
+            return -1;
         }
         return edgeList[(v1, v2)];
     }
@@ -263,14 +263,18 @@ public class Graphv2 : MonoBehaviour
                 {
                     dist[v] = dist[u] + adjacencyMatrix[u][v];
 
-/*                    tempTours[v] = cachedDijkstras[src][u];
-                    tempTours[v].AddVertex(v);*/
-                    cachedDijkstras[v][u].AddVertex(v);
-
-                    for (int i = 0; i < cachedDijkstras[v][u].vertexSequence.Count; i++)
+                    //paths[v] = paths[u];
+                    //paths[v].Add(v);
+                    for (int i = 0; i < cachedDijkstras[src][u].vertexSequence.Count; i++)
                     {
-                        cachedDijkstras[src][u].AddVertex(cachedDijkstras[v][u].vertexSequence[i]);
+                        cachedDijkstras[src][v].InsertVertex(cachedDijkstras[src][u].vertexSequence[i]);
                     }
+                    cachedDijkstras[src][v].InsertVertex(v);
+
+/*                    for (int i = 0; i < cachedDijkstras[src][v].Count; i++)
+                    {
+                        cachedDijkstras[src][v].AddVertex(paths[v][i]);
+                    }*/
 
 /*                    for (int i = 0; i < tempTours[v].vertexSequence.Count; i++)
                     {

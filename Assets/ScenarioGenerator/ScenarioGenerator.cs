@@ -12,6 +12,7 @@ public class ScenarioGenerator : Generator
     public WaypointGenerator waypointGenerator;
 
     public Graphv2 graph;
+    public Router router;
 
     private List<Generator> generators;
 
@@ -157,41 +158,29 @@ public class ScenarioGenerator : Generator
 
     public override void Generate()
     {
-        //
+        // Generate the scene
         surfaceGenerator.Generate();
         bridgeGenerator.Generate();
         defectsGenerator.Generate();
         landGenerator.Generate();
         robotGenerator.Generate();
 
-        // Make graph
-        CreateGraphFromBridge();
-    }
 
-    public void CreateGraphFromBridge()
-    {
         // Clear the graph
         graph.Clear();
 
         // Add all edges to graph to
-        foreach(BridgeEdge edge in bridgeGenerator.edges)
+        foreach (BridgeEdge edge in bridgeGenerator.edges)
         {
             graph.AddEdge(edge.id, edge.v1.id, edge.v2.id, edge.cost);
         }
 
-        print(graph.ToString());
-
-
+        // Solve all shortest paths
         graph.SolveAndCacheShortestPaths();
 
-        print(graph.ToString());
-        print(graph.cachedDijkstras[11][0].ToString());
+        router.graph = graph;
+        router.CreateTours();
+        router.Render();
 
-
-        Tour newTour = new Tour();
-        newTour.graph = graph;
-        newTour.AddVertex(0);
-        newTour.AddVertex(11);
-        print(newTour.ToString());
     }
 }

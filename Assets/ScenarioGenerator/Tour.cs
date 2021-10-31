@@ -73,7 +73,7 @@ public class Tour
         return true;
     }
 
-    // Add the vertex regardless if the path makes sense
+    // Force insert the vertex. This will not resolve issues in the tour (ie intermediate edges)
     public void InsertVertex(int vertexId)
     {
         if (vertexSequence.Count == 0 && edgeSequence.Count == 0)
@@ -141,7 +141,7 @@ public class Tour
         }
     }
 
-    // Adds a vertex and resolves the path
+    // Adds a vertex and resolves missing edges inbetween vertices
     public void AddVertex(int vertex)
     {
         if (vertexSequence.Count == 0 && edgeSequence.Count == 0)
