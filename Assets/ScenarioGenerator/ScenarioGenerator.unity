@@ -685,10 +685,10 @@ MonoBehaviour:
   vertices: []
   edges: []
   deploymentVertex: {fileID: 0}
-  numSegments: 2
+  numSegments: 6
   segmentSpacing: 4
   bridgeHeight: 7
-  bridgeType: 0
+  bridgeType: 2
   mirrorZ: 1
   mirrorX: 1
   scenarioGenerator: {fileID: 0}
@@ -7923,7 +7923,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1489836425}
   m_LocalRotation: {x: -0.55978084, y: 0.018219355, z: -0.012312257, w: -0.8283489}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0.2, y: 14.42, z: -4.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}

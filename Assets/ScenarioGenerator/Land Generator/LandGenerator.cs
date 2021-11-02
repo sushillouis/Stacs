@@ -39,7 +39,6 @@ public class LandGenerator : Generator
         go.transform.parent = rootObject.transform;
 
         float landSizeX = (maxX - canalWidth) / 2.0f;
-        print(landSizeX);
         go = Instantiate(land);
         go.transform.position = new Vector3(.5f * maxX - .5f * landSizeX, 0, 0);
         go.transform.localScale = new Vector3(landSizeX, maxZ, 1);

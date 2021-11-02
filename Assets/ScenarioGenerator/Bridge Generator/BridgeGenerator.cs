@@ -194,22 +194,35 @@ public class BridgeGenerator : Generator
         // get positive z position on one side of road
         float zPos = surfaceWidth / 2.0f;
 
-        // make starting vertices in the center of the bridge
+        // make prev vertices list to assist segment creation
         List<BridgeVertex> prevVertices = new List<BridgeVertex>();
-        prevVertices.Add(CreateVertex(new Vector3(0, 0, zPos), false, true));
-        prevVertices.Add(CreateVertex(new Vector3(0, bridgeHeight, zPos), false, true));
 
-        if (bridgeType != BridgeType.Warren)
+        if (bridgeType == BridgeType.Warren)
         {
-            CreateEdge(prevVertices[0], prevVertices[1], false, true);
+            // create starting triangle
+            prevVertices.Add(CreateVertex(new Vector3(segmentSpacing /2.0f, 0, zPos), true, true));
+            prevVertices.Add(CreateVertex(new Vector3(0, bridgeHeight, zPos), false, true));
+            CreateEdge(prevVertices[0], prevVertices[1], true, true);
+            CreateEdge(prevVertices[0], GetVertex(new Vector3(-segmentSpacing / 2.0f, 0, zPos)), false, true);
+            // create top edge
+            CreateEdge(GetVertex(new Vector3(0, bridgeHeight, -zPos)), prevVertices[1], false, true);
         }
-        CreateEdge(GetVertex(new Vector3(0, bridgeHeight, -zPos)), prevVertices[1], false, true);
+        else
+        {
+            // create center vertical vertices and edge
+            prevVertices.Add(CreateVertex(new Vector3(0, 0, zPos), false, true));
+            prevVertices.Add(CreateVertex(new Vector3(0, bridgeHeight, zPos), false, true));
+            CreateEdge(prevVertices[0], prevVertices[1], false, true);
+            CreateEdge(GetVertex(new Vector3(0, bridgeHeight, -zPos)), prevVertices[1], false, true);
+        }
+
 
         // make middle segments starting from the center out
         float xPos = segmentSpacing;
         float heightReduction = 0;
         //BridgeVertex prev_v2 = v2;
-        for (int i = 1; i < numSegments / 2; ++i)
+        int i;
+        for (i = 1; i < numSegments / 2; ++i)
         {
             //prev_v2 = v2;
             switch(bridgeType) {
@@ -224,7 +237,6 @@ public class BridgeGenerator : Generator
                     break;
                 case BridgeType.Warren:
                     prevVertices = MakeWarrenSegement(prevVertices, i, xPos, zPos, bridgeHeight - heightReduction);
-                    bridgeLength = (numSegments - 1) * segmentSpacing;
                     break;
             }
             //MakeUpperXSegment(v2, prev_v2, xPos, zPos);
@@ -234,12 +246,19 @@ public class BridgeGenerator : Generator
 
         // make end segment
         BridgeVertex endv;
-        if (bridgeType != BridgeType.Warren)
+        if (bridgeType == BridgeType.Warren)
+        {
+            // add one more triangle
+            prevVertices = MakeWarrenSegement(prevVertices, i, xPos, zPos, bridgeHeight - heightReduction);
+            bridgeLength = (numSegments) * segmentSpacing;
+            //endv = CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, 0, zPos), true, true);
+            endv = prevVertices[0];
+        } else {
             endv = CreateVertex(new Vector3(xPos, 0, zPos), true, true);
-        else
-            endv = CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, 0, zPos), true, true);
-        CreateEdge(prevVertices[0], endv, true, true);
-        CreateEdge(prevVertices[1], endv, true, true);
+            CreateEdge(prevVertices[0], endv, true, true);
+            CreateEdge(prevVertices[1], endv, true, true);
+        }
+
 
         deploymentVertex = endv;
 
@@ -251,8 +270,6 @@ public class BridgeGenerator : Generator
         List<BridgeVertex> newV = new List<BridgeVertex>();
         newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
-
-
 
         // horizontal
         CreateEdge(newV[0], prev[0], true, true);
@@ -303,28 +320,26 @@ public class BridgeGenerator : Generator
 
     public List<BridgeVertex> MakeWarrenSegement(List<BridgeVertex> prev, int seg, float xPos, float zPos, float height)
     {
-        // make vertices
+        // make vertices in a triangle
         List<BridgeVertex> newV = new List<BridgeVertex>();
-        newV.Add(CreateVertex(new Vector3(xPos, 0, zPos), true, true));
+        newV.Add(CreateVertex(new Vector3(xPos + segmentSpacing * .5f, 0, zPos), true, true));
         newV.Add(CreateVertex(new Vector3(xPos, height, zPos), true, true));
-        newV.Add(CreateVertex(new Vector3(xPos - (segmentSpacing / 2.0f), 0, zPos), true, true));
-
+       
         // horizontal
-        CreateEdge(newV[0], newV[2], true, true);
-        CreateEdge(newV[2], prev[0], true, true);
+        CreateEdge(newV[0], prev[0], true, true);
         CreateEdge(newV[1], prev[1], true, true);
-        // vertical
-        //CreateEdge(newV[0], newV[1], true, true);
+
         // diagonal
-        CreateEdge(newV[2], prev[1], true, true);
-        CreateEdge(newV[2], newV[1], true, true);
+        CreateEdge(newV[1], prev[0], true, true);
+        CreateEdge(newV[0], newV[1], true, true);
 
         // top
         if (mirrorZ)
         {
-            newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing / 2.0f, newV[1].transform.position.y, 0), true, false));
-            CreateEdge(newV[3], prev[1], true, true);
-            CreateEdge(newV[3], newV[1], true, true);
+            newV.Add(CreateVertex(new Vector3(xPos - segmentSpacing * .5f, newV[1].transform.position.y, 0), true, false));
+
+            CreateEdge(newV[2], newV[1], true, true);
+            CreateEdge(newV[2], prev[1], true, true);
             CreateEdge(GetVertex(new Vector3(xPos, newV[1].transform.position.y, -zPos)), newV[1], true, false);
         }
 

@@ -175,6 +175,7 @@ public class ScenarioGenerator : Generator
             graph.AddEdge(edge.id, edge.v1.id, edge.v2.id, edge.cost);
         }
 
+        //print(graph.ToString());
         // Solve all shortest paths
         graph.SolveAndCacheShortestPaths();
 

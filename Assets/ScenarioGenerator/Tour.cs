@@ -22,7 +22,7 @@ public class Tour
 
     public override string ToString()
     {
-        string str = "Tour(" + cost.ToString() + ") : [";
+        string str = "Tour(" + cost.ToString() + ") : v[";
         for (int i = 0; i < vertexSequence.Count; ++i)
         {
             str += vertexSequence[i].ToString();
@@ -31,11 +31,20 @@ public class Tour
                 str += ",";
             }
         }
+        str += "], e[";
+        for (int i = 0; i < edgeSequence.Count; ++i)
+        {
+            str += edgeSequence[i].ToString();
+            if (i < edgeSequence.Count - 1)
+            {
+                str += ",";
+            }
+        }
         str += "]";
         return str;
     }
 
-    void Clear()
+    public void Clear()
     {
         cost = 0;
         vertexSequence.Clear();

@@ -89,7 +89,9 @@ public class Graphv2 : MonoBehaviour
         {
             return true;
         }
-        //print("Trying to access edge (" + v1.ToString() + " " + v2.ToString() + ")");
+        
+        // Invalid edge
+        //print("Trying to access edge between vertices (" + v1.ToString() + " " + v2.ToString() + ") which is not valid.");
         return false;
     }
 
@@ -102,7 +104,8 @@ public class Graphv2 : MonoBehaviour
                 return pair.Key;
             }
         }
-        // This is dangerous
+        // This is dangerous but nescessary to flag issues
+        print("Edge id:" + id.ToString() + " does not exist, but trying to access it.");
         return (-1,-1);
     }
 
@@ -230,6 +233,10 @@ public class Graphv2 : MonoBehaviour
             if (!spSet[v] && dist[v] <= best.Item2)
                 best = (v, dist[v]);
 
+        if (best.Item1 == -1)
+        {
+            print("No better min distance found, so returning an invalid vertex.");
+        }
         return best.Item1;
     }
 
@@ -263,24 +270,15 @@ public class Graphv2 : MonoBehaviour
                 {
                     dist[v] = dist[u] + adjacencyMatrix[u][v];
 
-                    //paths[v] = paths[u];
-                    //paths[v].Add(v);
+                    // A better tour was found, clear the existing tour
+                    cachedDijkstras[src][v].Clear();
+
+                    // Make new tour by deep copying the best vertex sequence
                     for (int i = 0; i < cachedDijkstras[src][u].vertexSequence.Count; i++)
                     {
                         cachedDijkstras[src][v].InsertVertex(cachedDijkstras[src][u].vertexSequence[i]);
                     }
                     cachedDijkstras[src][v].InsertVertex(v);
-
-/*                    for (int i = 0; i < cachedDijkstras[src][v].Count; i++)
-                    {
-                        cachedDijkstras[src][v].AddVertex(paths[v][i]);
-                    }*/
-
-/*                    for (int i = 0; i < tempTours[v].vertexSequence.Count; i++)
-                    {
-                        cachedDijkstras[src][v].AddVertex(tempTours[v].vertexSequence[i]);
-                    }*/
-
                 }
             }
         }
@@ -300,6 +298,7 @@ public class Graphv2 : MonoBehaviour
             }
         }
 
+        //print(adjacencyMatrix)
         // Solve dijkstras
         for (int v = 0; v < SizeV(); v++)
         {

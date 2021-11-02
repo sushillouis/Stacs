@@ -27,50 +27,78 @@ public class Router : MonoBehaviour
 
     public void Render()
     {
+        float offset = 0.1f;
         foreach(Tour tour in tours)
         {
-            print("rending" + tour.ToString());
-
+            Color tourColor = new Color(Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f));
             int v0;
             int v1;
-            Transform t1, t2;
+            print("Rendering" + tour.ToString());
+
+            Vector3 pos;
             Vector3 dir;
+            Vector3 prevpos = bridgeGenerator.vertices[tour.vertexSequence[0]].transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)) * offset;
             for (int i = 1; i < tour.vertexSequence.Count; i++)
             {
                 // convert vId to actual object
                 v0 = tour.vertexSequence[i - 1];
                 v1 = tour.vertexSequence[i];
 
-                t1 = bridgeGenerator.vertices[v0].transform;
-                t2 = bridgeGenerator.vertices[v1].transform;
-                dir = (t2.position - t1.position);
-                Debug.DrawRay(t1.position, dir, new Color(Random.Range(0.0f,1.0f), Random.Range(0.0f, 1.0f), Random.Range(0.0f, 1.0f)), 10);
+                pos = bridgeGenerator.vertices[tour.vertexSequence[i]].transform.position + new Vector3(Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f), Random.Range(-1.0f, 1.0f)) * offset;
+                dir = (pos - prevpos);
+                Debug.DrawRay(prevpos, dir, tourColor, 30);
+                prevpos = pos;
             }
         }
     }
 
     public void Clear()
     {
+        foreach (Tour tour in tours)
+            tour.Clear();
         tours.Clear();
     }
 
     public void CreateTours()
     {
+        Clear();
         // Call GA or Tabu Search or CPP
-        for (int i = 0; i < 5; i++)
-        {
-            RandomTour(Random.Range(0, graph.SizeV() - 1), Random.Range(0, graph.SizeV() - 1));
-        }
+        RandomSplitTours(Random.Range(1, 5));
 
         //print(newTour.ToString());
     }
 
-    public void RandomTour(int startV, int endV)
+    public void RandomSplitTours(int numTours)
     {
-        Tour newTour = new Tour();
-        newTour.graph = graph;
-        newTour.AddVertex(startV);
-        newTour.AddVertex(endV);
-        tours.Add(newTour);
+        List<int> unassignedEdges = new List<int>();
+        for (int i = 0; i < bridgeGenerator.edges.Count; i++)
+        {
+            unassignedEdges.Add(i);
+        }
+
+        // create empty tours
+        for (int i = 0; i < numTours; i++)
+        {
+            Tour newTour = new Tour();
+            newTour.graph = graph;
+            tours.Add(newTour);
+        }
+
+
+        // randomly distribute edges
+        int robotId = -1;
+        while (unassignedEdges.Count > 0)
+        {
+            robotId++;
+            if (robotId >= numTours)
+            {
+                robotId = 0;
+            }
+
+            int index = Random.Range(0, unassignedEdges.Count);
+            int edgeId = unassignedEdges[index];
+            unassignedEdges.RemoveAt(index);
+            tours[robotId].AddEdge(edgeId);
+        }
     }
 }
